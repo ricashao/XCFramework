@@ -23,12 +23,12 @@ public class AssetManager : MonoBehaviour
     /// 资源缓存管理器
     /// </summary>
     private static AssetCacheManager mCache = new AssetCacheManager();
-    
+
     /// <summary>
     /// 异步加载完成回调队列
     /// </summary>
     private static AsynCallQueue mAsynCallQueue = new AsynCallQueue();
-    
+
 
     /// <summary>
     /// 加载资源枚举
@@ -38,22 +38,22 @@ public class AssetManager : MonoBehaviour
         COMMON,
         ATLAS_IMAGE
     };
-    
-    
+
+
     public static Vector3 DefaultPosition = new Vector3(9999f, 9999f, 9999f);
     public static Quaternion DefaultRotation = new Quaternion(9999f, 9999f, 9999f, 9999f);
-    
-    
+
+
     private static List<GroupLoadTask> groupTasks = new List<GroupLoadTask>();
-    private static  List<GroupLoadTask> rubbishGroupTasks = new List<GroupLoadTask>(8);
-    
+    private static List<GroupLoadTask> rubbishGroupTasks = new List<GroupLoadTask>(8);
+
     void Awake()
     {
         mInstance = this;
 
         mCache.StartCheckGCEvent += StartCheckGC;
     }
-    
+
     private void StartCheckGC()
     {
         if (mGCAtor == null)
@@ -62,8 +62,8 @@ public class AssetManager : MonoBehaviour
             StartCoroutine(mGCAtor);
         }
     }
-    
-    
+
+
     IEnumerator CheckGC()
     {
         while (true)
@@ -76,7 +76,7 @@ public class AssetManager : MonoBehaviour
             }
         }
     }
-    
+
     private void StopCheckGC()
     {
         if (mGCAtor != null)
@@ -86,8 +86,9 @@ public class AssetManager : MonoBehaviour
             mGCAtor = null;
         }
     }
-    
-    internal static bool TryInstantiateGameObject(Object source, out Object target, Vector3 position, Quaternion rotation)
+
+    internal static bool TryInstantiateGameObject(Object source, out Object target, Vector3 position,
+        Quaternion rotation)
     {
         bool flag = false;
         if (source is GameObject)
@@ -109,9 +110,10 @@ public class AssetManager : MonoBehaviour
         {
             target = null;
         }
+
         return flag;
     }
-    
+
     /// <summary>
     /// 加载依赖manifest
     /// </summary>
@@ -125,14 +127,15 @@ public class AssetManager : MonoBehaviour
         {
             mMainManifest = ab.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
+
         if (!mMainManifest)
         {
             Debugger.LogError("AssetManager Error: Can't find Main AssetBundleManifest! AssetBundleManifestPath:" +
                               PathTools.AssetbundleManifestSyncPath);
         }
     }
-    
-    
+
+
     private static AssetBundle CreateFromFile(string path)
     {
         //路径如果有空格，则不加载
@@ -153,18 +156,19 @@ public class AssetManager : MonoBehaviour
     {
         //1.检查是否有加载好的资源 进行回调
         mAsynCallQueue.CheckAsynCall();
-        
+
         //2.资源加载检测
         if (mAsynLoadInfos.Count > 0)
         {
             var infos = mAsynLoadInfos.GetEnumerator();
-            while (infos.MoveNext())
+            while (mAsynLoadInfos.Count > 0 && infos.MoveNext())
             {
                 infos.Current.Value.Tick();
             }
+
             infos.Dispose();
         }
-        
+
         //任务组加载检测
         if (groupTasks.Count > 0)
         {
@@ -183,12 +187,13 @@ public class AssetManager : MonoBehaviour
                 groupTasks.Remove(rubbishGroupTask);
                 rubbishGroupTasks[i] = null;
             }
+
             rubbishGroupTasks.Clear();
         }
     }
 
     #region 动态加载场景
-    
+
     /// <summary>
     /// 加载场景的资源
     /// </summary>
@@ -202,27 +207,31 @@ public class AssetManager : MonoBehaviour
             //当前可以加载，不用再加载ga
             return true;
         }
+
         //需要通过加载场景ga
         AssetBundle ab = CreateFromFile(path);
         if (ab)
         {
             return true;
         }
+
         return false;
     }
 
     #endregion
-    
+
     #region C#异步请求
+
     public static Object LoadAsset(string path, Action<Object> callback)
     {
         return LoadAsset(path, Util.GetPathName(path), callback, DefaultPosition, DefaultRotation);
     }
-    
+
     public static Object LoadAsset(string path, Action<Object> callback, Vector3 position, Quaternion rotation)
     {
         return LoadAsset(path, Util.GetPathName(path), callback, position, rotation);
     }
+
     #endregion
 
     public static Object LoadAsset(string path)
@@ -249,7 +258,7 @@ public class AssetManager : MonoBehaviour
     {
         return LoadAsset(path, assetName, "", position, rotation);
     }
-    
+
     /// <summary>
     /// 请求资源，assetName会通过path中获取
     /// 如果传了key参数，则会走异步加载逻辑，通过回调函数返回资源 
@@ -274,26 +283,28 @@ public class AssetManager : MonoBehaviour
                 Debugger.LogError("AssetManager Error: Not Find LuaFunction,path=" + path + ",key=" + key);
             }
         }
+
         return LoadAsset(path, assetName, callBack, position, rotation);
     }
-    
-    public static Object LoadAsset(string path, string assetName, Action<Object> callBack, Vector3 position, Quaternion rotation)
+
+    public static Object LoadAsset(string path, string assetName, Action<Object> callBack, Vector3 position,
+        Quaternion rotation)
     {
         Object target = null;
         Object source = mCache.GetCacheSourceAsset(path, assetName);
-
-        if (!source)
-        {
-#if UNITY_EDITOR
-            string localPath = Util.GenResourcePath(path);
-            if (Util.GetPathName(path) != assetName)
-            {
-                localPath = Util.GenResourcePath(assetName.Replace("Assets/Resources/", ""));
-            }
-       
-            source = Resources.Load(localPath);
-#endif
-        }
+//
+//        if (!source)
+//        {
+//#if UNITY_EDITOR
+//            string localPath = Util.GenResourcePath(path);
+//            if (Util.GetPathName(path) != assetName)
+//            {
+//                localPath = Util.GenResourcePath(assetName.Replace("Assets/Resources/", ""));
+//            }
+//       
+//            source = Resources.Load(localPath);
+//#endif
+//        }
         if (!source)
         {
             if (callBack == null)
@@ -329,16 +340,16 @@ public class AssetManager : MonoBehaviour
             {
                 target = source;
             }
-
         }
         else if (callBack == null)
         {
             //如果不是异步，则找不到资源
             Debugger.LogError("AssetManager Error: Can't find Asset By Sync Load!!! Path:" + path);
         }
+
         return target;
     }
-    
+
     private static Object LoadAssetByAssetBundle(string path, string assetName)
     {
         AssetBundle ab = CreateFromFile(path);
@@ -351,8 +362,8 @@ public class AssetManager : MonoBehaviour
 
         return source;
     }
-    
-    
+
+
     private static Object GetAssetByAB(AssetBundle ab, string path, string assetName)
     {
         if (!ab) return null;
@@ -379,7 +390,8 @@ public class AssetManager : MonoBehaviour
                 }
                 else
                 {
-                    Debugger.LogError("AssetManager Error: Can't find AssetBundle Dependencies! AssetBundle Path:" + path +
+                    Debugger.LogError("AssetManager Error: Can't find AssetBundle Dependencies! AssetBundle Path:" +
+                                      path +
                                       ",Dependescie Path:" + dps[i]);
                 }
             }
@@ -394,7 +406,7 @@ public class AssetManager : MonoBehaviour
 
         return source;
     }
-    
+
     /// <summary>
     /// 异步加载
     /// </summary>
@@ -404,7 +416,8 @@ public class AssetManager : MonoBehaviour
     /// <param name="position"></param>
     /// <param name="rotation"></param>
     /// <param name="type"></param>
-    private static void AsyncLoadAsset(string path, string assetName, Action<Object> callback, Vector3 position, Quaternion rotation, LOAD_RES_TYPE type)
+    private static void AsyncLoadAsset(string path, string assetName, Action<Object> callback, Vector3 position,
+        Quaternion rotation, LOAD_RES_TYPE type)
     {
         string fullpath = PathTools.FileProtocolHead + PathTools.GetLoadingPath(path);
 
@@ -435,7 +448,7 @@ public class AssetManager : MonoBehaviour
 
         info.AddAssetNameCallBack(assetName, callback, position, rotation);
     }
-    
+
     private static void OnAsynLoadComplete(AsynLoadInfo info)
     {
         Object result = info.data;
@@ -478,16 +491,20 @@ public class AssetManager : MonoBehaviour
                 {
                     target = source;
                 }
+
                 try
                 {
                     item.CallBack(target);
                 }
                 catch (Exception e)
                 {
-                    Debugger.LogError("AssetManager Error: AsynLoadComplete's callback is Error! path:" + path + ",Error Message:" + e.StackTrace);
+                    Debugger.LogError("AssetManager Error: AsynLoadComplete's callback is Error! path:" + path +
+                                      ",Error Message:" + e.StackTrace);
                 }
+
                 item.Dispose();
             }
+
             mCache.CacheSourceAsset(info.path, assetName, source);
         }
 
@@ -497,7 +514,7 @@ public class AssetManager : MonoBehaviour
 
         mAsynLoadInfos.Remove(path);
     }
-    
+
     //异步加载的图集加载完毕
     private static void OnAsynAtlasLoadComplete(AsynLoadInfo info)
     {
@@ -508,6 +525,7 @@ public class AssetManager : MonoBehaviour
             Debug.LogError("Atlas Loaded is Not AsssetBundle");
             return;
         }
+
         mCache.CacheAssetBundle(info.path, result as AssetBundle);
 
         var assetNames = info.assetNames.GetEnumerator();
@@ -516,13 +534,13 @@ public class AssetManager : MonoBehaviour
         List<AsynLoadInfoItem> items;
         AsynLoadInfoItem item;
 
-        SpritesObject spriteObj = new SpritesObject(); 
+        SpritesObject spriteObj = new SpritesObject();
         Sprite[] sp = (result as AssetBundle).LoadAllAssets<Sprite>();
         while (assetNames.MoveNext())
         {
             assetName = assetNames.Current.Key;
             items = assetNames.Current.Value;
-           
+
             for (int j = 0; j < items.Count; j++)
             {
                 item = items[j];
@@ -533,8 +551,10 @@ public class AssetManager : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    Debugger.LogError("AssetManager Error: AsynLoadComplete's callback is Error! path:" + path + ",Error Message:" + e.StackTrace);
+                    Debugger.LogError("AssetManager Error: AsynLoadComplete's callback is Error! path:" + path +
+                                      ",Error Message:" + e.StackTrace);
                 }
+
                 item.Dispose();
             }
         }
@@ -544,7 +564,6 @@ public class AssetManager : MonoBehaviour
         info.Dispose();
 
         mAsynLoadInfos.Remove(path);
-
     }
 
     public static void LoadAltasAsset(string path, Action<Object> callBack)
@@ -553,7 +572,7 @@ public class AssetManager : MonoBehaviour
 
         string localPath = Util.GenResourcePath(path);
         Sprite[] sprites = Resources.LoadAll<Sprite>(localPath);
-        if(sprites != null)
+        if (sprites != null)
         {
             SpritesObject obj = new SpritesObject();
             obj.sprites = sprites;
@@ -564,22 +583,24 @@ public class AssetManager : MonoBehaviour
             Debugger.LogError("没有找到图集资源:" + path);
         }
 #else
-        AsyncLoadAsset(path, "", callBack, DefaultPosition, DefaultRotation, LOAD_RES_TYPE.ATLAS_IMAGE); 
-#endif         
+        AsyncLoadAsset(path, "", callBack, DefaultPosition, DefaultRotation, LOAD_RES_TYPE.ATLAS_IMAGE);
+#endif
     }
-    
-    public static void LoadAssetGroup(GroupLoadReqItem[] reqs,Action<Object[]> callback )
+
+    public static void LoadAssetGroup(GroupLoadReqItem[] reqs, Action<Object[]> callback)
     {
         var results = new Object[reqs.Length];
         for (int i = 0; i < reqs.Length; i++)
         {
             var groupLoadReqItem = reqs[i];
             int k = i;
-            AsyncLoadAsset(groupLoadReqItem.path, groupLoadReqItem.assetName, (o) => results[k]=o,DefaultPosition,DefaultRotation,LOAD_RES_TYPE.COMMON);
+            AsyncLoadAsset(groupLoadReqItem.path, groupLoadReqItem.assetName, (o) => results[k] = o, DefaultPosition,
+                DefaultRotation, LOAD_RES_TYPE.COMMON);
         }
-        groupTasks.Add(new GroupLoadTask{taskCount = reqs.Length,results = results,callback = callback});
+
+        groupTasks.Add(new GroupLoadTask {taskCount = reqs.Length, results = results, callback = callback});
     }
-    
+
     /// <summary>
     /// 清除缓存源资源，会导致所有资源需要重新加载，如果不到内存临界点不建议清除，因为加载资源的IO成本还是很高的
     /// 
@@ -589,9 +610,6 @@ public class AssetManager : MonoBehaviour
     {
         mCache.Clear();
     }
-    
-    
-    
 }
 
 
