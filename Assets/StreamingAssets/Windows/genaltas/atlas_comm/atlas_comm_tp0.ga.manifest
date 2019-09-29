@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 2968548706
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 82f60d7e09070fb1bb23dc5a2a96b68d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ea5a42e0fd8ea905efa7aa926a3b8944
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/UI/GenAltas/Atlas_Comm/Atlas_Comm_tp0.png
+Dependencies: []
