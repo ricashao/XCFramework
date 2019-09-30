@@ -58,6 +58,7 @@ public class ResourcePool : IPool
         // Debugger.Log("资源引用计数增加为：" + mSourceCount+ " " + path);
         SaveState(result);
 
+        //非gameobject资源
         if (!(result is GameObject))
             source = result;
 
@@ -111,6 +112,7 @@ public class ResourcePool : IPool
         {
             while (stack.Count > 0)
             {
+                //go资源 找到一个不为null的缓存数据
                 target = stack[0];
 
                 stack.RemoveAt(0);
@@ -118,8 +120,9 @@ public class ResourcePool : IPool
                 if (target) break;
             }
 
-            if (target == null) //池子里没有资源
+            if (target == null)
             {
+                //加载资源 非go和go都走这
                 if (callback != null)
                 {
                     mCallBacks.Add(callback);
@@ -135,6 +138,7 @@ public class ResourcePool : IPool
             }
             else if (callback != null)
             {
+                //
                 mCallBacks.Add(callback);
                 mAsynTargets.Add(target);
             }
