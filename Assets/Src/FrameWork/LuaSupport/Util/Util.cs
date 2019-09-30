@@ -64,4 +64,18 @@ public class Util : MonoBehaviour
         }       
         return path;
     }
+    
+    /// <summary>
+    /// 添加组件
+    /// </summary>
+    public static T Add<T>(GameObject go) where T : Component {
+        if (go != null) {
+            T[] ts = go.GetComponents<T>();
+            for (int i = 0; i < ts.Length; i++ ) {
+                if (ts[i] != null) Destroy(ts[i]);
+            }
+            return go.gameObject.AddComponent<T>();
+        }
+        return null;
+    }
 }

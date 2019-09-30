@@ -19,6 +19,8 @@ public static class ExportAssetBundle
     };
     
     public static string WindowsOutputPath = Application.streamingAssetsPath + "/Windows";
+    public static string IosOutputPath = Application.streamingAssetsPath + "/iOS";
+    public static string AndroidOutputPath = Application.streamingAssetsPath + "/Android";
     
     [MenuItem("*Resource/Gen Asset bundles/StandaloneWindows")]
     public static void OnCreateAssetBundleWin()
@@ -37,6 +39,38 @@ public static class ExportAssetBundle
         //刷新编辑器
         AssetDatabase.Refresh();
         Debug.Log("AssetBundle Packaged finish !!!");
+    }
+    
+    [MenuItem("*Resource/Gen Asset bundles/Android")]
+    public static void OnCreateAssetBundleAndroid()
+    {
+        if (!Directory.Exists(AndroidOutputPath))
+        {
+            Directory.CreateDirectory(AndroidOutputPath);
+        }
+
+        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.Android);
+        Caching.ClearCache();
+        BuildPipeline.BuildAssetBundles(AndroidOutputPath, BuildAssetBundleOptions.UncompressedAssetBundle,BuildTarget.Android);
+        AssetDatabase.Refresh();
+        Debug.Log("AssetBundle Packaged finish !!!");
+    }
+    
+    
+    [MenuItem("*Resource/Gen Asset bundles/iOS")]
+    public static void OnCreateAssetBundleIos()
+    {
+        if (!Directory.Exists(IosOutputPath))
+        {
+            Directory.CreateDirectory(IosOutputPath);
+        }
+        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.iOS);
+        Caching.ClearCache();
+        BuildPipeline.BuildAssetBundles(IosOutputPath, BuildAssetBundleOptions.UncompressedAssetBundle,
+            BuildTarget.iOS);
+        AssetDatabase.Refresh();
+        Debug.Log("AssetBundle Packaged finish !!!");
+           
     }
     
 
