@@ -28,6 +28,11 @@ public class AssetManager : MonoBehaviour
     /// 异步加载完成回调队列
     /// </summary>
     private static AsynCallQueue mAsynCallQueue = new AsynCallQueue();
+    
+    /// <summary>
+    /// 加载完成 需要移除的加载路径
+    /// </summary>
+    private static List<string> removePath  = new List<string>();
 
 
     /// <summary>
@@ -161,12 +166,21 @@ public class AssetManager : MonoBehaviour
         if (mAsynLoadInfos.Count > 0)
         {
             var infos = mAsynLoadInfos.GetEnumerator();
-            while (mAsynLoadInfos.Count > 0 && infos.MoveNext())
+            while (infos.MoveNext())
             {
                 infos.Current.Value.Tick();
             }
 
             infos.Dispose();
+        }
+
+        if (removePath.Count > 0)
+        {
+            foreach (var path in removePath)
+            {
+                mAsynLoadInfos.Remove(path);
+            }
+            removePath.Clear();
         }
 
         //任务组加载检测
@@ -512,7 +526,8 @@ public class AssetManager : MonoBehaviour
 
         info.Dispose();
 
-        mAsynLoadInfos.Remove(path);
+        removePath.Add(path);
+//        mAsynLoadInfos.Remove(path);
     }
 
     //异步加载的图集加载完毕
@@ -562,8 +577,9 @@ public class AssetManager : MonoBehaviour
         assetNames.Dispose();
 
         info.Dispose();
+        removePath.Add(path);
 
-        mAsynLoadInfos.Remove(path);
+//        mAsynLoadInfos.Remove(path);
     }
 
     public static void LoadAltasAsset(string path, Action<Object> callBack)
