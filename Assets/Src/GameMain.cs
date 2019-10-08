@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameMain : BaseLua
 {
-    public LuaScriptMgr uluaMgr;
+    public LuaScriptMgr xluaMgr;
 
 //    private InputTouch inputTouch; 
     protected new void Awake()
@@ -20,15 +20,15 @@ public class GameMain : BaseLua
 //        Util.Add<FileLogger>(gameObject);
 //        // Util.Add<ResManager>(gameObject);
         Util.Add<AssetManager>(gameObject);
-//        Util.Add<PoolManager>(gameObject);
+        Util.Add<PoolManager>(gameObject);
         Util.Add<ImageSetManager>(gameObject);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Application.targetFrameRate = Const.GameFrameRate;
 
 
-        uluaMgr = new LuaScriptMgr();
-        uluaMgr.Start();
-        uluaMgr.DoFile("GameMain"); //GameMain.lua
+        xluaMgr = new LuaScriptMgr();
+        xluaMgr.Start();
+        xluaMgr.DoFile("GameMain"); //GameMain.lua
 //        checkLuaDebug();
         CallMethod("LoginGame");
 

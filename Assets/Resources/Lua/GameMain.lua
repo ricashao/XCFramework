@@ -1,4 +1,4 @@
-require "Framework.Class";
+--require "Framework.Class";
 
 
 GameMain = {};
@@ -9,7 +9,7 @@ function GameMain.Awake()
 end
 
 function GameMain.Start()
-	GameMain.InitDontDestroyOnLoadList();
+	--GameMain.InitDontDestroyOnLoadList();
 end
 
 --登陆游戏

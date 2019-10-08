@@ -171,11 +171,11 @@ public class ImageSetManager : MonoBehaviour
 
         public void CallLua(Sprite sprite, string key, string assetName)
         {
-            if (ioo.gameMain != null && ioo.gameMain.uluaMgr != null)//此时umgr有可能是空值
+            if (ioo.gameMain != null && ioo.gameMain.xluaMgr != null)//此时umgr有可能是空值
             {
                 refCount++;
                 _objectRef[sprite] = path;
-                ioo.gameMain.uluaMgr.CallLuaFunction("UIManager.OnImageLoaded", sprite, key, assetName);
+                ioo.gameMain.xluaMgr.CallLuaFunction("UIManager.OnImageLoaded", sprite, key, assetName);
             }
 
         }
