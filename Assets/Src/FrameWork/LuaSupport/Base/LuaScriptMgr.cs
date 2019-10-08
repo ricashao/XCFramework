@@ -66,12 +66,13 @@ public class LuaScriptMgr
 
     public void Start()
     {
+        
         OnBundleLoaded();
     }
 
     void OnBundleLoaded()
     {
-//        DoFile("Global/Global");
+        DoFile("Global/Global");
         
     }
     
