@@ -71,7 +71,7 @@ public class LuaScriptMgr
 
     void OnBundleLoaded()
     {
-        DoFile("Global/Global");
+//        DoFile("Global/Global");
         
     }
     
