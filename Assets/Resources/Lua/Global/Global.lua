@@ -1,4 +1,4 @@
-require "Global.Common.Math"
+--[[require "Global.Common.Math"
 require "Global.Common.Layer"
 require "Global.Common.List"
 require "Global.Common.Event"
@@ -10,7 +10,7 @@ require "Global.Common.Raycast"
 require "Global.Common.Color"
 require "Global.Common.Touch"
 require "Global.Common.Ray"
-require "Global.Common.Coroutine"
+require "Global.Common.Coroutine"]]
 
 --luanet.load_assembly("UnityEngine")
 
