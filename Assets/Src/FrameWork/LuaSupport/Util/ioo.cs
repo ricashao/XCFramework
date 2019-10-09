@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -31,5 +32,50 @@ public class ioo
                 _gameMain = manager.GetComponent<GameMain>();
             return _gameMain;
         }
+    }
+    
+    private static PanelManager _panelManager = null;
+    public static PanelManager panelManager {
+        get {
+            if (_panelManager == null)
+                _panelManager = manager.GetComponent<PanelManager>();
+            return _panelManager;
+        }
+    }
+    
+    
+    
+    
+    public static Transform guiCamera {
+        get {
+            GameObject go = GameObject.FindWithTag("GuiCamera");
+            if (go != null) return go.transform;
+            return null;
+        }
+    }
+
+    public static GameObject guiRoot
+    {
+        get
+        {
+            var go = GameObject.FindWithTag("GuiRoot");
+            if (go != null) return go;
+            return null;
+        }
+    }
+    public static GameObject effects
+    {
+        get
+        {
+            var go = GameObject.FindWithTag("Effects");
+            if (go != null) return go;
+            return null;
+        }
+
+    }
+
+    public static int GetSystemTimeSecond()
+    {
+        return DateTime.Now.Second;
     }
 }

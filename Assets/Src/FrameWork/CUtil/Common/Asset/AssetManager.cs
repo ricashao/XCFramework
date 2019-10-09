@@ -306,19 +306,19 @@ public class AssetManager : MonoBehaviour
     {
         Object target = null;
         Object source = mCache.GetCacheSourceAsset(path, assetName);
-//
-//        if (!source)
-//        {
-//#if UNITY_EDITOR
-//            string localPath = Util.GenResourcePath(path);
-//            if (Util.GetPathName(path) != assetName)
-//            {
-//                localPath = Util.GenResourcePath(assetName.Replace("Assets/Resources/", ""));
-//            }
-//       
-//            source = Resources.Load(localPath);
-//#endif
-//        }
+
+        if (!source)
+        {
+#if UNITY_EDITOR
+            string localPath = Util.GenResourcePath(path);
+            if (Util.GetPathName(path) != assetName)
+            {
+                localPath = Util.GenResourcePath(assetName.Replace("Assets/Resources/", ""));
+            }
+       
+            source = Resources.Load(localPath);
+#endif
+        }
         if (!source)
         {
             if (callBack == null)
