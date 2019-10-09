@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameMain : BaseLua
 {
+    
     public LuaScriptMgr xluaMgr;
 
 //    private InputTouch inputTouch; 
@@ -15,7 +16,7 @@ public class GameMain : BaseLua
     void Init()
     {
         DontDestroyOnLoad(gameObject);
-//        Util.Add<PanelManager>(gameObject);
+        Util.Add<PanelManager>(gameObject);
 //        Util.Add<TimerManager>(gameObject);
 //        Util.Add<FileLogger>(gameObject);
 //        // Util.Add<ResManager>(gameObject);

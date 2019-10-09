@@ -1,29 +1,39 @@
 ManifestFileVersion: 0
-CRC: 2155079429
+CRC: 221660557
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: image/scene/login/login.ga
-      Dependencies: {}
+      Name: ui/prefabs/win/win_login.ga
+      Dependencies:
+        Dependency_0: ui/scene/login/login_01.ga
+        Dependency_1: ui/genaltas/atlas_comm/atlas_comm_tp0.ga
+        Dependency_2: ui/fonts/system.ga
+        Dependency_3: ui/fonts/system_art.ga
     Info_1:
-      Name: genaltas/atlas_comm/atlas_comm_tp0.ga
-      Dependencies: {}
+      Name: scene/output/scenes//game.ga
+      Dependencies:
+        Dependency_0: ui/prefabs/module/uilayer.ga
     Info_2:
-      Name: fonts/system.ga
+      Name: scene/output/scenes//assetbundlescene.ga
       Dependencies: {}
     Info_3:
-      Name: fonts/system_art.ga
+      Name: ui/scene/login/login_01.ga
       Dependencies: {}
     Info_4:
-      Name: prefabs/win/win_login.ga
-      Dependencies:
-        Dependency_0: genaltas/atlas_comm/atlas_comm_tp0.ga
-        Dependency_1: fonts/system.ga
-        Dependency_2: fonts/system_art.ga
-        Dependency_3: scene/login/login_01.ga
+      Name: ui/genaltas/atlas_comm/atlas_comm_tp0.ga
+      Dependencies: {}
     Info_5:
-      Name: scene/login/login_01.ga
+      Name: ui/image/scene/login/login.ga
       Dependencies: {}
     Info_6:
-      Name: image/atlas_bag/atlas_bag.ga
+      Name: ui/image/atlas_bag/atlas_bag.ga
+      Dependencies: {}
+    Info_7:
+      Name: ui/fonts/system.ga
+      Dependencies: {}
+    Info_8:
+      Name: ui/fonts/system_art.ga
+      Dependencies: {}
+    Info_9:
+      Name: ui/prefabs/module/uilayer.ga
       Dependencies: {}

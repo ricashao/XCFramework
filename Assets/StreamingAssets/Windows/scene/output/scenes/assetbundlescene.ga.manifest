@@ -1,0 +1,56 @@
+ManifestFileVersion: 0
+CRC: 594776914
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3d07499ab3a603725b91a39bf85b10f4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1d30786fab0b3a0ff452546e186b5d82
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 81
+  Script: {instanceID: 0}
+- Class: 89
+  Script: {instanceID: 0}
+- Class: 104
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 78575c4543a26904492dae9316b48089, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a343a986dae41064f9c578065d66b7b5, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 157
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 258
+  Script: {instanceID: 0}
+Assets:
+- Assets/Scenes/AssetBundleScene.unity
+Dependencies: []

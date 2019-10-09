@@ -1,16 +1,18 @@
---[[require "Global.Common.Math"
+--[[szc
+require "Global.Common.Math"
 require "Global.Common.Layer"
 require "Global.Common.List"
 require "Global.Common.Event"
-require "Global.Common.Vector3"
-require "Global.Common.Vector2"
 require "Global.Common.Quaternion"
 require "Global.Common.Vector4"
 require "Global.Common.Raycast"
 require "Global.Common.Color"
 require "Global.Common.Touch"
 require "Global.Common.Ray"
-require "Global.Common.Coroutine"]]
+require "Global.Common.Coroutine"
+]]
+require "Global.Common.Vector2"
+require "Global.Common.Vector3"
 
 --luanet.load_assembly("UnityEngine")
 
@@ -92,6 +94,9 @@ ShortcutExtensions = CS.DG.Tweening.ShortcutExtensions
 TweenSettingsExtensions = CS.DG.Tweening.TweenSettingsExtensions
 
 PrefabPool = CS.CheapUtil.PrefabPool
+ioo = CS.ioo
+AssetManager = CS.AssetManager
+CanvasScaler =CS.UnityEngine.UI.CanvasScaler
 ----------------------------------------------------
 
 function traceback(msg)

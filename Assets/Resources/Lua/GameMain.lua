@@ -2,7 +2,7 @@ require "Framework.Class";
 
 
 require "UI.UIManager";
---require "Scene.SceneManager";
+require "Scene.SceneManager";
 GameMain = {};
 
 function GameMain.Awake()
@@ -19,6 +19,7 @@ function GameMain.LoginGame()
 	--游戏开始
 	print("game start")
 	-- 初始化UI管理器
+	UIManager:GetInstance();
 	
 end
 

@@ -36,13 +36,13 @@ function M:Ctor( ... )
 	self.clickListCacheMulti = {};
 	self.clickIndexMulti = {};
 
-	GenAltasImageSetCfg.Init();
+	--GenAltasImageSetCfg.Init();
 
 	-- 初始化UI的层级
 	GameLayerManager.Init();
-	UILayer.InitLayers();
+	--UILayer.InitLayers();
 
-	DOTween.Init(true, true, 1)
+	--DOTween.Init(true, true, 1)
 
 end
 

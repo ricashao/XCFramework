@@ -28,9 +28,9 @@ local LAYER_DISTANCE =
 	BattlerLayerDistance = 8;
 }
 
-
+--初始化层级
 function M.Init()
-
+	
 	local battleCameraObj =  GameObject.Find("BattlerCamera");
 	local battleCamera;
 	if battleCameraObj then
@@ -107,14 +107,14 @@ function M.AddGameObjectToCameraLayer(go, cameraLayerName)
 end
 
 function M.Create3DModelCameraSite()
-	local gb = GameObject.New();
+	local gb = GameObject();
 	gb.name = "UI3DModelSite";
 	gb.transform.position = Vector3.New(1000, 1000, 10);
 	return gb;
 end
 
 function M.CreateCharacterModelSite()
-	local go = GameObject.New();
+	local go = GameObject();
 	go.name = "CharacterModelSite";
 	return go;
 end

@@ -58,7 +58,7 @@ end
 
 function M:UpdateSceneLayer(pfb)
 	pfb.layer = self.layer;
-	local components = pfb:GetComponentsInChildren(Transform.GetClassType());
+	local components = pfb:GetComponentsInChildren(typeof(CS.UnityEngine.Transform));
 	local length = components.Length - 1;
 	for i=0, length do
 		components[i].gameObject.layer = self.layer;
@@ -67,14 +67,14 @@ end
 
 function M:Adaptation(obj)
 	local bizhi = 1.4;
-	local  go = obj.transform:GetComponent("CanvasScaler").referenceResolution;
+	local  go = obj.transform:GetComponent(typeof(CanvasScaler)).referenceResolution;
 	local rato = Screen.width/Screen.height;
 	if rato > bizhi then
             go = Vector2.New(960, 640);
         else
 			go = Vector2.New(1024, 768);
 	end
-	obj.transform:GetComponent("CanvasScaler").referenceResolution = go;
+	obj.transform:GetComponent(typeof(CanvasScaler)).referenceResolution = go;
 	self.resolution = go;
 end
 

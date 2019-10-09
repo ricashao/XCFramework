@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 3749753073
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4aa08d63f817826ec27abd32e8a5bad6
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ebf9fbb216707248228dcd0a58846d03
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/UI/Prefabs/Module/UILayer.prefab
+Dependencies: []
