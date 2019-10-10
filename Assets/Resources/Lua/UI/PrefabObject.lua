@@ -37,7 +37,7 @@ function PrefabObject:GenAllNameMap( pfb, namepath )
 		self.m_pNamePath = namepath
 	end
 
-	local childern = pfb:GetComponentsInChildren(Transform.GetClassType(), true)
+	local childern = pfb:GetComponentsInChildren(typeof(Transform), true)
 	local count = childern.Length - 1
 	for i = 0, count do
 		local temp = {}
@@ -64,7 +64,7 @@ function PrefabObject:GenPrefabNameMap(pfb, namepath)
 	self.m_pNamePath = ""
 
 	self.rootPfb = pfb
-	local childern = pfb:GetComponentsInChildren(Transform.GetClassType(), true)
+	local childern = pfb:GetComponentsInChildren(typeof(Transform), true)
 	local count = childern.Length - 1
 	for i = 0, count do
 		local temp = {}

@@ -307,18 +307,18 @@ public class AssetManager : MonoBehaviour
         Object target = null;
         Object source = mCache.GetCacheSourceAsset(path, assetName);
 
-        if (!source)
-        {
-#if UNITY_EDITOR
-            string localPath = Util.GenResourcePath(path);
-            if (Util.GetPathName(path) != assetName)
-            {
-                localPath = Util.GenResourcePath(assetName.Replace("Assets/Resources/", ""));
-            }
-       
-            source = Resources.Load(localPath);
-#endif
-        }
+//        if (!source)
+//        {
+//#if UNITY_EDITOR
+//            string localPath = Util.GenResourcePath(path);
+//            if (Util.GetPathName(path) != assetName)
+//            {
+//                localPath = Util.GenResourcePath(assetName.Replace("Assets/Resources/", ""));
+//            }
+//       
+//            source = Resources.Load(localPath);
+//#endif
+//        }
         if (!source)
         {
             if (callBack == null)
@@ -506,15 +506,15 @@ public class AssetManager : MonoBehaviour
                     target = source;
                 }
 
-                try
-                {
+//                try
+//                {
                     item.CallBack(target);
-                }
-                catch (Exception e)
-                {
-                    Debugger.LogError("AssetManager Error: AsynLoadComplete's callback is Error! path:" + path +
-                                      ",Error Message:" + e.StackTrace);
-                }
+//                }
+//                catch (Exception e)
+//                {
+//                    Debugger.LogError("AssetManager Error: AsynLoadComplete's callback is Error! path:" + path +
+//                                      ",Error Message:" + e.StackTrace);
+//                }
 
                 item.Dispose();
             }
@@ -626,6 +626,43 @@ public class AssetManager : MonoBehaviour
     {
         mCache.Clear();
     }
+    
+    //-----------------------------------------------------------------------
+    //旧的资源处理方式---挂载挂载点的资源  从CheapLocalLoader 移过来
+    public static void MountResource(GameObject go)
+    {
+        if (go != null)
+        {
+            UIScript[] scripts = go.GetComponentsInChildren<UIScript>();
+            foreach (UIScript script in scripts)
+            {
+                if (script != null)
+                {
+                    if(script.Prefab != null){
+
+                        Transform trans = script.GetComponent<Transform>();
+                        if (trans.Find(script.Prefab.name)){
+                            continue;
+                        }
+
+                        GameObject child = UnityEngine.Object.Instantiate(script.Prefab) as GameObject;
+                        if (child != null)
+                        {
+                            if(script.PrefabScriptName != string.Empty && script.PrefabScriptName.Trim() != string.Empty){
+                                child.name = script.PrefabScriptName;
+                            }else{
+                                child.name = child.name.Substring(0, child.name.IndexOf("(Clone)"));
+                            }
+                            child.SetActive(true);
+                            child.transform.SetParent(trans, false);
+                            MountResource(child);
+                        }
+                    }
+                    
+                }
+            }
+        }  
+    }
 }
 
 
@@ -709,6 +746,8 @@ class AsynLoadInfo
         data = null;
         OnCompleted = null;
     }
+    
+   
 }
 
 class AsynLoadInfoItem

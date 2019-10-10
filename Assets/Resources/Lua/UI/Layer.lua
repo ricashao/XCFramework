@@ -19,6 +19,7 @@ function M:Ctor(camera, layerName, layerIndex, layer, distance)
 	self:OnPrefabLoad(pfb)
 end
 
+--layer加载完成之后的初始化
 function M:OnPrefabLoad(pfb)
 	if not pfb then
 		if error then error("Layer load UILayer resource error ---") end;
@@ -56,6 +57,7 @@ function M:GetGameObject()
 	return self.pfb;
 end
 
+--更新所有节点的layer属性
 function M:UpdateSceneLayer(pfb)
 	pfb.layer = self.layer;
 	local components = pfb:GetComponentsInChildren(typeof(CS.UnityEngine.Transform));
@@ -65,6 +67,7 @@ function M:UpdateSceneLayer(pfb)
 	end
 end
 
+--修改canvas自适应
 function M:Adaptation(obj)
 	local bizhi = 1.4;
 	local  go = obj.transform:GetComponent(typeof(CanvasScaler)).referenceResolution;

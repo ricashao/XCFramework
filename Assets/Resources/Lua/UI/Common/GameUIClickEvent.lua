@@ -37,7 +37,7 @@ function GameUIClickEvent.AddListener(target, name, listener, data, index)
 
 	local com = target.gameObject:GetComponent('GameComponentClick')
 	if not com  then
-		com = target.gameObject:AddComponent(GameComponentClick.GetClassType())
+		com = target.gameObject:AddComponent(typeof(GameComponentClick))
 		com.cKey = cKey
 	end
 	if not parentmaps[cKey] then
