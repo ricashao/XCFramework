@@ -40,9 +40,9 @@ function M:Ctor( ... )
 
 	-- 初始化UI的层级
 	GameLayerManager.Init();
-	--UILayer.InitLayers();
+	UILayer.InitLayers();
 
-	--DOTween.Init(true, true, 1)
+	DOTween.Init(true, true, CS.DG.Tweening.LogBehaviour.__CastFrom(1))
 
 end
 
@@ -58,8 +58,7 @@ end
 
 --(废弃)
 function M:GetZIndex()
-
-	local maxIndex = table.maxn(self.zIndexStack)
+	local maxIndex = table.getn(self.zIndexStack)
 	self.zIndex = maxIndex + 1
 	self.zIndexStack[self.zIndex] = 1
 	return self.zIndex, zdelta

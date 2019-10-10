@@ -422,10 +422,10 @@ end
 
 --@private 挂载UIComponentScript脚本
 function M:AddComponentScript()
-	
-	local com = self.selfTransform:GetComponent("UIComponentScript");
+
+	local com = self.selfTransform:GetComponent(typeof(UIComponentScript));
 	if not com then
-		com = self.selfTransform.gameObject:AddComponent(UIComponentScript.GetClassType());
+		com = self.selfTransform.gameObject:AddComponent(typeof(UIComponentScript));
 		com.uicomponent = self;
 		-- com.uiComponentName = self.selfTransform.name;
 	else

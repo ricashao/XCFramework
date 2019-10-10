@@ -3,6 +3,8 @@ require "Framework.Class";
 
 require "UI.UIManager";
 require "Scene.SceneManager";
+require "Framework.TickerManager";
+require "UI.Login.SkinCtrl.LoginUICtrl";
 GameMain = {};
 
 function GameMain.Awake()
@@ -20,6 +22,8 @@ function GameMain.LoginGame()
 	print("game start")
 	-- 初始化UI管理器
 	UIManager:GetInstance();
+	TickerManager:GetInstance();
+	LoginUICtrl:GetInstance():Show();
 	
 end
 

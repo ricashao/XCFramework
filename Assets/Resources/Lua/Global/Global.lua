@@ -97,6 +97,9 @@ PrefabPool = CS.CheapUtil.PrefabPool
 ioo = CS.ioo
 AssetManager = CS.AssetManager
 CanvasScaler =CS.UnityEngine.UI.CanvasScaler
+UIComponentScript = CS.UIComponentScript
+Util = CS.Util
+GameComponentClick = CS.GameComponentClick
 ----------------------------------------------------
 
 function traceback(msg)
