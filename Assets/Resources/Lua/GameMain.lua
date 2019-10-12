@@ -1,6 +1,9 @@
 require "Framework.Class";
+require "Utils.TableUtil";
 
 
+require "UI.CommMsgTip.CommMsgMgr";
+require "LocalSave.LocalSaveManager";
 require "UI.UIManager";
 require "Scene.SceneManager";
 require "Framework.TickerManager";

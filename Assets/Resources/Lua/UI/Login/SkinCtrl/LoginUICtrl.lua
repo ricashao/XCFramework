@@ -1,7 +1,7 @@
 --[[szc
 require "UI.Login.Data.LoginNetProtocols";
-require "UI.Login.LoginManager";
 ]]
+require "UI.Login.LoginManager";
 require "UI.Login.LoginUICommon";
 local BasicCtrl = require "UI.BasicCtrl";
 LoginUICtrl = Class("LoginUICtrl", BasicCtrl);
@@ -45,14 +45,13 @@ function M:InitCtrl()
 
     self:Initialize();
 
-    --在此临时预加载
+    --在此临时预加载 szc
     --BeanConfigManager:GetInstance():GetTableByName("ares.logic.message.CMessageTip");
 
 end
 
 function M:Initialize()
     --获取服务器列表
-    --[[
     self.m_serverInfoList = LoginManager:GetInstance():GetServerList();
     if not (self.m_serverInfoList) then
         if error then
@@ -75,10 +74,10 @@ function M:Initialize()
     self:SetCommText(self.m_chooseAreaId, self.m_chooseServerId);
 
     self:ErrorTips();
-    ]]
 
 end
 
+--设置面板上选择的服务器
 function M:SetCommText(areaid, serverid)
     self.m_chooseAreaId = areaid;
 
@@ -100,7 +99,7 @@ function M:SetCommText(areaid, serverid)
     self.m_connectIp = selectedServerInfo.ip;
 
     math.randomseed(os.time())
-    local t_port = math.round(math.Random(0, selectedServerInfo.portcount - 1));
+    local t_port = math.floor(math.random(0, selectedServerInfo.portcount - 1));
     self.m_connectHost = selectedServerInfo.port + t_port;
 
     self.m_chooseServerId = selectedServerInfo.serverid;
@@ -155,8 +154,8 @@ function M:GetServerInfoById(serverList, serverid)
 end
 
 function M.GetServerList(go)
-    local ServerListDialogCtrl = require "UI.Login.SkinCtrl.ChooseServerDialogCtrl";
-    ServerListDialogCtrl:GetInstance():Show();
+    --local ServerListDialogCtrl = require "UI.Login.SkinCtrl.ChooseServerDialogCtrl";
+    --ServerListDialogCtrl:GetInstance():Show();
 end
 
 function M.OnConnected()

@@ -34,7 +34,10 @@ public class LuaScriptMgr
         lua.AddLoader(Loader);
         _translator = lua.translator;
         //todo 第三库初始化
-
+        lua.AddBuildin("rapidjson", XLua.LuaDLL.Lua.LoadRapidJson);
+        lua.AddBuildin("lpeg", XLua.LuaDLL.Lua.LoadLpeg);
+        lua.AddBuildin("pb", XLua.LuaDLL.Lua.LoadLuaProfobuf);
+        lua.AddBuildin("ffi", XLua.LuaDLL.Lua.LoadFFI);
 
         fileList = new HashSet<string>();
         dict = new Dictionary<string, LuaBase>();

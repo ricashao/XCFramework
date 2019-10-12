@@ -1,0 +1,3 @@
+{"GraphicsDeviceName":"MOREN",		"Bloom_threshold":"0.2",	"Bloom_Intensity":"0.4",	"Bloom_BlurSize":"1.8",	"Bloom_blurIterations":"2"}
+{"GraphicsDeviceName":"NVIDIA GeForce GT 705",	"Bloom_threshold":"0.2",	"Bloom_Intensity":"0.4",	"Bloom_BlurSize":"1.8",	"Bloom_blurIterations":"2"}
+{"GraphicsDeviceName":"NVIDIA GeForce GTX 745",	"Bloom_threshold":"0.2",	"Bloom_Intensity":"0.4",	"Bloom_BlurSize":"1.8",	"Bloom_blurIterations":"2"}

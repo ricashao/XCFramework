@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2571940417
+CRC: 2990286690
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 686c4d97b7c7f877ea88bc21eeb64e7a
+    Hash: 584c5506326179ea0cc2421083b2f903
   TypeTreeHash:
     serializedVersion: 2
     Hash: c90d61011ccf72ba2adc0859f8b73bba
@@ -48,7 +48,8 @@ ClassTypes:
 Assets:
 - Assets/Resources/UI/Prefabs/Win/Win_Login.prefab
 Dependencies:
-- F:/TestUnity/KCFramework_XLua/Assets/StreamingAssets/Windows/ui/scene/login/login_01.ga
 - F:/TestUnity/KCFramework_XLua/Assets/StreamingAssets/Windows/ui/genaltas/atlas_comm/atlas_comm_tp0.ga
+- F:/TestUnity/KCFramework_XLua/Assets/StreamingAssets/Windows/ui/image/scene/login/login.ga
 - F:/TestUnity/KCFramework_XLua/Assets/StreamingAssets/Windows/ui/fonts/system.ga
 - F:/TestUnity/KCFramework_XLua/Assets/StreamingAssets/Windows/ui/fonts/system_art.ga
+- F:/TestUnity/KCFramework_XLua/Assets/StreamingAssets/Windows/ui/image/atlas_login/atlas_login.ga
