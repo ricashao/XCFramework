@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 1851013712
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 756efc0cbdf38f160b3eee90ae0103c1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ea5a42e0fd8ea905efa7aa926a3b8944
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/UI/Image/Atlas_Login/ui_login_btn.png
+- Assets/Resources/UI/Image/Atlas_Login/img_money.png
+Dependencies: []

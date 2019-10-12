@@ -1,0 +1,6 @@
+﻿[
+{ "areaid": 1, "areaname": "推荐"},
+{ "areaid": 2, "areaname": "三区"},
+{ "areaid": 3, "areaname": "二区"},
+{ "areaid": 4, "areaname": "一区"}
+]

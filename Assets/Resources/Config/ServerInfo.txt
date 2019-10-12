@@ -1,0 +1,53 @@
+﻿{
+"1":	[
+	{ "serverid": 1,"servername":"主干测试内服", "ip":"192.168.2.234", "port":24000, "state" : 0, "portcount" : 2, "releasetime" : "2015-11-17 20:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 2,"servername":"樊中奎测试服", "ip":"192.168.2.234", "port":24050, "state" : 1, "portcount" : 1, "releasetime" : "2015-11-18 12:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 3,"servername":"夏冬测试内服", "ip":"192.168.2.234", "port":24100, "state" : 1, "portcount" : 1, "releasetime" : "2015-11-17 20:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 4,"servername":"李凯测试内服", "ip":"192.168.2.234", "port":24150, "state" : 2, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 5,"servername":"赵昱辰测试服", "ip":"192.168.2.234", "port":24200, "state" : 2, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 6,"servername":"策划数值服",   "ip":"192.168.2.234", "port":23250, "state" : 2, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 7,"servername":"QA测试服",     "ip":"192.168.2.234", "port":23300, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"},
+    	{ "serverid": 11,"servername":"刁必颂测试服", "ip":"192.168.2.234", "port":24450, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"},
+	{ "serverid": 12,"servername":"张帆测试服", "ip":"192.168.2.234", "port":24550, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"},
+	{ "serverid": 13,"servername":"范永刚测试服", "ip":"192.168.2.234", "port":24600, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"},
+    { "serverid": 14,"servername":"173测试服", "ip":"192.168.2.173", "port":24500, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"}
+	],
+
+"2":	[
+	{ "serverid": 8,"servername":"冉波测试服", "ip":"192.168.2.234", "port":24400, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 1,"servername":"主干测试内服", "ip":"192.168.2.234", "port":24000, "state" : 0, "portcount" : 2, "releasetime" : "2015-11-17 20:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 3,"servername":"夏冬测试内服", "ip":"192.168.2.234", "port":24100, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 4,"servername":"李凯测试内服", "ip":"192.168.2.234", "port":24150, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 5,"servername":"赵昱辰测试服", "ip":"192.168.2.234", "port":24200, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 6,"servername":"策划数值服",   "ip":"192.168.2.234", "port":23250, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 7,"servername":"QA测试服",     "ip":"192.168.2.234", "port":23300, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"},
+   	{ "serverid": 11,"servername":"刁必颂测试服", "ip":"192.168.2.234", "port":24450, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"},
+	{ "serverid": 12,"servername":"张帆测试服", "ip":"192.168.2.234", "port":24550, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"},
+	{ "serverid": 13,"servername":"范永刚测试服", "ip":"192.168.2.234", "port":24600, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"},
+    { "serverid": 14,"servername":"173测试服", "ip":"192.168.2.173", "port":24500, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"}
+	],
+
+"3":	[
+	{ "serverid": 9,"servername":"杜逸测试内服", "ip":"192.168.2.234", "port":24000, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 2,"servername":"樊中奎测试服", "ip":"192.168.2.234", "port":24050, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 3,"servername":"夏冬测试内服", "ip":"192.168.2.234", "port":24100, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 4,"servername":"李凯测试内服", "ip":"192.168.2.234", "port":24150, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 5,"servername":"赵昱辰测试服", "ip":"192.168.2.234", "port":24200, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 6,"servername":"策划数值服",   "ip":"192.168.2.234", "port":23250, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 7,"servername":"QA测试服",     "ip":"192.168.2.234", "port":23300, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+  	{ "serverid": 11,"servername":"刁必颂测试服", "ip":"192.168.2.234", "port":24450, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"}
+	],
+    
+
+"4":	[
+	{ "serverid": 10,"servername":"黄天岛测试内服","ip":"192.168.2.234","port":24000, "state" : 0,  "portcount" : 1, "releasetime" : "2015-11-17 10:00" ,  "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 2,"servername":"樊中奎测试服", "ip":"192.168.2.234", "port":24050, "state" : 0,  "portcount" : 1, "releasetime" : "2015-11-17 10:00"  , "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 3,"servername":"夏冬测试内服", "ip":"192.168.2.234", "port":24100, "state" : 0,  "portcount" : 1, "releasetime" : "2015-11-17 10:00"  , "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 4,"servername":"李凯测试内服", "ip":"192.168.2.234", "port":24150, "state" : 0,  "portcount" : 1, "releasetime" : "2015-11-17 10:00"  , "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 5,"servername":"赵昱辰测试服", "ip":"192.168.2.234", "port":24200, "state" : 0,  "portcount" : 1, "releasetime" : "2015-11-17 10:00"  , "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 6,"servername":"策划数值服",   "ip":"192.168.2.234", "port":23250, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-17 10:00"  , "displaytime" : "2015-11-17 20:00"},
+	{ "serverid": 7,"servername":"QA测试服",     "ip":"192.168.2.234", "port":23300, "state" : 0,  "portcount" : 1,"releasetime" : "2015-11-17 10:00"  , "displaytime" : "2015-11-17 20:00"},
+ 	{ "serverid": 11,"servername":"刁必颂测试服", "ip":"192.168.2.234", "port":24450, "state" : 0, "portcount" : 1, "releasetime" : "2015-11-20 18:38" ,  "displaytime" : "2015-11-20 18:39"}
+	]
+    
+}
