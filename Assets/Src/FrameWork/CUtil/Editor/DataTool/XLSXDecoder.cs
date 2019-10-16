@@ -20,7 +20,7 @@ public class XLSXDecoder
         ExcelWorksheet worksheet = package.Workbook.Worksheets[nodeName];
         if (worksheet == null)
         {
-            window.Log("表的sheetname有误");
+            window.Log("表的sheetname有误", "error:");
             return;
         }
 
@@ -65,17 +65,17 @@ public class XLSXDecoder
         ExcelRow cfgRow = worksheet.Row(rowCfgLines["cfgRow"]);
         if (cfgRow == null)
         {
-            window.Log("表的配置有误，没有 程序配置内容这一行");
+            window.Log("表的配置有误，没有 程序配置内容这一行", "error:");
             return;
         }
 
         if (dataRowStart == 0)
         {
-            window.Log("表的配置有误，没有配置使用原始值，并且没有 属性名称这一行");
+            window.Log("表的配置有误，没有配置使用原始值，并且没有 属性名称这一行", "error");
             return;
         }
 
-        var cfilePackage = worksheet.Cells[cfgRow.Row, 4]; //|| parent; 不处理没填的情况
+        var cfilePackage = worksheet.Cells[cfgRow.Row, 4].Text; //|| parent; 不处理没填的情况
         /**
          * 前端是否解析此数据
          */
@@ -155,7 +155,7 @@ public class XLSXDecoder
                 }
                 catch (ValueTypeException e)
                 {
-                    window.Log(string.Format("解析{0}第{1}行，第{2}列数据有误：{3}", nodeName, row, col, e.GetError()));
+                    window.Log(string.Format("解析{0}第{1}行，第{2}列数据有误：{3}", nodeName, row, col, e.GetError()), "error:");
                 }
             }
 
@@ -170,36 +170,43 @@ public class XLSXDecoder
             }
         }
 
-        writeClientData(nodeName, cdatas);
-
+        writeClientData(nodeName, cdatas, cfilePackage);
 
         AssetDatabase.Refresh();
     }
 
-    private static void writeClientData(string fname, ArrayList cdatas)
+    private static void writeClientData(string fname, ArrayList cdatas, string cfilePackage)
     {
         var window = (ExportDataTable) EditorWindow.GetWindow<ExportDataTable>();
         // 导出客户端数据
         if (cdatas.Count != 0)
         {
-            var cpath = WriteCfgJSONData(fname, cdatas);
+            var cpath = WriteCfgJSONData(fname, cdatas, cfilePackage);
             if (!string.IsNullOrEmpty(cpath))
             {
                 window.Log(string.Format("文件{0}，将客户端数据保存至：{1}", fname, cpath));
             }
             else
             {
-                window.Log(string.Format("文件{0}，未将客户端数据保存到{1}，请检查", fname, cpath));
+                window.Log(string.Format("文件{0}，未将客户端数据保存到{1}，请检查", fname, cpath), "error:");
             }
         }
+
+        //生成lua文件
     }
 
-    private static string WriteCfgJSONData(string fname, ArrayList datas)
+    private static string WriteCfgJSONData(string fname, ArrayList datas, string cfilePackage)
     {
-        string outPath = Application.dataPath + "/Resources/ConfigJson/" + fname + ".json";
+        string dirPath = Application.dataPath + "/Resources/ConfigJson/" + cfilePackage;
+        string outPath = dirPath + fname + ".json";
         if (File.Exists(outPath))
         {
             File.Delete(outPath);
+        }
+
+        if (!Directory.Exists(dirPath))
+        {
+            Directory.CreateDirectory(dirPath);
         }
 
         FileStream fs = new FileStream(outPath, FileMode.Create);

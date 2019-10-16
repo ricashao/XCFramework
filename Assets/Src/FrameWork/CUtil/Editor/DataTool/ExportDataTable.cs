@@ -149,9 +149,9 @@ public class ExportDataTable : EditorWindow
         }
     }
 
-    public void Log(string msg)
+    public void Log(string msg, string type = "")
     {
-        log.Append(msg + "\n");
+        log.Append(type + msg + "\n");
     }
 
 
