@@ -25,7 +25,6 @@ function GameMain.LoginGame()
 	--游戏开始
 	--初始化配置
 	JsonConfigManager:GetInstance():Initialize("ConfigJson/", "ConfigBin/")
-	JsonConfigManager:GetInstance():GetTableByName("game.message.CMessageTip")
 	-- 初始化UI管理器
 	UIManager:GetInstance();
 	TickerManager:GetInstance();

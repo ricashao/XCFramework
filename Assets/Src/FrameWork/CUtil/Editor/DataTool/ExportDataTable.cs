@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEditor;
 
@@ -153,11 +154,18 @@ public class ExportDataTable : EditorWindow
     {
         log.Append(type + msg + "\n");
     }
+    
+    public void LogClientCode(string msg)
+    {
+	    clientCode.Clear();
+	    clientCode.Append(msg);
+    }
 
 
     private void ClearLog()
     {
         this.log.Clear();
+        
     }
 
     private void ClearClientCode()

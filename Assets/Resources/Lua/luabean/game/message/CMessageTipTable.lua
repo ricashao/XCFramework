@@ -1,3 +1,7 @@
+--/*-*begin $area1*-*/
+--这里填写类上方的require内容
+--/*-*end $area1*-*/
+--创建时间2019/10/17 19:35:36
 CMessageTipTable = {}
 CMessageTipTable.__index = CMessageTipTable
 function CMessageTipTable:new()
@@ -14,7 +18,7 @@ function CMessageTipTable:LoadBeanFromJsonFile(filename)
         return false
     end
     local data =  Resources.Load(filename):ToString()
-    local json = require "rapidjson"
+    local json = require 'rapidjson'
     local root = json.decode(data);
     self:BeanFromJson(root)
     return true;
@@ -26,18 +30,22 @@ function CMessageTipTable:BeanFromJson(datas)
         self:Decode(v)
     end
 end
-
+--/*-*begin $area2*-*/
+--这里填写类里面的手写内容
+--/*-*end $area2*-*/
 function CMessageTipTable:Decode(data)
-    local cachetable = {}
-    cachetable.id = data[1]
-    cachetable.type = data[2]
-    cachetable.msg = data[3]
-    cachetable.closetime = data[4]
-    
-    self.m_cache[cachetable.id] = cachetable
+	 local cachetable = {}
+	--code码
+	cachetable.id = data[1];
+	--类型
+	cachetable.type = data[2];
+	--描述
+	cachetable.msg = data[3];
+	--数值型效果id
+	cachetable.closetime = data[4];
+
+--/*-*begin $decode*-*/
+--这里填写方法中的手写内容
+--/*-*end $decode*-*/
 end
-
-
-
-
 return CMessageTipTable
