@@ -170,12 +170,13 @@ public class XLSXDecoder
             }
         }
 
-        writeClientData(nodeName, cdatas, cfilePackage);
+        writeClientData(nodeName, cdatas, cfilePackage, defines);
 
         AssetDatabase.Refresh();
     }
 
-    private static void writeClientData(string fname, ArrayList cdatas, string cfilePackage)
+    private static void writeClientData(string fname, ArrayList cdatas, string cfilePackage,
+        Dictionary<int, ProDefine> defines)
     {
         var window = (ExportDataTable) EditorWindow.GetWindow<ExportDataTable>();
         // 导出客户端数据
@@ -193,7 +194,73 @@ public class XLSXDecoder
         }
 
         //生成lua文件
+        string cDecodes = "";
+        var enums = defines.GetEnumerator();
+        var index = 1;
+        //decode 数据
+        while (enums.MoveNext())
+        {
+            var define = enums.Current.Value;
+            if (define.client == 1)
+            {
+                cDecodes += string.Format("\t--{0}\n\tcachetable.{1} = data[{2}];\n",define.desc,define.name,index);
+                index++;
+            }
+        }
+
+        var cluapath = Path.Combine(Application.dataPath + "/Resources/Lua/luabean"+
+            cfilePackage.Trim(),
+            fname + "Table.lua");
+        var cdict = MenualCodeHelper.GetManualCodeInfo(cluapath);
+
+        var createTime = DateTime.Now;
+        var cout = "";
+        if (!string.IsNullOrEmpty(cDecodes))
+        {
+            cout = MenualCodeHelper.GenManualAreaCode("$area1", cdict) 
+                   +String.Format("\n--创建时间{0}",createTime)
+                   + createPart1.Replace("Templete", fname)
+                   +MenualCodeHelper.GenManualAreaCode("$area2", cdict)
+                   +"\nfunction "+fname+"Table:Decode(data)\n\t local cachetable = {}\n"+cDecodes
+                   +"\n"+MenualCodeHelper.GenManualAreaCode("$decode", cdict)+"\nend\n"
+                   + "return "+fname+"Table";
+            SaveLuaFile(cluapath, cout);
+        }
     }
+
+    private static void SaveLuaFile(string cluapath,string content)
+    {
+        if (string.IsNullOrEmpty(content)) return;
+        if (File.Exists(cluapath))
+        {
+            File.Delete(cluapath);
+        }
+
+        string dirname = Path.GetDirectoryName(cluapath);
+        if (!Directory.Exists(dirname))
+        {
+            Directory.CreateDirectory(dirname);
+        }
+
+        var window = (ExportDataTable) EditorWindow.GetWindow<ExportDataTable>();
+        try
+        {
+            FileStream fs = new FileStream(cluapath, FileMode.Create);
+            StreamWriter wr = null;
+            wr = new StreamWriter(fs);
+            wr.WriteLine(content);
+            wr.Close();
+
+        }
+        catch (Exception e)
+        {
+            window.Log(string.Format("写入文件时失败，路径：{0}",cluapath),"error:");
+            throw;
+        }
+        window.Log(string.Format("生成lua文件成功生成路径为:{0}",cluapath));
+        window.LogClientCode(content);
+    }
+
 
     private static string WriteCfgJSONData(string fname, ArrayList datas, string cfilePackage)
     {
@@ -220,4 +287,36 @@ public class XLSXDecoder
         wr.Close();
         return outPath;
     }
+
+
+    private static string createPart1 = @"
+TempleteTable = {}
+TempleteTable.__index = TempleteTable
+function TempleteTable:new()
+    local self = {}
+    setmetatable(self, TempleteTable)
+    self.m_cache = {}
+
+    return self
+end
+
+
+function TempleteTable:LoadBeanFromJsonFile(filename)
+    if not filename then
+        return false
+    end
+    local data =  Resources.Load(filename):ToString()
+    local json = require 'rapidjson'
+    local root = json.decode(data);
+    self:BeanFromJson(root)
+    return true;
+end
+
+function TempleteTable:BeanFromJson(datas)
+    if not datas then return end
+    for i,v in pairs(datas) do
+        self:Decode(v)
+    end
+end
+";
 }
