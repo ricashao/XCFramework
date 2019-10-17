@@ -2,7 +2,8 @@ require "Framework.Class";
 require "Utils.TableUtil";
 
 
-require "UI.CommMsgTip.CommMsgMgr";
+require "Framework.JsonconfigManager";
+--require "UI.CommMsgTip.CommMsgMgr";
 require "LocalSave.LocalSaveManager";
 require "UI.UIManager";
 require "Scene.SceneManager";
@@ -22,7 +23,9 @@ end
 --登陆游戏
 function GameMain.LoginGame()
 	--游戏开始
-	print("game start")
+	--初始化配置
+	JsonConfigManager:GetInstance():Initialize("ConfigJson/", "ConfigBin/")
+	JsonConfigManager:GetInstance():GetTableByName("game.message.CMessageTip")
 	-- 初始化UI管理器
 	UIManager:GetInstance();
 	TickerManager:GetInstance();
