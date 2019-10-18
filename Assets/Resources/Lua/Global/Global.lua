@@ -73,6 +73,7 @@ TextureFormat	= CS.UnityEngine.TextureFormat
 Plane 			= CS.UnityEngine.Plane
 Shader 			= CS.UnityEngine.Shader
 GridLayoutGroup = CS.UnityEngine.UI.GridLayoutGroup
+RectTransform   = CS.UnityEngine.RectTransform
 
 -- File IO Mode
 Resources 		= CS.UnityEngine.Resources

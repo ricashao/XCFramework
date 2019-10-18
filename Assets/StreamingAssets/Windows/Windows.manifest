@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2370713117
+CRC: 4166541664
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -37,3 +37,8 @@ AssetBundleManifest:
     Info_9:
       Name: ui/image/atlas_login/atlas_login.ga
       Dependencies: {}
+    Info_10:
+      Name: ui/prefabs/win/win_comm_tip.ga
+      Dependencies:
+        Dependency_0: ui/genaltas/atlas_comm/atlas_comm_tp0.ga
+        Dependency_1: ui/fonts/system.ga

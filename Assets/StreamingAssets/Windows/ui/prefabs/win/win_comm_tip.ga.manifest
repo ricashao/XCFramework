@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 2097027321
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b2d58f86c4fdc08f962a76741fca2027
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 99d00fe13eb6d93cfe9a23a8e6a95858
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/UI/Prefabs/Win/Win_Comm_Tip.prefab
+Dependencies:
+- F:/TestUnity/KCFramework_XLua/Assets/StreamingAssets/Windows/ui/genaltas/atlas_comm/atlas_comm_tp0.ga
+- F:/TestUnity/KCFramework_XLua/Assets/StreamingAssets/Windows/ui/fonts/system.ga
