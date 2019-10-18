@@ -18,13 +18,15 @@
 ]]
 
 -------------------------------///code///-------------
+--[[szc
 require "UI.SystemAd.SystemAdManager"
 require "UI.CommMsgTip.Data.CommMsgNetProtocols";
 require "UI.CommMsgTip.Data.DoubleTipUnit";
-require "UI.CommMsgTip.Data.MsgCommon";
 require "UI.CommMsgTip.SkinCtrl.DoubleTipCtrl";
-require "UI.CommMsgTip.SkinCtrl.TextTipCtrl";
+]]
 
+require "UI.CommMsgTip.Data.MsgCommon";
+require "UI.CommMsgTip.SkinCtrl.TextTipCtrl";
 local Singleton = require "Framework.Singleton";
 CommMsgMgr = Class("CommMsgMgr", Singleton);
 local M = CommMsgMgr;
@@ -44,7 +46,6 @@ function M:Show(warningID, replaceTable, passdata, leftBtnCallBack, rightBtnCall
 	--文字提示框
 	if commMsgType == CommMsgType.TextTip or commMsgType == CommMsgType.ShowInChatTip then
 		TextTipCtrl:GetInstance():Show(warningMsg, replaceTable);
-
 		if commMsgType == CommMsgType.ShowInChatTip then
 			local data = {};
 			data.infoType = commMsgType;
@@ -88,7 +89,7 @@ end
 
 --读表由ID确定对话框内容
 function M.ReadTipsTable(warningID)
-	local tipTable = BeanConfigManager:GetInstance():GetTableByName("ares.logic.message.CMessageTip")
+	local tipTable = JsonConfigManager:GetInstance():GetTableByName("game.message.CMessageTip")
 	local tipCfg = tipTable:GetRecorder(warningID)
 	--读不到配置，防御措施
 	if not tipCfg then

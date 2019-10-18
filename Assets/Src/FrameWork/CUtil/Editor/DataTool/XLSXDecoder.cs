@@ -222,7 +222,9 @@ public class XLSXDecoder
                    + createPart1.Replace("Templete", fname)
                    +MenualCodeHelper.GenManualAreaCode("$area2", cdict)
                    +"\nfunction "+fname+"Table:Decode(data)\n\t local cachetable = {}\n"+cDecodes
-                   +"\n"+MenualCodeHelper.GenManualAreaCode("$decode", cdict)+"\nend\n"
+                   +"\n"+MenualCodeHelper.GenManualAreaCode("$decode", cdict)
+                   +"\n\tself.m_cache[cachetable.id] = cachetable"
+                   +"\nend\n"
                    + "return "+fname+"Table";
             SaveLuaFile(cluapath, cout);
         }

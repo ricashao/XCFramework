@@ -3,7 +3,7 @@ require "Utils.TableUtil";
 
 
 require "Framework.JsonconfigManager";
---require "UI.CommMsgTip.CommMsgMgr";
+require "UI.CommMsgTip.CommMsgMgr";
 require "LocalSave.LocalSaveManager";
 require "UI.UIManager";
 require "Scene.SceneManager";
@@ -29,6 +29,7 @@ function GameMain.LoginGame()
 	UIManager:GetInstance();
 	TickerManager:GetInstance();
 	LoginUICtrl:GetInstance():Show();
+	TickerManager:GetInstance():AddTicker(GSystem);
 	
 end
 
