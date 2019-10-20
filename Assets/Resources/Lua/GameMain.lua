@@ -45,4 +45,9 @@ function GameMain.InitDontDestroyOnLoadList()
 	if GameMain.UICamera == nil then GameMain.UICamera = GameObject.Find("BattlerNameCamera"); end
 end
 
+function GameMain.Tick(delta)
+	if TickerManager:GetInstanceNotCreate() then
+		TickerManager:GetInstanceNotCreate():Tick(delta);
+	end
+end
 return GameMain;

@@ -30,13 +30,13 @@ public class GameMain : BaseLua
         xluaMgr = new LuaScriptMgr();
         xluaMgr.Start();
         xluaMgr.DoFile("GameMain"); //GameMain.lua
-//        checkLuaDebug();
         CallMethod("LoginGame");
 
 //        inputTouch = new InputTouch ();
 
 //        LuaScriptMgr.Instance.CallLuaFunction("TouchProxy.SetTouch", inputTouch);
     }
+    
 
     /// <summary>
     /// 所有的update都走这边
@@ -58,12 +58,5 @@ public class GameMain : BaseLua
     {
         
         Caching.ClearCache();
-#if UNITY_STANDALONE_WIN
-        //退出时，关闭ldt连接
-//        if (ioo.gameMain != null && ioo.gameMain.xluaMgr != null)//此时umgr有可能是空值
-//        {
-//            ioo.gameMain.xluaMgr.CallLuaFunction("luadebugger.Close");
-//        }
-#endif
     }
 }
