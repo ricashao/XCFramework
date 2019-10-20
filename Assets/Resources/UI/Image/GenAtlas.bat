@@ -12,7 +12,7 @@ for /d %%d in (*.*) do (
 	--trim-mode None ^
 	--size-constraints POT  %%d
 )
-:java -cp imagesetcheck.jar ToolMain -path %cd%\..\GenAltas
+@:java -cp imagesetcheck.jar ToolMain -path %cd%\..\GenAltas
 pause:
 
 pause:
