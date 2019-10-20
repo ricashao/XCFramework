@@ -9,11 +9,11 @@ function M:Ctor()
 	Singleton.Ctor(self);
 
 	--可配置参数
-	self.maxItemNum = self:InitValue(10006); --可显示的最大提示框个数 
-	self.moveSpeed = self:InitValue(10007)/1000; --移动速度
-	self.destroyTime = self:InitValue(10008)/1000; --秒为单位，提示框销毁时间
-	self.startPosY = self:InitValue(10009); --item创建位置
-	self.movePosY = self:InitValue(10010); -- 移动到指定位置
+	self.maxItemNum = self:InitValue(10006); --可显示的最大提示框个数 3
+	self.moveSpeed = self:InitValue(10007)/1000; --移动速度 7.3
+	self.destroyTime = self:InitValue(10008)/1000; --秒为单位，提示框销毁时间 1.82
+	self.startPosY = self:InitValue(10009); --item创建位置 20
+	self.movePosY = self:InitValue(10010); -- 移动到指定位置 70
 
 	self.itemList = {};--存放itemlist
 	self.infoDataList = {}; --存放数据
@@ -92,6 +92,7 @@ function M:ShowInItem()
 			end
 		end
 	else
+        --界面上没有item
 		self:NewItem(self.infoDataList[1], self.startPosY)
 	end
 end

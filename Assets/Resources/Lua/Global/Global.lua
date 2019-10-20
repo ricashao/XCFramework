@@ -100,6 +100,7 @@ AssetManager = CS.AssetManager
 CanvasScaler =CS.UnityEngine.UI.CanvasScaler
 UIComponentScript = CS.UIComponentScript
 Util = CS.Util
+PoolManager = CS.PoolManager
 GameComponentClick = CS.GameComponentClick
 ----------------------------------------------------
 

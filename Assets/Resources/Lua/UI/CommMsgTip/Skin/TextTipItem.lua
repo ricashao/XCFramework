@@ -22,7 +22,7 @@ function M:Ctor(content, posY)
 	self:AddAllGroupPrefabs(self.itemSkin)
 	self:GenAllNameMap(self.itemSkin, "Root.systemtipslayer") 
 	self.movePos = self:GetChildByPathName("Win_Comm_Tip.ep_bg_width-height")
-	self.rectTransform = self.movePos.gameObject:GetComponent(RectTransform.GetClassType())
+	self.rectTransform = self.movePos.gameObject:GetComponent(typeof(RectTransform))
 	self.rectTransform.anchoredPosition = Vector2.New(0, posY) --要回到原来位置
 	self.infoText = self:GetChildByPathName("Win_Comm_Tip.ep_bg_width-height.et_text").gameObject:GetComponent("Text");
 	
@@ -66,7 +66,7 @@ end
 
 --销毁文字提示框
 function M:Destroy()
-	self.infoText.alignment = UnityEngine.TextAnchor.MiddleCenter;
+	self.infoText.alignment = CS.UnityEngine.TextAnchor.MiddleCenter;
 	self.rectTransform.sizeDelta = Vector2.New(defaultBgWidth, defaultBgHeight);
 	self.prefabCtrl:Destroy()			--池操作
 	local TextTipItemCtrl = require "UI.CommMsgTip.SkinCtrl.TextTipCtrl"--预制体从ctrl列表中删除
