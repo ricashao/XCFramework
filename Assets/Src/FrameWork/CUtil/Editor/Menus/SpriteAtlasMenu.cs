@@ -8,7 +8,7 @@ using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
-public class AtlasSpriteMenu
+public class SpriteAtlasMenu
 {
     [MenuItem("Assets/SpriteAtlas/Create Single UISpriteAtlas")]
     public static void GenSingleUISpriteAtlas()
