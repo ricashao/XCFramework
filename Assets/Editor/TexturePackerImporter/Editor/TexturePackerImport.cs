@@ -50,7 +50,7 @@ public static class TexturePackerImport{
 	[MenuItem("Assets/TexturePacker/所有图集生成Sprite")]
 	public static void ProcessAllAtlasToSprite(){
 
-		string folderPath  = Application.dataPath + "/Resources/UI/GenAltas";//注意笔误altas
+		string folderPath  = Application.dataPath + "/Resources/UI/GenAtlas";
 
         string[] extList = { "*.txt" };
         foreach (string extension in extList)
