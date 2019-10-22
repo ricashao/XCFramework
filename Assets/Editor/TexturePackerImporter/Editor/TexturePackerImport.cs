@@ -46,52 +46,7 @@ public static class TexturePackerImport{
 	
 	}
 
-    //所有的图集生成Sprite的处理 NOTICE: 这里隐藏了一个规则只能处理UI/GenAltas 目录
-	[MenuItem("Assets/TexturePacker/所有图集生成Sprite")]
-	public static void ProcessAllAtlasToSprite(){
-
-		string folderPath  = Application.dataPath + "/Resources/UI/GenAtlas";
-
-        string[] extList = { "*.txt" };
-        foreach (string extension in extList)
-        {
-            string[] files = os.walk(folderPath, extension);
-            foreach (string file in files)
-            {
-                if (file.IndexOf("_cfg.txt") != -1)
-                {
-                    ProcessOneFile(file);
-                }
-            }
-        }
-	}
-
-    //处理一个文件
-    private static void ProcessOneFile(string txtPath)
-    {
-        txtPath = txtPath.Replace("\\", "/");
-        Debugger.Log("开始处理图集" + txtPath.Substring(0, txtPath.LastIndexOf("_cfg")) + ".png");
-
-        string rootPath = txtPath;
-
-        rootPath = rootPath.Substring(rootPath.IndexOf("Assets"));
-        TextAsset txt = AssetDatabase.LoadAssetAtPath<TextAsset>(rootPath);
-        string[] p = rootPath.Split(new string[] { "/" }, StringSplitOptions.None);
-        string folder = p[p.Length - 2];
-        TexturePacker.MetaData meta = TexturePacker.GetMetaData(txt.text);
-
-        List<SpriteMetaData> sprites = TexturePacker.ProcessToSprites(txt.text, folder);
-
-        rootPath = rootPath.Substring(0, rootPath.LastIndexOf("/"));
-
-        string path = rootPath + "/" + meta.image;
-        TextureImporter texImp = AssetImporter.GetAtPath(path) as TextureImporter;
-        texImp.spritesheet = sprites.ToArray();
-        texImp.textureType = TextureImporterType.Sprite;
-        texImp.spriteImportMode = SpriteImportMode.Multiple;
-
-        AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
-    }
+    
 
 	[MenuItem("Assets/TexturePacker/Process to Meshes")]
 	static Mesh[] ProcessToMeshes(){

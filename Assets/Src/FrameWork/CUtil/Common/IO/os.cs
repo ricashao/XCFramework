@@ -1,4 +1,7 @@
+using System;
+using System.Diagnostics;
 using System.IO;
+using Debug = UnityEngine.Debug;
 
 public static class os
 {
@@ -64,12 +67,30 @@ public static class os
 
     public static void startfile(string filename, string arguments = null, bool shell = false)
     {
-        var process = new System.Diagnostics.Process();
-        var si = process.StartInfo;
-        si.FileName = filename;
-        si.Arguments = arguments;
-        si.UseShellExecute = shell;
-        process.Start();
+        bool rt = true;
+        Process process = null;
+        try
+        {
+            process = new Process();
+            var si = process.StartInfo;
+            si.FileName = filename;
+            si.Arguments = arguments;
+            si.UseShellExecute = shell;
+            process.Start();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("ExecuteProgram:" + e.ToString());
+            return;
+        }
+        finally
+        {
+            if (process != null && process.HasExited)
+            {
+                rt = (process.ExitCode == 0);
+            }
+        }
+        Debug.Log(filename + (rt ? " 成功" : " 失败"));
     }
 
     /// <summary>
