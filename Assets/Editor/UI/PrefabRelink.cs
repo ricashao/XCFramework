@@ -6,12 +6,13 @@ using Object = UnityEngine.Object;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System;
+using Debug = UnityEngine.Debug;
 
 public static class UIReAttackTexture
 {
     private static Dictionary<string, Sprite> sprites = null;
 
-    [MenuItem("Assets/图集资源替换/散图-->图集")]
+    [MenuItem("Assets/图集资源替换/替换散图资源")]
     public static void UpdateFolderTexture()
     {
         //string path = AssetDatabase.GetAssetPath(Selection.);
@@ -25,9 +26,10 @@ public static class UIReAttackTexture
                 break;
             }
         }
+
         if (path != "" && path.Contains("UI"))
         {
-            LoadAllAsset();
+//            LoadAllAsset();
             ProcessFolderAssets(path);
         }
         else
@@ -43,6 +45,7 @@ public static class UIReAttackTexture
     //    LoadAllPrefabs();
     //}
 
+
     private static void LoadAllPrefabs()
     {
         Dictionary<string, string> config = GlobalEditorHelper.GetConfig();
@@ -52,11 +55,17 @@ public static class UIReAttackTexture
 
     private static void ProcessFolderAssets(string folder)
     {
+        if (sprites == null || sprites.Count == 0)
+        {
+            EditorUtility.DisplayDialog("警告", "图片资源不存在 请生成在进行操作", "确认");
+            return;
+        }
+
         Debugger.Log("开始替换散图资源  散图-->图集 " + folder);
         List<string> allPrefabPath = GlobalEditorHelper.GetAssetsPathFileName(folder, "prefab", true);
 
         List<GameObject> allPrefabs = new List<GameObject>();
-          foreach (var onePath in allPrefabPath)
+        foreach (var onePath in allPrefabPath)
         {
             //Debugger.Log("开始处理" + onePath);
             GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(onePath);
@@ -65,21 +74,27 @@ public static class UIReAttackTexture
             PrefabUtility.SaveAsPrefabAsset(newPrefab, onePath);
             Editor.DestroyImmediate(newPrefab);
         }
+
         AssetDatabase.SaveAssets();
-        
+
         Debugger.Log("所有散图替换为图集完成");
     }
 
-
-    private static void LoadAllAsset()
+    [MenuItem("KCFramework/UI/UI Prefab Relink/1.Collect All Sprites")]
+    public static void LoadAllAsset()
     {
+        if (sprites == null)
+        {
+            sprites = new Dictionary<string, Sprite>();
+        }
+        else
+        {
+            sprites.Clear();
+        }
 
-        if (sprites != null && sprites.Count > 0) return;
-
-        sprites = new Dictionary<string, Sprite>();
         string p1 = Application.dataPath + "/Resources/";
-        string path = p1 + "UI/GenAltas";
-        string[] extList = { "*.png"};
+        string path = p1 + "UI/GenAtlas";
+        string[] extList = {"*.png"};
         foreach (string extension in extList)
         {
             string[] files = os.walk(path, extension);
@@ -88,7 +103,15 @@ public static class UIReAttackTexture
                 LoadFile(file, p1.Length);
             }
         }
-       
+
+        Debug.Log("收集到图片资源 数量为:" + sprites.Count);
+    }
+
+    [MenuItem("KCFramework/UI/UI Prefab Relink/2.Update All UIPrefab")]
+    public static void UpdateAllUiPrefabTexture()
+    {
+        string uipath = Application.dataPath + "/Resources/UI/Prefabs";
+        ProcessFolderAssets(uipath);
     }
 
     private static void LoadFile(string path, int pl)
@@ -106,7 +129,7 @@ public static class UIReAttackTexture
         for (int i = 0; i < objs.Length; i++)
         {
             Sprite sp = objs[i] as Sprite;
-            if(sp != null && objs[i].name.Contains("."))
+            if (sp != null && objs[i].name.Contains("."))
             {
                 string name = objs[i].name.Substring(0, objs[i].name.LastIndexOf("."));
                 if (sprites.ContainsKey(name))
@@ -117,7 +140,6 @@ public static class UIReAttackTexture
                 {
                     sprites.Add(name, sp);
                 }
-                
             }
         }
     }
@@ -128,6 +150,7 @@ public static class UIReAttackTexture
     }
 
     private static String paName = "";
+
     private static void UpdateOldPrefab(GameObject oldPrefab)
     {
         if (oldPrefab == null) return;
@@ -140,14 +163,13 @@ public static class UIReAttackTexture
             Transform s = children[i];
             while (s.parent)
             {
-                p1 = s.parent.name + "_" +p1;
+                p1 = s.parent.name + "_" + p1;
                 s = s.parent;
             }
+
             paName = p1 + children[i].name;
             DealOnChild(children[i]);
-
-        }//---------------end for
-
+        } //---------------end for
     }
 
     private static void DealOnChild(Transform child)
@@ -163,10 +185,11 @@ public static class UIReAttackTexture
                 Debugger.Log("replaced texture:" + name);
             }
         }
+
         RawImage rimg = child.gameObject.GetComponent<RawImage>();
         if (rimg && rimg.texture)
         {
-            Debugger.LogWarning("find rawImage in prefab:  " + paName+ "    " + child.name);
+            Debugger.LogWarning("find rawImage in prefab:  " + paName + "    " + child.name);
         }
 
         //------------UISpriteSwap
@@ -186,7 +209,6 @@ public static class UIReAttackTexture
 
         //--------------Button
         DealButton(child);
-
     }
 
     private static void DealButton(Transform child)
@@ -205,8 +227,8 @@ public static class UIReAttackTexture
                     state.disabledSprite = sprites[a.name];
                     Debugger.Log("replaced texture in Button:" + a.name);
                 }
-
             }
+
             if (btn.spriteState.highlightedSprite != null)
             {
                 deal = true;
@@ -216,8 +238,8 @@ public static class UIReAttackTexture
                     state.highlightedSprite = sprites[a.name];
                     Debugger.Log("replaced texture in Button:" + a.name);
                 }
-
             }
+
             if (btn.spriteState.pressedSprite != null)
             {
                 deal = true;
@@ -227,12 +249,12 @@ public static class UIReAttackTexture
                     state.pressedSprite = sprites[a.name];
                     Debugger.Log("replaced texture in Button:" + a.name);
                 }
-
             }
+
             if (deal)
             {
                 btn.spriteState = state;
             }
-        }//end Button
+        } //end Button
     }
 }
