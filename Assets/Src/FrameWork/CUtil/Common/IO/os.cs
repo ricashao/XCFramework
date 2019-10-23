@@ -77,6 +77,7 @@ public static class os
             si.Arguments = arguments;
             si.UseShellExecute = shell;
             process.Start();
+            process.WaitForExit();
         }
         catch (Exception e)
         {
