@@ -6,35 +6,44 @@ using Object = UnityEngine.Object;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System;
+using Debug = UnityEngine.Debug;
 
 public static class UIUnAttackTexture
 {
     private static Dictionary<string, Sprite> sprites = null;
 
-    [MenuItem("Assets/图集资源替换/图集-->散图")]
-    public static void UpdateFolderTexture()
+    [MenuItem("Assets/SpriteAtlas/sprite replace single uiprefab")]
+    public static void UpdatePrefabTexture()
     {
-        if(sprites != null)sprites.Clear();
-        //string path = AssetDatabase.GetAssetPath(Selection.);
-        string path = "";
-        foreach (UnityEngine.Object obj in Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.Assets))
+        if (sprites == null || sprites.Count == 0)
         {
-            path = AssetDatabase.GetAssetPath(obj);
-            if (!string.IsNullOrEmpty(path) && File.Exists(path))
-            {
-                path = Path.GetDirectoryName(path);
-                break;
-            }
+            EditorUtility.DisplayDialog("警告", "图片资源不存在 请生成在进行操作", "确认");
+            return;
         }
-        if (path != "" && path.Contains("UI"))
+
+        var target = Selection.activeObject;
+        string assetpath = AssetDatabase.GetAssetPath(target);
+        GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(assetpath);
+        GameObject newPrefab = GameObject.Instantiate(oldPrefab);
+        UpdateOldPrefab(newPrefab);
+        PrefabUtility.SaveAsPrefabAsset(newPrefab, assetpath);
+        Editor.DestroyImmediate(newPrefab);
+        
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+    }
+
+    [MenuItem("Assets/SpriteAtlas/sprite replace single uiprefab", true)]
+    public static bool UpdatePrefabTextureValidation()
+    {
+        var target = Selection.activeObject;
+        string assetpath = AssetDatabase.GetAssetPath(target);
+        if (assetpath.StartsWith("Assets/Resources/UI/Prefabs") && Path.GetExtension(assetpath).Equals(".prefab"))
         {
-            LoadAllAsset();
-            ProcessFolderAssets(path);
+            return true;
         }
-        else
-        {
-            Debugger.LogError("选择的目录有问题");
-        }
+
+        return false;
     }
 
     //[MenuItem("UITools/图集-->散图")]
@@ -53,6 +62,12 @@ public static class UIUnAttackTexture
 
     private static void ProcessFolderAssets(string folder)
     {
+        if (sprites == null || sprites.Count == 0)
+        {
+            EditorUtility.DisplayDialog("警告", "图片资源不存在 请生成在进行操作", "确认");
+            return;
+        }
+
         Debugger.Log("开始处理目录 图集-->散图 " + folder);
         List<string> allPrefabPath = GlobalEditorHelper.GetAssetsPathFileName(folder, "prefab", true);
 
@@ -63,36 +78,52 @@ public static class UIUnAttackTexture
             GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(onePath);
             GameObject newPrefab = GameObject.Instantiate(oldPrefab);
             UpdateOldPrefab(newPrefab);
-            PrefabUtility.ReplacePrefab(newPrefab, oldPrefab);
+            PrefabUtility.SaveAsPrefabAsset(newPrefab, onePath);
             Editor.DestroyImmediate(newPrefab);
         }
-        AssetDatabase.SaveAssets();
 
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        
         Debugger.Log("所有散图替换完成");
     }
 
+    [MenuItem("KCFramework/UI/UI Prefab UnRelink/1.Collect All Sprites")]
     private static void LoadAllAsset()
     {
-
-        if (sprites != null && sprites.Count > 0) return;
+        if (sprites == null)
+        {
+            sprites = new Dictionary<string, Sprite>();
+        }
+        else
+        {
+            sprites.Clear();
+        }
 
         sprites = new Dictionary<string, Sprite>();
         string p1 = Application.dataPath + "/Resources/";
         string path = p1 + "UI";
-        string[] extList = { "*.png" };
+        string[] extList = {"*.png"};
         foreach (string extension in extList)
         {
-
             string[] files = os.walk(path, extension);
             foreach (string file in files)
             {
-                if (!file.Contains("GenAltas"))
+                if (!file.Contains("GenAtlas"))
                 {
                     LoadFile(file, p1.Length);
                 }
             }
         }
 
+        Debug.Log("收集到图片资源 数量为:" + sprites.Count);
+    }
+
+    [MenuItem("KCFramework/UI/UI Prefab UnRelink/2.Update All UIPrefab")]
+    public static void UpdateAllUiPrefabTexture()
+    {
+        string uipath = Application.dataPath + "/Resources/UI/Prefabs";
+        ProcessFolderAssets(uipath);
     }
 
     private static void LoadFile(string path, int pl)
@@ -110,22 +141,24 @@ public static class UIUnAttackTexture
         //for (int i = 0; i < objs.Length; i++)
         //{
         //    Sprite sp = objs[i] as Sprite;
-            if (sprite != null)
+        if (sprite != null)
+        {
+            string name = sprite.name;
+            if (!name.Contains(".png"))
             {
-                string name = sprite.name;
-                if (!name.Contains(".png"))
-                {
-                    name += ".png";
-                }
+                name += ".png";
+            }
+
             if (sprites.ContainsKey(name))
-                {
-                    Debugger.LogError("duplicate add key:" + name);
-                }
-                else
-                {
-                    sprites.Add(name, sprite);
-                }
-           }
+            {
+                Debugger.LogError("duplicate add key:" + name);
+            }
+            else
+            {
+                sprites.Add(name, sprite);
+            }
+        }
+
         //}
     }
 
@@ -135,6 +168,7 @@ public static class UIUnAttackTexture
     }
 
     private static String paName = "";
+
     private static void UpdateOldPrefab(GameObject oldPrefab)
     {
         if (oldPrefab == null) return;
@@ -149,11 +183,10 @@ public static class UIUnAttackTexture
                 p1 = s.parent.name + "_" + p1;
                 s = s.parent;
             }
+
             paName = p1 + children[i].name;
             DealOnChild(children[i]);
-
-        }//---------------end for
-
+        } //---------------end for
     }
 
     private static void DealOnChild(Transform child)
@@ -163,7 +196,7 @@ public static class UIUnAttackTexture
         if (img && img.sprite)
         {
             string name = img.sprite.name;
-           // Debugger.Log("找到需要替换的名字" + name);
+            // Debugger.Log("找到需要替换的名字" + name);
             if (sprites.ContainsKey(name))
             {
                 if (sprites[name] != null)
@@ -175,10 +208,9 @@ public static class UIUnAttackTexture
                 {
                     Debugger.Log("没有找到资源" + name);
                 }
-                
-                
             }
         }
+
         RawImage rimg = child.gameObject.GetComponent<RawImage>();
         if (rimg && rimg.texture)
         {
@@ -202,7 +234,6 @@ public static class UIUnAttackTexture
 
         //--------------Button
         DealButton(child);
-
     }
 
     private static void DealButton(Transform child)
@@ -221,8 +252,8 @@ public static class UIUnAttackTexture
                     state.disabledSprite = sprites[a.name];
                     Debugger.Log("replaced texture in Button:" + a.name);
                 }
-
             }
+
             if (btn.spriteState.highlightedSprite != null)
             {
                 deal = true;
@@ -232,8 +263,8 @@ public static class UIUnAttackTexture
                     state.highlightedSprite = sprites[a.name];
                     Debugger.Log("replaced texture in Button:" + a.name);
                 }
-
             }
+
             if (btn.spriteState.pressedSprite != null)
             {
                 deal = true;
@@ -243,12 +274,12 @@ public static class UIUnAttackTexture
                     state.pressedSprite = sprites[a.name];
                     Debugger.Log("replaced texture in Button:" + a.name);
                 }
-
             }
+
             if (deal)
             {
                 btn.spriteState = state;
             }
-        }//end Button
+        } //end Button
     }
 }

@@ -12,38 +12,39 @@ public static class UIReAttackTexture
 {
     private static Dictionary<string, Sprite> sprites = null;
 
-    [MenuItem("Assets/图集资源替换/替换散图资源")]
-    public static void UpdateFolderTexture()
+    [MenuItem("Assets/SpriteAtlas/atlas replace single uiprefab")]
+    public static void UpdatePrefabTexture()
     {
-        //string path = AssetDatabase.GetAssetPath(Selection.);
-        string path = "";
-        foreach (UnityEngine.Object obj in Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.Assets))
+        if (sprites == null || sprites.Count == 0)
         {
-            path = AssetDatabase.GetAssetPath(obj);
-            if (!string.IsNullOrEmpty(path) && File.Exists(path))
-            {
-                path = Path.GetDirectoryName(path);
-                break;
-            }
+            EditorUtility.DisplayDialog("警告", "图片资源不存在 请生成在进行操作", "确认");
+            return;
         }
 
-        if (path != "" && path.Contains("UI"))
-        {
-//            LoadAllAsset();
-            ProcessFolderAssets(path);
-        }
-        else
-        {
-            Debugger.LogError("选择的目录有问题");
-        }
+        var target = Selection.activeObject;
+        string assetpath = AssetDatabase.GetAssetPath(target);
+        GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(assetpath);
+        GameObject newPrefab = GameObject.Instantiate(oldPrefab);
+        UpdateOldPrefab(newPrefab);
+        PrefabUtility.SaveAsPrefabAsset(newPrefab, assetpath);
+        Editor.DestroyImmediate(newPrefab);
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
     }
 
-    //[MenuItem("UITools/散图--->图集")]
-    //public static void UpdateTexture()
-    //{
-    //    LoadAllAsset();
-    //    LoadAllPrefabs();
-    //}
+    [MenuItem("Assets/SpriteAtlas/atlas replace single uiprefab", true)]
+    public static bool UpdatePrefabTextureValidation()
+    {
+        var target = Selection.activeObject;
+        string assetpath = AssetDatabase.GetAssetPath(target);
+        if (assetpath.StartsWith("Assets/Resources/UI/Prefabs") && Path.GetExtension(assetpath).Equals(".prefab"))
+        {
+            return true;
+        }
+
+        return false;
+    }
 
 
     private static void LoadAllPrefabs()
@@ -76,7 +77,7 @@ public static class UIReAttackTexture
         }
 
         AssetDatabase.SaveAssets();
-
+        AssetDatabase.Refresh();
         Debugger.Log("所有散图替换为图集完成");
     }
 
