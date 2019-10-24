@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,7 +23,7 @@ public static class ExportAssetBundle
     public static string IosOutputPath = Application.streamingAssetsPath + "/iOS";
     public static string AndroidOutputPath = Application.streamingAssetsPath + "/Android";
     
-    [MenuItem("*Resource/Gen Asset bundles/StandaloneWindows")]
+    [MenuItem("KCFramework/Resource/Gen Asset bundles/StandaloneWindows")]
     public static void OnCreateAssetBundleWin()
     {
         if (!Directory.Exists(WindowsOutputPath))
@@ -41,7 +42,7 @@ public static class ExportAssetBundle
         Debug.Log("AssetBundle Packaged finish !!!");
     }
     
-    [MenuItem("*Resource/Gen Asset bundles/Android")]
+    [MenuItem("KCFramework/Resource/Gen Asset bundles/Android")]
     public static void OnCreateAssetBundleAndroid()
     {
         if (!Directory.Exists(AndroidOutputPath))
@@ -57,7 +58,7 @@ public static class ExportAssetBundle
     }
     
     
-    [MenuItem("*Resource/Gen Asset bundles/iOS")]
+    [MenuItem("KCFramework/Resource/Gen Asset bundles/iOS")]
     public static void OnCreateAssetBundleIos()
     {
         if (!Directory.Exists(IosOutputPath))
@@ -74,7 +75,7 @@ public static class ExportAssetBundle
     }
     
 
-    [MenuItem("*Resource/Gen AssetNames %#e", false, 201)]
+    [MenuItem("KCFramework/Resource/Gen AssetNames %#e", false, 201)]
     private static void OnSetAssetBundleName()
     {
         stoped = false;
@@ -97,7 +98,7 @@ public static class ExportAssetBundle
         Debug.Log("AssetBundleName Modify finished");
     }
     
-    [MenuItem("*Resource/Gen All AssetName", false, 202)]
+    [MenuItem("KCFramework/Resource/Gen All AssetName", false, 202)]
     public static bool OnSetAllAssetBundleName()
     {
         stoped = false;
@@ -421,5 +422,37 @@ public static class ExportAssetBundle
 
         File.Copy(path + ".tmp", path);
         File.Delete(path + ".tmp");
+    }
+    
+    [MenuItem("KCFramework/Resource/资源名称，路径检测")]
+    public static void CheckAssetPath()
+    {
+        List<String> paths = new List<string>();
+        List<String> unlegalPath = new List<string>();
+
+//        paths.Add(Application.dataPath + "/Atlas");   // 图集
+        paths.Add(Application.dataPath + "/Resources"); //Resource
+
+        string[] extList = _extList;
+        foreach (String path in paths)
+        {
+            foreach (string extension in extList)
+            {
+                string[] files = os.walk(path, extension);
+                foreach (string file in files)
+                {
+                    string tempPath = file.Substring(path.Length);
+                    bool b = Regex.IsMatch(tempPath, "\u3000|\u0020|[\u4e00-\u9fa5]+");
+                    if (b)
+                    {
+                        tempPath = tempPath.Substring(0, tempPath.LastIndexOf("."));
+                        EditorUtility.DisplayDialog("资源路径含有中文或者空格！", tempPath, "马上处理");
+                        stoped = true;
+                        Debug.Break();
+                        return;
+                    }
+                }
+            }
+        }
     }
 }
