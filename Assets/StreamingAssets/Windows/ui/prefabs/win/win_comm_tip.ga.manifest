@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2097027321
+CRC: 789257488
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b2d58f86c4fdc08f962a76741fca2027
+    Hash: 407339c761b8fbc6fdb32e1f9c51cd21
   TypeTreeHash:
     serializedVersion: 2
     Hash: 99d00fe13eb6d93cfe9a23a8e6a95858
@@ -30,5 +30,5 @@ ClassTypes:
 Assets:
 - Assets/Resources/UI/Prefabs/Win/Win_Comm_Tip.prefab
 Dependencies:
-- F:/TestUnity/KCFramework_XLua/Assets/StreamingAssets/Windows/ui/genaltas/atlas_comm/atlas_comm_tp0.ga
-- F:/TestUnity/KCFramework_XLua/Assets/StreamingAssets/Windows/ui/fonts/system.ga
+- E:/gitworkspace/KCFramework/Assets/StreamingAssets/Windows/ui/fonts/system.ga
+- E:/gitworkspace/KCFramework/Assets/StreamingAssets/Windows/ui/genatlas/atlas_comm/atlas_comm_tp0.ga

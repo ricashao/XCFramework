@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1497433478
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f90b22ea5c2ce321612d0ef810679bf5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Music/BGM/battle02.mp3
+Dependencies: []

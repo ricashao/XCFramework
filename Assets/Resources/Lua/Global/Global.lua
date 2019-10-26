@@ -1,18 +1,18 @@
 --[[szc
-require "Global.Common.Math"
 require "Global.Common.Layer"
 require "Global.Common.List"
 require "Global.Common.Event"
-require "Global.Common.Quaternion"
 require "Global.Common.Vector4"
 require "Global.Common.Raycast"
-require "Global.Common.Color"
 require "Global.Common.Touch"
 require "Global.Common.Ray"
 require "Global.Common.Coroutine"
 ]]
+require "Global.Common.Math"
 require "Global.Common.Vector2"
 require "Global.Common.Vector3"
+require "Global.Common.Color"
+require "Global.Common.Quaternion"
 
 --luanet.load_assembly("UnityEngine")
 
@@ -102,6 +102,7 @@ UIComponentScript = CS.UIComponentScript
 Util = CS.Util
 PoolManager = CS.PoolManager
 GameComponentClick = CS.GameComponentClick
+BitOperator = CS.BitOperator
 ----------------------------------------------------
 
 function traceback(msg)

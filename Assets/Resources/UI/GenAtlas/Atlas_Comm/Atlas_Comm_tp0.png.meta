@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 29430503fc0954d4da82ff11ddbf8312
-timeCreated: 1449800303
+timeCreated: 1571912934
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -939,7 +939,7 @@ TextureImporter:
         height: 29
       alignment: 1
       pivot: {x: 913.5, y: 483.5}
-      border: {x: 11, y: 13, z: 12, w: 13}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: ui_main_26.png
       rect:
         serializedVersion: 2
@@ -1102,5 +1102,5 @@ TextureImporter:
       border: {x: 67, y: 0, z: 31, w: 0}
   spritePackingTag: 
   userData: 
-  assetBundleName: ui/genaltas/atlas_comm/atlas_comm_tp0.ga
+  assetBundleName: ui/genatlas/atlas_comm/atlas_comm_tp0.ga
   assetBundleVariant: 

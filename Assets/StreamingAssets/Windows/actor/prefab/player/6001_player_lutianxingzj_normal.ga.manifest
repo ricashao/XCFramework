@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 1528125650
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2f6ca136a9b984cbfcb9d7b3b13142c8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1216775cdaabab3c36c0b2ea8df7759
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Actor/Prefab/Player/6001_player_lutianxingzj_normal.prefab
+Dependencies:
+- E:/gitworkspace/KCFramework/Assets/StreamingAssets/Windows/actor/prefab/comm/blackshadow.ga
+- E:/gitworkspace/KCFramework/Assets/StreamingAssets/Windows/actor/objects/player/6001_player_lutianxingzj/materials/6001_player_lutianxing.ga

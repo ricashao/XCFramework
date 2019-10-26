@@ -54,7 +54,7 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  maxTextureSizeSet: 0
+  maxTextureSize: 1024
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3772276830
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0a4160d7ae34b0bb3d49eebcc24e906f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f19fbf085e00d23fbc8d6cf7b345590b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Actor/Objects/Player/6001_player_lutianxingzj/6001_player_lutianxing.png
+Dependencies: []
