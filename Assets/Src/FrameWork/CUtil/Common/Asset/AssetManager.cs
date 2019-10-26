@@ -28,11 +28,11 @@ public class AssetManager : MonoBehaviour
     /// 异步加载完成回调队列
     /// </summary>
     private static AsynCallQueue mAsynCallQueue = new AsynCallQueue();
-    
+
     /// <summary>
     /// 加载完成 需要移除的加载路径
     /// </summary>
-    private static List<string> removePath  = new List<string>();
+//    private static List<string> removePath = new List<string>();
 
 
     /// <summary>
@@ -163,25 +163,26 @@ public class AssetManager : MonoBehaviour
         mAsynCallQueue.CheckAsynCall();
 
         //2.资源加载检测
+        var count = mAsynLoadInfos.Count;
         if (mAsynLoadInfos.Count > 0)
         {
-            var infos = mAsynLoadInfos.GetEnumerator();
-            while (infos.MoveNext())
+            var infos = new AsynLoadInfo[count];
+            mAsynLoadInfos.Values.CopyTo(infos,0);
+            foreach (var info in infos)
             {
-                infos.Current.Value.Tick();
+                info.Tick();
             }
-
-            infos.Dispose();
         }
 
-        if (removePath.Count > 0)
-        {
-            foreach (var path in removePath)
-            {
-                mAsynLoadInfos.Remove(path);
-            }
-            removePath.Clear();
-        }
+//        if (removePath.Count > 0)
+//        {
+//            foreach (var path in removePath)
+//            {
+//                mAsynLoadInfos.Remove(path);
+//            }
+//
+//            removePath.Clear();
+//        }
 
         //任务组加载检测
         if (groupTasks.Count > 0)
@@ -508,7 +509,7 @@ public class AssetManager : MonoBehaviour
 
 //                try
 //                {
-                    item.CallBack(target);
+                item.CallBack(target);
 //                }
 //                catch (Exception e)
 //                {
@@ -526,8 +527,8 @@ public class AssetManager : MonoBehaviour
 
         info.Dispose();
 
-        removePath.Add(path);
-//        mAsynLoadInfos.Remove(path);
+//        removePath.Add(path);
+        mAsynLoadInfos.Remove(path);
     }
 
     //异步加载的图集加载完毕
@@ -577,9 +578,9 @@ public class AssetManager : MonoBehaviour
         assetNames.Dispose();
 
         info.Dispose();
-        removePath.Add(path);
+//        removePath.Add(path);
 
-//        mAsynLoadInfos.Remove(path);
+        mAsynLoadInfos.Remove(path);
     }
 
     public static void LoadAltasAsset(string path, Action<Object> callBack)
@@ -626,7 +627,7 @@ public class AssetManager : MonoBehaviour
     {
         mCache.Clear();
     }
-    
+
     //-----------------------------------------------------------------------
     //旧的资源处理方式---挂载挂载点的资源  从CheapLocalLoader 移过来
     public static void MountResource(GameObject go)
@@ -638,30 +639,53 @@ public class AssetManager : MonoBehaviour
             {
                 if (script != null)
                 {
-                    if(script.Prefab != null){
-
+                    if (script.Prefab != null)
+                    {
                         Transform trans = script.GetComponent<Transform>();
-                        if (trans.Find(script.Prefab.name)){
+                        if (trans.Find(script.Prefab.name))
+                        {
                             continue;
                         }
 
                         GameObject child = UnityEngine.Object.Instantiate(script.Prefab) as GameObject;
                         if (child != null)
                         {
-                            if(script.PrefabScriptName != string.Empty && script.PrefabScriptName.Trim() != string.Empty){
+                            if (script.PrefabScriptName != string.Empty &&
+                                script.PrefabScriptName.Trim() != string.Empty)
+                            {
                                 child.name = script.PrefabScriptName;
-                            }else{
+                            }
+                            else
+                            {
                                 child.name = child.name.Substring(0, child.name.IndexOf("(Clone)"));
                             }
+
                             child.SetActive(true);
                             child.transform.SetParent(trans, false);
                             MountResource(child);
                         }
                     }
-                    
                 }
             }
-        }  
+        }
+    }
+
+    //旧的资源处理方式---挂载挂载点的资源  从CheapLocalLoader 移过来
+    public static GameObject Clone(GameObject go, bool reserveName = false)
+    {
+        if (null != go)
+        {
+            var cloned = UnityEngine.Object.Instantiate(go) as GameObject;
+            if (reserveName)
+            {
+                cloned.name = go.name;
+            }
+
+            cloned.SetActive(false);
+            return cloned;
+        }
+
+        return null;
     }
 }
 
@@ -746,8 +770,6 @@ class AsynLoadInfo
         data = null;
         OnCompleted = null;
     }
-    
-   
 }
 
 class AsynLoadInfoItem

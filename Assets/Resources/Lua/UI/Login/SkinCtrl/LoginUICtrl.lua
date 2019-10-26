@@ -136,12 +136,15 @@ function M.LoginTest(go)
 end
 
 function M.ConnectServer(go)
-
+    require "UI.CreateRole.SkinCtrl.CreateRoleDialogCtrl";
+    CreateRoleDialogCtrl:GetInstance():Show();
+    --[[
     local instance = LoginUICtrl:GetInstance();
     local serverId = instance.m_chooseServerId;
     local ip = instance.m_connectIp;
     local port = instance.m_connectHost;
     LoginManager:GetInstance():ConnectServer(serverId, ip, port);
+    ]]
 end
 
 function M:GetServerInfoById(serverList, serverid)
