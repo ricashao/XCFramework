@@ -36,7 +36,6 @@ public class GameMain : BaseLua
         CallMethod("LoginGame");
 
         inputTouch = new InputTouch();
-
         LuaScriptMgr.Instance.CallLuaFunction("TouchProxy.SetTouch", inputTouch);
     }
 

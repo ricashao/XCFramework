@@ -1,5 +1,8 @@
 require "Framework.Class";
 require "Utils.TableUtil";
+require "Utils.StringBuilder";
+require "Utils.Position";
+require "Utils.LocalStorage";
 
 require "Framework.JsonconfigManager";
 require "UI.CommMsgTip.CommMsgMgr";
