@@ -170,7 +170,7 @@ function UIModelCtrl:UpdateLayer(pfb, layer)
 		return
 	end
 	pfb.layer = layer
-	local components = pfb:GetComponentsInChildren(Transform.GetClassType())
+	local components = pfb:GetComponentsInChildren(typeof(Transform))
 	local length = components.Length - 1
 	for i=0, length do
 		components[i].gameObject.layer = layer
