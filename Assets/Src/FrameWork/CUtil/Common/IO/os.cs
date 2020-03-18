@@ -14,6 +14,7 @@ public static class os
             {
                 return path2;
             }
+			
 
             if (null == path2 || path2.Length == 0)
             {
