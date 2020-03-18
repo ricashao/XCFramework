@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 2643304106
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 46060802574e628c42095c5461ae35b2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4357247039998f0e6400294df2407d20
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -98529514, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/UI/Prefabs/Module/Module_Create_Bg_02.prefab
+Dependencies:
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/image/scene/create/create.ga

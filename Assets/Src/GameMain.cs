@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class GameMain : BaseLua
 {
-    
     public LuaScriptMgr xluaMgr;
 
-//    private InputTouch inputTouch; 
+    private InputTouch inputTouch;
+
     protected new void Awake()
     {
         Init();
@@ -35,11 +35,11 @@ public class GameMain : BaseLua
         xluaMgr.DoFile("GameMain"); //GameMain.lua
         CallMethod("LoginGame");
 
-//        inputTouch = new InputTouch ();
+        inputTouch = new InputTouch();
 
-//        LuaScriptMgr.Instance.CallLuaFunction("TouchProxy.SetTouch", inputTouch);
+        LuaScriptMgr.Instance.CallLuaFunction("TouchProxy.SetTouch", inputTouch);
     }
-    
+
 
     /// <summary>
     /// 所有的update都走这边
@@ -50,16 +50,17 @@ public class GameMain : BaseLua
         CoroutineManager.Instance.Tick(delta);
         AudioManager.Instance.Tick(delta);
         LuaScriptMgr.Instance.CallLuaFunction("GameMain.Tick", delta);
+        if (null != inputTouch)
+            inputTouch.Tick(delta);
     }
-    
+
     void LateUpdate()
     {
         LuaScriptMgr.Instance.CallLuaFunction("GameMain.LateTick", Time.deltaTime);
     }
-    
+
     void OnApplicationQuit()
     {
-        
         Caching.ClearCache();
     }
 }

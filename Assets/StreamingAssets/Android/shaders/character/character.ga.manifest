@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 3534626348
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 93a2a102e56cc873a3e591d219a26bfe
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4adf3a45f7f8893f4dcb112aa3f3736e
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 89
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Shaders/Character/T_CharacterToon.shader
+- Assets/Resources/Shaders/Character/T_CharacterToon.png
+Dependencies: []

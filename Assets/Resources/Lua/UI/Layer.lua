@@ -14,6 +14,7 @@ function M:Ctor(camera, layerName, layerIndex, layer, distance)
 	self.planeDistance = distance;
 	self.isShow = true;
 
+	--同步加载layer预制体
 	-- self:LoadObject("UILayer","UI/Prefabs/Module", self.OnPrefabLoad, false)
 	local pfb = SynLoader.Load("UI/Prefabs/Module/UILayer.ga")
 	self:OnPrefabLoad(pfb)
@@ -29,10 +30,14 @@ function M:OnPrefabLoad(pfb)
 	self.pfb.name = self.layerName;
 	self.pfb.transform:SetParent(ioo.guiRoot.transform, false);
 	local comp = self.pfb.transform:GetComponent("Canvas");	
+	-- 这是canvas 相机
 	comp.worldCamera   = self.camera;
+	-- 这是canvas 渲染层级
 	comp.sortingOrder  = self.layerIndex;
+	-- 这是canvas 相机距离
 	comp.planeDistance = self.planeDistance;
 	self:UpdateSceneLayer(self.pfb);
+	-- 调整自适应
 	self:Adaptation(self.pfb);
 
 end
@@ -81,6 +86,7 @@ function M:Adaptation(obj)
 	self.resolution = go;
 end
 
+-- 添加子节点
 function M:AddGameObjectToLayer(go)
 	if not go then
 		return;
@@ -90,6 +96,7 @@ function M:AddGameObjectToLayer(go)
 	self:UpdateSceneLayer(go);
 end
 
+-- 获取layer transform
 function M:GetLayerTransform()
 	if not (self.pfb) then
 		if error then error("Layer GetLayerTransform layer GameObject is nil ") end;

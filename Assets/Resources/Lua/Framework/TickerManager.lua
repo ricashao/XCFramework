@@ -2,7 +2,9 @@ local Singleton = require "Framework.Singleton"
 TickerManager = Class("TickerManager", Singleton)
 
 function TickerManager:Ctor()
+	--启动的定时器
 	self.tList = {}
+	--等待删除的定时器列表
 	self.delList = nil
 end
 
@@ -14,6 +16,7 @@ end
 function TickerManager:AddTicker(ticker)
 	local key = tostring(ticker)
 	self.tList[key] = ticker
+	--从删除列表中移除
 	if self.delList and self.delList[key] then
 		self.delList[key] = nil
 	end

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2154236459
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 04defc1666727ed7a7c06b120e3d473e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Music/BGM/1004.mp3
+Dependencies: []

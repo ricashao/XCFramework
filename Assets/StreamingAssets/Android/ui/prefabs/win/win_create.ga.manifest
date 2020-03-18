@@ -1,0 +1,69 @@
+ManifestFileVersion: 0
+CRC: 1958602268
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8a6d112723eed94fa89b890b85ddb4ab
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1c277f8a79dd1e3f92dd0e3f3b1df76f
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: -2095666955, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 575553740, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: -1200242548, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: -98529514, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a93447c046041474fa508cf1bddd7640, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ab1d3ff117d95804a8d50c6c38dddd06, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ce8362ecdfbb06647914d2d7b37a00c6, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/UI/Prefabs/Win/Win_Create.prefab
+Dependencies:
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/genatlas/atlas_comm/atlas_comm_tp0.ga
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/genaltas/atlas_main/atlas_main_tp0.ga
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/genaltas/atlas_create/atlas_create_tp0.ga
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/materials/ui_default.ga
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/fonts/system.ga
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/prefabs/module/module_create_bg_02.ga
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/prefabs/module/module_create_bg_03.ga
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/prefabs/module/module_create_bg_01.ga
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/prefabs/module/module_create_bg_06.ga
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/prefabs/module/module_create_bg_05.ga
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/prefabs/module/module_create_bg_04.ga

@@ -40,8 +40,10 @@ function M:Ctor( ... )
 
 	-- 初始化UI的层级
 	GameLayerManager.Init();
+	
 	UILayer.InitLayers();
 
+	--初始化tween
 	DOTween.Init(true, true, CS.DG.Tweening.LogBehaviour.__CastFrom(1))
 
 end
@@ -146,7 +148,8 @@ end
 function M:CheckComponentClick(position)
 	if not position then return end
 
-	local length = table.maxn(self.componentList);
+	--szc 修改maxn
+	local length = #self.componentList;
 	if length == 0 then return end
 	
 	local first = self.componentList[length];
@@ -277,7 +280,8 @@ function M:RealRegisterOutClick()
 end
 
 function M:CheckOutClick(position)
-	local length = table.maxn(self.clickIndex);
+	--szc 修改maxn
+	local length = #self.clickIndex;
 	local topLevel = self.clickList[self.clickIndex[length]];
 
 	if topLevel and topLevel.rectTransform then
@@ -306,8 +310,8 @@ function M:CheckOutClick(position)
 		
 	end
 	
-
-	length = table.maxn(self.clickIndexMulti);
+	--szc 修改maxn
+	length = #self.clickIndexMulti;
 	topLevel = self.clickListMulti[self.clickIndexMulti[length]];
 	if topLevel and topLevel.rectTransformTable then
 		local bl = false;

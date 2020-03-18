@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 4210856884
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 16b0570412f192f220c8f7b102bcd4cc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f19fbf085e00d23fbc8d6cf7b345590b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/UI/Image/Scene/Login/Login_01.png
+Dependencies: []

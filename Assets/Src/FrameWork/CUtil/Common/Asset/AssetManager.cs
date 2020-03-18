@@ -242,6 +242,14 @@ public class AssetManager : MonoBehaviour
         return LoadAsset(path, Util.GetPathName(path), callback, DefaultPosition, DefaultRotation);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="path">资源绝对路径</param>
+    /// <param name="callback">回调</param>
+    /// <param name="position">位置</param>
+    /// <param name="rotation">旋转</param>
+    /// <returns></returns>
     public static Object LoadAsset(string path, Action<Object> callback, Vector3 position, Quaternion rotation)
     {
         return LoadAsset(path, Util.GetPathName(path), callback, position, rotation);
@@ -289,6 +297,7 @@ public class AssetManager : MonoBehaviour
         Action<Object> callBack = null;
         if (!string.IsNullOrEmpty(key))
         {
+            //异步加载完成之后回调处理
             try
             {
                 callBack = (s) => LuaScriptMgr.Instance.CallLuaFunction("AsynPrefabLoader.CallFromCS", key, path, s);
@@ -306,6 +315,7 @@ public class AssetManager : MonoBehaviour
         Quaternion rotation)
     {
         Object target = null;
+        //查看资源是否被加载
         Object source = mCache.GetCacheSourceAsset(path, assetName);
 
 //        if (!source)
@@ -343,7 +353,7 @@ public class AssetManager : MonoBehaviour
 
         if (source)
         {
-            //缓存
+            //缓存资源
             mCache.CacheSourceAsset(path, assetName, source);
 
             if (callBack != null)

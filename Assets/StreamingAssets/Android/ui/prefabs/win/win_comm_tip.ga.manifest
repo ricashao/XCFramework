@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 103850462
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c2a509f01417d99b9ba0f28e86e3236d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f37dc78c29836eff609370909aaf0a31
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/UI/Prefabs/Win/Win_Comm_Tip.prefab
+Dependencies:
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/genatlas/atlas_comm/atlas_comm_tp0.ga
+- E:/workspace/git/KCFramework/Assets/StreamingAssets/Android/ui/fonts/system.ga

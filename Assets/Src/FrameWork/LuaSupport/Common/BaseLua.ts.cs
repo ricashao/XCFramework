@@ -101,7 +101,7 @@ public class BaseLua : MonoBehaviour
     
     //-----------------------------------------------
     /// <summary>
-    /// 执行Lua方法-无参数
+    /// 执行Lua方法-无参数 相当于执行cs类对应的lua文件中的函数
     /// </summary>
     protected object[] CallMethod(string func) {
         if (uluaScriptMgr == null) return null;

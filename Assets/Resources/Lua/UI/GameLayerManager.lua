@@ -7,6 +7,7 @@ GameLayerManager.__index = GameLayerManager;
 require "Load.AsynPrefabLoader";
 require "UI.Component.GButton";
 require "UI.UICommonManager";
+--加载相机层级
 require "UI.GameCameraLayerCommon";
 require "Load.SynLoader"
 
@@ -30,7 +31,7 @@ local LAYER_DISTANCE =
 
 --初始化层级
 function M.Init()
-	
+	--获取战斗相机
 	local battleCameraObj =  GameObject.Find("BattlerCamera");
 	local battleCamera;
 	if battleCameraObj then
@@ -38,10 +39,12 @@ function M.Init()
 	end
 	M.battleCamera = battleCamera;
 
+	--获取ui相机
 	local guiCamera = ioo.guiCamera.gameObject:GetComponent("Camera");
 	guiCamera.transform.position = Vector3(0, 0, 100)
 	M.guiCamera = guiCamera;
 
+	--获取显示战斗中角色脚底名字的相机
 	local battlerNameCameraObj = GameObject.Find("BattlerNameCamera");
 	M.battlerNameCamera = battlerNameCameraObj.gameObject:GetComponent("Camera");
 
@@ -106,6 +109,7 @@ function M.AddGameObjectToCameraLayer(go, cameraLayerName)
 
 end
 
+-- 创建3d模型ui展示区域
 function M.Create3DModelCameraSite()
 	local gb = GameObject();
 	gb.name = "UI3DModelSite";
@@ -113,6 +117,7 @@ function M.Create3DModelCameraSite()
 	return gb;
 end
 
+-- 创建角色模型点
 function M.CreateCharacterModelSite()
 	local go = GameObject();
 	go.name = "CharacterModelSite";

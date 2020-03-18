@@ -3,11 +3,10 @@
 require "Character.Player.PlayerManager";
 require "Scene.SceneTeam.SceneTeamModule";
 require "Scene.Data.SceneNetProtocols";
-require "Scene.TouchAgent";
 require "Scene.ColliderTriggerAgent";
 ]]
 require "Scene.Data.SceneCommon";
-
+require "Scene.TouchAgent";
 local Object = require "Framework.Object";
 local Scene = Class("Scene",Object);
 
