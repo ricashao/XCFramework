@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: ab169aaf99fb0c84d913ec95782f16d2
-timeCreated: 1447816627
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: login-09.png
@@ -19,53 +17,78 @@ TextureImporter:
     21300024: ui_create_word_famale_01_b.png
     21300026: ui_create_bg.png
     21300028: ui_create_choose.png
-  serializedVersion: 2
+  externalObjects: {}
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
   maxTextureSize: 512
   textureSettings:
+    serializedVersion: 2
     filterMode: -1
     aniso: -1
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: ui_create_bg.png
+    - serializedVersion: 2
+      name: ui_create_bg.png
       rect:
         serializedVersion: 2
         x: 2
@@ -75,7 +98,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 109, y: 49}
       border: {x: 0, y: 40, z: 0, w: 41}
-    - name: ui_create_btn_enter.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa127359d063604479687e4fca437958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_btn_enter.png
       rect:
         serializedVersion: 2
         x: 218
@@ -85,7 +118,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 317, y: 34}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ui_create_btn_random.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3fc62da3f8d6024d9e9eff8b0c460ae
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_btn_random.png
       rect:
         serializedVersion: 2
         x: 418
@@ -95,7 +138,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 455.5, y: 55}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ui_create_choose.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cb5c918451556a4fa63df6cf3f8cab3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_choose.png
       rect:
         serializedVersion: 2
         x: 394
@@ -105,7 +158,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 442, y: 160.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ui_create_famale_01.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04a49173f89cd0f40a415d0c0ec3fd05
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_famale_01.png
       rect:
         serializedVersion: 2
         x: 218
@@ -115,7 +178,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 282, y: 132}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ui_create_famale_02.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91f3eca9a438b17449f965afa03315d4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_famale_02.png
       rect:
         serializedVersion: 2
         x: 374
@@ -125,7 +198,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 438, y: 277}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ui_create_famale_03.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 062c7c369aed0e2468c1f89e172d8360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_famale_03.png
       rect:
         serializedVersion: 2
         x: 374
@@ -135,7 +218,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 438, y: 407}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ui_create_man_01.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff7af7b0fced48a48b3a1bd703965b70
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_man_01.png
       rect:
         serializedVersion: 2
         x: 2
@@ -145,7 +238,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 66, y: 409}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ui_create_man_02.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e04f217c8fea5ee439659eb77bf4f4bb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_man_02.png
       rect:
         serializedVersion: 2
         x: 2
@@ -155,7 +258,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 66, y: 262}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ui_create_man_03.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b24d2fc85a3af14695c4e6dbed628fa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_man_03.png
       rect:
         serializedVersion: 2
         x: 132
@@ -165,7 +278,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 196, y: 409}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ui_create_name_famale_01.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3902d0a7328a50c4fa4a0fb26580e292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_name_famale_01.png
       rect:
         serializedVersion: 2
         x: 348
@@ -175,7 +298,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 370, y: 111}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ui_create_word_famale_01_a.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f56beae0ed2ef645bf21fb6f6c4e2d9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_word_famale_01_a.png
       rect:
         serializedVersion: 2
         x: 348
@@ -185,7 +318,17 @@ TextureImporter:
       alignment: 1
       pivot: {x: 360, y: 249.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ui_create_word_famale_01_b.png
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 098154b553b69c14592f0565fb8a0702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_create_word_famale_01_b.png
       rect:
         serializedVersion: 2
         x: 132
@@ -195,7 +338,26 @@ TextureImporter:
       alignment: 1
       pivot: {x: 144, y: 191.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f5453d34751c1d43ad29983744950e8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: ui/genaltas/atlas_create/atlas_create_tp0.ga
   assetBundleVariant: 

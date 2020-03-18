@@ -13,6 +13,9 @@ public class GameMain : BaseLua
     }
 
 
+    /// <summary>
+    /// 程序入口 初始化
+    /// </summary>
     void Init()
     {
         DontDestroyOnLoad(gameObject);
