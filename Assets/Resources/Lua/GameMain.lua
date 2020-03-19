@@ -4,6 +4,8 @@ require "Utils.StringBuilder";
 require "Utils.Position";
 require "Utils.LocalStorage";
 
+require "Common.BroadcastEventMgr"
+
 require "Framework.JsonconfigManager";
 require "UI.CommMsgTip.CommMsgMgr";
 require "LocalSave.LocalSaveManager";
