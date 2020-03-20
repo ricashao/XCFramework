@@ -92,6 +92,13 @@ namespace XC
             }
         }
         
+        public void Connect()
+        {
+            startConnected = true;
+            linker.Close();
+            linker.Connect();   
+        }
+        
         public void Close()
         {
             if(linker != null)

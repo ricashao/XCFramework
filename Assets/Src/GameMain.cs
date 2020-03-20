@@ -1,4 +1,5 @@
 using UnityEngine;
+using XC;
 
 public class GameMain : BaseLua
 {
@@ -37,6 +38,8 @@ public class GameMain : BaseLua
 
         inputTouch = new InputTouch();
         LuaScriptMgr.Instance.CallLuaFunction("TouchProxy.SetTouch", inputTouch);
+        NetManager.GetInstance().SetParam("1", 2, "1", "1");
+        NetManager.GetInstance().Connect();
     }
 
 
@@ -60,6 +63,8 @@ public class GameMain : BaseLua
 
     void OnApplicationQuit()
     {
+        if (null != NetManager.Instance)
+            NetManager.Instance.Close();
         Caching.ClearCache();
     }
 }
