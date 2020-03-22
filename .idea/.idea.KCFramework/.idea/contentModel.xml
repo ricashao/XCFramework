@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Administrator\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Administrator\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_KCFramework.549437682.00" t="ExcludeRecursive" />
+    <e p="E:\gitworkspace\KCFramework" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Demigiant" t="Include">
+          <e p="DemiLib" t="Include">
+            <e p="DemiLib.xml" t="Include" />
+          </e>
+          <e p="DOTween" t="Include">
+            <e p="DOTween43.xml" t="Include" />
+            <e p="DOTween46.xml" t="Include" />
+            <e p="DOTween50.xml" t="Include" />
+            <e p="readme.txt" t="Include" />
+          </e>
+          <e p="DOTweenPro" t="Include">
+            <e p="DOTweenAnimation.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="DOTweenAnimationInspector.cs" t="Include" />
+            </e>
+            <e p="readme.txt" t="Include" />
+          </e>
+          <e p="readme_DOTweenPro.txt" t="Include" />
+        </e>
+        <e p="Editor" t="Include">
+          <e p="EditorConstData.cs" t="Include" />
+          <e p="GlobalEditorHelper.cs" t="Include" />
+          <e p="ImageFont" t="Include">
+            <e p="ArtistFont.cs" t="Include" />
+            <e p="BetterList.cs" t="Include" />
+            <e p="BMFont.cs" t="Include" />
+            <e p="BMFontReader.cs" t="Include" />
+            <e p="BMGlyph.cs" t="Include" />
+            <e p="ByteReader.cs" t="Include" />
+          </e>
+          <e p="TexturePackerImporter" t="Include">
+            <e p="Editor" t="Include">
+              <e p="MeshTweaker.cs" t="Include" />
+              <e p="TexturePackerImport.cs" t="Include" />
+              <e p="TexturePivotParser.cs" t="Include" />
+            </e>
+            <e p="Plugins" t="Include">
+              <e p="MiniJSON.cs" t="Include" />
+              <e p="TexturePacker.cs" t="Include" />
+            </e>
+            <e p="readme.txt" t="Include" />
+            <e p="Shaders" t="Include">
+              <e p="OpaqueUnlit.shader" t="Include" />
+              <e p="TransparentUnlit.shader" t="Include" />
+              <e p="VertexColor.shader" t="Include" />
+            </e>
+          </e>
+          <e p="UI" t="Include">
+            <e p="PrefabRelink.cs" t="Include" />
+            <e p="PrefabUnRelink.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Resources" t="Include">
+          <e p="Config" t="Include">
+            <e p="AreaInfo.txt" t="Include" />
+            <e p="ServerInfo.txt" t="Include" />
+          </e>
+          <e p="protoc.lua.txt" t="Include" />
+          <e p="Shaders" t="Include">
+            <e p="Character" t="Include">
+              <e p="T_CharacterToon.shader" t="Include" />
+            </e>
+          </e>
+          <e p="UI" t="Include">
+            <e p="Fonts" t="Include">
+              <e p="PicFont" t="Include">
+                <e p="Font_Num_01.fnt" t="Include" />
+              </e>
+            </e>
+            <e p="GenAtlas" t="Include">
+              <e p="Atlas_Login" t="Include">
+                <e p="Atlas_Login_tp0_cfg.txt" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Src" t="Include">
+          <e p="3rd" t="Include">
+            <e p="LitJson" t="Include">
+              <e p="IJsonWrapper.cs" t="Include" />
+              <e p="JsonData.cs" t="Include" />
+              <e p="JsonException.cs" t="Include" />
+              <e p="JsonMapper.cs" t="Include" />
+              <e p="JsonMockWrapper.cs" t="Include" />
+              <e p="JsonReader.cs" t="Include" />
+              <e p="JsonWriter.cs" t="Include" />
+              <e p="Lexer.cs" t="Include" />
+              <e p="Netstandard15Polyfill.cs" t="Include" />
+              <e p="ParserToken.cs" t="Include" />
+            </e>
+            <e p="websocket-sharp" t="Include">
+              <e p="ByteOrder.cs" t="Include" />
+              <e p="CloseEventArgs.cs" t="Include" />
+              <e p="CloseStatusCode.cs" t="Include" />
+              <e p="CompressionMethod.cs" t="Include" />
+              <e p="ErrorEventArgs.cs" t="Include" />
+              <e p="Ext.cs" t="Include" />
+              <e p="Fin.cs" t="Include" />
+              <e p="HttpBase.cs" t="Include" />
+              <e p="HttpRequest.cs" t="Include" />
+              <e p="HttpResponse.cs" t="Include" />
+              <e p="LogData.cs" t="Include" />
+              <e p="Logger.cs" t="Include" />
+              <e p="LogLevel.cs" t="Include" />
+              <e p="Mask.cs" t="Include" />
+              <e p="MessageEventArgs.cs" t="Include" />
+              <e p="Net" t="Include">
+                <e p="AuthenticationBase.cs" t="Include" />
+                <e p="AuthenticationChallenge.cs" t="Include" />
+                <e p="AuthenticationResponse.cs" t="Include" />
+                <e p="AuthenticationSchemes.cs" t="Include" />
+                <e p="Chunk.cs" t="Include" />
+                <e p="ChunkedRequestStream.cs" t="Include" />
+                <e p="ChunkStream.cs" t="Include" />
+                <e p="ClientSslConfiguration.cs" t="Include" />
+                <e p="Cookie.cs" t="Include" />
+                <e p="CookieCollection.cs" t="Include" />
+                <e p="CookieException.cs" t="Include" />
+                <e p="EndPointListener.cs" t="Include" />
+                <e p="EndPointManager.cs" t="Include" />
+                <e p="HttpBasicIdentity.cs" t="Include" />
+                <e p="HttpConnection.cs" t="Include" />
+                <e p="HttpDigestIdentity.cs" t="Include" />
+                <e p="HttpHeaderInfo.cs" t="Include" />
+                <e p="HttpHeaderType.cs" t="Include" />
+                <e p="HttpListener.cs" t="Include" />
+                <e p="HttpListenerAsyncResult.cs" t="Include" />
+                <e p="HttpListenerContext.cs" t="Include" />
+                <e p="HttpListenerException.cs" t="Include" />
+                <e p="HttpListenerPrefix.cs" t="Include" />
+                <e p="HttpListenerPrefixCollection.cs" t="Include" />
+                <e p="HttpListenerRequest.cs" t="Include" />
+                <e p="HttpListenerResponse.cs" t="Include" />
+                <e p="HttpRequestHeader.cs" t="Include" />
+                <e p="HttpResponseHeader.cs" t="Include" />
+                <e p="HttpStatusCode.cs" t="Include" />
+                <e p="HttpStreamAsyncResult.cs" t="Include" />
+                <e p="HttpUtility.cs" t="Include" />
+                <e p="HttpVersion.cs" t="Include" />
+                <e p="InputChunkState.cs" t="Include" />
+                <e p="InputState.cs" t="Include" />
+                <e p="LineState.cs" t="Include" />
+                <e p="NetworkCredential.cs" t="Include" />
+                <e p="QueryStringCollection.cs" t="Include" />
+                <e p="ReadBufferState.cs" t="Include" />
+                <e p="RequestStream.cs" t="Include" />
+                <e p="ResponseStream.cs" t="Include" />
+                <e p="ServerSslConfiguration.cs" t="Include" />
+                <e p="WebHeaderCollection.cs" t="Include" />
+                <e p="WebSockets" t="Include">
+                  <e p="HttpListenerWebSocketContext.cs" t="Include" />
+                  <e p="TcpListenerWebSocketContext.cs" t="Include" />
+                  <e p="WebSocketContext.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Opcode.cs" t="Include" />
+              <e p="PayloadData.cs" t="Include" />
+              <e p="Rsv.cs" t="Include" />
+              <e p="Server" t="Include">
+                <e p="HttpRequestEventArgs.cs" t="Include" />
+                <e p="HttpServer.cs" t="Include" />
+                <e p="IWebSocketSession.cs" t="Include" />
+                <e p="ServerState.cs" t="Include" />
+                <e p="WebSocketBehavior.cs" t="Include" />
+                <e p="WebSocketServer.cs" t="Include" />
+                <e p="WebSocketServiceHost.cs" t="Include" />
+                <e p="WebSocketServiceHost`1.cs" t="Include" />
+                <e p="WebSocketServiceManager.cs" t="Include" />
+                <e p="WebSocketSessionManager.cs" t="Include" />
+              </e>
+              <e p="WebSocket.cs" t="Include" />
+              <e p="WebSocketException.cs" t="Include" />
+              <e p="WebSocketFrame.cs" t="Include" />
+              <e p="WebSocketState.cs" t="Include" />
+            </e>
+          </e>
+          <e p="FrameWork" t="Include">
+            <e p="Bit" t="Include">
+              <e p="BitOperator.cs" t="Include" />
+            </e>
+            <e p="CsNet" t="Include">
+              <e p="Connector.cs" t="Include" />
+              <e p="CsIO" t="Include">
+                <e p="Coder.cs" t="Include" />
+                <e p="Coder.Lua.cs" t="Include" />
+                <e p="Config.cs" t="Include" />
+                <e p="ICallback.cs" t="Include" />
+                <e p="IMarshal.cs" t="Include" />
+                <e p="IProtocol.cs" t="Include" />
+                <e p="Linker.cs" t="Include" />
+                <e p="LuaProtocol.cs" t="Include" />
+                <e p="Octets.cs" t="Include" />
+                <e p="OctetsStream.cs" t="Include" />
+                <e p="Utils.cs" t="Include" />
+              </e>
+              <e p="NetManager.cs" t="Include" />
+            </e>
+            <e p="CUtil" t="Include">
+              <e p="Audio" t="Include">
+                <e p="AudioManager.cs" t="Include" />
+                <e p="AudioObj.cs" t="Include" />
+              </e>
+              <e p="Common" t="Include">
+                <e p="Asset" t="Include">
+                  <e p="AssetManager.cs" t="Include" />
+                  <e p="AsynCallQueue.cs" t="Include" />
+                  <e p="Caches" t="Include">
+                    <e p="AssetBundleCache.cs" t="Include" />
+                    <e p="AssetCache.cs" t="Include" />
+                    <e p="AssetCacheManager.cs" t="Include" />
+                    <e p="IAssetCache.cs" t="Include" />
+                  </e>
+                  <e p="ImageSetManager.cs" t="Include" />
+                  <e p="Loader" t="Include">
+                    <e p="AsynLoader.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="Constants.cs" t="Include" />
+                <e p="IO" t="Include">
+                  <e p="os.cs" t="Include" />
+                  <e p="PathTools.cs" t="Include" />
+                </e>
+                <e p="Pool" t="Include">
+                  <e p="Interfaces" t="Include">
+                    <e p="IPool.cs" t="Include" />
+                  </e>
+                  <e p="PoolManager.cs" t="Include" />
+                  <e p="ResourcePool.cs" t="Include" />
+                </e>
+                <e p="UIComponentScript" t="Include">
+                  <e p="DragableItemScript.cs" t="Include" />
+                  <e p="UIComponentScript.cs" t="Include" />
+                  <e p="UIObject.cs" t="Include" />
+                  <e p="UIScript.cs" t="Include" />
+                  <e p="UISpriteSwap.cs" t="Include" />
+                </e>
+              </e>
+              <e p="CoroutineManager.cs" t="Include" />
+              <e p="CUtilMain.cs" t="Include" />
+              <e p="CUtilSettings.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="DataTool" t="Include">
+                  <e p="Defines.cs" t="Include" />
+                  <e p="ExportDataTable.cs" t="Include" />
+                  <e p="MenualCodeHelper.cs" t="Include" />
+                  <e p="TypeCheckers.cs" t="Include" />
+                  <e p="XLSXDecoder.cs" t="Include" />
+                </e>
+                <e p="Menus" t="Include">
+                  <e p="ExportAssetBundle.cs" t="Include" />
+                  <e p="SpriteAtlasMenu.cs" t="Include" />
+                </e>
+                <e p="Util" t="Include">
+                  <e p="CoreStyle.cs" t="Include" />
+                  <e p="GUIHelper.cs" t="Include" />
+                </e>
+              </e>
+              <e p="InputTouch.cs" t="Include" />
+              <e p="Interfaces" t="Include">
+                <e p="ITickable.cs" t="Include" />
+              </e>
+              <e p="TouchScreen.cs" t="Include" />
+            </e>
+            <e p="LuaSupport" t="Include">
+              <e p="Base" t="Include">
+                <e p="Debugger.cs" t="Include" />
+                <e p="LuaScriptMgr.cs" t="Include" />
+              </e>
+              <e p="Common" t="Include">
+                <e p="BaseLua.ts.cs" t="Include" />
+                <e p="GameComponentClick.cs" t="Include" />
+                <e p="InputFieldEvent.cs" t="Include" />
+              </e>
+              <e p="Manager" t="Include">
+                <e p="Panel" t="Include">
+                  <e p="PanelManager.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Util" t="Include">
+                <e p="Const.cs" t="Include" />
+                <e p="ioo.cs" t="Include" />
+                <e p="Util.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="GameMain.cs" t="Include" />
+          <e p="Test" t="Include">
+            <e p="AssetBundleTest.cs" t="Include" />
+          </e>
+        </e>
+        <e p="XLua" t="Include">
+          <e p="BuildInInit.cs" t="Include" />
+          <e p="CHANGELOG.txt" t="Include" />
+          <e p="Editor" t="Include">
+            <e p="ExampleConfig.cs" t="Include" />
+          </e>
+          <e p="Examples" t="Include">
+            <e p="01_Helloworld" t="Include">
+              <e p="Helloworld.cs" t="Include" />
+            </e>
+            <e p="02_U3DScripting" t="Include">
+              <e p="LuaBehaviour.cs" t="Include" />
+              <e p="LuaTestScript.lua.txt" t="Include" />
+            </e>
+            <e p="03_UIEvent" t="Include">
+              <e p="ButtonInteraction.lua.txt" t="Include" />
+            </e>
+            <e p="04_LuaObjectOrented" t="Include">
+              <e p="InvokeLua.cs" t="Include" />
+            </e>
+            <e p="05_NoGc" t="Include">
+              <e p="NoGc.cs" t="Include" />
+            </e>
+            <e p="06_Coroutine" t="Include">
+              <e p="Coroutine_Runner.cs" t="Include" />
+              <e p="CoroutineTest.cs" t="Include" />
+              <e p="Resources" t="Include">
+                <e p="coruntine_test.lua.txt" t="Include" />
+                <e p="cs_coroutine.lua.txt" t="Include" />
+              </e>
+            </e>
+            <e p="07_AsyncTest" t="Include">
+              <e p="AsyncTest.cs" t="Include" />
+              <e p="MessageBox.cs" t="Include" />
+              <e p="Resources" t="Include">
+                <e p="async_test.lua.txt" t="Include" />
+                <e p="message_box.lua.txt" t="Include" />
+              </e>
+            </e>
+            <e p="08_Hotfix" t="Include">
+              <e p="HotfixTest.cs" t="Include" />
+              <e p="HotfixTest2.cs" t="Include" />
+              <e p="StatefullTest.cs" t="Include" />
+            </e>
+            <e p="09_GenericMethod" t="Include">
+              <e p="Foo.cs" t="Include" />
+              <e p="GenericMethodExample.cs" t="Include" />
+            </e>
+            <e p="10_SignatureLoader" t="Include">
+              <e p="SignatureLoaderTest.cs" t="Include" />
+            </e>
+            <e p="11_RawObject" t="Include">
+              <e p="RawObjectTest.cs" t="Include" />
+            </e>
+            <e p="12_ReImplementInLua" t="Include">
+              <e p="ReImplementInLua.cs" t="Include" />
+            </e>
+            <e p="13_BuildFromCLI" t="Include">
+              <e p="Editor" t="Include">
+                <e p="BuildFromCLI.cs" t="Include" />
+              </e>
+            </e>
+            <e p="ExampleGenConfig.cs" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="perf" t="Include">
+              <e p="memory.lua.txt" t="Include" />
+              <e p="profiler.lua.txt" t="Include" />
+            </e>
+            <e p="tdr" t="Include">
+              <e p="tdr.lua.txt" t="Include" />
+            </e>
+            <e p="XLua" t="Include">
+              <e p="util.lua.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Src" t="Include">
+            <e p="CodeEmit.cs" t="Include" />
+            <e p="CopyByValue.cs" t="Include" />
+            <e p="DelegateBridge.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="Generator.cs" t="Include" />
+              <e p="Hotfix.cs" t="Include" />
+              <e p="LinkXmlGen" t="Include">
+                <e p="LinkXmlGen.cs" t="Include" />
+                <e p="LinkXmlGen.tpl.txt" t="Include" />
+              </e>
+              <e p="Template" t="Include">
+                <e p="LuaClassWrap.tpl.txt" t="Include" />
+                <e p="LuaClassWrapGCM.tpl.txt" t="Include" />
+                <e p="LuaDelegateBridge.tpl.txt" t="Include" />
+                <e p="LuaDelegateWrap.tpl.txt" t="Include" />
+                <e p="LuaEnumWrap.tpl.txt" t="Include" />
+                <e p="LuaEnumWrapGCM.tpl.txt" t="Include" />
+                <e p="LuaInterfaceBridge.tpl.txt" t="Include" />
+                <e p="LuaRegister.tpl.txt" t="Include" />
+                <e p="LuaRegisterGCM.tpl.txt" t="Include" />
+                <e p="LuaWrapPusher.tpl.txt" t="Include" />
+                <e p="PackUnpack.tpl.txt" t="Include" />
+                <e p="TemplateCommon.lua.txt" t="Include" />
+              </e>
+              <e p="TemplateRef.cs" t="Include" />
+            </e>
+            <e p="GenAttributes.cs" t="Include" />
+            <e p="GenericDelegateBridge.cs" t="Include" />
+            <e p="InternalGlobals.cs" t="Include" />
+            <e p="LuaBase.cs" t="Include" />
+            <e p="LuaDLL.cs" t="Include" />
+            <e p="LuaEnv.cs" t="Include" />
+            <e p="LuaException.cs" t="Include" />
+            <e p="LuaFunction.cs" t="Include" />
+            <e p="LuaTable.cs" t="Include" />
+            <e p="MethodWarpsCache.cs" t="Include" />
+            <e p="ObjectCasters.cs" t="Include" />
+            <e p="ObjectPool.cs" t="Include" />
+            <e p="ObjectTranslator.cs" t="Include" />
+            <e p="ObjectTranslatorPool.cs" t="Include" />
+            <e p="RawObject.cs" t="Include" />
+            <e p="SignatureLoader.cs" t="Include" />
+            <e p="StaticLuaCallbacks.cs" t="Include" />
+            <e p="TemplateEngine" t="Include">
+              <e p="TemplateEngine.cs" t="Include" />
+            </e>
+            <e p="TypeExtensions.cs" t="Include" />
+            <e p="Utils.cs" t="Include" />
+          </e>
+          <e p="Tutorial" t="Include">
+            <e p="CSharpCallLua" t="Include">
+              <e p="CSCallLua.cs" t="Include" />
+            </e>
+            <e p="LoadLuaScript" t="Include">
+              <e p="ByFile" t="Include">
+                <e p="ByFile.cs" t="Include" />
+                <e p="Resources" t="Include">
+                  <e p="byfile.lua.txt" t="Include" />
+                </e>
+              </e>
+              <e p="ByString" t="Include">
+                <e p="ByString.cs" t="Include" />
+              </e>
+              <e p="Loader" t="Include">
+                <e p="CustomLoader.cs" t="Include" />
+              </e>
+            </e>
+            <e p="LuaCallCSharp" t="Include">
+              <e p="LuaCallCs.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="KCFramework.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
