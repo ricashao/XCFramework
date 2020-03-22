@@ -124,6 +124,7 @@ lua.assetbundle,Lua/Net/Protol/login_pb.lua.bytes
 lua.assetbundle,Lua/Net/Protol/room_pb.lua.bytes
 lua.assetbundle,Lua/Net/Protol/test_battle_pb.lua.bytes
 lua.assetbundle,Lua/Net/Protol/test_common_pb.lua.bytes
+lua.assetbundle,Lua/Net/Protol/test_pb.lua.bytes
 lua.assetbundle,Lua/Net/Protol/test_person_pb.lua.bytes
 lua.assetbundle,Lua/Net/Protol/user_pb.lua.bytes
 lua.assetbundle,Lua/Net/Util/NetUtil.lua.bytes
@@ -366,3 +367,4 @@ ui/prefabs/view/uiloading_prefab.assetbundle,UI/Prefabs/View/UILoading.prefab
 ui/prefabs/view/uilogin_prefab.assetbundle,UI/Prefabs/View/UILogin.prefab
 ui/prefabs/view/uiloginserver_prefab.assetbundle,UI/Prefabs/View/UILoginServer.prefab
 ui/prefabs/view/uitestmain_prefab.assetbundle,UI/Prefabs/View/UITestMain.prefab
+variantsmap_bytes.assetbundle,VariantsMap.bytes
