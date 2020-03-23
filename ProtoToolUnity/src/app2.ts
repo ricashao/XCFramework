@@ -469,7 +469,7 @@ function parseProto(proto: string, gcfg?: GlobalCfg) {
 			if (messageGameProtoOut) {
 				log(`<font color="#0c0">生成客户端proto文件成功，${messageGameProtoOut}</font>`);
 				//开始生成proto类
-				execLuaBat("protoc.exe ", path.join(cprefix, "ProtoFile"), path.join(cprefix, "/Asset/LuaScript/Net/Protol"), protoname);
+				execLuaBat("protoc.exe ", path.join(cprefix, "ProtoFile"), path.join(cprefix, "/Assets/LuaScripts/Net/Protol"), protoname);
 			}
 		}
 	}
