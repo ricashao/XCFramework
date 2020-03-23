@@ -1,0 +1,274 @@
+
+message Code{
+	required int32 flag = 1;//
+	optional int32 id = 2;//可选参数
+	repeated string param = 3;//可选参数
+}
+message DictDTO{
+	required int32 key = 1;//
+	required int32 value = 2;//
+}
+message PlayerDTO{
+	required int64 uid = 1;//唯一id
+	required string name = 2;//玩家名
+	required int32 rankLevel = 3;//道场排名
+	required int32 reputation = 4;//名声
+	required DictDTO duizhan = 5;//对战战绩
+	required DictDTO weituo = 6;//委托战绩
+	required DictDTO hezhan = 7;//合战战绩
+	required DictDTO daochang = 8;//道场战绩
+	required int32 level = 9;//总等级
+}
+message BuildDTO{
+	required int32 slot = 1;//建筑格子位
+	required int32 bid = 2;//建筑类型
+	required int32 level = 3;//建筑等级
+	optional string shape = 4;//建筑模型
+	optional int32 status = 5;//状态
+}
+message BuildTaskDTO{
+	required int32 slot = 1;//建筑格子位
+	required int64 time = 2;//建筑完成时间
+	required int64 startTime = 3;//建筑开始时间
+	required int32 type = 4;//操作类型 1建筑2升级4拆除
+	optional int32 buildType = 5;//目标类型
+	optional int32 targetLevel = 6;//目标等级（容错）
+}
+message ItemDTO{
+	required int32 itemId = 1;//itemid
+	required int32 count = 2;//数量
+	optional int64 guid = 3;//唯一id
+	optional int32 roleId = 4;//用户id
+	optional int32 rareLevel = 5;//稀有等级
+	optional int64 endTime = 6;//过期时间
+	optional int32 status = 7;//
+}
+message SimpleItemDTO{
+	optional int64 guid = 1;//
+	optional int32 count = 2;//
+	optional int32 itemId = 3;//
+}
+message ServerInfoDTO{
+	optional int64 addTime = 1;//服务器开区时间
+	optional int64 startTime = 2;//服务器当前时间
+	optional string version = 3;//服务器版本号
+	optional int32 zone = 4;//时区
+	optional bool debug = 5;//是否debug状态
+	optional string name = 6;//服务器名
+}
+message CardDTO{
+	required int32 itemId = 1;//itemid
+	optional int64 guid = 2;//卡牌唯一id
+	optional int32 roleId = 3;//用户id
+	optional int32 limitLevel = 4;//限制等级
+	optional int32 skill1 = 5;//技能1
+	optional int32 skill2 = 6;//技能2
+	optional int32 skill3 = 7;//技能3
+	optional int32 curHp = 8;//当前血量
+	optional int32 mastery = 9;//功绩值
+	optional int32 fireLevel = 10;//火修炼等级
+	optional int32 earthLevel = 11;//地修炼等级
+	optional int32 windLevel = 12;//风修炼等级
+	optional int32 waterLevel = 13;//水修炼等级
+	optional int32 skyLevel = 14;//空修炼等级
+	optional int32 status = 15;//状态：上锁
+}
+message FormationDTO{
+	required int32 fid = 1;//队伍编号1-4
+	required int32 uid = 2;//玩家唯一id
+	optional int64 pos1 = 3;//位置1卡牌id
+	optional int64 pos2 = 4;//位置2卡牌id
+	optional int64 pos3 = 5;//位置3卡牌id
+	optional int64 pos4 = 6;//位置4卡牌id
+	optional int64 pos5 = 7;//位置5卡牌id
+	optional int64 leader = 8;//大将id
+	optional int32 formationId = 9;//阵型配置id
+}
+message CardTrainDTO{
+	required int32 slot = 1;//修炼格子位
+	required int64 guid = 2;//卡牌唯一id
+	required int64 time = 3;//修炼完成时间
+	required int64 startTime = 4;//修炼开始时间
+	required int32 type = 5;//操作类型 1五轮修炼2攻防修炼
+	optional int32 targetLevel = 6;//目标等级（容错）
+}
+message RemoteServerInfo{
+	optional int32 serverType = 1;//
+	optional string akkaPath = 2;//用akka进行连接的服务器地址
+	optional int32 serverId = 3;//服务器编号
+	optional bool isMainLogicServer = 4;//如果是逻辑服务器，需发是不是主逻辑服务器（只有主逻辑服务器处理注册、匹配等）
+	optional string gatewayConnectPath = 5;//如果是gateway，需发供客户端连接的地址
+}
+message UserState{
+	optional int32 onlineState = 1;//
+	optional int32 actionState = 2;//
+	optional int32 battleType = 3;//如果action是匹配或者对战，存储对战类型
+	optional string battleId = 4;//如果action是对战，储存对局id
+}
+message SignDTO{
+	required int32 dayofmonth = 1;//本月可签到天数
+	repeated int32 signeddays = 2;//本月已签到的天数
+	required bool isSigned = 3;//今日是否签到
+	required int32 day = 4;//第几天
+}
+message UserData{
+	optional int32 userId = 1;//
+	optional string username = 2;//
+	optional string passwordMD5 = 3;//MD5加密后的密码
+	optional string nickname = 4;//昵称
+	optional int32 channel = 5;//
+	optional int32 lang = 6;//
+	optional int64 registTimestamp = 7;//
+	optional string registIp = 8;//
+	optional int64 lastLoginTimestamp = 9;//
+	optional string lastLoginIp = 10;//
+	optional UserForbidInfo forbidInfo = 11;//如果有此字段，说明玩家账号被封禁
+}
+message UserInfo{
+	optional int32 userId = 1;//用户id
+	optional string username = 2;//用户名
+	optional string nickname = 3;//昵称
+	optional int32 channel = 4;//渠道
+	optional int32 lang = 5;//语种
+	optional UserState userState = 6;//在线以及行为状态
+}
+message UserBriefInfo{
+	optional int32 userId = 1;//用户id
+	optional string nickname = 2;//昵称
+	optional int32 channel = 3;//渠道
+	optional int32 lang = 4;//语种
+	optional UserState userState = 5;//在线以及行为状态
+}
+message UserForbidInfo{
+	optional int32 forbidReason = 1;//
+	optional int64 forbidStartTimestamp = 2;//封禁开始时间
+	optional int64 forbidEndTimestamp = 3;//封禁结束时间
+}
+message BuildingInfo{
+	repeated BuildDTO builds = 1;//
+}
+message BagInfo{
+	repeated ItemDTO items = 1;//
+}
+message CardInfo{
+	repeated CardDTO cards = 1;//
+}
+message FormationInfo{
+	repeated FormationDTO formations = 1;//
+}
+message BuildTaskInfo{
+	repeated BuildTaskDTO buildTasks = 1;//
+}
+message CardTrainTaskInfo{
+	repeated CardTrainDTO trainTasks = 1;//
+}
+message SignInfo{
+	repeated int32 signeddays = 1;//本月签到的日期
+	required int64 lastSignTime = 2;//上一次签到的日期
+}
+message EntryDTO{
+	required int32 key = 1;//
+	required int32 value = 2;//
+}
+message BattleCardsDTO{
+	optional int32 userId = 1;//用户唯一id
+	optional string uname = 2;//用户游戏名
+	repeated BattleCardDTO cards = 3;//战斗卡牌
+	optional int32 formationId = 4;//当前战斗阵型id
+	optional bool isAI = 5;//玩家还是ai;
+}
+message BattleCardDTO{
+	optional int32 cardId = 1;//卡牌配置id
+	optional int32 fireLevel = 2;//火属性等级
+	optional int32 earthLevel = 3;//地属性等级
+	optional int32 windLevel = 4;//风属性等级
+	optional int32 waterLevel = 5;//水属性等级
+	optional int32 skyLevel = 6;//空属性等级
+	optional int32 formationIndex = 7;//阵型位置
+	optional bool isLeader = 8;//是否为总大将
+	optional int32 curHp = 9;//战斗前的血量
+	repeated int32 skillList = 10;//
+}
+message SendRoundStart{
+	repeated EntryDTO aiactions = 1;//回合前需要播放的AIAction key=fighter id; value=aiaction id;
+}
+message SendRoundScript{
+	repeated NewResultItem playitem = 1;//
+	repeated AIAction aiactions = 2;//随战斗脚本播放的客户端AI动作
+	repeated EntryDTO rolechangedattrs = 3;//回合结束时主角属性的变化（战斗中属性实时变化）
+}
+message SendBattleEnd{
+	repeated EntryDTO aiactions = 1;//战斗结束前需要播放的AIAction key=fighter id; value=aiaction id;
+}
+message SendBattleStart{
+	optional int32 battleconfigid = 1;//战斗配置ID，默认为-1，即不是通过战斗配置来生成的战斗
+	optional int32 battletype = 2;//
+	optional int32 mapid = 3;//
+}
+message SendAddFighters{
+	repeated FighterInfo fighterlist = 1;//
+}
+message SendRound{
+	optional SendRoundStart roundStart = 1;//
+	optional SendRoundScript roundScript = 2;//
+}
+message SendBattlePlay{
+	optional SendBattleStart battleStart = 1;//
+	optional SendAddFighters addFighters = 2;//
+	repeated SendRound roundList = 3;//
+	optional SendBattleEnd battleEnd = 4;//
+}
+message AIAction{
+	optional int32 actionseq = 1;//在一回合的脚本中，第几个ResultItem
+	optional int32 actionmoment = 2;//-1:攻击者行动前；0：攻击者行动后;1-28：对应ID的战斗者死亡时
+	optional int32 actionfighterid = 3;//做动作的战斗者
+	optional int32 actionid = 4;//需要做的AIAction ID
+}
+message FighterInfo{
+	optional int32 fightertype = 1;//
+	optional int32 dataid = 2;//
+	optional int32 index = 3;//
+	optional int32 maxhp = 4;//
+	optional int32 hp = 5;//
+	optional string shape = 6;//
+	optional int32 posx = 7;//
+	optional int32 posy = 8;//
+	optional bool isLeader = 9;//
+	repeated EntryDTO buffs = 10;//
+}
+message DemoBuff{
+	optional int32 fighterid = 1;//
+	optional int32 buffid = 2;//
+	optional int32 round = 3;//-1为删除该buff，0为没有回合数的buff，>0为回合数
+}
+message DemoAttr{
+	optional int32 fighterid = 1;//
+	optional int32 attrid = 2;//属性id
+	optional int32 value = 3;//最终值
+}
+message NewDemoResult{
+	required int32 targetid = 1;//目标id，必须有
+	repeated DemoBuff demobuffs = 2;//每一个demo的buff变化
+	repeated DemoAttr demoattrs = 3;//每一个demo的属性最终值
+	repeated EntryDTO datas = 4;//存储数据，key参考以下值，如datas中某key值没有则value默认为0
+}
+message PointDTO{
+	required int32 x = 1;//
+	required int32 y = 2;//
+}
+message DemoExecute{
+	optional int32 attackerid = 1;//攻击发起者id
+	optional int32 hpconsume = 2;//攻击者耗血，始终为正好了
+	optional int32 operationtype = 3;//操作类型 参考OperationType中的值如果是操作失败ACTION_FAILURE
+	optional int32 operationid = 4;//操作的值（使用物品时示物品ID，招唤宠物时为宠物）
+	optional int32 msgid = 5;//当不为0时，为动作时的提示ID
+	repeated DemoBuff demobuffs = 6;//
+	repeated PointDTO movePaths = 7;//移动路径
+	optional int32 aimIndex = 8;//主目标id 施法为battleindex 其他为0
+}
+message NewResultItem{
+	optional DemoExecute execute = 1;//
+	repeated NewDemoResult resultlist = 2;//
+	repeated FighterInfo newfighter = 3;//
+	repeated EntryDTO rolechangedattrs = 4;//战斗脚本接收者，此动作后属性的变化（战斗中属性实时变化）
+}

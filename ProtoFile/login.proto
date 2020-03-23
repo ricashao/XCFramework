@@ -1,0 +1,32 @@
+import "common.proto";
+message Login_C2S_Msg{
+	optional string username = 1;//账号名
+	optional string password = 2;//密码
+}
+message Login_S2C_Msg{
+	optional UserInfo player = 1;//角色
+	optional ServerInfoDTO serverInfoDTO = 2;//服务器时间
+}
+message Regist_C2S_Msg{
+	optional string username = 1;//用户名
+	optional string password = 2;//原始明文密码，是为了服务器校验密码长度、复杂度等是否合法，校验通过后需进行MD5加密存储
+}
+message Regist_S2C_Msg{
+	optional Code code = 1;//
+}
+message CreateName_S2C_Msg{
+	optional Code code = 1;//
+	optional string name = 2;//
+}
+message CreateName_C2S_Msg{
+	required string name = 1;//
+}
+message RandomName_C2S_Msg{
+
+}
+message RandomName_S2C_Msg{
+	required string name = 1;//
+}
+message ForceOffline_S2C_Msg{
+	optional int32 forceOfflineReason = 1;//
+}
