@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CustomDataStruct;
 using WebSocketSharp;
 
 namespace Networks
@@ -8,7 +9,7 @@ namespace Networks
     {
         public Action<object, int, string> OnConnect = null;
         public Action<object, int, string> OnClosed = null;
-        public Action<IProtocol> ReceivePkgHandle = null;
+        public Action<byte[]> ReceivePkgHandle = null;
 
         private List<HjNetworkEvt> mNetworkEvtList = null;
         private object mNetworkEvtLock = null;
@@ -20,9 +21,10 @@ namespace Networks
         protected volatile SOCKSTAT mStatus = SOCKSTAT.CLOSED;
 
 
-        private const int ReserveInputBufSize = 8192;
-        private readonly Octets _inputBuf = new Octets(ReserveInputBufSize);
-        private readonly Queue<IProtocol> _protocols = new Queue<IProtocol>();
+        private StreamBuffer receiveStreamBuffer;
+        protected IMessageQueue mReceiveMsgQueue = null;
+        private int bufferCurLen = 0;
+        private List<byte[]> mTempMsgList = null;
 
         public WsNetwork()
         {
@@ -30,6 +32,8 @@ namespace Networks
 
             mNetworkEvtList = new List<HjNetworkEvt>();
             mNetworkEvtLock = new object();
+            mReceiveMsgQueue = new MessageQueue();
+            mTempMsgList = new List<byte[]>();
         }
 
         public virtual void Dispose()
@@ -61,18 +65,10 @@ namespace Networks
                 {
                     if (e.IsBinary)
                     {
-                        _inputBuf.Append(e.RawData);
-                        var os = new OctetsStream(_inputBuf);
-                        var protocol = Decode(_protocols, os);
-                        if (protocol != null)
-                        {
-                            ReceivePkgHandle(protocol);
-                        }
-
-                        if (os.Position != 0)
-                        {
-                            _inputBuf.EraseAndCompact(os.Position, ReserveInputBufSize);
-                        }
+                        int bufferLeftLen = receiveStreamBuffer.size - bufferCurLen;
+                        receiveStreamBuffer.CopyFrom(e.RawData, 0, 0, e.RawData.Length);
+                        bufferCurLen += e.RawData.Length;
+                        DoReceive(receiveStreamBuffer, ref bufferCurLen);
                     }
                     else
                         UnityEngine.Debug.Log("收到非二进制数据");
@@ -102,37 +98,49 @@ namespace Networks
             }
         }
 
-        internal IProtocol Decode(Queue<IProtocol> protocols, OctetsStream os)
+        protected void DoReceive(StreamBuffer streamBuffer, ref int bufferCurLen)
         {
-            while (os.Remaining > 0)
+            try
             {
-                int tranpos = os.Begin();
-                try
+                // 组包、拆包
+                byte[] data = streamBuffer.GetBuffer();
+                int start = 0;
+                streamBuffer.ResetStream();
+                while (true)
                 {
-                    int size = os.UnmarshalSize();
-                    int type = os.UnmarshalSize();
-                    int code = os.UnmarshalSize();
-
-                    if (size - 12 > os.Remaining)
+                    if (bufferCurLen - start < sizeof(int) * 3)
                     {
-                        os.RollBack(tranpos);
-                        break; // not enough
+                        break;
                     }
 
-                    var protocol = new LuaProtocol
-                        {type = type, code = code, data = new Octets(os.Data, os.Position, size)};
-                    os.RollTo(os.Position + size - 12);
-                    return protocol;
+                    int msgLen = BitConverter.ToInt32(data, start);
+                    if (bufferCurLen < msgLen + sizeof(int))
+                    {
+                        break;
+                    }
+
+                    // 提取字节流，去掉开头表示长度的4字节
+                    start += sizeof(int);
+                    //协议号+code+数据
+                    var bytes = streamBuffer.ToArray(start, msgLen - sizeof(int));
+                    mReceiveMsgQueue.Add(bytes);
+                    // 下一次组包
+                    start += msgLen - sizeof(int);
                 }
-                catch (MarshalException)
+
+                if (start > 0)
                 {
-                    os.RollBack(tranpos);
-                    break;
+                    bufferCurLen -= start;
+                    streamBuffer.CopyFrom(data, start, 0, bufferCurLen);
                 }
             }
-
-            return null;
+            catch (Exception ex)
+            {
+                Logger.LogError(string.Format("Tcp receive package err : {0}\n {1}", ex.Message, ex.StackTrace));
+            }
         }
+
+       
 
         public void Connect()
         {
@@ -142,6 +150,8 @@ namespace Networks
             string msg = null;
             try
             {
+                receiveStreamBuffer = StreamBufferPool.GetStream(1024 * 1024 * 2, false, true);
+                bufferCurLen = 0;
                 DoConnect();
             }
             catch (ObjectDisposedException ex)
@@ -167,8 +177,13 @@ namespace Networks
 
         protected virtual void OnConnected()
         {
+            StartAllThread();
             mStatus = SOCKSTAT.CONNECTED;
             ReportSocketConnected(ESocketError.NORMAL, "Connect successfully");
+        }
+
+        public virtual void StartAllThread()
+        {
         }
 
         protected virtual void DoClose()
@@ -180,6 +195,13 @@ namespace Networks
             }
 
             mClientSocket = null;
+            StopAllThread();
+        }
+
+        public virtual void StopAllThread()
+        {
+            //清除接受队列
+            mReceiveMsgQueue.Dispose();
         }
 
         public virtual void Close()
@@ -226,7 +248,40 @@ namespace Networks
 
         public void UpdateNetwork()
         {
+            UpdatePacket();
             UpdateEvt();
+        }
+        
+        private void UpdatePacket()
+        {
+            if (!mReceiveMsgQueue.Empty())
+            {
+                mReceiveMsgQueue.MoveTo(mTempMsgList);
+
+                try
+                {
+                    for (int i = 0; i < mTempMsgList.Count; ++i)
+                    {
+                        var objMsg = mTempMsgList[i];
+                        if (ReceivePkgHandle != null)
+                        {
+                            ReceivePkgHandle(objMsg);
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Logger.LogError("Got the fucking exception :" + e.Message);
+                }
+                finally
+                {
+                    for (int i = 0; i < mTempMsgList.Count; ++i)
+                    {
+                        StreamBufferPool.RecycleBuffer(mTempMsgList[i]);
+                    }
+                    mTempMsgList.Clear();
+                }
+            }
         }
 
 
