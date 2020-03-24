@@ -1,11 +1,11 @@
 {
   "name": "prototools",
   "version": "0.0.1",
-  "description": "用于解析君游H5项目中，wiki上定义的前后端通信指令，自动生成前后端代码",
-  "main": "index.js",
+  "description": "用于解析项目中，wiki上定义的前后端通信指令，自动生成前后端代码",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "3tion",
+  "author": "ricashao",
   "license": "ISC"
 }

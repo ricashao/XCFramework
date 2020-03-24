@@ -3,10 +3,39 @@ const electron = require('electron');
 const {app} = electron;
 // Module to create native browser window.
 const {BrowserWindow} = electron;
+const {Menu} = electron;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
+var template=[{
+    label: '视图',
+    submenu: [
+      {
+        label: '刷新',
+        click: function(item, focusedWindow) {
+          if (focusedWindow)
+            focusedWindow.reload();
+        }
+      },
+      {
+        label: '打开开发者工具',
+        click: function(item, focusedWindow) {
+          if (focusedWindow)
+            focusedWindow.toggleDevTools();
+        }
+      },
+	  {
+        label: '返回首页',
+        click: function(item, focusedWindow) {
+          if (focusedWindow)
+            focusedWindow.loadURL(homePage);
+        }
+      }
+    ]
+  }];
+var menu = Menu.buildFromTemplate(template);
+Menu.setApplicationMenu(menu);
 
 function createWindow() {
   // Create the browser window.
@@ -14,10 +43,10 @@ function createWindow() {
 
   // and load the index.html of the app.
   // http://h5tools.client.jy/index.html
-  win.loadURL("http://127.0.0.1:12345/index.html");
+  win.loadURL("http://127.0.0.1:52100/index.html");
 
   // Open the DevTools.
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 
   // Emitted when the window is closed.
   win.on('closed', () => {

@@ -2,9 +2,9 @@
     "compilerOptions": {
         "module": "amd",
         "target": "es2015",
-        "noImplicitAny": false,
         "sourceMap": true,
-        "sourceRoot": "src",
+        "rootDir": "src",
+        "sourceRoot": "../src",
         "outDir": "dist"
     },
     "exclude": [
