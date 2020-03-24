@@ -1,4 +1,4 @@
-define(["require", "exports", "protobuf", "ClassHelper", "ServiceNameTemplate", "PBMsgDictTemplate", "CookieForPath"], function (require, exports, pbjs, ClassHelper_1, ServiceNameTemplate_1, PBMsgDictTemplate_1, CookieForPath_1) {
+define(["require", "exports", "protobuf", "CookieForPath", "./MapIDMapTemplate"], function (require, exports, pbjs, CookieForPath_1, MapIDMapTemplate_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const fs = nodeRequire("fs");
@@ -35,6 +35,10 @@ define(["require", "exports", "protobuf", "ClassHelper", "ServiceNameTemplate", 
          * 客户端路径，和前缀路径拼接得到文件生成路径地址
          */
         ClientPath: "(cpath)",
+        /**
+         * Lua路径，和前缀路径拼接得到文件生成路径地址
+         */
+        LuaPath: "(luapath)",
         /**
          * 服务器路径，和前缀路径拼接得到文件生成路径地址
          */
@@ -211,22 +215,14 @@ define(["require", "exports", "protobuf", "ClassHelper", "ServiceNameTemplate", 
         let url = gcfg ? gcfg.url : "";
         url = url || "[文本框中，复制粘贴]";
         let cprefix = gcfg ? gcfg.cprefix : null;
-        let sprefix = gcfg ? gcfg.sprefix : null;
-        //ServiceName路径
-        let sServiceName = gcfg ? gcfg.sServiceName : null;
-        //PBMsgDict路径
-        let PBMsgDictName = gcfg ? gcfg.PBMsgDictName : null;
         cprefix = cprefix || "";
-        sprefix = sprefix || "";
         let p = pbjs.DotProto.Parser.parse(proto);
         let options = p.options;
         // 处理文件级的Option
-        let fcpath = options[Options.ClientPath];
-        let fcmodule = options[Options.ClientModule];
-        let fspath = options[Options.ServerPath];
         let service = options[Options.ServiceName];
         let protoname = options[Options.Proto];
         let dependproto = options[Options.DependProto];
+        let luapath = options[Options.LuaPath];
         let now = new Date().format("yyyy-MM-dd HH:mm:ss");
         let idx = 0;
         let hasService = false;
@@ -235,8 +231,10 @@ define(["require", "exports", "protobuf", "ClassHelper", "ServiceNameTemplate", 
         // var msgTypeNameMap = {};
         // 客户端和服务端的Service收发数组
         let cSends = [], cRecvs = [], cRegs = [], sSends = [], sRecvs = [], sRegs = []; //, simports: string[] = [];
-        //存放当前模块的message
+        //存放当前模块的message s->s
         let sproto = [];
+        //记录前后端通讯的协议
+        let luaMsgId = [];
         for (let msg of p.messages) {
             // 所有的变量
             // 一行一个
@@ -244,8 +242,6 @@ define(["require", "exports", "protobuf", "ClassHelper", "ServiceNameTemplate", 
             let messageEncodes = [];
             // 如果有消息体的同名 Option，覆盖
             let options = msg.options;
-            let cpath = options[Options.ClientPath] || fcpath;
-            let cmodule = options[Options.ClientModule] || fcmodule;
             let cmddata = options[Options.CMD];
             var comment = msg.comment;
             var commentText = '';
@@ -306,26 +302,57 @@ define(["require", "exports", "protobuf", "ClassHelper", "ServiceNameTemplate", 
             // 生成代码
             let className = msg.name;
             // msgEncDict[className] = `{ ${messageEncodes.join(", ")} }`;
-            // var typeVar = '';
-            // if (className.indexOf('S2C') > 0 || className.indexOf('C2S') > 0) {
-            // 	typeVar = className.substr(-7, 3);
-            // }
-            // let type = typeVar;
-            // let handlerName = className[0].toLowerCase() + className.substring(1, className.length - 4);
-            // let p = requireds.concat(repeateds, optionals);
-            // if (type == "C2S") { // client to server
-            // 	hasService = true;
-            // 	makeCSendFunction(p, className, handlerName, cSends, cmds[0]);
-            // } else if (type == "S2C") { // server to client
-            // 	hasService = true;
-            // 	makeReciveFunc(className, handlerName, cRegs, cRecvs, cmds, p, false);
-            // }
-            let fleng = msg.fields.length;
+            var typeVar = '';
+            if (className.indexOf('S2C') > 0 || className.indexOf('C2S') > 0) {
+                typeVar = className.substr(-7, 3);
+            }
+            let type = typeVar;
+            if (type != "") {
+                //c->s的message 获取方法名
+                let handlerName = className.substring(0, className.length - 4);
+                if (type == "C2S") { // client to server
+                    hasService = true;
+                    luaMsgId.push(className);
+                    makeCSendFunction(className, handlerName, cSends, cmds[0]);
+                }
+                else if (type == "S2C") { // server to client
+                    hasService = true;
+                    luaMsgId.push(className);
+                    makeReciveFunc(className, handlerName, cRegs, cRecvs, cmds);
+                }
+            }
             //存在则保存
             if (cmds[0]) {
                 msgTypeCode.push(getMsgTypeCode(className, cmds[0]));
             }
             sproto.push(getMsgStruct(msg));
+        }
+        if (service && hasService && luapath) {
+            //预处理Service
+            //检查是否有客户端Service文件
+            let cdir = path.join(cprefix, luapath);
+            let cfileName = service + ".lua";
+            let cpath = path.join(cdir, cfileName);
+            let ccode = getCServiceCode(now, url, service, cSends, cRecvs, cRegs, getManualCodeInfo(cpath));
+            // 创建客户端Service
+            if (cprefix) {
+                let out = writeFile(cfileName, cdir, ccode);
+                if (out) {
+                    log(`<font color="#0c0">生成客户端Service代码成功，${out}</font>`);
+                }
+                createContent($g("code"), service, idx++, ccode, "");
+            }
+            if (luaMsgId.length > 0 && protoname) {
+                //生成MsgIDMap
+                let ctemp = new MapIDMapTemplate_1.default();
+                let cnPath = path.join(cprefix, "Assets/LuaScripts/Net/Config/MsgIDMap.lua");
+                let code = ctemp.addToFile(cnPath, protoname, luaMsgId);
+                let out = writeFile("Assets/LuaScripts/Net/Config/MsgIDMap.lua", cprefix, code);
+                if (out) {
+                    log(`<font color="#0c0">生成客户端MapIDMap代码成功，${out}</font>`);
+                }
+                createContent($g("code"), "MsgIDMap", idx++, code, "");
+            }
         }
         //客户端根目录存在
         if (cprefix) {
@@ -339,72 +366,6 @@ define(["require", "exports", "protobuf", "ClassHelper", "ServiceNameTemplate", 
                 }
             }
         }
-        return;
-        if (sprefix) {
-            //生成协议号的java文件
-            if (msgTypeCode.length > 0 && fspath) {
-                let outEnum = protoname.substring(0, 1).toUpperCase() + protoname.substring(1) + "Enum";
-                let paths = fspath.split(";");
-                for (let p of paths) {
-                    let messageEnumOut = writeFile(outEnum + '.java', path.join(sprefix, p + "/src/main/java/org/szc/proto/constants"), getEnumTemplateCode(outEnum, msgTypeCode));
-                    if (messageEnumOut) {
-                        log(`<font color="#0c0">生成服务端协议号代码成功，${messageEnumOut}</font>`);
-                    }
-                }
-            }
-            //生成对应的proto文件
-            if (sproto.length > 0 && protoname) {
-                let messageGameProtoOut = writeFile(protoname + '.proto', path.join(sprefix, 'proto'), makeProtoCode(sproto, dependproto));
-                if (messageGameProtoOut) {
-                    log(`<font color="#0c0">生成服务端proto文件成功，${messageGameProtoOut}</font>`);
-                    //开始生成proto类
-                    let paths = fspath.split(";");
-                    for (let p of paths) {
-                        execBat("protoc.exe", path.join(sprefix, "proto"), path.join(sprefix, p + "/src/main/java"), protoname);
-                    }
-                }
-            }
-        }
-        //处理PBMsgDict文件
-        if (PBMsgDictName) {
-            let temp = new PBMsgDictTemplate_1.default();
-            let snPath = path.join(sprefix, PBMsgDictName);
-            let srout = temp.addToFile(snPath, msgEncDict, true);
-            let cnPath = path.join(cprefix, PBMsgDictName);
-            let crout = temp.addToFile(cnPath, msgEncDict, false);
-            let out = writeFile(PBMsgDictName, cprefix, crout);
-            if (out) {
-                log(`<font color="#0c0">生成客户端PBMsgDict代码成功，${out}</font>`);
-            }
-            createContent($g("code"), snPath, idx++, crout, srout);
-        }
-        if (service && hasService) {
-            //预处理Service
-            //检查是否有客户端Service文件
-            let cdir = path.join(cprefix, fcpath);
-            let cfileName = service + ".ts";
-            let cpath = path.join(cdir, cfileName);
-            let ccode = getCServiceCode(now, url, service, fcmodule, cSends, cRecvs, cRegs, getManualCodeInfo(cpath));
-            // 创建客户端Service
-            if (cprefix) {
-                let out = writeFile(cfileName, cdir, ccode);
-                if (out) {
-                    log(`<font color="#0c0">生成客户端Service代码成功，${out}</font>`);
-                }
-            }
-            // createContent($g("code"), service, idx++, ccode, scode);
-            // 创建ServiceName常量文件
-            if (sServiceName) {
-                let ctemp = new ServiceNameTemplate_1.default();
-                let cnPath = path.join(cprefix, sServiceName);
-                let code = ctemp.addToFile(cnPath, service, false);
-                let out = writeFile(sServiceName, cprefix, code);
-                if (out) {
-                    log(`<font color="#0c0">生成客户端ServiceName代码成功，${out}</font>`);
-                }
-                createContent($g("code"), sServiceName, idx++, code, "");
-            }
-        }
     }
     function makeLuaProtoCode(sproto, depend) {
         let importproto = [];
@@ -415,23 +376,6 @@ define(["require", "exports", "protobuf", "ClassHelper", "ServiceNameTemplate", 
         }
         return `${importproto.join("\n")}
 ${sproto.join("\n")}`;
-    }
-    function makeProtoCode(sproto, depend) {
-        let importproto = [];
-        if (depend) {
-            depend.split(";").forEach(proto => {
-                importproto.push(`import "${proto}.proto";`);
-            });
-        }
-        return `package org.szc.proto;
-	${importproto.join("\n")}
-option optimize_for = CODE_SIZE;\n${sproto.join("\n")}`;
-    }
-    function getEnumTemplateCode(enumName, msgTypeCode) {
-        return `package org.szc.proto.constants;
-public class ${enumName}{
-${msgTypeCode.join(`\n`)}
-}`;
     }
     /**
      * 生成对应的message 结构
@@ -446,63 +390,19 @@ ${msgTypeCode.join(`\n`)}
 ${code.join("\n")}
 }`;
     }
-    function makeCSendFunction(fnames, className, handlerName, sends, cmd) {
-        let len = fnames.length;
-        if (len == 0) { //没有参数
-            sends.push(`public ${handlerName}() {`);
-            sends.push(`\tthis.send(${cmd}, null)`);
-            // } else if (len == 1) {
-            // 	let p = fnames[0];
-            // 	if (p.repeated) {
-            // 		sends.push(`public ${handlerName}(_${className}: ${className}) {`);
-            // 		sends.push(`\tthis.send(${cmd}, _${className}, "${className}");`);
-            // 	}
-            // 	else {
-            // 		sends.push(`public ${handlerName}(_${p.fieldName}: ${p.fieldType}) {`);
-            // 		sends.push(`\tthis.send(${cmd}, _${p.fieldName}, ${p.tType});`);
-            // 	}
-        }
-        else {
-            sends.push(`public ${handlerName}(_${className}: ${className}) {`);
-            sends.push(`\tthis.send(${cmd}, _${className}, "${className}");`);
-        }
-        sends.push(`}`);
+    function makeCSendFunction(className, handlerName, sends, cmd) {
+        sends.push(`local function ${handlerName}(self, _${className}) `);
+        sends.push(`\tself:Send(${cmd}, _${className}, "${className}")`);
+        sends.push(`end`);
     }
-    function makeReciveFunc(className, handlerName, regs, recvs, cmds, fnames, isServer) {
-        let len = fnames.length;
+    function makeReciveFunc(className, handlerName, regs, recvs, cmds) {
         let strCMD = cmds.join(",");
         //console.log(fnames);
-        var p;
-        if (len == 0) { //为null
-            regs.push(`this.regMsg(${Type_Null}, ${strCMD});`);
-        }
-        // else if (len == 1) {//如果是一个参数，并且是PBMessage类型，则添加注册
-        // 	p = fnames[0];
-        // 	if (p.isMsg) {
-        // 		className = p.fieldType;
-        // 		len = 2;//用于处理后续判断
-        // 	} else {
-        // 		if (p.repeated) {
-        // 			len = 2;
-        // 		}
-        // 		else {
-        // 			regs.push(`this.regMsg(${p.tType}, ${strCMD});`);
-        // 		}
-        // 	}
-        // }
-        if (len > 0) {
-            regs.push(`this.regMsg("${className}", ${strCMD});`);
-        }
-        regs.push(`this.regHandler(this.${handlerName}, ${strCMD});`);
-        let pp = isServer ? "async " : "";
-        recvs.push(`protected ${handlerName} = ${pp}(data:NetData) => {`);
-        // if (len > 1) {
-        recvs.push(`\tlet msg:${className} = <${className}>data.content;`);
-        // } else if (len == 1) { //创建数据
-        // recvs.push(`\tlet _${p.fieldName}: ${p.fieldType} = <any>data.content;`);
-        // }
-        recvs.push(`/*|${handlerName}|*/`);
-        recvs.push(`}`);
+        regs.push(`\tself:RegMsg("${className}", ${strCMD});`);
+        regs.push(`\tself:RegHandler(self.${handlerName}, ${strCMD});`);
+        recvs.push(`local function ${handlerName} (self, data)`);
+        recvs.push(`--/*|${handlerName}|*/--`);
+        recvs.push(`end`);
     }
     function execLuaBat(fileName, dirName, epxortpath, protoname) {
         let command = `${dirName}/${fileName} --plugin=protoc-gen-lua=${dirName}/plugin/build.bat --proto_path=${dirName} --lua_out=${epxortpath} ${dirName}\\${protoname}.proto`;
@@ -512,17 +412,6 @@ ${code.join("\n")}
             }
             else {
                 log(`<font color="#0c0">生成客户端${protoname}代码成功，${epxortpath}</font>`);
-            }
-        });
-    }
-    function execBat(fileName, dirName, epxortpath, protoname) {
-        let command = `${dirName}/${fileName} --proto_path=${dirName} --java_out=${epxortpath} ${dirName}\\${protoname}.proto`;
-        process.exec(command, { cwd: dirName }, function (err, stdout, stderr) {
-            if (err) {
-                error(" proto exec error " + err);
-            }
-            else {
-                log(`<font color="#0c0">生成服务端${protoname}代码成功，${epxortpath}</font>`);
             }
         });
     }
@@ -537,59 +426,37 @@ ${code.join("\n")}
         }
         return outpath;
     }
-    function getClientCode(createTime, path, className, module, variables) {
-        let vars = `		` + variables.join(`\n		`);
-        return `/**
- * 使用ProtoTools，从 ${path} 生成
- * 生成时间 ${createTime}
- **/
-module ${module} {
-	export interface ${className}{
-${vars}
-	}
-}
-`;
-    }
-    function getGameProtoCode(gameProto) {
-        let gameProtoVal = gameProto.substring(142);
-        return `package com.lingyu.common.proto;
-import "common.proto";
-option optimize_for = CODE_SIZE;\n${gameProtoVal}`;
-    }
     function getMsgTypeCode(msgTypeName, cmd) {
         return `    public static final int ${msgTypeName} = ${cmd};`;
     }
-    function getCServiceCode(createTime, path, className, module, sends, recvs, regs, cinfo) {
-        return `/**
- * 使用ProtoTools，从 ${path} 生成
- * 生成时间 ${createTime}
- **/
-namespace xc.h5g {
-${genManualAreaCode("$area1", cinfo)}
-	export class ${className} extends mvc.Service {
-		constructor(){
-			super(ServiceName.${className});
-		}
-		
-		onRegister(){
-			super.onRegister();
-			${regs.join(`\n			`)}
-			${genManualAreaCode("$onRegister", cinfo)}
-		}
-		
-		${sends.join(`\n		`)}
-		${parseRecvs(recvs, cinfo)}
+    function getCServiceCode(createTime, path, className, sends, recvs, regs, cinfo) {
+        return `--[[
+-- 使用ProtoTools，从 ${path} 生成
+-- 生成时间 ${createTime}
+--]]
+
+local ${className} = BaseClass("${className}", WsBaseService)
+local function OnRegister(self)
+	base.onRegister(self);
+
+${regs.join(`\n`)}
+${genManualAreaCode("$onRegister", cinfo, `\t`)}
+end
+${sends.join(`\n`)}
+${parseRecvs(recvs, cinfo)}
 ${genManualAreaCode("$area2", cinfo)}
-	}
-${genManualAreaCode("$area3", cinfo)}
-}`;
+
+${className}.OnRegister = OnRegister
+
+return ${className}
+`;
     }
     function parseRecvs(recvs, cinfo) {
         return recvs.map(recv => {
-            return recv.replace(/[/][*][|]([$_a-zA-Z0-9]+)[|][*][/]/, (rep, hander) => {
-                return genManualAreaCode(hander, cinfo);
+            return recv.replace(/[-][-][/][*][|]([$_a-zA-Z0-9]+)[|][*][/][-][-]/, (rep, hander) => {
+                return genManualAreaCode(hander, cinfo, `\t`);
             });
-        }).join(`\n			`);
+        }).join(`\n`);
     }
     /**
      * 获取http数据
@@ -655,29 +522,18 @@ ${genManualAreaCode("$area3", cinfo)}
         let promise = getHttpData(url, gcfg);
         promise.then(getProtoData, error).catch(error);
     }
-    let classHelper = new ClassHelper_1.default();
     const cookieForPath = new CookieForPath_1.default("protoToolUnity_");
     ready(() => {
         cookieForPath.getPathCookie("txtClientPath");
-        cookieForPath.getPathCookie("txtServerPath");
-        cookieForPath.getPathCookie("txtServerServiceNamePath");
-        cookieForPath.getPathCookie("txtPBMsgDictName");
         $g("btnGen").addEventListener("click", (ev) => {
             let cPath = cookieForPath.setPathCookie("txtClientPath");
-            let sPath = cookieForPath.setPathCookie("txtServerPath");
-            let sServiceName = cookieForPath.setPathCookie("txtServerServiceNamePath", false, false);
-            let PBMsgDictName = cookieForPath.setPathCookie("txtPBMsgDictName", false, false);
-            if (sPath != classHelper.base) {
-                // 将类的路径数据缓存，以便处理ts:import那种，省的每次执行完，还需要再次执行grunt指令
-                classHelper.initClassHelper(sPath);
-            }
             // console.log("sServiceName    "+sServiceName);
             // 清理code区
             $g("code").innerHTML = "";
             // 检查url路径
             let url = $g("txtUrl").value;
             url = url.trim();
-            let gcfg = { cprefix: cPath, sprefix: sPath, url: url, sServiceName: sServiceName, PBMsgDictName: PBMsgDictName };
+            let gcfg = { cprefix: cPath, url: url };
             if (url) {
                 getProtoFromHttp(url, gcfg);
             }
@@ -732,28 +588,28 @@ ${genManualAreaCode("$area3", cinfo)}
         /**
          * 类上方提示
          */
-        $area1: "//这里填写类上方的手写内容",
+        $area1: "-- 这里填写类上方的手写内容",
         /**
          * 类中提示
          */
-        $area2: "//这里填写类里面的手写内容",
+        $area2: "-- 这里填写类里面的手写内容",
         /**
          * 类下方提示
          */
-        $area3: "//这里填写类下发的手写内容",
+        $area3: "-- 这里填写类下发的手写内容",
         /**
          * onRegister方法中
          */
-        $onRegister: "//这里写onRegister中手写内容",
+        $onRegister: "-- 这里写onRegister中手写内容",
         /**
          * 处理函数提示
          */
-        $handler: "//这里填写方法中的手写内容",
+        $handler: "-- 这里填写方法中的手写内容",
     };
     /**
      * 生成手动代码区域的文本
      */
-    function genManualAreaCode(key, cinfo) {
+    function genManualAreaCode(key, cinfo, tab = "") {
         let manual = cinfo[key];
         if (!manual) {
             if (key in ManualCodeDefaultComment) {
@@ -763,9 +619,9 @@ ${genManualAreaCode("$area3", cinfo)}
                 manual = ManualCodeDefaultComment.$handler;
             }
         }
-        return `/*-*begin ${key}*-*/
-${manual}
-/*-*end ${key}*-*/`;
+        return `${tab}--/*-*begin ${key}*-*/--
+${tab}${manual}
+${tab}--/*-*end ${key}*-*/--`;
     }
     /**
      * 获取手动写的代码信息
@@ -775,25 +631,8 @@ ${manual}
         if (file && fs.existsSync(file)) {
             //读取文件内容
             let content = fs.readFileSync(file, "utf8");
-            // /*-*begin $area1*-*/
-            // //这里填写类上方的手写内容
-            // /*-*end $area1*-*/
-            // class XXService{
-            // protected handlerName(data:NetData) {
-            // 	let msg:className = <className>data.data;
-            // 	/*-*begin handlerName*-*/
-            // 	//这里填写方法中的手写内容
-            // 	/*-*end handlerName*-*/
-            // }
-            // /*-*begin $area2*-*/
-            // //这里填写类里面的手写内容
-            // /*-*end $area2*-*/
-            // }
-            // /*-*begin $area3*-*/
-            // //这里填写类下发的手写内容
-            // /*-*end $area3*-*/
             //找到手写内容
-            let reg = /[/][*]-[*]begin[ ]([$]?[a-zA-Z0-9_]+)[*]-[*][/]([^]*?)[/][*]-[*]end[ ]\1[*]-[*][/]/g;
+            let reg = /[-][-][/][*]-[*]begin[ ]([$]?[a-zA-Z0-9_]+)[*]-[*][/][-][-]([^]*?)[-][-][/][*]-[*]end[ ]\1[*]-[*][/][-][-]/g;
             while (true) {
                 let result = reg.exec(content);
                 if (result) {

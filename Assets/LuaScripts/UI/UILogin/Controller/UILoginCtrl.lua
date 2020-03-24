@@ -5,7 +5,6 @@
 
 local UILoginCtrl = BaseClass("UILoginCtrl", UIBaseCtrl)
 local MsgIDMap = require "Net.Config.MsgIDMap"
-local MsgIDDefine = require "Net.Config.MsgIDDefine"
 
 local function OnConnect(self, sender, result, msg)
 	if result < 0 then

@@ -2,33 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b91ffd17-de66-4d20-9db1-b287f7d3840a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.KCFramework/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KCFramework/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.KCFramework/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KCFramework/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.KCFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KCFramework/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetsPackage/AssetsMap.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsPackage/AssetsMap.bytes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/Global/Global.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LuaScripts/Global/Global.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/Net/Config/MsgIDDefine.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/Net/Config/MsgIDMap.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LuaScripts/Net/Config/MsgIDMap.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/Net/Protol/common_pb.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/Net/Protol/login_pb.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/Net/Protol/room_pb.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/Net/Protol/test_battle_pb.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/Net/Protol/test_common_pb.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/Net/Protol/test_pb.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/Net/Protol/user_pb.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/UI/UILogin/Controller/UILoginCtrl.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LuaScripts/UI/UILogin/Controller/UILoginCtrl.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LuaScripts/UnitTest/ProtobufTest.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LuaScripts/UnitTest/ProtobufTest.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Lua/GameMain.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Lua/GameMain.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Coder.Lua.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Coder.Lua.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Coder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Coder.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Config.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Config.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/ICallback.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/ICallback.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/IMarshal.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/IMarshal.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/IProtocol.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/IProtocol.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Linker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Linker.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/LuaProtocol.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/LuaProtocol.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Octets.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Octets.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/OctetsStream.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/OctetsStream.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Utils.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Utils.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/NetManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/NetManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Src/GameMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Src/GameMain.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoToolUnity/dist/ClassHelper.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoToolUnity/dist/ClassHelper.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoToolUnity/dist/CookieForPath.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoToolUnity/dist/CookieForPath.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoToolUnity/dist/Extend.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoToolUnity/dist/Extend.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoToolUnity/dist/FsExtra.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoToolUnity/dist/FsExtra.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoToolUnity/dist/PBMsgDictTemplate.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoToolUnity/dist/PBMsgDictTemplate.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoToolUnity/dist/ServerServiceNameTemplate.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoToolUnity/dist/ServerServiceNameTemplate.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoToolUnity/dist/ServiceNameTemplate.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoToolUnity/dist/ServiceNameTemplate.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoToolUnity/dist/app2.js" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoToolUnity/dist/app2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoToolUnity/dist/app2.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoToolUnity/dist/app2.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoToolUnity/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoToolUnity/dist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoToolUnity/src/app2.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoToolUnity/src/app2.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,122 +57,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Src/GameMain.cs">
+        <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Global/Global.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-              <folding>
-                <marker date="1584870304332" expanded="false" signature="6:28" ph="..." />
-                <marker date="1584870304332" expanded="true" signature="61:1780" ph="{...}" />
-                <marker date="1584870304332" expanded="true" signature="164:214" ph="{...}" />
-                <marker date="1584870304332" expanded="true" signature="221:270" ph="/// 程序入口 初始化 ... " />
-                <marker date="1584870304332" expanded="true" signature="286:1142" ph="{...}" />
-                <marker date="1584870304332" expanded="true" signature="376:512" ph="/* Util.Add&lt;TimerManager&gt;(gameObject); ... */" />
-                <marker date="1584870304332" expanded="true" signature="1149:1203" ph="/// 所有的update都走这边 ... " />
-                <marker date="1584870304332" expanded="true" signature="1228:1505" ph="{...}" />
-                <marker date="1584870304332" expanded="true" signature="1528:1624" ph="{...}" />
-                <marker date="1584870304332" expanded="true" signature="1654:1778" ph="{...}" />
-              </folding>
+            <state relative-caret-position="175">
+              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Common/LuaUtil.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="53" column="37" lean-forward="true" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/Net/Base/WsBaseService.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/UI/UILogin/Controller/UILoginCtrl.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="6" column="46" lean-forward="true" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/GameMain.lua">
+        <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Config/MsgIDMap.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="42" column="58" selection-start-line="42" selection-start-column="58" selection-end-line="45" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/XLua/Src/LuaEnv.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-624">
-              <caret line="442" selection-start-line="442" selection-end-line="442" />
-              <folding>
-                <marker date="1572093432409" expanded="true" signature="0:672" ph="/* Tencent is pleased to support the open source community by making xLua available. ... */" />
-                <marker date="1572093432409" expanded="false" signature="821:932" ph="..." />
-                <marker date="1572093432409" expanded="true" signature="956:24326" ph="{...}" />
-                <marker date="1572093432409" expanded="false" signature="969:1014" ph="..." />
-                <marker date="1572093432409" expanded="true" signature="1053:24324" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="1263:1526" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="1289:1516" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="1350:1473" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="1946:7015" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="2025:2220" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="3175:3281" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="5950:6043" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="6300:6393" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="6587:6781" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="6665:6763" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="7173:7359" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="7216:7316" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="7391:7482" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="7417:7472" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="7577:8510" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="7770:7923" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="8177:8295" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="8605:8752" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="8854:8941" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="9038:10060" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="9370:9892" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="9425:9559" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="9627:9792" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="10157:10299" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="10368:11265" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="10619:10721" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="10903:11047" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="11317:11380" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="11521:11634" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="11762:12421" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="11981:12170" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="12463:12503" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="12539:12996" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="13067:13304" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="13355:13993" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="13573:13711" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="14050:14729" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="14763:14853" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="14967:15085" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="20045:20199" ph="/* loader : CustomLoader， filepath参数：（ref类型）输入是require的参数，如果需要支持调试，需要输出真实路径。 ... */" />
-                <marker date="1572093432409" expanded="true" signature="20250:20309" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="20486:20739" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="20554:20683" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="20749:21120" ph="/* The garbage-collector pause controls how long the collector waits before starting a new cycle. ... */" />
-                <marker date="1572093432409" expanded="true" signature="21147:21815" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="21173:21537" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="21553:21805" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="21825:22268" ph="/* The step multiplier controls the relative speed of the collector relative to memory allocation. ... */" />
-                <marker date="1572093432409" expanded="true" signature="22297:22971" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="22323:22691" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="22707:22961" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="23001:23224" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="23254:23474" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="23507:23730" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="23768:24003" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="24030:24318" ph="{...}" />
-                <marker date="1572093432409" expanded="true" signature="24056:24308" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Framework/Net/ProtoBuf/encoder.lua">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="230" column="39" selection-start-line="230" selection-start-column="39" selection-end-line="230" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Net/Protol/login_pb.lua">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+            <state relative-caret-position="16">
+              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -177,92 +105,77 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>WaitForExitWaitForExit</find>
-      <find>if (path != &quot;&quot; &amp;&amp; path.Contains(&quot;UI&quot;))</find>
-      <find>camera</find>
-      <find>trdModelSite</find>
-      <find>Win_CreateRoleDialog</find>
-      <find>GetTableByName</find>
-      <find>GameObject</find>
-      <find>GetRoleModelRecord</find>
-      <find>AddEffectModel</find>
-      <find>GetShoolRecords</find>
-      <find>ToAngleAxis</find>
-      <find>UpdateCenterModel</find>
-      <find>toe</find>
-      <find>OnRotationChanged</find>
-      <find>toeuleran</find>
-      <find>toeuler</find>
-      <find>eulerAngles</find>
-      <find>mAsynLoadInfos</find>
-      <find>removePath</find>
-      <find>UpdateCreateRolePanel</find>
-      <find>bgGameObject</find>
-      <find>weapon1point</find>
-      <find>effectPath</find>
-      <find>10</find>
-      <find>resolution</find>
-      <find>GetCameraLayerResolution</find>
-      <find>TextTipItem</find>
-      <find>TextTipCtrl</find>
-      <find>options</find>
-      <find>pb</find>
+      <find>DestroyWindowExceptLayer</find>
+      <find>model</find>
+      <find>waitforasyncop</find>
+      <find>AddPreloadResource</find>
+      <find>preload_resources</find>
+      <find>OnComplete</find>
+      <find>CoOnPrepare</find>
+      <find>mSendMsgQueue</find>
+      <find>receive</find>
+      <find>UpdatePacket</find>
+      <find>UpdateNetwork</find>
+      <find>ConnectServer</find>
+      <find>mReceiveMsgQueue</find>
+      <find>mTempMsgList</find>
+      <find>DeserializeMessage</find>
+      <find>Connect</find>
+      <find>req_login</find>
+      <find>req_join_match</find>
+      <find>globalSeq</find>
+      <find>base</find>
+      <find>SendMessage</find>
+      <find>assert</find>
+      <find>...</find>
+      <find>for _</find>
+      <find>绑定</find>
+      <find>BindCallback</find>
+      <find>base.</find>
+      <find>HallConnector</find>
+      <find>msgidde</find>
+      <find>Send</find>
     </findStrings>
     <dirStrings>
       <dir>E:\gitworkspace\KCFramework\Assets</dir>
+      <dir>E:\workspace\git\KCFramework\Assets</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/XLua/Src/LuaEnv.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/09BA7DB3-5C55-4EA3-A09E-B6E420FE3A71/df/4273b788/EditorCompilationInterface.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Editor/TexturePackerImporter/Editor/TexturePackerImport.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/LuaSupport/Common/BaseLua.ts.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/LuaSupport/Common/InputFieldEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Editor/TexturePackerImporter/Plugins/TexturePacker.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/IO/os.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Editor/DataTool/ExportDataTable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/LuaSupport/Util/Util.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/CoroutineManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Editor/EditorConstData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/NetManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/LuaSupport/Base/LuaScriptMgr.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Editor/DataTool/XLSXDecoder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/UIComponentScript/UIObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/LuaSupport/Base/Debugger.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Editor/ImageFont/ByteReader.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Resources/Actor/Objects/Player/6001_player_lutianxingzj/6001_player_lutianxing_all.FBX.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Editor/GlobalEditorHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Audio/AudioObj.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D616BE05-755D-41A0-8981-0B5C14E4DD50/a7/a37afad4/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/Pool/Interfaces/IPool.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/LuaSupport/Manager/Panel/PanelManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AC823E2B-B42B-41BD-A679-24A45A0173C3/07/3d7020e6/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/Asset/AssetManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/XLua/Src/MethodWarpsCache.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Editor/ImageFont/BMFontReader.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/CUtilMain.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/UIComponentScript/DragableItemScript.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/Bit/BitOperator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Editor/Menus/ExportAssetBundle.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Interfaces/ITickable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/CUtilSettings.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/Pool/PoolManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Audio/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/Pool/ResourcePool.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/GameMain.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D616BE05-755D-41A0-8981-0B5C14E4DD50/fd/4a82e29c/Caching.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Editor/UI/PrefabUnRelink.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Editor/Menus/SpriteAtlasMenu.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/09BA7DB3-5C55-4EA3-A09E-B6E420FE3A71/fb/d8aa2b50/EditorUserBuildSettings.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Editor/UI/PrefabRelink.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Framework/Socket/HjNetwork/HjNetworkBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Framework/Socket/HjNetwork/HjTcpNetwork.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Framework/Socket/HjNetwork/MessageQueue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLaunch/AssetbundleUpdater.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/EasyTouchBundle/EasyTouchControls/Examples/Version 2.X_New Features/ThirdPersonDungeon+Jump.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/CustomDataStruct/StreamBufferPool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/websocket-sharp/Net/HttpResponseHeader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Test/Scripts/LuaTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/websocket-sharp/WebSocketException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Framework/Socket/Interface/IMessageQueue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/websocket-sharp/WebSocket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Test/Scenes/UIPrefabScene.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/CustomDataStruct/ValueObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Framework/WebSocket/WsNetwork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/EasyTouchBundle/EasyTouch/Examples/4.X/SimpleExamples/TwoFingers/TwoTapMe.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/XLua/XLuaManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/websocket-sharp/Net/HttpListenerContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Reporter/Reporter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Reporter/Editor/ReporterEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/websocket-sharp/HttpBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Framework/AssetBundle/AssetBundleManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/LaunchScene.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Framework/AssetBundle/AsyncOperation/AssetAsyncLoader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/Logger/Logger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/XLua/Scripts/LuaTable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/EasyTouchBundle/EasyTouchControls/Plugins/Editor/ETCAxisInspector.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/Pool/PoolManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/Pool/ResourcePool.cs" />
         <option value="$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Editor/Menus/ExportDataTable.cs" />
         <option value="$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Interfaces/ITickable.cs" />
@@ -300,75 +213,34 @@
         <option value="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Linker.cs" />
         <option value="$PROJECT_DIR$/Assets/Resources/Lua/test_pb.lua" />
         <option value="$PROJECT_DIR$/Assets/Resources/Lua/GameMain.lua" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Framework/WebSocket/CsIO/IWsMessageQueue.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Framework/WebSocket/Interface/IWsMessageQueue.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Framework/WebSocket/CsIO/WsMessageQueue.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Framework/WebSocket/WsNetwork.cs" />
+        <option value="$PROJECT_DIR$/Assets/LuaScripts/Framework/UI/UIManager.lua" />
+        <option value="$PROJECT_DIR$/Assets/LuaScripts/Net/Connector/HallConnector.lua" />
+        <option value="$PROJECT_DIR$/Assets/LuaScripts/Framework/Net/Base/BaseService.lua" />
+        <option value="$PROJECT_DIR$/Assets/LuaScripts/Net/Connector/WsHallConnector.lua" />
+        <option value="$PROJECT_DIR$/Assets/LuaScripts/Global/Global.lua" />
+        <option value="$PROJECT_DIR$/Assets/LuaScripts/Framework/Net/Base/WsBaseService.lua" />
+        <option value="$PROJECT_DIR$/Assets/LuaScripts/UnitTest/ProtobufTest.lua" />
+        <option value="$PROJECT_DIR$/Assets/LuaScripts/UI/UILogin/Controller/UILoginCtrl.lua" />
+        <option value="$PROJECT_DIR$/Assets/LuaScripts/Net/Service/RecruitService.lua" />
+        <option value="$PROJECT_DIR$/Assets/LuaScripts/Net/Config/MsgIDMap.lua" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="446" />
-    <option name="y" value="249" />
-    <option name="width" value="1151" />
-    <option name="height" value="942" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="135" />
+    <option name="y" value="489" />
+    <option name="width" value="1543" />
+    <option name="height" value="825" />
   </component>
   <component name="ProjectView">
     <navigator currentView="UnityExplorer" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="FileSystemExplorer" />
-      <pane id="UnityExplorer">
-        <subPane>
-          <expand>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Resources" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Resources" type="1045f7f1:UnityExplorerNode" />
-              <item name="Lua" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Resources" type="1045f7f1:UnityExplorerNode" />
-              <item name="Lua" type="1045f7f1:UnityExplorerNode" />
-              <item name="Net" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Resources" type="1045f7f1:UnityExplorerNode" />
-              <item name="Lua" type="1045f7f1:UnityExplorerNode" />
-              <item name="Net" type="1045f7f1:UnityExplorerNode" />
-              <item name="Protol" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Src" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Src" type="1045f7f1:UnityExplorerNode" />
-              <item name="3rd" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Packages" type="4e2708dd:PackagesRoot" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-        <option name="show-hidden-items" value="false" />
-        <option name="show-project-names" value="true" />
-      </pane>
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -399,6 +271,59 @@
         </subPane>
         <option name="show-all-files" value="false" />
       </pane>
+      <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="LuaScripts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="LuaScripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Net" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="LuaScripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Net" type="1045f7f1:UnityExplorerNode" />
+              <item name="Config" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="LuaScripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="UI" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Framework" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Packages" type="4e2708dd:PackagesRoot" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-hidden-items" value="false" />
+        <option name="show-project-names" value="true" />
+      </pane>
+      <pane id="FileSystemExplorer" />
       <pane id="AssemblyExplorer" />
     </panes>
   </component>
@@ -446,7 +371,6 @@
     <list>
       <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
       <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
-      <item itemvalue="Lua Attach Unity.Attach to Unity + Lua" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -475,11 +399,14 @@
       <workItem from="1573288922668" duration="507000" />
       <workItem from="1577026139448" duration="2460000" />
       <workItem from="1584869957232" duration="6759000" />
+      <workItem from="1584935913872" duration="1572000" />
+      <workItem from="1584938246907" duration="12861000" />
+      <workItem from="1584956696155" duration="27191000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99908000" />
+    <option name="totallyTimeSpent" value="141532000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -491,14 +418,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="446" y="249" width="1151" height="942" extended-state="0" />
-    <editor active="true" />
+    <frame x="135" y="489" width="1543" height="825" extended-state="1" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.48856798" visible="true" weight="0.33638865" />
-      <window_info id="Structure" order="2" sideWeight="0.511432" side_tool="true" visible="true" weight="0.33638865" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.8185484" visible="true" weight="0.2596089" />
+      <window_info id="Structure" order="2" sideWeight="0.18145162" side_tool="true" visible="true" weight="0.2596089" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.34415585" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.30532214" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.35499397" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -537,14 +463,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/NetManager.cs</url>
           <line>125</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/NetManager.cs" initialLine="125">
-            <startOffsets>
-              <option value="3250" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3290" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/NetManager.cs" initialLine="125" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="lua-line">
@@ -561,797 +480,552 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/BasicCtrl.lua">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/XLua/XLuaManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/CUtilSettings.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        <state relative-caret-position="-89">
+          <caret line="204" column="35" selection-start-line="204" selection-start-column="35" selection-end-line="204" selection-end-column="35" />
           <folding>
-            <marker date="1569596889216" expanded="true" signature="31:263" ph="{...}" />
-            <marker date="1569596889216" expanded="true" signature="138:261" ph="{...}" />
+            <marker date="1584934986041" expanded="false" signature="6:67" ph="..." />
+            <marker date="1584934986041" expanded="true" signature="69:365" ph="/// 说明：xLua管理类 ... " />
+            <marker date="1584934986041" expanded="true" signature="445:5956" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="821:1052" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="1082:1130" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="1161:1196" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="1219:1529" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="1314:1439" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="1452:1523" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="1592:1933" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="1626:1927" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="1782:1878" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="1968:2016" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="2022:2095" ph="/* 重启虚拟机：热更资源以后被加载的lua脚本可能已经过时，需要重新加载 ... */" />
+            <marker date="1584934986041" expanded="true" signature="2121:2214" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="2266:2631" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="2300:2625" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="2326:2402" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="2442:2615" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="2682:3001" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="2716:2756" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="2778:2872" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="2885:2951" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="3031:3086" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="3115:3298" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="3149:3292" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="3351:3475" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="3515:3594" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="3654:4886" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="3819:4101" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="4402:4515" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="4629:4742" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="4913:5106" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="4947:5100" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="5029:5090" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="5143:5276" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="5193:5270" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="5314:5448" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="5364:5442" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="5484:5954" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="5522:5578" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="5606:5948" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="5632:5725" ph="{...}" />
+            <marker date="1584934986041" expanded="true" signature="5765:5938" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Global/Common/Vector3.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-88">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/Login/LoginUICommon.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/Login/Skin/LoginUIDialog.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/UIComponentScript/UIObject.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-          <folding>
-            <marker date="1572067786305" expanded="false" signature="6:78" ph="..." />
-            <marker date="1572067786305" expanded="true" signature="117:154" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/CreateRole/CreateRoleCommon.lua">
+    <entry file="file://$PROJECT_DIR$/Assets/Test/Scripts/LuaTest.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Global/Common/Vector2.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" column="9" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Global/Common/Math.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/Login/SkinCtrl/LoginUICtrl.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="138" column="45" selection-start-line="138" selection-start-column="45" selection-end-line="138" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/CUtilMain.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="16" />
           <folding>
-            <marker date="1569596889215" expanded="true" signature="33:252" ph="{...}" />
-            <marker date="1569596889215" expanded="true" signature="136:148" ph="{...}" />
-            <marker date="1569596889215" expanded="true" signature="177:189" ph="{...}" />
+            <marker date="1584934986909" expanded="false" signature="6:90" ph="..." />
+            <marker date="1584934986909" expanded="true" signature="128:1798" ph="{...}" />
+            <marker date="1584934986909" expanded="true" signature="320:744" ph="{...}" />
+            <marker date="1584934986909" expanded="true" signature="633:711" ph="{...}" />
+            <marker date="1584934986909" expanded="true" signature="762:1789" ph="{...}" />
+            <marker date="1584934986909" expanded="true" signature="824:864" ph="{...}" />
+            <marker date="1584934986909" expanded="true" signature="1124:1750" ph="{...}" />
+            <marker date="1584934986909" expanded="true" signature="1225:1701" ph="{...}" />
+            <marker date="1584934986909" expanded="true" signature="1324:1387" ph="{...}" />
+            <marker date="1584934986909" expanded="true" signature="1618:1687" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Framework/Class.lua">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/XLua/Scripts/LuaTable.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/luabean/game/createrole/CreateRoleTable.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/FrameWork/Bit/BitOperator.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="13" selection-end-column="24" />
+        <state relative-caret-position="71">
+          <caret line="107" column="41" selection-start-line="107" selection-start-column="41" selection-end-line="107" selection-end-column="41" />
           <folding>
-            <marker date="1572090388779" expanded="true" signature="24:661" ph="{...}" />
-            <marker date="1572090388779" expanded="true" signature="66:96" ph="{...}" />
-            <marker date="1572090388779" expanded="true" signature="136:170" ph="{...}" />
-            <marker date="1572090388779" expanded="true" signature="215:252" ph="{...}" />
-            <marker date="1572090388779" expanded="true" signature="297:334" ph="{...}" />
-            <marker date="1572090388779" expanded="true" signature="378:413" ph="{...}" />
-            <marker date="1572090388779" expanded="true" signature="456:490" ph="{...}" />
-            <marker date="1572090388779" expanded="true" signature="537:574" ph="{...}" />
-            <marker date="1572090388779" expanded="true" signature="621:658" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="0:672" ph="/* Tencent is pleased to support the open source community by making xLua available. ... */" />
+            <marker date="1584934986005" expanded="false" signature="821:1033" ph="..." />
+            <marker date="1584934986005" expanded="true" signature="1049:11274" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="1095:11272" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="1181:1201" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="1301:2634" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="1694:1922" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="2118:2248" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="2269:2359" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="2395:2460" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="2484:2570" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="2716:3552" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="3109:3337" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="3647:4296" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="4090:4186" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="4341:5500" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="4699:4795" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="4933:5059" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="5105:5195" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="5231:5296" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="5320:5406" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="5554:6121" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="5914:6010" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="6245:6443" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="6271:6348" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="6364:6433" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="6567:6753" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="6593:6664" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="6680:6743" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="6825:7898" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="7083:7724" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="7256:7706" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="7342:7638" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="7748:7834" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="7925:8439" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="7951:8429" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="8562:9004" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="8828:8952" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="9133:9717" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="9399:9665" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="9466:9613" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="9819:9913" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="9964:10063" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="10110:10209" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="10263:10602" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="10630:11038" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="11091:11159" ph="{...}" />
+            <marker date="1584934986005" expanded="true" signature="11201:11266" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Global/Global.lua">
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/UI/Config/UIConfig.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="104" column="28" selection-start-line="104" selection-start-column="28" selection-end-line="104" selection-end-column="28" />
+        <state relative-caret-position="224">
+          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/XLua/Src/MethodWarpsCache.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="185" selection-start-line="185" selection-end-line="185" />
-          <folding>
-            <marker date="1569596889342" expanded="true" signature="0:672" ph="/* Tencent is pleased to support the open source community by making xLua available. ... */" />
-            <marker date="1569596889342" expanded="false" signature="821:1013" ph="..." />
-            <marker date="1569596889342" expanded="true" signature="1029:22590" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="1067:10256" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="1691:1866" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="1946:5667" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="2115:2301" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="2210:2287" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="2824:4771" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="2952:2988" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="3009:4757" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="3087:3449" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="3275:3384" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="4097:4649" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="4226:4579" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="5200:5323" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="5446:5550" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="5597:5657" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="5710:6644" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="5871:6461" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="5961:6024" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="6088:6158" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="6239:6309" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="6376:6447" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="6685:10250" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="6711:10067" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="6842:7157" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="7292:7713" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="7414:7695" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="7878:9039" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="8027:8440" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="8126:8265" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="8294:8418" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="8465:8944" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="8564:8716" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="8745:8883" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="9279:9368" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="9429:9623" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="9685:10023" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="9757:9912" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="10087:10240" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="10154:10226" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="10285:11673" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="10543:10687" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="10728:11667" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="10754:11264" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="10946:11167" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="11056:11149" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="11330:11489" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="11528:11657" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="11708:22588" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="12265:12413" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="12473:14881" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="12606:14828" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="12770:13230" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="12832:13106" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="12935:13083" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="13131:13212" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="13251:14814" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="13431:14672" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="13579:13865" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="13682:13839" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="13912:14023" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="14052:14650" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="14167:14623" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="14231:14436" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="14473:14593" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="14697:14796" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="14955:15958" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="15102:15208" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="15316:15902" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="15727:15796" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="16039:16516" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="16062:16206" ph="/* string retriKey = type.ToString() + &quot;.&quot; + methodName; ... */" />
-            <marker date="1569596889342" expanded="true" signature="16255:16361" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="16573:17027" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="16713:16770" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="16820:16977" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="17099:20731" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="17158:17264" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="17372:20676" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="17635:17773" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="18009:18160" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="18371:20643" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="18456:18772" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="18595:18746" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="18801:20378" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="19016:19211" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="19286:20352" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="19411:19589" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="19817:19998" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="20429:20586" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="20865:21586" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="21008:21506" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="21659:22582" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="21685:22484" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="21795:21865" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="22083:22349" ph="{...}" />
-            <marker date="1569596889342" expanded="true" signature="22514:22572" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/CreateRole/CreateRoleManager.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="175" column="44" selection-start-line="175" selection-start-column="44" selection-end-line="175" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/FrameWork/LuaSupport/Base/LuaScriptMgr.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="182" column="48" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="48" />
-          <folding>
-            <marker date="1571497803531" expanded="false" signature="6:166" ph="..." />
-            <marker date="1571497803531" expanded="true" signature="168:207" ph="/// lua管理器 ... " />
-            <marker date="1571497803531" expanded="true" signature="233:10942" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="658:1244" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="1287:1715" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="1480:1636" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="1741:1788" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="1815:1869" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="1920:1965" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="1991:2249" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="2029:2094" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="2112:2243" ph="/* if (LuaDLL.lua_gettop(lua.L) != 0) ... */" />
-            <marker date="1571497803531" expanded="true" signature="2278:2389" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="2320:2375" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="2420:2556" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="2463:2550" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="2604:2715" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="2636:2709" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="2751:3414" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="3051:3103" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="3121:3237" ph="/* foreach(KeyValuePair&lt;string, IAssetFile&gt; kv in dictBundle) ... */" />
-            <marker date="1571497803531" expanded="true" signature="3460:3506" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="3579:4318" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="3657:3763" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="3776:4304" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="3940:4268" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="4365:4589" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="4476:4560" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="4667:5354" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="4750:5311" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="4877:5130" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="5147:5249" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="5418:6663" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="5531:6358" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="5686:5865" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="5964:6065" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="6112:6178" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="6195:6341" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="6371:6635" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="6524:6625" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="6719:6889" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="6955:7922" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="7197:7351" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="7398:7758" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="7573:7748" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="7788:7894" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="7977:8512" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="8061:8475" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="8202:8412" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="8555:8594" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="8654:10713" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="8798:10196" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="8957:9203" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="9258:9732" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="9452:9718" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="9911:10174" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="10209:10628" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="10356:10618" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="10761:10940" ph="{...}" />
-            <marker date="1571497803531" expanded="true" signature="10809:10912" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/UIComponentScript/DragableItemScript.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="51" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="51" />
-          <folding>
-            <marker date="1572068318600" expanded="false" signature="6:110" ph="..." />
-            <marker date="1572068318600" expanded="true" signature="173:561" ph="{...}" />
-            <marker date="1572068318600" expanded="true" signature="297:383" ph="{...}" />
-            <marker date="1572068318600" expanded="true" signature="429:559" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/Common/GameUIClickEvent.lua">
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/UI/Config/UIWindowNames.lua">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D616BE05-755D-41A0-8981-0B5C14E4DD50/a7/a37afad4/Quaternion.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/GameMain.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="369" column="30" selection-start-line="369" selection-start-column="19" selection-end-line="369" selection-end-column="30" />
+        <state relative-caret-position="384">
+          <caret line="24" column="48" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Global/Common/Quaternion.lua">
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/UI/UIWindow.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="291" column="15" lean-forward="true" selection-start-line="291" selection-start-column="15" selection-end-line="291" selection-end-column="15" />
+        <state relative-caret-position="176">
+          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/Dialog.lua">
+    <entry file="jar://$APPLICATION_PLUGINS_DIR$/intellij-emmylua/lib/intellij-emmylua-1.3.2.142-IDEA182.jar!/std/Lua53/global.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="125" column="23" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="23" />
+        <state relative-caret-position="268">
+          <caret line="287" column="9" selection-start-line="287" selection-start-column="9" selection-end-line="287" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/SingletonDialog.lua">
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/Resource/GameObjectPool.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="94" column="15" selection-start-line="94" selection-start-column="15" selection-end-line="94" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Framework/AssetBundle/AssetBundleManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="612" column="41" selection-start-line="612" selection-start-column="25" selection-end-line="612" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/UI/UILoading/UILoadingConfig.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Framework/AssetBundle/AsyncOperation/AssetAsyncLoader.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1056">
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/UI/Base/UIBaseView.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/UI/Base/UIBaseContainer.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-224">
+          <caret line="10" column="59" lean-forward="true" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/Resource/ResourcesManager.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="17" column="46" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/UI/UIManager.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="331" column="39" selection-start-line="331" selection-start-column="15" selection-end-line="331" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/UI/UILoading/View/UILoadingView.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/UI/UILoading/Model/UILoadingModel.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/Updater/Coroutine.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="304" column="25" lean-forward="true" selection-start-line="304" selection-start-column="25" selection-end-line="304" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/UI/Base/UIBaseComponent.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="15" column="57" lean-forward="true" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Scenes/HomeScene.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Scenes/Config/SceneConfig.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="38" column="30" lean-forward="true" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Scenes/BattleScene.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/Scene/SceneManager.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="90" column="52" selection-start-line="90" selection-start-column="52" selection-end-line="90" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Scenes/LoginScene.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="46" lean-forward="true" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Config/SendMsgDefine.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Framework/Socket/HjNetwork/HjTcpNetwork.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="179" column="28" selection-start-line="179" selection-start-column="20" selection-end-line="179" selection-end-column="36" />
+          <folding>
+            <marker date="1584934985928" expanded="true" signature="0:52" ph="/* ##define LOG_SEND_BYTES ... */" />
+            <marker date="1584934985928" expanded="true" signature="267:6524" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="613:729" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="769:854" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="899:1574" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="1177:1240" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="1421:1513" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="1625:1881" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="1648:1843" ph="/* 关闭socket，Tcp下要等待现有数据发送、接受完成 ... */" />
+            <marker date="1584934985928" expanded="true" signature="1928:2178" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="2011:2168" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="2224:2576" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="2364:2566" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="2619:4392" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="2718:4251" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="2764:2827" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="2899:2965" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="3056:3122" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="3191:3562" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="3270:3544" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="3381:3522" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="3612:3748" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="3784:3920" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="3944:4237" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="4023:4181" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="4311:4382" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="4484:6073" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="4510:5888" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="4709:5690" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="4787:4862" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="4992:5067" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="5722:5874" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="5921:6063" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="6130:6518" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="6587:6941" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="6692:6737" ph="{...}" />
+            <marker date="1584934985928" expanded="true" signature="6838:6934" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Framework/Socket/HjNetwork/HjNetworkBase.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="261" column="44" selection-start-line="261" selection-start-column="28" selection-end-line="261" selection-end-column="44" />
+          <folding>
+            <marker date="1584934985923" expanded="true" signature="141:8797" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="168:239" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="280:8795" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="1151:1522" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="1561:1602" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="1638:1740" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="1664:1730" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="1794:1862" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="1946:2734" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="2071:2128" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="2175:2327" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="2360:2512" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="2532:2724" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="2618:2710" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="2780:2952" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="2998:3227" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="3048:3217" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="3272:3517" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="3363:3507" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="3559:3829" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="3645:3756" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="3866:4248" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="3979:4109" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="4141:4238" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="4318:4480" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="4363:4470" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="4547:4707" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="4591:4697" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="4852:6572" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="5036:6378" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="5070:6006" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="5181:5988" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="6056:6192" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="6228:6364" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="6491:6562" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="6636:6761" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="6795:7438" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="6874:7157" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="6960:7139" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="7193:7309" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="7333:7414" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="7475:8437" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="7528:8427" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="7618:7977" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="7701:7959" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="7831:7937" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="8013:8129" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="8153:8413" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="8236:8353" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="8482:8555" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="8666:8686" ph="{...}" />
+            <marker date="1584934985923" expanded="true" signature="8719:8789" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Config/ReceiveMsgDefine.lua">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Util/NetUtil.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="94" column="48" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Protol/common_pb.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2642" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Protol/user_pb.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="115" column="3" selection-start-line="115" selection-start-column="3" selection-end-line="115" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Protol/room_pb.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="205" column="17" selection-start-line="205" selection-start-column="3" selection-end-line="205" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/Common/Singleton.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Protol/login_pb.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3424">
+          <caret line="214" lean-forward="true" selection-start-line="214" selection-end-line="214" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/Scene/Base/BaseScene.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1248">
+          <caret line="78" column="25" selection-start-line="78" selection-start-column="15" selection-end-line="78" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/UI/Base/UIBaseCtrl.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="12" selection-start-line="12" selection-end-line="27" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Connector/HallConnector.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-112">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/UI/Base/UIBaseModel.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="124" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Global/Global.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/Common/Updatable.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Config/ReceiveSinglePackage.lua">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Connector/WsHallConnector.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/Common/BaseClass.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/UnitTest/ProtobufTest.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Common/LuaUtil.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="53" column="37" lean-forward="true" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Config/MsgIDDefine.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/UI/UILogin/Controller/UILoginCtrl.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="46" lean-forward="true" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Framework/Net/Base/WsBaseService.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Service/RecruitService.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/LuaScripts/Net/Config/MsgIDMap.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AC823E2B-B42B-41BD-A679-24A45A0173C3/07/3d7020e6/Dictionary`2.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="1074" column="18" selection-start-line="1074" selection-start-column="18" selection-end-line="1074" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CUtil/Common/Asset/AssetManager.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="184" column="11" selection-start-line="176" selection-start-column="10" selection-end-line="184" selection-end-column="11" />
-          <folding>
-            <marker date="1572094661628" expanded="false" signature="6:127" ph="..." />
-            <marker date="1572094661628" expanded="true" signature="170:19370" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="177:225" ph="/// 所有的依赖文件 ... " />
-            <marker date="1572094661628" expanded="true" signature="538:586" ph="/// 资源缓存管理器 ... " />
-            <marker date="1572094661628" expanded="true" signature="663:714" ph="/// 异步加载完成回调队列 ... " />
-            <marker date="1572094661628" expanded="true" signature="791:913" ph="/* 加载完成 需要移除的加载路径 ... */" />
-            <marker date="1572094661628" expanded="true" signature="920:967" ph="/// 加载资源枚举 ... " />
-            <marker date="1572094661628" expanded="true" signature="998:1046" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="1404:1493" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="1526:1657" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="1561:1651" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="1685:1917" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="1712:1911" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="1819:1901" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="1949:2075" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="1984:2069" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="2207:2766" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="2274:2678" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="2372:2466" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="2483:2557" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="2691:2738" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="2772:2825" ph="/// 加载依赖manifest ... " />
-            <marker date="1572094661628" expanded="true" signature="2868:3345" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="2998:3104" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="3133:3339" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="3406:3730" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="3558:3704" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="3749:5006" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="3924:4141" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="4074:4131" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="4143:4384" ph="/* if (removePath.Count &gt; 0) ... */" />
-            <marker date="1572094661628" expanded="true" signature="4418:5000" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="4483:4700" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="4592:4686" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="4763:4950" ph="{...}" />
-            <marker date="1572094661628" expanded="false" signature="5012:5530" ph="动态加载场景" />
-            <marker date="1572094661628" expanded="true" signature="5032:5116" ph="/// 加载场景的资源 ... " />
-            <marker date="1572094661628" expanded="true" signature="5162:5514" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="5281:5355" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="5440:5485" ph="{...}" />
-            <marker date="1572094661628" expanded="false" signature="5536:5963" ph="C##异步请求" />
-            <marker date="1572094661628" expanded="true" signature="5624:5736" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="5849:5947" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="6012:6090" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="6157:6246" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="6325:6419" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="6507:6595" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="6701:6780" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="6786:7183" ph="/// 请求资源，assetName会通过path中获取 ... " />
-            <marker date="1572094661628" expanded="true" signature="7300:7802" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="7386:7722" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="7412:7558" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="7589:7712" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="7941:9714" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="8048:8426" ph="/* if (!source) ... */" />
-            <marker date="1572094661628" expanded="true" signature="8447:9055" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="8491:8874" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="8584:8690" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="8711:8860" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="8891:9045" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="9076:9501" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="9200:9342" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="9430:9491" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="9536:9684" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="9795:10000" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="9865:9910" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="10088:11173" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="10234:10936" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="10458:10926" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="10550:10623" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="10644:10912" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="11008:11143" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="11179:11457" ph="/// 异步加载 ... " />
-            <marker date="1572094661628" expanded="true" signature="11619:12463" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="11801:12380" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="11862:11972" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="11989:12094" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="12178:12247" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="12264:12321" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="12526:14443" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="12639:12730" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="13017:13176" ph="/* for (int i = 0; i &lt; assetNames.Count; i++) ... */" />
-            <marker date="1572094661628" expanded="true" signature="13214:14311" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="13358:13470" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="13487:13548" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="13599:14233" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="13743:13816" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="13818:13859" ph="/* try ... */" />
-            <marker date="1572094661628" expanded="true" signature="13899:14186" ph="/* } ... */" />
-            <marker date="1572094661628" expanded="true" signature="14529:15932" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="14645:14749" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="15137:15800" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="15292:15790" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="15359:15485" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="15521:15743" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="16009:16525" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="16182:16317" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="16330:16401" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="16616:17092" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="16715:16976" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="17098:17236" ph="/// 清除缓存源资源，会导致所有资源需要重新加载，如果不到内存临界点不建议清除，因为加载资源的IO成本还是很高的 ... " />
-            <marker date="1572094661628" expanded="true" signature="17267:17303" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="17309:17431" ph="/* ----------------------------------------------------------------------- ... */" />
-            <marker date="1572094661628" expanded="true" signature="17483:18928" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="17513:18922" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="17645:18912" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="17695:18898" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="17760:18880" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="17918:18008" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="18156:18858" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="18337:18467" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="18500:18661" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="19054:19368" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="19084:19340" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="19198:19265" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="19391:21341" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="19840:20060" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="20180:20473" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="20281:20396" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="20497:20686" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="20521:20574" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="20608:20680" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="20733:20797" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="20821:21084" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="20845:20996" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="20885:20986" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="21030:21078" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="21111:21339" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="21204:21283" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="21365:21785" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="21620:21719" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="21746:21783" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="21816:21873" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="21901:22365" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="22022:22363" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="22058:22334" ph="{...}" />
-            <marker date="1572094661628" expanded="true" signature="22112:22210" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/CreateRole/Skin/CreateRoleDialog.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320">
-          <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/FrameWork/LuaSupport/Common/InputFieldEvent.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="928">
-          <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
-          <folding>
-            <marker date="1572085446229" expanded="true" signature="6:114" ph="..." />
-            <marker date="1572085446229" expanded="true" signature="160:1739" ph="{...}" />
-            <marker date="1572085446229" expanded="true" signature="527:563" ph="{...}" />
-            <marker date="1572085446229" expanded="true" signature="589:849" ph="{...}" />
-            <marker date="1572085446229" expanded="true" signature="669:843" ph="{...}" />
-            <marker date="1572085446229" expanded="true" signature="887:959" ph="{...}" />
-            <marker date="1572085446229" expanded="true" signature="989:1057" ph="{...}" />
-            <marker date="1572085446229" expanded="true" signature="1089:1340" ph="{...}" />
-            <marker date="1572085446229" expanded="true" signature="1166:1334" ph="{...}" />
-            <marker date="1572085446229" expanded="true" signature="1371:1737" ph="{...}" />
-            <marker date="1572085446229" expanded="true" signature="1401:1731" ph="{...}" />
-            <marker date="1572085446229" expanded="true" signature="1461:1524" ph="{...}" />
-            <marker date="1572085446229" expanded="true" signature="1587:1721" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/Common/Model/UIModelCtrl.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/CreateRole/SkinCtrl/CreateRoleDialogCtrl.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1024">
-          <caret line="215" column="12" selection-start-line="215" selection-start-column="12" selection-end-line="215" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/FrameWork/LuaSupport/Manager/Panel/PanelManager.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding>
-            <marker date="1570720323182" expanded="false" signature="6:52" ph="..." />
-            <marker date="1570720323182" expanded="true" signature="96:241" ph="{...}" />
-            <marker date="1570720323182" expanded="true" signature="102:154" ph="/// 面板object管理器 ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/UIManager.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7161">
-          <caret line="60" column="31" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Framework/TickerManager.lua">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Scene/SceneManager.lua">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/Layer.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="72" column="74" selection-start-line="72" selection-start-column="74" selection-end-line="72" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/GameLayerManager.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="184" column="7" selection-start-line="184" selection-start-column="7" selection-end-line="184" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/Base/Layers/UILayer.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/CommMsgTip/SkinCtrl/TextTipCtrl.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="992">
-          <caret line="62" column="21" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/UI/CommMsgTip/Skin/TextTipItem.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="46" column="22" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/NetManager.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1849">
-          <caret line="123" column="31" selection-start-line="123" selection-start-column="20" selection-end-line="123" selection-end-column="31" />
-          <folding>
-            <marker date="1584871769546" expanded="true" signature="28:4618" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="56:683" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="501:677" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="731:3796" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="825:1049" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="851:1039" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="904:990" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="1324:1373" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="1460:2631" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="1614:1794" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="1826:1938" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="1970:2061" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="2094:2621" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="2279:2572" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="2662:2775" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="2804:2888" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="2920:3014" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="3057:3176" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="3227:3790" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="3834:4616" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="3943:4256" ph="{...}" />
-            <marker date="1584871769546" expanded="true" signature="4339:4610" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_PLUGINS_DIR$/EmmyLua/classes/debugger/Emmy.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-130">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Load/AsynPrefabLoader.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/test_pb.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="752">
-          <caret line="267" column="32" selection-start-line="267" selection-start-column="32" selection-end-line="267" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Net/Connector/HallConnector.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-672" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Framework/Net/ProtoBuf/protobuf.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="299" column="51" selection-start-line="299" selection-start-column="40" selection-end-line="299" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Net/Protol/login_pb.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/Framework/Net/ProtoBuf/encoder.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="230" column="39" selection-start-line="230" selection-start-column="39" selection-end-line="230" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/FrameWork/CsNet/CsIO/Linker.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2960">
-          <caret line="327" column="43" selection-start-line="327" selection-start-column="43" selection-end-line="327" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/XLua/Src/LuaEnv.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-624">
-          <caret line="442" selection-start-line="442" selection-end-line="442" />
-          <folding>
-            <marker date="1572093432409" expanded="true" signature="0:672" ph="/* Tencent is pleased to support the open source community by making xLua available. ... */" />
-            <marker date="1572093432409" expanded="false" signature="821:932" ph="..." />
-            <marker date="1572093432409" expanded="true" signature="956:24326" ph="{...}" />
-            <marker date="1572093432409" expanded="false" signature="969:1014" ph="..." />
-            <marker date="1572093432409" expanded="true" signature="1053:24324" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="1263:1526" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="1289:1516" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="1350:1473" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="1946:7015" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="2025:2220" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="3175:3281" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="5950:6043" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="6300:6393" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="6587:6781" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="6665:6763" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="7173:7359" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="7216:7316" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="7391:7482" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="7417:7472" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="7577:8510" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="7770:7923" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="8177:8295" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="8605:8752" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="8854:8941" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="9038:10060" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="9370:9892" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="9425:9559" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="9627:9792" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="10157:10299" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="10368:11265" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="10619:10721" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="10903:11047" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="11317:11380" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="11521:11634" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="11762:12421" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="11981:12170" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="12463:12503" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="12539:12996" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="13067:13304" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="13355:13993" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="13573:13711" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="14050:14729" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="14763:14853" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="14967:15085" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="20045:20199" ph="/* loader : CustomLoader， filepath参数：（ref类型）输入是require的参数，如果需要支持调试，需要输出真实路径。 ... */" />
-            <marker date="1572093432409" expanded="true" signature="20250:20309" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="20486:20739" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="20554:20683" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="20749:21120" ph="/* The garbage-collector pause controls how long the collector waits before starting a new cycle. ... */" />
-            <marker date="1572093432409" expanded="true" signature="21147:21815" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="21173:21537" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="21553:21805" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="21825:22268" ph="/* The step multiplier controls the relative speed of the collector relative to memory allocation. ... */" />
-            <marker date="1572093432409" expanded="true" signature="22297:22971" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="22323:22691" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="22707:22961" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="23001:23224" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="23254:23474" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="23507:23730" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="23768:24003" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="24030:24318" ph="{...}" />
-            <marker date="1572093432409" expanded="true" signature="24056:24308" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Src/GameMain.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding>
-            <marker date="1584870304332" expanded="false" signature="6:28" ph="..." />
-            <marker date="1584870304332" expanded="true" signature="61:1780" ph="{...}" />
-            <marker date="1584870304332" expanded="true" signature="164:214" ph="{...}" />
-            <marker date="1584870304332" expanded="true" signature="221:270" ph="/// 程序入口 初始化 ... " />
-            <marker date="1584870304332" expanded="true" signature="286:1142" ph="{...}" />
-            <marker date="1584870304332" expanded="true" signature="376:512" ph="/* Util.Add&lt;TimerManager&gt;(gameObject); ... */" />
-            <marker date="1584870304332" expanded="true" signature="1149:1203" ph="/// 所有的update都走这边 ... " />
-            <marker date="1584870304332" expanded="true" signature="1228:1505" ph="{...}" />
-            <marker date="1584870304332" expanded="true" signature="1528:1624" ph="{...}" />
-            <marker date="1584870304332" expanded="true" signature="1654:1778" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Lua/GameMain.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="42" column="58" selection-start-line="42" selection-start-column="58" selection-end-line="45" selection-end-column="48" />
         </state>
       </provider>
     </entry>

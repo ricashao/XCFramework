@@ -90,7 +90,9 @@ BaseEffect = require "Framework.Resource.Effect.Base.BaseEffect"
 EffectManager = require "Framework.Resource.Effect.EffectManager"
 
 -- net
+WsBaseService = require "Framework.Net.Base.WsBaseService"
 HallConnector = require "Net.Connector.HallConnector"
+WsHallConnector = require "Net.Connector.WsHallConnector"
 
 -- 单例类初始化
 UIManager:GetInstance()
@@ -101,3 +103,4 @@ SceneManager:GetInstance()
 AtlasManager:GetInstance()
 LogicUpdater:GetInstance()
 HallConnector:GetInstance()
+WsHallConnector:GetInstance()
