@@ -36,6 +36,7 @@ local function Start()
 	TimerManager:GetInstance():Startup()
 	LogicUpdater:GetInstance():Startup()
 	UIManager:GetInstance():Startup()
+	WsHallConnector:GetInstance():Startup()
 	
 	if Config.Debug then
 		-- 单元测试

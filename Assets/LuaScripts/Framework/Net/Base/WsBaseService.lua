@@ -15,7 +15,7 @@ end
 
 --注册消息引用
 local function RegMsg(self, ref, ...)
-    local ns = this.__ns;
+    local ns = self.__ns;
     for _, cmd in ipairs(...) do
         ns:RegRecieveMSGRef(cmd, ref);
     end
@@ -23,7 +23,7 @@ end
 
 --注册消息处理函数
 local function RegHandler(self, func, cmd)
-    local ns = this.__ns;
+    local ns = self.__ns;
     ns:Register(cmd, func);
 end
 
@@ -34,7 +34,7 @@ end
 --@param limit 最短发送时间
 local function Send(self, cmd, data, msgType, limit)
     local limit = limit or 100;
-    this.__ns:Send(cmd, data, msgType, limit);
+    self.__ns:Send(cmd, data, msgType, limit);
 end
 
 WsBaseService.OnRegister = OnRegister

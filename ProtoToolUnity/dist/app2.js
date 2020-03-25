@@ -1,6 +1,7 @@
 define(["require", "exports", "protobuf", "CookieForPath", "./MapIDMapTemplate"], function (require, exports, pbjs, CookieForPath_1, MapIDMapTemplate_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    //import { } from "Extend";
     const fs = nodeRequire("fs");
     const path = nodeRequire("path");
     const http = nodeRequire("http");

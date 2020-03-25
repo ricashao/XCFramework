@@ -19,6 +19,13 @@ local function __init(self)
     self.globalSeq = 0
 end
 
+local function Startup(self)
+    self.serviceMaps = {};
+    local loginService = require("Net.Service.LoginService").New();
+    self.serviceMaps["LoginService"] = loginService;
+    loginService:OnRegister();
+end
+
 local function OnReceivePackage(self, receive_bytes)
     local receive_msg = NetUtil.DeserializeMessage(receive_bytes)
     Logger.Log(tostring(receive_msg))
@@ -78,5 +85,6 @@ WsHallConnector.SendMessage = SendMessage
 WsHallConnector.Update = Update
 WsHallConnector.Disconnect = Disconnect
 WsHallConnector.Dispose = Dispose
+WsHallConnector.Startup = Startup
 
 return WsHallConnector

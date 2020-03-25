@@ -1,10 +1,6 @@
 "use strict";
 import * as pbjs from "protobuf";
 //import { } from "Extend";
-import ClassHelper from "ClassHelper";
-import ServerServiceNameTemplate from "ServerServiceNameTemplate";
-import ServiceNameTemplate from "ServiceNameTemplate";
-import PBMsgDictTemplate from "PBMsgDictTemplate";
 const fs = nodeRequire("fs");
 const path = nodeRequire("path");
 const http = nodeRequire("http");
