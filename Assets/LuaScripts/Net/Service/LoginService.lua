@@ -1,6 +1,6 @@
 --[[
 -- 使用ProtoTools，从 http://www.ricashao.com/doku.php?id=%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97 生成
--- 生成时间 2020-03-25 19:00:15
+-- 生成时间 2020-03-25 19:37:42
 --]]
 
 local LoginService = BaseClass("LoginService", WsBaseService)

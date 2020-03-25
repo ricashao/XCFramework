@@ -1,4 +1,4 @@
-define(["require", "exports", "protobuf", "CookieForPath", "./MapIDMapTemplate"], function (require, exports, pbjs, CookieForPath_1, MapIDMapTemplate_1) {
+define(["require", "exports", "protobuf", "ServiceNameTemplate", "CookieForPath", "./MapIDMapTemplate"], function (require, exports, pbjs, ServiceNameTemplate_1, CookieForPath_1, MapIDMapTemplate_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     //import { } from "Extend";
@@ -212,6 +212,7 @@ define(["require", "exports", "protobuf", "CookieForPath", "./MapIDMapTemplate"]
         }
         return { fieldName: fname, fieldType: fieldType, isMsg: isMsg, tType: tType, repeated: repeated };
     }
+    const serviceNamePath = "Assets/LuaScripts/Net/Config/ServiceName.lua";
     function parseProto(proto, gcfg) {
         let url = gcfg ? gcfg.url : "";
         url = url || "[文本框中，复制粘贴]";
@@ -354,6 +355,14 @@ define(["require", "exports", "protobuf", "CookieForPath", "./MapIDMapTemplate"]
                 }
                 createContent($g("code"), "MsgIDMap", idx++, code, "");
             }
+            let ctemp = new ServiceNameTemplate_1.default();
+            let cnPath = path.join(cprefix, serviceNamePath);
+            let code = ctemp.addToFile(cnPath, service);
+            let out = writeFile(serviceNamePath, cprefix, code);
+            if (out) {
+                log(`<font color="#0c0">生成客户端ServiceName代码成功，${out}</font>`);
+            }
+            createContent($g("code"), serviceNamePath, idx++, code, "");
         }
         //客户端根目录存在
         if (cprefix) {

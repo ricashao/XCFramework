@@ -1,5 +1,6 @@
 "use strict";
 import * as pbjs from "protobuf";
+import ServiceNameTemplate from "ServiceNameTemplate";
 //import { } from "Extend";
 const fs = nodeRequire("fs");
 const path = nodeRequire("path");
@@ -334,6 +335,8 @@ declare type SFieldData = {
 	required: boolean;
 }
 
+const serviceNamePath = "Assets/LuaScripts/Net/Config/ServiceName.lua";
+
 function parseProto(proto: string, gcfg?: GlobalCfg) {
 	let url: string = gcfg ? gcfg.url : "";
 	url = url || "[文本框中，复制粘贴]";
@@ -487,6 +490,15 @@ function parseProto(proto: string, gcfg?: GlobalCfg) {
 			}
 			createContent($g("code"), "MsgIDMap", idx++, code, "");
 		}
+
+		let ctemp = new ServiceNameTemplate();
+		let cnPath = path.join(cprefix, serviceNamePath);
+		let code = ctemp.addToFile(cnPath, service);
+		let out = writeFile(serviceNamePath, cprefix, code);
+		if (out) {
+			log(`<font color="#0c0">生成客户端ServiceName代码成功，${out}</font>`);
+		}
+		createContent($g("code"), serviceNamePath, idx++, code, "");
 	}
 
 	//客户端根目录存在

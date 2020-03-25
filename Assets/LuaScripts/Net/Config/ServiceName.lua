@@ -1,4 +1,4 @@
 local config = {
-    LoginService = "LoginService",
+	LoginService = "LoginService"
 }
 return config;
