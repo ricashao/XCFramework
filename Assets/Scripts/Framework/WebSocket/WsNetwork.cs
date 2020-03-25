@@ -21,9 +21,7 @@ namespace Networks
         protected volatile SOCKSTAT mStatus = SOCKSTAT.CLOSED;
 
 
-        private StreamBuffer receiveStreamBuffer;
         protected IMessageQueue mReceiveMsgQueue = null;
-        private int bufferCurLen = 0;
         private List<byte[]> mTempMsgList = null;
 
         public WsNetwork()
@@ -65,10 +63,7 @@ namespace Networks
                 {
                     if (e.IsBinary)
                     {
-                        int bufferLeftLen = receiveStreamBuffer.size - bufferCurLen;
-                        receiveStreamBuffer.CopyFrom(e.RawData, 0, 0, e.RawData.Length);
-                        bufferCurLen += e.RawData.Length;
-                        DoReceive(receiveStreamBuffer, ref bufferCurLen);
+                        mReceiveMsgQueue.Add(e.RawData);
                     }
                     else
                         UnityEngine.Debug.Log("收到非二进制数据");
@@ -98,49 +93,8 @@ namespace Networks
             }
         }
 
-        protected void DoReceive(StreamBuffer streamBuffer, ref int bufferCurLen)
-        {
-            try
-            {
-                // 组包、拆包
-                byte[] data = streamBuffer.GetBuffer();
-                int start = 0;
-                streamBuffer.ResetStream();
-                while (true)
-                {
-                    if (bufferCurLen - start < sizeof(int) * 3)
-                    {
-                        break;
-                    }
+      
 
-                    int msgLen = BitConverter.ToInt32(data, start);
-                    if (bufferCurLen < msgLen + sizeof(int))
-                    {
-                        break;
-                    }
-
-                    // 提取字节流，去掉开头表示长度的4字节
-                    start += sizeof(int);
-                    //协议号+code+数据
-                    var bytes = streamBuffer.ToArray(start, msgLen - sizeof(int));
-                    mReceiveMsgQueue.Add(bytes);
-                    // 下一次组包
-                    start += msgLen - sizeof(int);
-                }
-
-                if (start > 0)
-                {
-                    bufferCurLen -= start;
-                    streamBuffer.CopyFrom(data, start, 0, bufferCurLen);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(string.Format("Tcp receive package err : {0}\n {1}", ex.Message, ex.StackTrace));
-            }
-        }
-
-       
 
         public void Connect()
         {
@@ -150,8 +104,6 @@ namespace Networks
             string msg = null;
             try
             {
-                receiveStreamBuffer = StreamBufferPool.GetStream(1024 * 1024 * 2, false, true);
-                bufferCurLen = 0;
                 DoConnect();
             }
             catch (ObjectDisposedException ex)
@@ -251,7 +203,7 @@ namespace Networks
             UpdatePacket();
             UpdateEvt();
         }
-        
+
         private void UpdatePacket()
         {
             if (!mReceiveMsgQueue.Empty())
@@ -279,6 +231,7 @@ namespace Networks
                     {
                         StreamBufferPool.RecycleBuffer(mTempMsgList[i]);
                     }
+
                     mTempMsgList.Clear();
                 }
             }
@@ -312,6 +265,16 @@ namespace Networks
         // 发送消息的时候要注意对buffer进行拷贝，网络层发送完毕以后会对buffer执行回收
         public virtual void SendMessage(byte[] msgObj)
         {
+#if LOG_SEND_BYTES
+            var sb = new System.Text.StringBuilder();
+            for (int i = 0; i < msgObj.Length; i++)
+            {
+                sb.AppendFormat("{0}\t", msgObj[i]);
+            }
+            Logger.Log("HjTcpNetwork send bytes : " + sb.ToString());
+#endif
+
+            this.ClientSocket.Send(msgObj);
         }
 
         public bool IsConnect()

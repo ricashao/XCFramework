@@ -334,7 +334,7 @@ define(["require", "exports", "protobuf", "CookieForPath", "./MapIDMapTemplate"]
             let cdir = path.join(cprefix, luapath);
             let cfileName = service + ".lua";
             let cpath = path.join(cdir, cfileName);
-            let ccode = getCServiceCode(now, url, service, cSends, cRecvs, cRegs, getManualCodeInfo(cpath));
+            let ccode = getCServiceCode(now, url, service, cSends, cRecvs, cRegs, getManualCodeInfo(cpath), luaMsgId);
             // 创建客户端Service
             if (cprefix) {
                 let out = writeFile(cfileName, cdir, ccode);
@@ -400,10 +400,10 @@ ${code.join("\n")}
         let strCMD = cmds.join(",");
         //console.log(fnames);
         regs.push(`\tself:RegMsg("${className}", ${strCMD});`);
-        regs.push(`\tself:RegHandler(self.${handlerName}, ${strCMD});`);
+        regs.push(`\tself:RegHandler(Bind(self, ${handlerName}), ${strCMD});`);
         recvs.push(`local function ${handlerName} (self, data)`);
         recvs.push(`--/*|${handlerName}|*/--`);
-        recvs.push(`end`);
+        recvs.push(`end\n`);
     }
     function execLuaBat(fileName, dirName, epxortpath, protoname) {
         let command = `${dirName}/${fileName} --plugin=protoc-gen-lua=${dirName}/plugin/build.bat --proto_path=${dirName} --lua_out=${epxortpath} ${dirName}\\${protoname}.proto`;
@@ -430,27 +430,41 @@ ${code.join("\n")}
     function getMsgTypeCode(msgTypeName, cmd) {
         return `    public static final int ${msgTypeName} = ${cmd};`;
     }
-    function getCServiceCode(createTime, path, className, sends, recvs, regs, cinfo) {
+    function getCServiceCode(createTime, path, className, sends, recvs, regs, cinfo, msgIds) {
         return `--[[
 -- 使用ProtoTools，从 ${path} 生成
 -- 生成时间 ${createTime}
 --]]
 
 local ${className} = BaseClass("${className}", WsBaseService)
-local function OnRegister(self)
-	base.onRegister(self);
+local base = WsBaseService
 
-${regs.join(`\n`)}
-${genManualAreaCode("$onRegister", cinfo, `\t`)}
-end
 ${sends.join(`\n`)}
 ${parseRecvs(recvs, cinfo)}
 ${genManualAreaCode("$area2", cinfo)}
 
+local function OnRegister(self)
+	base.OnRegister(self);
+
+${regs.join(`\n`)}
+${genManualAreaCode("$OnRegister", cinfo, `\t`)}
+end
+
 ${className}.OnRegister = OnRegister
+${registFunc(msgIds, className)}
 
 return ${className}
 `;
+    }
+    function registFunc(recvs, classname) {
+        let arr = [];
+        recvs.forEach((fname) => {
+            if (fname.indexOf("C2S") > 0) {
+                var typeVar = fname.substr(0, fname.length - 4);
+                arr.push(`${classname}.${typeVar} = ${typeVar}`);
+            }
+        });
+        return arr.join("\n");
     }
     function parseRecvs(recvs, cinfo) {
         return recvs.map(recv => {

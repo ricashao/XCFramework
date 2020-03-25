@@ -5,6 +5,7 @@
 --]]
 local WsBaseService = BaseClass("WsBaseService")
 
+
 -- 创建：变量定义，初始化，消息注册
 -- 注意：窗口生命周期内保持的成员变量放这
 local function OnRegister(self)
@@ -14,17 +15,15 @@ local function OnRegister(self)
 end
 
 --注册消息引用
-local function RegMsg(self, ref, ...)
+local function RegMsg(self, ref, cmd)
     local ns = self.__ns;
-    for _, cmd in ipairs(...) do
-        ns:RegRecieveMSGRef(cmd, ref);
-    end
+    ns:RegRecieveMSGRef(cmd, ref)
 end
 
 --注册消息处理函数
 local function RegHandler(self, func, cmd)
     local ns = self.__ns;
-    ns:Register(cmd, func);
+    ns:Register(cmd, func)
 end
 
 --发送消息
@@ -33,8 +32,8 @@ end
 --@param msgType 数据类型
 --@param limit 最短发送时间
 local function Send(self, cmd, data, msgType, limit)
-    local limit = limit or 100;
-    self.__ns:Send(cmd, data, msgType, limit);
+    local limit = limit or 100
+    self.__ns:SendMessage(cmd, data, msgType, limit)
 end
 
 WsBaseService.OnRegister = OnRegister

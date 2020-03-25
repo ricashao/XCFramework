@@ -8,7 +8,7 @@ local traceback = debug.traceback
 
 local function Update(self)
 	local delta_time = Time.deltaTime
-	local hallConnector = HallConnector:GetInstance()
+	local hallConnector = WsHallConnector:GetInstance()
 	local status,err = pcall(hallConnector.Update, hallConnector)
 	if not status then
 		Logger.LogError("hallConnector update err : "..err.."\n"..traceback())

@@ -61,6 +61,7 @@ local function OnApplicationQuit()
 	UpdateManager:GetInstance():Dispose()
 	TimerManager:GetInstance():Dispose()
 	LogicUpdater:GetInstance():Dispose()
+	WsHallConnector:GetInstance():Dispose()
 	
 end
 

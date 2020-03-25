@@ -10,3 +10,4 @@ local config = {
 	["Regist_C2S_Msg"] = (require("Net.Protol.login_pb")).Regist_C2S_Msg,
 	["Regist_S2C_Msg"] = (require("Net.Protol.login_pb")).Regist_S2C_Msg,
 }
+    return config

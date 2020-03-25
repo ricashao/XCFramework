@@ -53,7 +53,8 @@ local config = {
             });
             arr.sort((a, b) => a > b ? 1 : -1);
             code += arr.join("\n");
-            code += "\n}";
+            code += `\n}
+    return config`;
             return code;
         }
         getManualCodeInfo(filename, messagename) {

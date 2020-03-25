@@ -109,6 +109,8 @@ end
 local function OnEnable(self)
 	base.OnEnable(self)
 	self:OnRefresh()
+	-- 登录开启链接服务器
+	self.ctrl:ConnectServer();
 end
 
 -- Update测试

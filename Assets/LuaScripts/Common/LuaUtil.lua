@@ -35,7 +35,7 @@ end
 -- 闭包绑定
 function Bind(self, func, ...)
 	assert(self == nil or type(self) == "table")
-	assert(func ~= nil and type(func) == "function")
+	assert(func ~= nil and type(func) == "function",type(func))
 	local params = nil
 	if self == nil then
 		params = SafePack(...)

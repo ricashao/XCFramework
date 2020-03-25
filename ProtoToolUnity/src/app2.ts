@@ -463,7 +463,7 @@ function parseProto(proto: string, gcfg?: GlobalCfg) {
 		let cfileName = service + ".lua";
 		let cpath = path.join(cdir, cfileName);
 
-		let ccode = getCServiceCode(now, url, service, cSends, cRecvs, cRegs, getManualCodeInfo(cpath));
+		let ccode = getCServiceCode(now, url, service, cSends, cRecvs, cRegs, getManualCodeInfo(cpath), luaMsgId);
 		// 创建客户端Service
 		if (cprefix) {
 
@@ -542,10 +542,10 @@ function makeReciveFunc(className: string, handlerName: string, regs: string[], 
 	let strCMD = cmds.join(",");
 	//console.log(fnames);
 	regs.push(`\tself:RegMsg("${className}", ${strCMD});`);
-	regs.push(`\tself:RegHandler(self.${handlerName}, ${strCMD});`);
+	regs.push(`\tself:RegHandler(Bind(self, ${handlerName}), ${strCMD});`);
 	recvs.push(`local function ${handlerName} (self, data)`);
 	recvs.push(`--/*|${handlerName}|*/--`);
-	recvs.push(`end`);
+	recvs.push(`end\n`);
 }
 
 function execLuaBat(fileName: string, dirName: string, epxortpath: string, protoname: string) {
@@ -575,28 +575,44 @@ function getMsgTypeCode(msgTypeName: string, cmd: number) {
 	return `    public static final int ${msgTypeName} = ${cmd};`
 }
 
-function getCServiceCode(createTime: string, path: string, className: string, sends: string[], recvs: string[], regs: string[], cinfo: { [index: string]: string }) {
+function getCServiceCode(createTime: string, path: string, className: string, sends: string[], recvs: string[], regs: string[], cinfo: { [index: string]: string }, msgIds: string[]) {
 	return `--[[
 -- 使用ProtoTools，从 ${path} 生成
 -- 生成时间 ${createTime}
 --]]
 
 local ${className} = BaseClass("${className}", WsBaseService)
-local function OnRegister(self)
-	base.onRegister(self);
+local base = WsBaseService
 
-${regs.join(`\n`)}
-${genManualAreaCode("$onRegister", cinfo, `\t`)}
-end
 ${sends.join(`\n`)}
 ${parseRecvs(recvs, cinfo)}
 ${genManualAreaCode("$area2", cinfo)}
 
+local function OnRegister(self)
+	base.OnRegister(self);
+
+${regs.join(`\n`)}
+${genManualAreaCode("$OnRegister", cinfo, `\t`)}
+end
+
 ${className}.OnRegister = OnRegister
+${registFunc(msgIds, className)}
 
 return ${className}
 `
 }
+
+function registFunc(recvs: string[], classname: string) {
+	let arr = [];
+	recvs.forEach((fname) => {
+		if (fname.indexOf("C2S") > 0) {
+			var typeVar = fname.substr(0, fname.length - 4);
+			arr.push(`${classname}.${typeVar} = ${typeVar}`)
+		}
+	})
+	return arr.join("\n");
+}
+
 
 
 function parseRecvs(recvs: string[], cinfo) {
