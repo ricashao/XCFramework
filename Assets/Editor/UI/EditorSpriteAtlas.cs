@@ -56,7 +56,7 @@ public class EditorSpriteAtlas  {
         return false;
     }
 
-    [MenuItem("XCFramework/ui工具/所有sprite生成图集")]
+    [MenuItem("XCFramework/ui工具/所有sprite生成图集",false,1)]
     private static void GenAllUiSpriteAtlas()
     {
         string folderPath = EditorHelper.UISpritesPath;
@@ -110,7 +110,7 @@ public class EditorSpriteAtlas  {
         }
     }
 
-    [MenuItem("XCFramework/ui工具/所有图集生成sprite")]
+    [MenuItem("XCFramework/ui工具/所有图集切割sprite",false,2)]
     public static void ProcessAllAtlasToSprite()
     {
         string folderPath = EditorHelper.UIGenAtlasPath;

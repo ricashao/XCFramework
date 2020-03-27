@@ -1,4 +1,5 @@
 using System.IO;
+using UnityEngine;
 
 public static class os
 {
@@ -84,6 +85,30 @@ public static class os
         if (Directory.Exists(path))
         {
             var paths = Directory.GetFiles(path, searchPattern, SearchOption.AllDirectories);
+            return paths;
+        }
+
+        return _emptyPaths;
+    }
+
+    /// <summary>
+    /// 返回assets/开头的路径
+    /// </summary>
+    /// <param name="path"></param>
+    /// <param name="searchPattern"></param>
+    /// <returns></returns>
+    public static string[] walkAssets(string path, string searchPattern)
+    {
+        if (Directory.Exists(path))
+        {
+            var paths = Directory.GetFiles(path, searchPattern, SearchOption.AllDirectories);
+            for (var i = 0; i < paths.Length; i++)
+            {
+                var filepath = paths[i];
+                if (filepath.StartsWith(Application.dataPath))
+                    paths[i] = "Assets" + filepath.Replace(Application.dataPath, "");
+            }
+
             return paths;
         }
 

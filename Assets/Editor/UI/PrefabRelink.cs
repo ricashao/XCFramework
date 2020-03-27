@@ -36,18 +36,17 @@ public static class UIReAttackTexture
         }
     }
 
-    //[MenuItem("UITools/散图--->图集")]
-    //public static void UpdateTexture()
-    //{
-    //    LoadAllAsset();
-    //    LoadAllPrefabs();
-    //}
+    [MenuItem("XCFramework/ui工具/图集刷新所有prefab",false,3)]
+    public static void UpdateTexture()
+    {
+        LoadAllAsset();
+        LoadAllPrefabs();
+    }
 
     private static void LoadAllPrefabs()
     {
-//        Dictionary<string, string> config = GlobalEditorHelper.GetConfig();
-//        string spritePath = config[EditorConstData.UIPrefabPathKey];
-//        ProcessFolderAssets(spritePath);
+        string prefabPath = EditorHelper.UIPrefabsPath;
+        ProcessFolderAssets(prefabPath);
     }
 
     /// <summary>
@@ -57,13 +56,11 @@ public static class UIReAttackTexture
     private static void ProcessFolderAssets(string folder)
     {
         Debug.Log("开始替换散图资源  图集-->散图" + folder);
-        List<string> allPrefabPath = AssetDatabase.FindAssets("t:Prefab", new string[] {folder}).ToList();
-
-        List<GameObject> allPrefabs = new List<GameObject>();
+        string[] allPrefabPath = os.walkAssets(folder, "*.prefab");
         foreach (var onePath in allPrefabPath)
         {
             //Debugger.Log("开始处理" + onePath);
-            GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(onePath));
+            GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(onePath);
             GameObject newPrefab = GameObject.Instantiate(oldPrefab);
             UpdateOldPrefab(newPrefab);
             PrefabUtility.ReplacePrefab(newPrefab, oldPrefab);
@@ -82,25 +79,21 @@ public static class UIReAttackTexture
         if (sprites != null && sprites.Count > 0) return;
 
         sprites = new Dictionary<string, Sprite>();
-        string p1 = Application.dataPath + "/AssetsPackage/";
-        string path = p1 + "UI/GenAtlas";
+        
+        string path = EditorHelper.UIGenAtlasPath;
         string[] extList = {"*.png"};
         foreach (string extension in extList)
         {
-            string[] files = os.walk(path, extension);
+            string[] files = os.walkAssets(path, extension);
             foreach (string file in files)
             {
-                LoadFile(file, p1.Length);
+                LoadFile(file);
             }
         }
     }
 
-    private static void LoadFile(string path, int pl)
+    private static void LoadFile(string path)
     {
-        path = path.Substring(pl);
-        path = "Assets/AssetsPackage/" + path.Substring(0, path.LastIndexOf(".")) + ".png";
-        path = path.Replace("\\", "/");
-
         Sprite[] objs = AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>().ToArray();
         AddToDic(objs);
     }

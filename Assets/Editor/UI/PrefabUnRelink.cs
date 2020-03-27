@@ -37,18 +37,17 @@ public static class UIUnAttackTexture
         }
     }
 
-    //[MenuItem("UITools/图集-->散图")]
-    //public static void UpdateTexture()
-    //{
-    //    LoadAllAsset();
-    //    LoadAllPrefabs();
-    //}
+    [MenuItem("XCFramework/ui工具/sprite刷新所有prefab")]
+    public static void UpdateTexture()
+    {
+        LoadAllAsset();
+        LoadAllPrefabs();
+    }
 
     private static void LoadAllPrefabs()
     {
-//        Dictionary<string, string> config = GlobalEditorHelper.GetConfig();
-//        string spritePath = config[EditorConstData.UIPrefabPathKey];
-//        ProcessFolderAssets(spritePath);
+        string spritePath = EditorHelper.UIPrefabsPath;
+        ProcessFolderAssets(spritePath);
     }
 
     /// <summary>
@@ -58,13 +57,12 @@ public static class UIUnAttackTexture
     private static void ProcessFolderAssets(string folder)
     {
         Debug.Log("开始处理目录 散图-->图集 " + folder);
-        List<string> allPrefabPath = AssetDatabase.FindAssets("t:Prefab", new string[] {folder}).ToList();
+        List<string> allPrefabPath = os.walkAssets(folder, "*.prefab").ToList();
 
-        List<GameObject> allPrefabs = new List<GameObject>();
         foreach (var onePath in allPrefabPath)
         {
             //Debugger.Log("开始处理" + onePath);
-            GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(onePath));
+            GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(onePath);
             GameObject newPrefab = GameObject.Instantiate(oldPrefab);
             UpdateOldPrefab(newPrefab);
             PrefabUtility.ReplacePrefab(newPrefab, oldPrefab);
@@ -84,34 +82,26 @@ public static class UIUnAttackTexture
         if (sprites != null && sprites.Count > 0) return;
 
         sprites = new Dictionary<string, Sprite>();
-        string p1 = Application.dataPath + "/AssetsPackage/";
-        string path = p1 + "UI/Atlas";
+        string path = EditorHelper.UISpritesPath;
         string[] extList = {"*.png"};
         foreach (string extension in extList)
         {
-            string[] files = os.walk(path, extension);
+            string[] files = os.walkAssets(path, extension);
             foreach (string file in files)
             {
-                LoadFile(file, p1.Length);
+                LoadFile(file);
             }
         }
     }
 
-    private static void LoadFile(string path, int pl)
+    private static void LoadFile(string path)
     {
-        path = path.Substring(pl);
-        path = "Assets/AssetsPackage/" + path.Substring(0, path.LastIndexOf(".")) + ".png";
-        path = path.Replace("\\", "/");
-
         Sprite sp = AssetDatabase.LoadAssetAtPath<Sprite>(path);
         AddToDic(sp);
     }
 
     private static void AddToDic(Sprite sprite)
     {
-        //for (int i = 0; i < objs.Length; i++)
-        //{
-        //    Sprite sp = objs[i] as Sprite;
         if (sprite != null)
         {
             string name = sprite.name;
@@ -129,8 +119,6 @@ public static class UIUnAttackTexture
                 sprites.Add(name, sprite);
             }
         }
-
-        //}
     }
 
 
