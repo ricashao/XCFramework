@@ -14,7 +14,6 @@ public static class UIReAttackTexture
     [MenuItem("Assets/图集资源替换/图集-->散图")]
     public static void UpdateFolderTexture()
     {
-        //string path = AssetDatabase.GetAssetPath(Selection.);
         string path = "";
         foreach (UnityEngine.Object obj in Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.Assets))
         {
@@ -46,9 +45,9 @@ public static class UIReAttackTexture
 
     private static void LoadAllPrefabs()
     {
-        Dictionary<string, string> config = GlobalEditorHelper.GetConfig();
-        string spritePath = config[EditorConstData.UIPrefabPathKey];
-        ProcessFolderAssets(spritePath);
+//        Dictionary<string, string> config = GlobalEditorHelper.GetConfig();
+//        string spritePath = config[EditorConstData.UIPrefabPathKey];
+//        ProcessFolderAssets(spritePath);
     }
 
     /// <summary>
@@ -99,18 +98,18 @@ public static class UIReAttackTexture
     private static void LoadFile(string path, int pl)
     {
         path = path.Substring(pl);
-        path = "Assets/AssetsPackage/" + path.Substring(0, path.LastIndexOf("."));
+        path = "Assets/AssetsPackage/" + path.Substring(0, path.LastIndexOf(".")) + ".png";
         path = path.Replace("\\", "/");
 
-        Object[] objs = Resources.LoadAll(path);
+        Sprite[] objs = AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>().ToArray();
         AddToDic(objs);
     }
 
-    private static void AddToDic(Object[] objs)
+    private static void AddToDic(Sprite[] objs)
     {
         for (int i = 0; i < objs.Length; i++)
         {
-            Sprite sp = objs[i] as Sprite;
+            Sprite sp = objs[i];
             if (sp != null && objs[i].name.Contains("."))
             {
                 string name = objs[i].name.Substring(0, objs[i].name.LastIndexOf("."));

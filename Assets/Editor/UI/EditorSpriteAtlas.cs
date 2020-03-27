@@ -10,8 +10,6 @@ using Object = UnityEngine.Object;
 
 public class EditorSpriteAtlas  {
     
-    
-    
 	[MenuItem("Assets/ui工具/创建单个ui图集")]
     public static void GenSingleUISpriteAtlas()
     {
@@ -26,7 +24,7 @@ public class EditorSpriteAtlas  {
 
     private static void CreateOneUiSpriteAtlas(string foldername)
     {
-        string folderPath = Application.dataPath + "/AssetsPackage/UI/GenAtlas";
+        string folderPath = EditorHelper.UIGenAtlasPath;
         string exportFullPath = os.path.join(folderPath, foldername);
         string sheetarg = "--sheet " + os.path.join(exportFullPath, foldername + "_tp{n}.png ");
         string dataargs = "--data " + os.path.join(exportFullPath, foldername + "_tp{n}_cfg.txt ");
@@ -61,7 +59,7 @@ public class EditorSpriteAtlas  {
     [MenuItem("XCFramework/ui工具/所有sprite生成图集")]
     private static void GenAllUiSpriteAtlas()
     {
-        string folderPath = Application.dataPath + "/AssetsPackage/UI/Atlas";
+        string folderPath = EditorHelper.UISpritesPath;
         string[] folders = Directory.GetDirectories(folderPath, "Atlas_*", SearchOption.TopDirectoryOnly);
         Debug.Log("start create all uispritesatlas");
         foreach (var folder in folders)
@@ -115,7 +113,7 @@ public class EditorSpriteAtlas  {
     [MenuItem("XCFramework/ui工具/所有图集生成sprite")]
     public static void ProcessAllAtlasToSprite()
     {
-        string folderPath = Application.dataPath + "/AssetsPackage/UI/GenAtlas";
+        string folderPath = EditorHelper.UIGenAtlasPath;
 
         string[] extList = {"*.txt"};
         foreach (string extension in extList)

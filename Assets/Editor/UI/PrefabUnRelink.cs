@@ -46,9 +46,9 @@ public static class UIUnAttackTexture
 
     private static void LoadAllPrefabs()
     {
-        Dictionary<string, string> config = GlobalEditorHelper.GetConfig();
-        string spritePath = config[EditorConstData.UIPrefabPathKey];
-        ProcessFolderAssets(spritePath);
+//        Dictionary<string, string> config = GlobalEditorHelper.GetConfig();
+//        string spritePath = config[EditorConstData.UIPrefabPathKey];
+//        ProcessFolderAssets(spritePath);
     }
 
     /// <summary>
@@ -100,10 +100,10 @@ public static class UIUnAttackTexture
     private static void LoadFile(string path, int pl)
     {
         path = path.Substring(pl);
-        path = path.Substring(0, path.LastIndexOf("."));
+        path = "Assets/AssetsPackage/" + path.Substring(0, path.LastIndexOf(".")) + ".png";
         path = path.Replace("\\", "/");
 
-        Sprite sp = Resources.Load<Sprite>(path);
+        Sprite sp = AssetDatabase.LoadAssetAtPath<Sprite>(path);
         AddToDic(sp);
     }
 
@@ -133,10 +133,6 @@ public static class UIUnAttackTexture
         //}
     }
 
-    private static T LoadAsset<T>(string path) where T : Object
-    {
-        return AssetDatabase.LoadAssetAtPath(path, typeof(T)) as T;
-    }
 
     private static void UpdateOldPrefab(GameObject oldPrefab)
     {
