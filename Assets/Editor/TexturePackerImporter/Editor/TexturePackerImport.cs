@@ -46,25 +46,6 @@ public static class TexturePackerImport{
 	
 	}
 
-    //所有的图集生成Sprite的处理 NOTICE: 这里隐藏了一个规则只能处理UI/GenAltas 目录
-	[MenuItem("Assets/TexturePacker/所有图集生成Sprite")]
-	public static void ProcessAllAtlasToSprite(){
-
-		string folderPath  = Application.dataPath + "/AssetsPackage/UI/GenAltas";//注意笔误altas
-
-        string[] extList = { "*.txt" };
-        foreach (string extension in extList)
-        {
-            string[] files = os.walk(folderPath, extension);
-            foreach (string file in files)
-            {
-                if (file.IndexOf("_cfg.txt") != -1)
-                {
-                    ProcessOneFile(file);
-                }
-            }
-        }
-	}
 
     //处理一个文件
     private static void ProcessOneFile(string txtPath)

@@ -693,10 +693,10 @@ using System.Globalization;
         }
 
 
-        public static Hashtable hashtableFromJson( this string json )
-        {
-            return XCModJSON.jsonDecode( json ) as Hashtable;
-        }
+//        public static Hashtable hashtableFromJson( this string json )
+//        {
+//            return XCModJSON.jsonDecode( json ) as Hashtable;
+//        }
     }
 
     #endregion

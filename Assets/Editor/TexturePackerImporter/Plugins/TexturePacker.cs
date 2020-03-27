@@ -233,15 +233,15 @@ public class TexturePacker{
 			SpriteMetaData smd = frames[i].BuildBasicSprite( 0.01f, new Color32(128,128,128,128));
             if (!smd.name.Equals("IGNORE_SPRITE"))
             {
-                string path = "UI/Image/" + folder + "/" + smd.name;
+                string path = "Assets/AssetsPackage/UI/Atlas/" + folder + "/" + smd.name+".png";
                 
                 path = path.Substring(0, path.LastIndexOf("."));
-                Sprite sp = Resources.Load<Sprite>(path);
+                Sprite sp = AssetDatabase.LoadAssetAtPath<Sprite>(path);
                 if(sp == null)
                 {
-                    path = "UI/Icon/" + folder + "/" + smd.name;
+                    path = "Assets/AssetsPackage/UI/Icon/" + folder + "/" + smd.name;
                     path = path.Substring(0, path.LastIndexOf("."));
-                    sp = Resources.Load<Sprite>(path);
+                    sp = AssetDatabase.LoadAssetAtPath<Sprite>(path);
                 }
 
                 if(sp == null)

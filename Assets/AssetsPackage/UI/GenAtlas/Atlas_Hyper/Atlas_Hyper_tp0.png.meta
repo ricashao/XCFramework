@@ -1,0 +1,460 @@
+fileFormatVersion: 2
+guid: d4bfdaa6e40fa124fa43ce36b38340e2
+timeCreated: 1585265639
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ui_hyper_acer.png
+    21300002: ui_hyper_book.png
+    21300004: ui_hyper_career_01.png
+    21300006: ui_hyper_career_02.png
+    21300008: ui_hyper_career_03.png
+    21300010: ui_hyper_career_04.png
+    21300012: ui_hyper_career_05.png
+    21300014: ui_hyper_career_06.png
+    21300016: ui_hyper_chat_bangpai.png
+    21300018: ui_hyper_chat_dangqian.png
+    21300020: ui_hyper_chat_duiwu.png
+    21300022: ui_hyper_chat_haoyou.png
+    21300024: ui_hyper_chat_shijie.png
+    21300026: ui_hyper_chat_xiaoxi.png
+    21300028: ui_hyper_chat_xitong.png
+    21300030: ui_hyper_copper.png
+    21300032: ui_hyper_emoji_01_1.tga
+    21300034: ui_hyper_emoji_01_2.tga
+    21300036: ui_hyper_emoji_02_1.tga
+    21300038: ui_hyper_emoji_02_2.tga
+    21300040: ui_hyper_emoji_03_1.tga
+    21300042: ui_hyper_emoji_03_2.tga
+    21300044: ui_hyper_exp.png
+    21300046: ui_hyper_money_01.png
+    21300048: ui_hyper_money_02.png
+    21300050: ui_hyper_money_03.png
+    21300052: ui_hyper_note.png
+    21300054: ui_hyper_petexp.png
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ui_hyper_acer.png
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 175
+        width: 38
+        height: 38
+      alignment: 1
+      pivot: {x: 20, y: 62}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_book.png
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 157
+        width: 30
+        height: 30
+      alignment: 1
+      pivot: {x: 90, y: 84}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_career_01.png
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 125
+        width: 30
+        height: 30
+      alignment: 1
+      pivot: {x: 90, y: 116}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_career_02.png
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 93
+        width: 30
+        height: 30
+      alignment: 1
+      pivot: {x: 118, y: 148}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_career_03.png
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 157
+        width: 30
+        height: 30
+      alignment: 1
+      pivot: {x: 122, y: 84}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_career_04.png
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 125
+        width: 30
+        height: 30
+      alignment: 1
+      pivot: {x: 122, y: 116}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_career_05.png
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 191
+        width: 30
+        height: 30
+      alignment: 1
+      pivot: {x: 124, y: 50}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_career_06.png
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 225
+        width: 30
+        height: 30
+      alignment: 1
+      pivot: {x: 126, y: 16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_chat_bangpai.png
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 61
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 17, y: 179}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_chat_dangqian.png
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 27
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 17, y: 213}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_chat_duiwu.png
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 61
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 51, y: 179}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_chat_haoyou.png
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 27
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 51, y: 213}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_chat_shijie.png
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 181
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 57, y: 59}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_chat_xiaoxi.png
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 223
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 59, y: 17}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_chat_xitong.png
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 147
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 57, y: 93}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_copper.png
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 135
+        width: 38
+        height: 38
+      alignment: 1
+      pivot: {x: 20, y: 102}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_emoji_01_1.tga
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 113
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 57, y: 127}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_emoji_01_2.tga
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 79
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 85, y: 161}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_emoji_02_1.tga
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 45
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 85, y: 195}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_emoji_02_2.tga
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 11
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 85, y: 229}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_emoji_03_1.tga
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 189
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 91, y: 51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_emoji_03_2.tga
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 223
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 93, y: 17}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_exp.png
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 61
+        width: 30
+        height: 30
+      alignment: 1
+      pivot: {x: 118, y: 180}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_money_01.png
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 215
+        width: 40
+        height: 40
+      alignment: 1
+      pivot: {x: 21, y: 21}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_money_02.png
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 29
+        width: 30
+        height: 30
+      alignment: 1
+      pivot: {x: 118, y: 212}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_money_03.png
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 225
+        width: 30
+        height: 30
+      alignment: 1
+      pivot: {x: 158, y: 16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_note.png
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 95
+        width: 38
+        height: 38
+      alignment: 1
+      pivot: {x: 20, y: 142}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_hyper_petexp.png
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 225
+        width: 30
+        height: 30
+      alignment: 1
+      pivot: {x: 190, y: 16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

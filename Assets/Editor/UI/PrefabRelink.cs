@@ -5,12 +5,13 @@ using System.IO;
 using Object = UnityEngine.Object;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public static class UIReAttackTexture
 {
     private static Dictionary<string, Sprite> sprites = null;
 
-    [MenuItem("Assets/图集资源替换/散图-->图集")]
+    [MenuItem("Assets/图集资源替换/图集-->散图")]
     public static void UpdateFolderTexture()
     {
         //string path = AssetDatabase.GetAssetPath(Selection.);
@@ -56,14 +57,14 @@ public static class UIReAttackTexture
     /// <param name="folder"></param>
     private static void ProcessFolderAssets(string folder)
     {
-        Debug.Log("开始替换散图资源  散图-->图集 " + folder);
-        List<string> allPrefabPath = GlobalEditorHelper.GetAssetsPathFileName(folder, "prefab", true);
+        Debug.Log("开始替换散图资源  图集-->散图" + folder);
+        List<string> allPrefabPath = AssetDatabase.FindAssets("t:Prefab", new string[] {folder}).ToList();
 
         List<GameObject> allPrefabs = new List<GameObject>();
         foreach (var onePath in allPrefabPath)
         {
             //Debugger.Log("开始处理" + onePath);
-            GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(onePath);
+            GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(onePath));
             GameObject newPrefab = GameObject.Instantiate(oldPrefab);
             UpdateOldPrefab(newPrefab);
             PrefabUtility.ReplacePrefab(newPrefab, oldPrefab);
@@ -72,7 +73,7 @@ public static class UIReAttackTexture
 
         AssetDatabase.SaveAssets();
 
-        Debug.Log("所有散图替换为图集完成");
+        Debug.Log("所有图集替换散图完成");
     }
 
 
@@ -83,7 +84,7 @@ public static class UIReAttackTexture
 
         sprites = new Dictionary<string, Sprite>();
         string p1 = Application.dataPath + "/AssetsPackage/";
-        string path = p1 + "UI/GenAltas";
+        string path = p1 + "UI/GenAtlas";
         string[] extList = {"*.png"};
         foreach (string extension in extList)
         {
@@ -98,7 +99,7 @@ public static class UIReAttackTexture
     private static void LoadFile(string path, int pl)
     {
         path = path.Substring(pl);
-        path = path.Substring(0, path.LastIndexOf("."));
+        path = "Assets/AssetsPackage/" + path.Substring(0, path.LastIndexOf("."));
         path = path.Replace("\\", "/");
 
         Object[] objs = Resources.LoadAll(path);

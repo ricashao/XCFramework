@@ -1,0 +1,306 @@
+fileFormatVersion: 2
+guid: 89df8fc7598faa94c9e3e8d3bb9381dc
+timeCreated: 1585265639
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ui_group_01.png
+    21300002: ui_group_02.png
+    21300004: ui_group_03.png
+    21300006: ui_group_04.png
+    21300008: ui_group_05.png
+    21300010: ui_group_06.png
+    21300012: ui_group_07.png
+    21300014: ui_group_08.png
+    21300016: ui_group_09.png
+    21300018: ui_group_10.png
+    21300020: ui_group_11.png
+    21300022: ui_group_12.png
+    21300024: ui_group_13.png
+    21300026: ui_group_14.png
+    21300028: ui_group_15.png
+    21300030: ui_group_16.png
+    21300032: ui_group_17.png
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ui_group_01.png
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 249
+        width: 59
+        height: 50
+      alignment: 1
+      pivot: {x: 208.5, y: 238}
+      border: {x: 29, y: 24, z: 29, w: 24}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_02.png
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 161
+        width: 35
+        height: 34
+      alignment: 1
+      pivot: {x: 196.5, y: 334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_03.png
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 333
+        width: 37
+        height: 36
+      alignment: 1
+      pivot: {x: 220.5, y: 161}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_04.png
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 439
+        width: 126
+        height: 72
+      alignment: 1
+      pivot: {x: 64, y: 37}
+      border: {x: 60, y: 34, z: 60, w: 34}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_05.png
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 384
+        width: 104
+        height: 53
+      alignment: 1
+      pivot: {x: 53, y: 101.5}
+      border: {x: 51, y: 0, z: 51, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_06.png
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 395
+        width: 51
+        height: 24
+      alignment: 1
+      pivot: {x: 227.5, y: 105}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_07.png
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 371
+        width: 46
+        height: 22
+      alignment: 1
+      pivot: {x: 225, y: 130}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_08.png
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 107
+        width: 81
+        height: 260
+      alignment: 1
+      pivot: {x: 136.5, y: 275}
+      border: {x: 38, y: 127, z: 39, w: 128}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_09.png
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 161
+        width: 34
+        height: 34
+      alignment: 1
+      pivot: {x: 233, y: 334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_10.png
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 421
+        width: 115
+        height: 25
+      alignment: 1
+      pivot: {x: 186.5, y: 78.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_11.png
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 125
+        width: 31
+        height: 34
+      alignment: 1
+      pivot: {x: 194.5, y: 370}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_12.png
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 448
+        width: 121
+        height: 63
+      alignment: 1
+      pivot: {x: 189.5, y: 32.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_13.png
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 353
+        width: 21
+        height: 14
+      alignment: 1
+      pivot: {x: 189.5, y: 152}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_14.png
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 369
+        width: 93
+        height: 50
+      alignment: 1
+      pivot: {x: 153.5, y: 118}
+      border: {x: 46, y: 25, z: 46, w: 24}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_15.png
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 332
+        width: 93
+        height: 50
+      alignment: 1
+      pivot: {x: 47.5, y: 155}
+      border: {x: 46, y: 26, z: 46, w: 23}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_16.png
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 197
+        width: 59
+        height: 50
+      alignment: 1
+      pivot: {x: 208.5, y: 290}
+      border: {x: 29, y: 24, z: 29, w: 24}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ui_group_17.png
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 301
+        width: 68
+        height: 30
+      alignment: 1
+      pivot: {x: 213, y: 196}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

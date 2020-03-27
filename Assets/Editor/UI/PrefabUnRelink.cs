@@ -5,12 +5,13 @@ using System.IO;
 using Object = UnityEngine.Object;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public static class UIUnAttackTexture
 {
     private static Dictionary<string, Sprite> sprites = null;
 
-    [MenuItem("Assets/图集资源替换/图集-->散图")]
+    [MenuItem("Assets/图集资源替换/散图-->图集")]
     public static void UpdateFolderTexture()
     {
         //string path = AssetDatabase.GetAssetPath(Selection.);
@@ -56,14 +57,14 @@ public static class UIUnAttackTexture
     /// <param name="folder"></param>
     private static void ProcessFolderAssets(string folder)
     {
-        Debug.Log("开始处理目录 图集-->散图 " + folder);
-        List<string> allPrefabPath = GlobalEditorHelper.GetAssetsPathFileName(folder, "prefab", true);
+        Debug.Log("开始处理目录 散图-->图集 " + folder);
+        List<string> allPrefabPath = AssetDatabase.FindAssets("t:Prefab", new string[] {folder}).ToList();
 
         List<GameObject> allPrefabs = new List<GameObject>();
         foreach (var onePath in allPrefabPath)
         {
             //Debugger.Log("开始处理" + onePath);
-            GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(onePath);
+            GameObject oldPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(onePath));
             GameObject newPrefab = GameObject.Instantiate(oldPrefab);
             UpdateOldPrefab(newPrefab);
             PrefabUtility.ReplacePrefab(newPrefab, oldPrefab);

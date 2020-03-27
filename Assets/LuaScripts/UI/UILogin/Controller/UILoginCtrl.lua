@@ -23,7 +23,7 @@ local function OnClose(self, sender, result, msg)
 end
 
 local function ConnectServer(self)
-    WsHallConnector:GetInstance():Connect("192.168.0.172", 10002, Bind(self, OnConnect), Bind(self, OnClose))
+    WsHallConnector:GetInstance():Connect("127.0.0.1", 10001, Bind(self, OnConnect), Bind(self, OnClose))
 end
 
 local function LoginServer(self, name, password)

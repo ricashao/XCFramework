@@ -27,8 +27,8 @@ local function Register()
 end
 
 local function Unregister()
-	xlua.hotfix(AssetbundleUpdater, "TestHotfix", nil)
-	xlua.hotfix(AssetBundleManager, "TestHotfix", nil)
+	--xlua.hotfix(AssetbundleUpdater, "TestHotfix", nil)
+	--xlua.hotfix(AssetBundleManager, "TestHotfix", nil)
 end
 
 return {

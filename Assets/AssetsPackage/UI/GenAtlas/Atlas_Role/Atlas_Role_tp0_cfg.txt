@@ -1,0 +1,292 @@
+{"frames": {
+
+"ui_role_02.png":
+{
+	"frame": {"x":1,"y":135,"w":95,"h":148},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":95,"h":148},
+	"sourceSize": {"w":95,"h":148}
+},
+"ui_role_03.png":
+{
+	"frame": {"x":389,"y":80,"w":41,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":41,"h":42},
+	"sourceSize": {"w":41,"h":42}
+},
+"ui_role_09.png":
+{
+	"frame": {"x":186,"y":56,"w":46,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":39},
+	"sourceSize": {"w":46,"h":39}
+},
+"ui_role_10.png":
+{
+	"frame": {"x":334,"y":197,"w":47,"h":29},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":47,"h":29},
+	"sourceSize": {"w":47,"h":29}
+},
+"ui_role_24.png":
+{
+	"frame": {"x":1,"y":1,"w":231,"h":53},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":231,"h":53},
+	"sourceSize": {"w":231,"h":53}
+},
+"ui_role_25.png":
+{
+	"frame": {"x":506,"y":1,"w":2,"h":29},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2,"h":29},
+	"sourceSize": {"w":2,"h":29}
+},
+"ui_role_26.png":
+{
+	"frame": {"x":309,"y":220,"w":17,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":25},
+	"sourceSize": {"w":17,"h":25}
+},
+"ui_role_27.png":
+{
+	"frame": {"x":354,"y":132,"w":32,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":38},
+	"sourceSize": {"w":32,"h":38}
+},
+"ui_role_28.png":
+{
+	"frame": {"x":186,"y":97,"w":37,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":37,"h":36},
+	"sourceSize": {"w":37,"h":36}
+},
+"ui_role_29.png":
+{
+	"frame": {"x":217,"y":289,"w":31,"h":35},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":35},
+	"sourceSize": {"w":31,"h":35}
+},
+"ui_role_30.png":
+{
+	"frame": {"x":282,"y":256,"w":35,"h":33},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":33},
+	"sourceSize": {"w":35,"h":33}
+},
+"ui_role_31.png":
+{
+	"frame": {"x":88,"y":453,"w":36,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":36},
+	"sourceSize": {"w":36,"h":36}
+},
+"ui_role_32.png":
+{
+	"frame": {"x":225,"y":132,"w":127,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":127,"h":31},
+	"sourceSize": {"w":127,"h":31}
+},
+"ui_role_33.png":
+{
+	"frame": {"x":347,"y":256,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24}
+},
+"ui_role_34.png":
+{
+	"frame": {"x":319,"y":256,"w":26,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":26},
+	"sourceSize": {"w":26,"h":26}
+},
+"ui_role_35.png":
+{
+	"frame": {"x":502,"y":68,"w":8,"h":2},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":2},
+	"sourceSize": {"w":8,"h":2}
+},
+"ui_role_36.png":
+{
+	"frame": {"x":234,"y":80,"w":153,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":50},
+	"sourceSize": {"w":153,"h":50}
+},
+"ui_role_45.png":
+{
+	"frame": {"x":1,"y":290,"w":109,"h":161},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":161},
+	"sourceSize": {"w":109,"h":161}
+},
+"ui_role_46.png":
+{
+	"frame": {"x":217,"y":220,"w":90,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":34},
+	"sourceSize": {"w":90,"h":34}
+},
+"ui_role_49.png":
+{
+	"frame": {"x":234,"y":1,"w":199,"h":77},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":199,"h":77},
+	"sourceSize": {"w":199,"h":77}
+},
+"ui_role_51.png":
+{
+	"frame": {"x":217,"y":193,"w":115,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":25},
+	"sourceSize": {"w":115,"h":25}
+},
+"ui_role_52.png":
+{
+	"frame": {"x":334,"y":172,"w":52,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":23},
+	"sourceSize": {"w":52,"h":23}
+},
+"ui_role_53.png":
+{
+	"frame": {"x":328,"y":228,"w":55,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":55,"h":26},
+	"sourceSize": {"w":55,"h":26}
+},
+"ui_role_54.png":
+{
+	"frame": {"x":1,"y":453,"w":85,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":85,"h":55},
+	"sourceSize": {"w":85,"h":55}
+},
+"ui_role_55.png":
+{
+	"frame": {"x":250,"y":289,"w":29,"h":29},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":29},
+	"sourceSize": {"w":29,"h":29}
+},
+"ui_role_56.png":
+{
+	"frame": {"x":435,"y":34,"w":68,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":32},
+	"sourceSize": {"w":68,"h":32}
+},
+"ui_role_57.png":
+{
+	"frame": {"x":112,"y":119,"w":65,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":31},
+	"sourceSize": {"w":65,"h":31}
+},
+"ui_role_58.png":
+{
+	"frame": {"x":217,"y":256,"w":63,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":63,"h":31},
+	"sourceSize": {"w":63,"h":31}
+},
+"ui_role_59.png":
+{
+	"frame": {"x":435,"y":1,"w":69,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":69,"h":31},
+	"sourceSize": {"w":69,"h":31}
+},
+"ui_role_60.png":
+{
+	"frame": {"x":435,"y":68,"w":65,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":32},
+	"sourceSize": {"w":65,"h":32}
+},
+"ui_role_61.png":
+{
+	"frame": {"x":388,"y":152,"w":117,"h":136},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":117,"h":136},
+	"sourceSize": {"w":117,"h":136}
+},
+"ui_role_62.png":
+{
+	"frame": {"x":98,"y":152,"w":117,"h":136},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":117,"h":136},
+	"sourceSize": {"w":117,"h":136}
+},
+"ui_role_64.png":
+{
+	"frame": {"x":217,"y":165,"w":115,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":26},
+	"sourceSize": {"w":115,"h":26}
+},
+"ui_role_65.png":
+{
+	"frame": {"x":389,"y":124,"w":118,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":118,"h":26},
+	"sourceSize": {"w":118,"h":26}
+},
+"ui_role_66.png":
+{
+	"frame": {"x":1,"y":56,"w":183,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":183,"h":61},
+	"sourceSize": {"w":183,"h":61}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Atlas_Role_tp0.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3dd312a67511f91afd4480f4a7eb2524:336969acb65f1e1128a0d0908f8d5194:33a3c6302cb7b30c644344bba6825c88$"
+}
+}
