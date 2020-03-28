@@ -94,6 +94,10 @@ ServiceName = require "Net.Config.ServiceName"
 WsBaseService = require "Framework.Net.Base.WsBaseService"
 WsHallConnector = require "Net.Connector.WsHallConnector"
 
+-- touch
+TouchProxy = require "Touch.TouchProxy"
+InputTouch = require "Touch.InputTouch"
+
 -- 单例类初始化
 UIManager:GetInstance()
 DataManager:GetInstance()
@@ -103,3 +107,6 @@ SceneManager:GetInstance()
 AtlasManager:GetInstance()
 LogicUpdater:GetInstance()
 WsHallConnector:GetInstance()
+TouchProxy:GetInstance()
+InputTouch:GetInstance()
+

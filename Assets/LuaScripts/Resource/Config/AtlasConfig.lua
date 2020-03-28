@@ -6,23 +6,23 @@
 local AtlasConfig = {
 	Comm = {
 		Name = "Comm",
-		AtlasPath = "UI/Atlas/Comm",
+		AtlasPath = "UI/Atlas/Atlas_Comm",
 	},
 	Group = {
 		Name = "Group",
-		PackagePath = "UI/Atlas/Comm",
+		PackagePath = "UI/Atlas/Atlas_Comm",
 	},
 	Hyper = {
 		Name = "Hyper",
-		AtlasPath = "UI/Atlas/Hyper",
+		AtlasPath = "UI/Atlas/Atlas_Hyper",
 	},
 	Login = {
 		Name = "Login",
-		AtlasPath = "UI/Atlas/Login",
+		AtlasPath = "UI/Atlas/Atlas_Login",
 	},
 	Role = {
 		Name = "Role",
-		AtlasPath = "UI/Atlas/Role",
+		AtlasPath = "UI/Atlas/Atlas_Role",
 	},
 }
 

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 20b7825eef1320c4bacb9613ff304244
-timeCreated: 1585265638
+timeCreated: 1585313418
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -1282,5 +1282,5 @@ TextureImporter:
     outline: []
   spritePackingTag: 
   userData: 
-  assetBundleName: ui/genatlas/atlas_comm.assetbundle
+  assetBundleName: 
   assetBundleVariant: 

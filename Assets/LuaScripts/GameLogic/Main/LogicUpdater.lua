@@ -13,6 +13,7 @@ local function Update(self)
 	if not status then
 		Logger.LogError("hallConnector update err : "..err.."\n"..traceback())
 	end
+	InputTouch:GetInstance():Tick(delta_time)
 end
 
 local function LateUpdate(self)
