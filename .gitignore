@@ -17,3 +17,5 @@ Temp/
 Assets/Plugins/Android/
 Assets/Plugins/Android.meta
 .idea
+Assets/Plugins/Editor/
+Assets/Plugins/Editor.meta
