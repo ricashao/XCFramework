@@ -18,7 +18,7 @@ end
 
 local function LateUpdate(self)
     local delta_time = Time.deltaTime
-    CameraMgr:GetInstance():LateTick(delta_time)
+    CameraManager:GetInstance():LateTick(delta_time)
 end
 
 local function FixedUpdate(self)

@@ -102,7 +102,10 @@ InputTouch = require "Touch.InputTouch"
 -- camera
 CameraState = require "Camera.State.CameraState"
 CameraContext = require "Camera.CameraContext"
-CameraMgr = require "Camera.CameraMgr"
+CameraManager = require "Camera.CameraManager"
+
+-- audio
+AudioManager = require "Audio.AudioManager"
 
 
 -- 单例类初始化
@@ -117,5 +120,6 @@ WsHallConnector:GetInstance()
 TouchProxy:GetInstance()
 InputTouch:GetInstance()
 CameraContext:GetInstance()
-CameraMgr:GetInstance()
+CameraManager:GetInstance()
+AudioManager:GetInstance()
 

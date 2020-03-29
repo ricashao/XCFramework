@@ -3,13 +3,13 @@
 --- Created by Administrator.
 --- DateTime: 2020/3/28 21:43
 ---
-local CameraMgr = BaseClass("CameraMgr", Singleton)
+local CameraManager = BaseClass("CameraManager", Singleton)
 
 local function __init(self)
     self.mainCamera = nil
 end
 
-function CameraMgr.SetCamera(self, followTarget, cameraData)
+function CameraManager.SetCamera(self, followTarget, cameraData)
     --Set Camera
     if self.mainCamera == nil then
         self.mainCamera = require "Camera.MainCamera.SmartCamera".New()
@@ -17,7 +17,7 @@ function CameraMgr.SetCamera(self, followTarget, cameraData)
         --Camera.main.gameObject:AddComponent(CutImage.GetClassType())
         --local cutImage = Camera.main.gameObject:GetComponent(CutImage.GetClassType())
         --self.mainCamera.cutImageAgent = cutImage
-        require "Camera.CameraContext":GetInstance():SetCameraTarget(CameraMgr.mainCamera)
+        require "Camera.CameraContext":GetInstance():SetCameraTarget(self.mainCamera)
 
         CS.UnityEngine.Object.DontDestroyOnLoad(self.mainCamera.gameObject)
     end
@@ -68,11 +68,11 @@ local function LateTick(self, delta)
     CameraContext:GetInstance():LateTick(delta)
 end
 
-CameraMgr.__init = __init
-CameraMgr.SetCamera = SetCamera
-CameraMgr.GetSmartCamera = GetSmartCamera
-CameraMgr.SetCameraAttribute = SetCameraAttribute
-CameraMgr.SetStartTime = SetStartTime
-CameraMgr.LateTick = LateTick
+CameraManager.__init = __init
+CameraManager.SetCamera = SetCamera
+CameraManager.GetSmartCamera = GetSmartCamera
+CameraManager.SetCameraAttribute = SetCameraAttribute
+CameraManager.SetStartTime = SetStartTime
+CameraManager.LateTick = LateTick
 
-return CameraMgr
+return CameraManager

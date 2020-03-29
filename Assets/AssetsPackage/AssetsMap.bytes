@@ -1,3 +1,4 @@
+assetsmap_bytes.assetbundle,AssetsMap.bytes
 effect/common.assetbundle,Effect/Common/Materials/models_fx_R.mat
 effect/common.assetbundle,Effect/Common/Materials/models_fx_RGB.mat
 effect/common.assetbundle,Effect/Common/Texture/Matcap_Encode2.png
@@ -5,6 +6,13 @@ effect/common.assetbundle,Effect/Common/Texture/models_fx.png
 effect/common.assetbundle,Effect/Common/Texture/models_fx_a.png
 effect/prefab/ui/ef_ui_pet_rank_yellow_test_prefab.assetbundle,Effect/Prefab/UI/ef_ui_pet_rank_yellow_test.prefab
 effect/prefab/ui/ef_ui_taskfinish_prefab.assetbundle,Effect/Prefab/UI/ef_ui_TaskFinish.prefab
+lua.assetbundle,Lua/Audio/AudioManager.lua.bytes
+lua.assetbundle,Lua/Camera/CameraContext.lua.bytes
+lua.assetbundle,Lua/Camera/CameraManager.lua.bytes
+lua.assetbundle,Lua/Camera/MainCamera/SmartCamera.lua.bytes
+lua.assetbundle,Lua/Camera/State/CameraFollowState.lua.bytes
+lua.assetbundle,Lua/Camera/State/CameraState.lua.bytes
+lua.assetbundle,Lua/Camera/State/CameraStayState.lua.bytes
 lua.assetbundle,Lua/Common/LuaUtil.lua.bytes
 lua.assetbundle,Lua/Common/Main.lua.bytes
 lua.assetbundle,Lua/Common/StringUtil.lua.bytes
@@ -48,6 +56,7 @@ lua.assetbundle,Lua/DataCenter/Config/DataMessageNames.lua.bytes
 lua.assetbundle,Lua/DataCenter/DataManager.lua.bytes
 lua.assetbundle,Lua/DataCenter/ServerData/ServerData.lua.bytes
 lua.assetbundle,Lua/DataCenter/UserData/UserData.lua.bytes
+lua.assetbundle,Lua/Framework/Basic/TransformObject.lua.bytes
 lua.assetbundle,Lua/Framework/Common/BaseClass.lua.bytes
 lua.assetbundle,Lua/Framework/Common/ConstClass.lua.bytes
 lua.assetbundle,Lua/Framework/Common/DataClass.lua.bytes
@@ -132,8 +141,10 @@ lua.assetbundle,Lua/Scenes/BattleScene.lua.bytes
 lua.assetbundle,Lua/Scenes/Config/SceneConfig.lua.bytes
 lua.assetbundle,Lua/Scenes/HomeScene.lua.bytes
 lua.assetbundle,Lua/Scenes/LoginScene.lua.bytes
-lua.assetbundle,Lua/Touch/Fighter.lua.bytes
+lua.assetbundle,Lua/Touch/Finger.lua.bytes
 lua.assetbundle,Lua/Touch/InputTouch.lua.bytes
+lua.assetbundle,Lua/Touch/TouchProxy.lua.bytes
+lua.assetbundle,Lua/Touch/TouchScreen.lua.bytes
 lua.assetbundle,Lua/UI/Config/UIConfig.lua.bytes
 lua.assetbundle,Lua/UI/Config/UIWindowNames.lua.bytes
 lua.assetbundle,Lua/UI/UIBattle/Controller/UIBattleMainCtrl.lua.bytes
@@ -176,6 +187,7 @@ lua.assetbundle,Lua/XLua/Perf/memory.lua.bytes
 lua.assetbundle,Lua/XLua/Perf/profiler.lua.bytes
 lua.assetbundle,Lua/XLua/Tdr/tdr.lua.bytes
 models/1001.assetbundle,Models/1001/Character.prefab
+music/bgm/op_mp3.assetbundle,Music/BGM/op.mp3
 shaders.assetbundle,Shaders/Model/Particles-Add-R.shader
 shaders.assetbundle,Shaders/Model/Particles-Add-RGBA.shader
 shaders.assetbundle,Shaders/UI/T_UIParticle.shader
@@ -367,3 +379,4 @@ ui/prefabs/view/uiloading_prefab.assetbundle,UI/Prefabs/View/UILoading.prefab
 ui/prefabs/view/uilogin_prefab.assetbundle,UI/Prefabs/View/UILogin.prefab
 ui/prefabs/view/uiloginserver_prefab.assetbundle,UI/Prefabs/View/UILoginServer.prefab
 ui/prefabs/view/uitestmain_prefab.assetbundle,UI/Prefabs/View/UITestMain.prefab
+variantsmap_bytes.assetbundle,VariantsMap.bytes
