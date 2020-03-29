@@ -56,7 +56,7 @@ local function LoginServer(self, name, password)
     msg.username = "szc1";
     msg.password = CS.Md5Helper.Md5("11111111")
     local service = WsHallConnector:GetInstance():GetService(ServiceName.LoginService)
-    service:Login_C2S(msg);
+    --service:Login_C2S(msg);
     SceneManager:GetInstance():SwitchScene(SceneConfig.HomeScene)
 end
 

@@ -7,16 +7,18 @@ local LogicUpdater = BaseClass("LogicUpdater", UpdatableSingleton)
 local traceback = debug.traceback
 
 local function Update(self)
-	local delta_time = Time.deltaTime
-	local hallConnector = WsHallConnector:GetInstance()
-	local status,err = pcall(hallConnector.Update, hallConnector)
-	if not status then
-		Logger.LogError("hallConnector update err : "..err.."\n"..traceback())
-	end
-	InputTouch:GetInstance():Tick(delta_time)
+    local delta_time = Time.deltaTime
+    local hallConnector = WsHallConnector:GetInstance()
+    local status, err = pcall(hallConnector.Update, hallConnector)
+    if not status then
+        Logger.LogError("hallConnector update err : " .. err .. "\n" .. traceback())
+    end
+    InputTouch:GetInstance():Tick(delta_time)
 end
 
 local function LateUpdate(self)
+    local delta_time = Time.deltaTime
+    CameraMgr:GetInstance():LateTick(delta_time)
 end
 
 local function FixedUpdate(self)

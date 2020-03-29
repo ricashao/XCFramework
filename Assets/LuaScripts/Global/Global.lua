@@ -23,6 +23,7 @@ UpdatableSingleton = require "Framework.Common.UpdatableSingleton"
 SortingLayerNames = require "Global.SortingLayerNames"
 Logger = require "Framework.Logger.Logger"
 require "Framework.Updater.Coroutine"
+TransformObject = require "Framework.Basic.TransformObject"
 
 -- game data
 DataMessageNames = require "DataCenter.Config.DataMessageNames"
@@ -98,6 +99,12 @@ WsHallConnector = require "Net.Connector.WsHallConnector"
 TouchProxy = require "Touch.TouchProxy"
 InputTouch = require "Touch.InputTouch"
 
+-- camera
+CameraState = require "Camera.State.CameraState"
+CameraContext = require "Camera.CameraContext"
+CameraMgr = require "Camera.CameraMgr"
+
+
 -- 单例类初始化
 UIManager:GetInstance()
 DataManager:GetInstance()
@@ -109,4 +116,6 @@ LogicUpdater:GetInstance()
 WsHallConnector:GetInstance()
 TouchProxy:GetInstance()
 InputTouch:GetInstance()
+CameraContext:GetInstance()
+CameraMgr:GetInstance()
 
