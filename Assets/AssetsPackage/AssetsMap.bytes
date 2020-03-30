@@ -187,6 +187,7 @@ lua.assetbundle,Lua/XLua/Perf/memory.lua.bytes
 lua.assetbundle,Lua/XLua/Perf/profiler.lua.bytes
 lua.assetbundle,Lua/XLua/Tdr/tdr.lua.bytes
 models/1001.assetbundle,Models/1001/Character.prefab
+music/bgm/1001_mp3.assetbundle,Music/BGM/1001.mp3
 music/bgm/op_mp3.assetbundle,Music/BGM/op.mp3
 shaders.assetbundle,Shaders/Model/Particles-Add-R.shader
 shaders.assetbundle,Shaders/Model/Particles-Add-RGBA.shader

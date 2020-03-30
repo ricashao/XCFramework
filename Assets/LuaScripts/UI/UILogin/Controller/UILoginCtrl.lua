@@ -27,8 +27,6 @@ local function ConnectServer(self)
 end
 
 local function LoginServer(self, name, password)
-    AudioManager:GetInstance():PlayBg("Music/BGM/op.mp3")
-    --[[
     -- 合法性检验
     if string.len(name) > 20 or string.len(name) < 1 then
         -- TODO：错误弹窗
@@ -60,7 +58,6 @@ local function LoginServer(self, name, password)
     local service = WsHallConnector:GetInstance():GetService(ServiceName.LoginService)
     --service:Login_C2S(msg);
     SceneManager:GetInstance():SwitchScene(SceneConfig.HomeScene)
-    --]]
 end
 
 local function ChooseServer(self)
