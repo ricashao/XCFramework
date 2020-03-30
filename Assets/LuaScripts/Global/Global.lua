@@ -24,6 +24,7 @@ SortingLayerNames = require "Global.SortingLayerNames"
 Logger = require "Framework.Logger.Logger"
 require "Framework.Updater.Coroutine"
 TransformObject = require "Framework.Basic.TransformObject"
+require "Common.LocalStorage"
 
 -- game data
 DataMessageNames = require "DataCenter.Config.DataMessageNames"
@@ -107,6 +108,9 @@ CameraManager = require "Camera.CameraManager"
 -- audio
 AudioManager = require "Audio.AudioManager"
 
+-- localsave
+LocalSaveManager = require "LocalSave.LocalSaveManager";
+
 
 -- 单例类初始化
 UIManager:GetInstance()
@@ -122,4 +126,4 @@ InputTouch:GetInstance()
 CameraContext:GetInstance()
 CameraManager:GetInstance()
 AudioManager:GetInstance()
-
+LocalSaveManager:GetInstance()
