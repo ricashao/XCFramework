@@ -8,7 +8,7 @@ local basicInfo = {};
 basicInfo[LocalSaveCommon.IndexEnum.Account] = "";
 basicInfo[LocalSaveCommon.IndexEnum.Password] = "";
 
-local json = require "cjson";
+local json = require "rapidjson";
 
 local timeStamps = {}
 

@@ -31,12 +31,12 @@ local function LoginServer(self, name, password)
     if string.len(name) > 20 or string.len(name) < 1 then
         -- TODO：错误弹窗
         Logger.LogError("name length err!")
-        return ;
+        return
     end
     if string.len(password) > 20 or string.len(password) < 1 then
         -- TODO：错误弹窗
         Logger.LogError("password length err!")
-        return ;
+        return
     end
     -- 检测是否有汉字
     for i = 1, string.len(name) do
@@ -44,8 +44,8 @@ local function LoginServer(self, name, password)
         if curByte > 127 then
             -- TODO：错误弹窗
             Logger.LogError("name err : only ascii can be used!")
-            return ;
-        end ;
+            return
+        end
     end
 
     ClientData:GetInstance():SetAccountInfo(name, password)
@@ -61,11 +61,7 @@ local function LoginServer(self, name, password)
 end
 
 local function ChooseServer(self)
-    AudioManager:GetInstance():PlayBg("Music/BGM/1001.mp3")
-
-    --[[
     UIManager:GetInstance():OpenWindow(UIWindowNames.UILoginServer)
-    --]]
 end
 
 UILoginCtrl.LoginServer = LoginServer

@@ -52,6 +52,7 @@ public class XLuaManager : MonoSingleton<XLuaManager>
         if (luaEnv != null)
         {
             luaEnv.AddLoader(CustomLoader);
+            luaEnv.AddBuildin("rapidjson", XLua.LuaDLL.Lua.LoadRapidJson);
             luaEnv.AddBuildin("pb", XLua.LuaDLL.Lua.LoadPb);
         }
         else

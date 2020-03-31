@@ -109,7 +109,7 @@ CameraManager = require "Camera.CameraManager"
 AudioManager = require "Audio.AudioManager"
 
 -- localsave
-LocalSaveManager = require "LocalSave.LocalSaveManager";
+--LocalSaveManager = require "LocalSave.LocalSaveManager";
 
 
 -- 单例类初始化
@@ -126,4 +126,4 @@ InputTouch:GetInstance()
 CameraContext:GetInstance()
 CameraManager:GetInstance()
 AudioManager:GetInstance()
-LocalSaveManager:GetInstance()
+--LocalSaveManager:GetInstance()
