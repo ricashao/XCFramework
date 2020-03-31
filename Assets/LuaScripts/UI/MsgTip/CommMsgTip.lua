@@ -7,6 +7,9 @@ local CommMsgTip = BaseClass("CommMsgTip", Singleton)
 local infoItem = require "UI.MsgTip.Item.TextTipItem"
 
 local function __init(self)
+    GameObjectPool:GetInstance():PreLoadGameObjectAsync("UI/Prefabs/Common/Win_Comm_Tip.prefab",5,function ()
+        print("huancun chenggong")
+    end)
     self.maxItemNum = 3 --可显示的最大提示框个数 
     self.moveSpeed = 73 / 1000 --移动速度
     self.destroyTime = 1820 / 1000 --秒为单位，提示框销毁时间
@@ -26,6 +29,7 @@ local function Show(self, warningMsg)
 end
 
 local function Tick(self)
+    print("item count " .. table.length(self.itemList) .. " info count " .. table.length(self.infoDataList))
     --创建
     self:ShowInItem()
 
@@ -42,6 +46,7 @@ local function MoveItem(self, delta)
         item = self.itemList[num];
         if item.rectTransform.anchoredPosition.y >= self.movePosY then
             self.timer:Stop()
+            self.timer = nil
         end
     end
 
@@ -56,7 +61,6 @@ end
 local function ShowInItem(self)
 
     local num = table.length(self.itemList)
-    print("item count " .. table.length(self.itemList) .. " info count " .. table.length(self.infoDataList))
 
     --如果item个数超过规定，则返回
     if num >= self.maxItemNum then
@@ -95,7 +99,6 @@ end
 
 --创建item
 local function NewItem(self, data, startPos, addPos)
-    waitNum = waitNum + 1
     infoItem.New(data, startPos, function(item)
         self:RemoveFirstData();
         table.insert(self.itemList, item);
@@ -103,7 +106,6 @@ local function NewItem(self, data, startPos, addPos)
         if addPos then
             item.rectTransform.anchoredPosition = Vector2.New(item.rectTransform.anchoredPosition.x, addPos);
         end
-        waitNum = waitNum - 1
     end)
 
 end
@@ -116,7 +118,6 @@ local function RemoveItem(self)
         table.remove(self.itemList, k)
         break
     end
-
 end
 
 CommMsgTip.__init = __init
