@@ -7,9 +7,6 @@ local CommMsgTip = BaseClass("CommMsgTip", Singleton)
 local infoItem = require "UI.MsgTip.Item.TextTipItem"
 
 local function __init(self)
-    GameObjectPool:GetInstance():PreLoadGameObjectAsync("UI/Prefabs/Common/Win_Comm_Tip.prefab",5,function ()
-        print("huancun chenggong")
-    end)
     self.maxItemNum = 3 --可显示的最大提示框个数 
     self.moveSpeed = 73 / 1000 --移动速度
     self.destroyTime = 1820 / 1000 --秒为单位，提示框销毁时间
@@ -44,15 +41,20 @@ local function MoveItem(self, delta)
 
     if num > 0 then
         item = self.itemList[num];
-        if item.rectTransform.anchoredPosition.y >= self.movePosY then
+        if (not item.isReady) then
+            return
+        end
+        if item.rectTransform.anchoredPosition.y >= self.movePosY and table.length(self.infoDataList) == 0 then
             self.timer:Stop()
             self.timer = nil
         end
     end
 
     for _, v in pairs(self.itemList) do
-        local mvy = self.moveSpeed * 1000 * delta
-        v:SetPosition(mvy)
+        if (v.isReady) then
+            local mvy = self.moveSpeed * 1000 * delta
+            v:SetPosition(mvy)
+        end
     end
 end
 
@@ -72,16 +74,19 @@ local function ShowInItem(self)
     end
 
     local y = 0
-    local lastItemPos = nil;
+    local lastItemPos = nil
     if num > 0 then
+        if not self.itemList[num].isReady then
+            return
+        end
         lastItemPos = self.itemList[num].rectTransform.anchoredPosition;
         --最后一个没有移动到指定位置，返回
         if lastItemPos.y < self.movePosY then
             return
         else
             if self.infoDataList[1] then
-                y = lastItemPos.y - self.itemList[num]:GetHeight();
-                self:NewItem(self.infoDataList[1], self.startPosY, y);
+                y = lastItemPos.y - self.itemList[num]:GetHeight()
+                self:NewItem(self.infoDataList[1], self.startPosY, y)
             end
         end
     else
@@ -99,14 +104,14 @@ end
 
 --创建item
 local function NewItem(self, data, startPos, addPos)
-    infoItem.New(data, startPos, function(item)
-        self:RemoveFirstData();
-        table.insert(self.itemList, item);
-        item:StartCountdown(self.destroyTime);
-        if addPos then
-            item.rectTransform.anchoredPosition = Vector2.New(item.rectTransform.anchoredPosition.x, addPos);
-        end
+    local item = infoItem.New(data, startPos, function(item)
     end)
+    self:RemoveFirstData();
+    table.insert(self.itemList, item);
+    item:StartCountdown(self.destroyTime);
+    if addPos then
+        item.rectTransform.anchoredPosition = Vector2.New(item.rectTransform.anchoredPosition.x, addPos);
+    end
 
 end
 

@@ -36,14 +36,14 @@ local UILayers = {
 	},
 	SystemInfoLayer = {
 		Name = "SystemInfoLayer",
-		PlaneDistance = 700,
+		PlaneDistance = 500,
 		OrderInLayer = 5000,
 	},
 	-- 顶层UI，如：场景加载
 	TopLayer = {
 		Name = "TopLayer",
-		PlaneDistance = 500,
-		OrderInLayer = 5000,
+		PlaneDistance = 400,
+		OrderInLayer = 6000,
 	},
 }
 	

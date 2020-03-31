@@ -23,6 +23,7 @@ end
 
 local function __init(self, content, posy, callback)
     posY = posy
+    self.isReady = false
     -- 资源加载
     GameObjectPool:GetInstance():GetGameObjectAsync(path, function(go, self)
         if self ~= nil then
@@ -33,22 +34,25 @@ local function __init(self, content, posy, callback)
             if callback then
                 callback(self)
             end
+            self.isReady = true
         end
     end, self)
 end
 
 local function OnCreate(self)
     self.transform:SetParent(UIManager:GetInstance():GetLayer(UILayers.SystemInfoLayer.Name).transform, false)
-    self.infoText = self.transform:Find("ep_bg_width-height/et_text").gameObject:GetComponent("Text")
+    self.infoText = self.transform:Find("ep_bg_width-height/et_text").gameObject:GetComponent(typeof(CS.UnityEngine.UI.Text))
     self.movePos = self.transform:Find("ep_bg_width-height")
     self.rectTransform = self.movePos.gameObject:GetComponent(typeof(CS.UnityEngine.RectTransform))
     self.rectTransform.anchoredPosition = Vector2.New(0, posY) --要回到原来位置
     self.transform.localScale = Vector3.one
+    defaultTextHeight = self.infoText.preferredHeight;
+    defaultBgHeight = self.rectTransform.rect.height;
+    defaultBgWidth = self.rectTransform.rect.width;
 end
 
 --创建销毁计时
 local function StartCountdown(self, destroyTime)
-
     self.timer = TimerManager:GetInstance():GetTimer(destroyTime, self.Destroy, self, true)
     self.timer:Start()
 end
@@ -75,7 +79,7 @@ end
 
 local function Destroy(self)
     self.timer:Stop()
-    GameObjectPool:GetInstance():RecycleGameObject(path,self.gameObject)
+    GameObjectPool:GetInstance():RecycleGameObject(path, self.gameObject)
     CommMsgTip:GetInstance():RemoveItem()
 end
 
