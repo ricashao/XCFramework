@@ -30,7 +30,7 @@ local function LoginServer(self, name, password)
     -- 合法性检验
     if string.len(name) > 20 or string.len(name) < 1 then
         -- TODO：错误弹窗
-        Logger.LogError("name length err!")
+        CommMsgTip:GetInstance():Show("name length err")
         return
     end
     if string.len(password) > 20 or string.len(password) < 1 then

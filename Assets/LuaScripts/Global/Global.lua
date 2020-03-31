@@ -111,6 +111,9 @@ AudioManager = require "Audio.AudioManager"
 -- localsave
 --LocalSaveManager = require "LocalSave.LocalSaveManager";
 
+--tip
+CommMsgTip = require "UI.MsgTip.CommMsgTip"
+
 
 -- 单例类初始化
 UIManager:GetInstance()
@@ -126,4 +129,4 @@ InputTouch:GetInstance()
 CameraContext:GetInstance()
 CameraManager:GetInstance()
 AudioManager:GetInstance()
---LocalSaveManager:GetInstance()
+CommMsgTip:GetInstance()
