@@ -26,7 +26,6 @@ local function Show(self, warningMsg)
 end
 
 local function Tick(self)
-    print("item count " .. table.length(self.itemList) .. " info count " .. table.length(self.infoDataList))
     --创建
     self:ShowInItem()
 
@@ -44,7 +43,7 @@ local function MoveItem(self, delta)
         if (not item.isReady) then
             return
         end
-        if item.rectTransform.anchoredPosition.y >= self.movePosY and table.length(self.infoDataList) == 0 then
+        if item.rectTransform.anchoredPosition.y >= self.movePosY then
             self.timer:Stop()
             self.timer = nil
         end
@@ -119,7 +118,6 @@ end
 local function RemoveItem(self)
     --移除队首item
     for k, v in pairs(self.itemList) do
-        print("remove item")
         table.remove(self.itemList, k)
         break
     end

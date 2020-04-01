@@ -1,4 +1,3 @@
-assetsmap_bytes.assetbundle,AssetsMap.bytes
 effect/common.assetbundle,Effect/Common/Materials/models_fx_R.mat
 effect/common.assetbundle,Effect/Common/Materials/models_fx_RGB.mat
 effect/common.assetbundle,Effect/Common/Texture/Matcap_Encode2.png
@@ -13,6 +12,7 @@ lua.assetbundle,Lua/Camera/MainCamera/SmartCamera.lua.bytes
 lua.assetbundle,Lua/Camera/State/CameraFollowState.lua.bytes
 lua.assetbundle,Lua/Camera/State/CameraState.lua.bytes
 lua.assetbundle,Lua/Camera/State/CameraStayState.lua.bytes
+lua.assetbundle,Lua/Common/LocalStorage.lua.bytes
 lua.assetbundle,Lua/Common/LuaUtil.lua.bytes
 lua.assetbundle,Lua/Common/Main.lua.bytes
 lua.assetbundle,Lua/Common/StringUtil.lua.bytes
@@ -123,6 +123,8 @@ lua.assetbundle,Lua/GameTest/ModuleTest/TestNoticeTip.lua.bytes
 lua.assetbundle,Lua/Global/Config.lua.bytes
 lua.assetbundle,Lua/Global/Global.lua.bytes
 lua.assetbundle,Lua/Global/SortingLayerNames.lua.bytes
+lua.assetbundle,Lua/LocalSave/LocalSaveCommon.lua.bytes
+lua.assetbundle,Lua/LocalSave/LocalSaveManager.lua.bytes
 lua.assetbundle,Lua/Net/Config/MsgIDMap.lua.bytes
 lua.assetbundle,Lua/Net/Config/ReceiveMsgDefine.lua.bytes
 lua.assetbundle,Lua/Net/Config/ReceiveSinglePackage.lua.bytes
@@ -147,6 +149,8 @@ lua.assetbundle,Lua/Touch/TouchProxy.lua.bytes
 lua.assetbundle,Lua/Touch/TouchScreen.lua.bytes
 lua.assetbundle,Lua/UI/Config/UIConfig.lua.bytes
 lua.assetbundle,Lua/UI/Config/UIWindowNames.lua.bytes
+lua.assetbundle,Lua/UI/MsgTip/CommMsgTip.lua.bytes
+lua.assetbundle,Lua/UI/MsgTip/Item/TextTipItem.lua.bytes
 lua.assetbundle,Lua/UI/UIBattle/Controller/UIBattleMainCtrl.lua.bytes
 lua.assetbundle,Lua/UI/UIBattle/UIBattleConfig.lua.bytes
 lua.assetbundle,Lua/UI/UIBattle/View/UIBattleMainView.lua.bytes
@@ -374,10 +378,10 @@ ui/atlas/atlas_role.assetbundle,UI/Atlas/Atlas_Role/ui_role_66.png
 ui/fonts/system_art_ttf.assetbundle,UI/Fonts/system_art.TTF
 ui/fonts/system_ttf.assetbundle,UI/Fonts/system.TTF
 ui/prefabs/common/uinoticetip_prefab.assetbundle,UI/Prefabs/Common/UINoticeTip.prefab
+ui/prefabs/common/win_comm_tip_prefab.assetbundle,UI/Prefabs/Common/Win_Comm_Tip.prefab
 ui/prefabs/view/uibattlemain_prefab.assetbundle,UI/Prefabs/View/UIBattleMain.prefab
 ui/prefabs/view/uilaunch_prefab.assetbundle,UI/Prefabs/View/UILaunch.prefab
 ui/prefabs/view/uiloading_prefab.assetbundle,UI/Prefabs/View/UILoading.prefab
 ui/prefabs/view/uilogin_prefab.assetbundle,UI/Prefabs/View/UILogin.prefab
 ui/prefabs/view/uiloginserver_prefab.assetbundle,UI/Prefabs/View/UILoginServer.prefab
 ui/prefabs/view/uitestmain_prefab.assetbundle,UI/Prefabs/View/UITestMain.prefab
-variantsmap_bytes.assetbundle,VariantsMap.bytes
