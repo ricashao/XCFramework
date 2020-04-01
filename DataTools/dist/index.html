@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script>
+        require("punycode");
+        if (typeof window.require === "function") {
+            // 重命名 Electron 提供的 require
+            window.nodeRequire = window.require;
+            delete window.require;
+            delete window.exports;
+            delete window.module;
+        }
+    </script>
+    <script type="text/javascript" src="jszip.js"></script>
+    <script type="text/javascript" src="xlsx.js"></script>
+    <script>
+        /**
+         * 对数字进行补0操作
+         * @param value 要补0的数值
+         * @param length 要补的总长度
+         * @return 补0之后的字符串
+         */
+        function zeroize(value, length) {
+            if (length === void 0) {
+                length = 2;
+            }
+            var str = "" + value;
+            var zeros = "";
+            for (var i = 0, len = length - str.length; i < len; i++) {
+                zeros += "0";
+            }
+            return zeros + str;
+        }
+
+        function ready(fn) {
+            if (document.readyState != 'loading') {
+                fn();
+            } else {
+                document.addEventListener('DOMContentLoaded', fn);
+            }
+        }
+        Object.defineProperties(String.prototype, {
+            "substitute": {
+                value: function() {
+                    var len = arguments.length;
+                    if (len > 0) {
+                        var obj;
+                        if (len == 1) {
+                            obj = arguments[0];
+                            if (typeof obj !== "object") {
+                                obj = arguments;
+                            }
+                        } else {
+                            obj = arguments;
+                        }
+                        if ((obj instanceof Object) && !(obj instanceof RegExp)) {
+                            return this.replace(/\{([^{}]+)\}/g, function(match, key) {
+                                var value = obj[key];
+                                return (value !== undefined) ? '' + value : '';
+                            });
+                        }
+                    }
+                    return this;
+                },
+                enumerable: false
+            }
+        });
+        Object.defineProperties(Date.prototype, {
+            "format": {
+                value: function(mask) {
+                    var d = this;
+                    return mask.replace(/"[^"]*"|'[^']*'|(?:d{1,2}|m{1,2}|yy(?:yy)?|([hHMs])\1?)/g, function($0) {
+                        switch ($0) {
+                            case "d":
+                                return d.getDate();
+                            case "dd":
+                                return zeroize(d.getDate());
+                            case "M":
+                                return d.getMonth() + 1;
+                            case "MM":
+                                return zeroize(d.getMonth() + 1);
+                            case "yy":
+                                return String(d.getFullYear()).substr(2);
+                            case "yyyy":
+                                return d.getFullYear();
+                            case "h":
+                                return d.getHours() % 12 || 12;
+                            case "hh":
+                                return zeroize(d.getHours() % 12 || 12);
+                            case "H":
+                                return d.getHours();
+                            case "HH":
+                                return zeroize(d.getHours());
+                            case "m":
+                                return d.getMinutes();
+                            case "mm":
+                                return zeroize(d.getMinutes());
+                            case "s":
+                                return d.getSeconds();
+                            case "ss":
+                                return zeroize(d.getSeconds());
+                            default:
+                                return $0.substr(1, $0.length - 2);
+                        }
+                    });
+                },
+                enumerable: false
+            }
+        });
+    </script>
+    <style>
+        html,
+        body {
+            padding: 0;
+            border: 0;
+            margin: 0;
+            height: 100%;
+            font: 14px "Microsoft YaHei";
+        }
+    </style>
+    <script data-main="index" type="text/javascript" src="require.js"></script>
+    <script type="text/javascript" src="cookie.js"></script>
+</head>
+
+<body>
+    <div>
+        客户端项目根目录：<input id="txtClientPath" style="width:400px;" type="input" value="" /> 生成代码:<input id="chkClientPath" type="checkbox" checked="checked" /><br/> 服务端项目根目录：
+        <input id="txtServerPath" style="width:400px;" type="input" value="" /> 生成代码:<input id="chkServerPath" type="checkbox" checked="checked" />
+    </div>
+    <div id="txtLog" style="width:100%;height:50%;margin-top:5px;border:#ccc solid 1px;overflow-y:auto; ">
+    </div>
+    <div id="code">
+    </div>
+</body>
+
+</html>
