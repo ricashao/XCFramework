@@ -1,20 +1,9 @@
-define(["require", "exports", "./PluginErrorType", "./writeJSONData", "./TypeCheckers", "./MenualCodeHelper", "ClassHelper", "ClientRegTemplate", "ServerRegTemplate", "PluginLoader", "asyncFileLoad"], function (require, exports, PluginErrorType_1, writeJSONData_1, TypeCheckers_1, MenualCodeHelper_1, ClassHelper_1, ClientRegTemplate_1, ServerRegTemplate_1, PluginLoader_1, asyncFileLoad_1) {
+define(["require", "exports", "./TypeCheckers"], function (require, exports, TypeCheckers_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const path = nodeRequire("path");
     const fs = nodeRequire("fs");
     const clipboard = nodeRequire('electron').clipboard;
-    /**
-     * 正常数据内容，列表数据
-     */
-    const SHEET_MAIN = "导出";
-    /**
-     * 附加数据，用于代替之前公共数据表功能
-     * 这样可以将一个模块数据配置在一起
-     * 第一列为Key
-     * 第二列为Value
-     */
-    const SHEET_EXTRA = "附加数据";
     var $g = (id) => { return document.getElementById(id); };
     /**
      * 输出日志
@@ -55,13 +44,11 @@ ${err.stack}`;
                     return false;
                 });
                 this.getPathCookie("txtClientPath");
-                this.getPathCookie("txtServerPath");
-                $g("chkClientPath").checked = cookie.getCookie("h5excel_chkClientPath") != "false";
-                $g("chkServerPath").checked = cookie.getCookie("h5excel_chkServerPath") != "false";
+                $g("chkClientPath").checked = cookie.getCookie("unityexcel_chkClientPath") != "false";
             });
         }
         getPathCookie(id) {
-            let sPath = cookie.getCookie("h5excel_" + id);
+            let sPath = cookie.getCookie("unityexcel_" + id);
             if (sPath) {
                 $g(id).value = sPath;
             }
@@ -73,7 +60,7 @@ ${err.stack}`;
             if (v && fs.existsSync(v)) {
                 let re = fs.statSync(v);
                 if (re.isDirectory()) {
-                    cookie.setCookie("h5excel_" + id, v);
+                    cookie.setCookie("unityexcel_" + id, v);
                     return v;
                 }
             }
@@ -85,16 +72,10 @@ ${err.stack}`;
         onDrop(files) {
             let gcfg;
             let cPath = this.setPathCookie("txtClientPath");
-            let sPath = this.setPathCookie("txtServerPath");
             let useClientPath = $g("chkClientPath").checked;
-            cookie.setCookie("h5excel_chkClientPath", useClientPath);
-            let useServerPath = $g("chkServerPath").checked;
-            cookie.setCookie("h5excel_chkServerPath", useServerPath);
+            cookie.setCookie("unityexcel_chkClientPath", useClientPath);
             if (!useClientPath) {
                 cPath = "";
-            }
-            if (!useServerPath) {
-                sPath = "";
             }
             // 清理code区
             $g("code").innerHTML = "";
@@ -104,17 +85,7 @@ ${err.stack}`;
                 let file = files[i];
                 let re = path.parse(file.name);
                 if (re.ext == ".xlsx") { // 只处理Excel
-                    if (!gcfg || !gcfg.project) {
-                        // 得到全局配置路径
-                        let globalCfgPath = path.join(file.path, "../..", "globalConfig.json");
-                        gcfg = this.getGlobalCfg(globalCfgPath);
-                        if (gcfg) {
-                            if (gcfg.remote) { // 当前全局配置，如果配了远程路径，加载远程路径
-                                gcfg = this.getGlobalCfg(gcfg.remote);
-                            }
-                        }
-                    }
-                    new XLSXDecoder(gcfg, file, cPath, sPath, i, cb);
+                    new XLSXDecoder(file, cPath, i, cb);
                 }
             }
             function cb(file, err) {
@@ -124,58 +95,8 @@ ${err.stack}`;
                 }
                 if (unsolved.length == 0) { //全部文件处理完成
                     //检查是否有完结处理
-                    if (gcfg.endScript) {
-                        asyncFileLoad_1.default(gcfg.endScript, (er, data) => {
-                            if (er) {
-                                error(`处理加载结束脚本出错，${gcfg.endScript}`, er);
-                                return;
-                            }
-                            if (data) {
-                                let script = data.toString();
-                                let vm = nodeRequire("vm");
-                                let endScript = vm.createContext({ require: nodeRequire, console: console, gcfg: gcfg });
-                                try {
-                                    vm.runInContext(script, endScript);
-                                }
-                                catch (err1) {
-                                    error(`处理执行结束脚本出错，${gcfg.endScript}`, err1);
-                                }
-                            }
-                        });
-                    }
-                    if (gcfg.endAction) {
-                        var http = nodeRequire("http");
-                        http.get(gcfg.endAction, res => {
-                            let chunks = [];
-                            res.on("data", chunk => {
-                                chunks.push(chunk);
-                            });
-                            res.on("end", () => {
-                                let result = Buffer.concat(chunks).toString("utf8");
-                                result = result.replace(/\n/g, "<br/>");
-                                log(result);
-                            });
-                        });
-                    }
                 }
             }
-        }
-        /**
-         * 获取全局配置
-         */
-        getGlobalCfg(globalCfgPath) {
-            let cfg;
-            if (fs.existsSync(globalCfgPath)) {
-                // 加载全局配置
-                let globalJSON = fs.readFileSync(globalCfgPath, "utf8");
-                try {
-                    cfg = JSON.parse(globalJSON);
-                }
-                catch (e) {
-                    error("全局配置加载有误");
-                }
-            }
-            return cfg;
         }
     }
     exports.ExcelDataSaver = ExcelDataSaver;
@@ -217,14 +138,10 @@ ${err.stack}`;
                 clipboard.writeText(scode);
             });
         }
-        constructor(gcfg, file, cPath, sPath, idx, cb) {
+        constructor(file, cPath, idx, cb) {
             cPath = cPath || "";
-            sPath = sPath || "";
             let fre = path.parse(file.name);
             let fname = fre.name;
-            let dirs = fre.dir.split(path.sep);
-            let dlen = dirs.length;
-            let parent = dlen ? dirs[dlen - 1] : fname;
             let data = fs.readFileSync(file.path, "base64");
             let wb = XLSX.read(data);
             if (!wb.Sheets[fname]) {
@@ -233,7 +150,6 @@ ${err.stack}`;
             }
             let list = XLSX.utils.sheet_to_json(wb.Sheets[fname], { header: 1 });
             let len = list.length;
-            let sDatas = {};
             let rowCfgs = {
                 // 第一列的中文: 对应后续用到的属性
                 "支持的数据类型": null,
@@ -272,9 +188,6 @@ ${err.stack}`;
                 error(`表的配置有误，没有 "程序配置内容"这一行`);
                 return cb(file, true);
             }
-            // 先处理附加数据
-            // let hasExtra = this.parseExtraData(wb, fname, gcfg);
-            let hasExtra = false; //屏蔽附加数据
             let plugin = cfgRow[1] || "";
             plugin = plugin.trim();
             // 是否不做基础处理
@@ -283,26 +196,8 @@ ${err.stack}`;
                 error(`表的配置有误，没有配置使用原始值，并且没有 "属性名称"这一行`);
                 return cb(file, true);
             }
-            let cfilePackage = cfgRow[3]; //|| parent; 不处理没填的情况
-            let sfilePackage = cfgRow[4]; //|| parent; 不处理没填的情况
-            let cSuper = cfgRow[5] || ""; //前端基类
-            let sSuper = cfgRow[6] || ""; //后端基类
-            let cInterfaces, sInterfaces;
-            if (cfgRow[7]) {
-                cInterfaces = cfgRow[7].split(",");
-            }
-            else {
-                cInterfaces = [];
-            }
-            if (cfgRow[8]) {
-                sInterfaces = cfgRow[8].split(",");
-            }
-            else {
-                sInterfaces = [];
-            }
             let defines = [];
             let cdatas = [];
-            let sdatas = [];
             if (!useRaw) {
                 /**
                  * 前端是否解析此数据
@@ -360,8 +255,7 @@ ${err.stack}`;
                         }
                         if (flag) {
                             let cRow = [];
-                            let sRow = {};
-                            let hasServerData = false;
+                            let key;
                             for (let col = 1; col <= max; col++) {
                                 try {
                                     let def = defines[col];
@@ -371,17 +265,10 @@ ${err.stack}`;
                                     let cell = rowData[col];
                                     let dat = def.checker.check(cell || "");
                                     if (def.client) {
-                                        cRow.push(dat);
+                                        cRow.push(genLuaConfigOneLine(def.name, dat));
                                     }
-                                    if (def.server) {
-                                        sRow[nameRow[col]] = dat;
-                                        hasServerData = true;
-                                    }
-                                    if (def.checker.type == "number" && !isNaN(cell) && defines[col].type != "float") {
-                                        defines[col].type = "int";
-                                    }
-                                    if (def.checker.type == "number" && !isNaN(cell) && (cell + '').indexOf('.') != -1) {
-                                        defines[col].type = "float";
+                                    if (def.name == "id") {
+                                        key = dat;
                                     }
                                 }
                                 catch (e) {
@@ -389,380 +276,56 @@ ${err.stack}`;
                                 }
                             }
                             if (cRow.length) {
-                                cdatas.push(cRow);
-                            }
-                            if (sRow && hasServerData) {
-                                sdatas.push(sRow);
+                                cdatas.push(genLuaConfigOneData(key, cRow));
                             }
                         }
                     }
                 }
             }
-            if (plugin) {
-                new PluginLoader_1.default(plugin, { gcfg: gcfg, filename: fname, rawData: list, sdatas: sdatas, cdatas: cdatas, defines: defines, dataRowStart: dataRowStart, rowCfg: rowCfgLines }, m => {
-                    let mtype = m.type;
-                    if (mtype == "error") {
-                        switch (m.error) {
-                            case PluginErrorType_1.PluginErrorType.ExecuteFailed:
-                                error(`插件：${plugin}执行失败，检查插件代码！`, m.err);
-                                break;
-                            case PluginErrorType_1.PluginErrorType.LoadFailed:
-                                error(`插件：${plugin}加载失败，请检查路径是否正确！`, m.err);
-                                break;
-                            case PluginErrorType_1.PluginErrorType.InitFailed:
-                                error(`插件：${plugin}初始化失败，检查插件代码！`, m.err);
-                                break;
-                            default:
-                                error(`插件：${plugin}出现未知！`, m.err);
-                                break;
-                        }
-                        cb(file, true);
-                    }
-                    else if (mtype == "success") { //插件处理完成
-                        log(`插件数据处理完成：\n${m.output || ""}`);
-                        if (!useRaw) {
-                            writeData(m.cdatas || [], m.sdatas || []);
-                        }
-                        else {
-                            cb(file, false);
-                        }
-                    }
-                });
-                return;
-            }
-            var _self = this;
-            sDatas[fname] = sdatas;
-            console.log("sdata " + sDatas);
-            writeData(cdatas, sdatas.length > 0 ? sDatas : null);
+            writeData(cdatas);
             /**
              *
              * 写最终数据
              * @param {any[]} cdatas
              * @param {any[]} sdatas
              */
-            function writeData(cdatas, sdatas) {
+            function writeData(cdatas) {
                 // 导出客户端数据
                 if (cdatas.length) {
-                    let cpath = writeJSONData_1.writeCfgJSONData(fname, gcfg.clientPath, cdatas);
+                    let code = genLuaConfig(cdatas);
+                    let cpath = saveLuaFile(fname, cPath, code);
                     if (cpath) {
-                        log(`文件${file.name}，将客户端数据保存至：${cpath}`);
+                        log(`文件${fname}，将客户端数据保存至：${cPath}`);
                     }
                     else {
-                        log(`文件${file.name}，未将客户端数据保存到${cpath}，请检查`);
-                    }
-                }
-                // 导出服务端数据
-                if (sdatas) {
-                    let spath = writeJSONData_1.writeStringData(fname, gcfg.serverPath, toXmlString(sdatas), ".xml");
-                    if (spath) {
-                        log(`文件${file.name}，将服务端数据保存至：${spath}`);
-                    }
-                    else {
-                        log(`文件${file.name}，未将服务端数据保存到${spath}，请检查`);
-                    }
-                }
-                let cPros = "";
-                let cDecode = "";
-                let sPros = "";
-                let sDecode = "";
-                let cout = "", sout = "";
-                let hasClocal = false, hasSlocal = false;
-                for (let define of defines) {
-                    if (!define) {
-                        continue;
-                    }
-                    let checker = define.checker;
-                    let pro = `\t\t\t/**
-\t\t\t* ${define.desc.replace(/\r\n/g, "<br/>\n\t\t\t* ")}
-\t\t\t**/
-\t\t\tpublic ${define.name}: ${checker.type};
-`;
-                    let decode = "";
-                    let def = "";
-                    if (define.def) {
-                        def = define.def;
-                    }
-                    if (checker.solveString) {
-                        decode = `\t\t\t@target@.${define.name} = ${checker.solveString.substitute({ value: "data[i++]" })}${def ? " || " + checker.solveString.substitute({ value: def }) : ""};
-`;
-                    }
-                    else {
-                        decode = `\t\t\t@target@.${define.name} = data[i++]${def ? " || " + def : ""};
-`;
-                    }
-                    let client = define.client;
-                    let tmp;
-                    if (client) {
-                        if (client == 1) {
-                            cPros += pro;
-                            tmp = decode.replace("@target@", "this");
-                        }
-                        else if (client == 2) {
-                            hasClocal = true;
-                            tmp = decode.replace("@target@", "local");
-                        }
-                        cDecode += tmp;
-                    }
-                    let server = define.server;
-                    if (server) {
-                        if (define.checker.idx == 3) {
-                            let jpro = `
-        @Attribute("${define.name}")
-        @Getter                  
-        protected  ${define.checker.type} ${getNameNoSymbol(define.name)};
-                `;
-                            sPros += jpro;
-                        }
-                        else {
-                            let jpro = `
-        @Attribute("${define.name}")
-        @Getter                  
-        protected ${define.type} ${getNameNoSymbol(define.name)};
-                `;
-                            sPros += jpro;
-                        }
-                    }
-                }
-                let cdict = MenualCodeHelper_1.getManualCodeInfo(path.join(cPath, cfilePackage || "", fname + "Cfg.ts"));
-                let createTime = new Date().format("yyyy-MM-dd HH:mm:ss");
-                // 生成客户端代码
-                if (cPros) {
-                    cout = `namespace xc.${gcfg.project} {
-    ${MenualCodeHelper_1.genManualAreaCode("$area1", cdict)}
-    /**
-     * 创建时间：${createTime}
-     **/
-    export class ${fname}Cfg${cSuper ? " extends " + cSuper : ""}${cInterfaces.length ? " implements " + cInterfaces.join(",") : ""} {
-${cPros}
-${MenualCodeHelper_1.genManualAreaCode("$area2", cdict)}
-        public decode(data:any[]){
-\t\t\tlet i = 0;
-${hasClocal ? "\t\t\tlet local:any = {};" : ""}
-${cDecode}
-${MenualCodeHelper_1.genManualAreaCode("$decode", cdict)}
-        }
-    }
-    ${MenualCodeHelper_1.genManualAreaCode("$area3", cdict)}
-}`;
-                }
-                // 生成服务端代码
-                // let sdict = getManualCodeInfo(path.join(sPath, sfilePackage || "", fname + "Cfg.ts"));
-                if (sPros) {
-                    let imps = "";
-                    sInterfaces.forEach(it => {
-                        imps += writeServerImport(it, sPath); //`///ts:import=${it}\n`;
-                    });
-                    sout = `package org.szc.tableConfig;\r\nimport org.szc.annotation.Attribute;\r\nimport org.szc.annotation.Xml;
-${imps}
-import lombok.Getter;
-/**
-* 由数据生成工具，从"${file.path}"生成
-* 创建时间：${createTime}
-**/
-@Xml(res = "${fname}.xml", node = "${fname}")
-public class ${fname}VO${sSuper ? " extends " + sSuper : ""}${sInterfaces.length ? " implements " + sInterfaces.join(",") : ""} {
-${sPros}
-}
-`;
-                }
-                _self.createContent($g("code"), fname, idx, cout, sout);
-                // 尝试存储文件
-                if (cPath)
-                    _self.saveCodeFile(cPath, cfilePackage, cout, fname + "Cfg");
-                if (sPath && sfilePackage) {
-                    let packages = sfilePackage.split(";");
-                    for (let pack of packages) {
-                        _self.saveCodeFile(sPath, path.join(pack, "src\\main\\java\\org\\szc\\tableConfig\\"), sout, fname + "VO", ".java");
-                    }
-                }
-                // 尝试生成注册文件
-                if (cPath && cout && gcfg.clientRegClass) {
-                    let clientReg = new ClientRegTemplate_1.default();
-                    let [cerr, crout] = clientReg.addToFile(path.join(cPath, gcfg.clientRegClass[1], gcfg.clientRegClass[0] + ".ts"), fname, `xc.${gcfg.project}`, hasExtra);
-                    if (cerr) {
-                        error(cerr);
-                    }
-                    else {
-                        _self.saveCodeFile(cPath, gcfg.clientRegClass[1], crout, gcfg.clientRegClass[0]);
-                    }
-                }
-                if (sPath && sout && gcfg.serverRegClass) {
-                    let serverReg = new ServerRegTemplate_1.default();
-                    let [serr, srout] = serverReg.addToFile(path.join(sPath, gcfg.serverRegClass[1], gcfg.serverRegClass[0] + ".java"), fname, hasExtra);
-                    if (serr) {
-                        error(serr);
-                    }
-                    else {
-                        _self.saveCodeFile(sPath, gcfg.serverRegClass[1], srout, gcfg.serverRegClass[0]);
+                        log(`文件${fname}，未将客户端数据保存到${cPath}，请检查`);
                     }
                 }
                 cb(file, false);
             }
         }
-        /**
-         *
-         * 检查附加数据
-         * 附加数据形式为 Key Value式的
-         * @private
-         * @param {$XLSX.IWorkBook} wb
-         */
-        parseExtraData(wb, fname, gcfg) {
-            let ws = wb.Sheets[SHEET_EXTRA];
-            if (!ws) { //没有附加数据表
-                return;
-            }
-            let list = XLSX.utils.sheet_to_json(ws);
-            let len = list.length;
-            let output = [];
-            let checkers = TypeCheckers_1.TypeCheckers;
-            for (let row = 0; row < len; row++) {
-                let data = list[row];
-                let key = data["标识"] + "";
-                if (key && (key = key.trim())) {
-                    let value = data["数据"];
-                    let checker = checkers[data["数据类型"]];
-                    try {
-                        value = checker.check(value);
-                    }
-                    catch (e) {
-                        error(`解析${fname}第${row + 1}行，数据有误：${e.message}`);
-                        continue;
-                    }
-                    output.push(key, value);
-                    if (checker.solveString) {
-                        output.push(+checker.idx);
-                    }
-                }
-            }
-            if (output.length) {
-                fname = "$" + fname;
-                //存储附加文件数据
-                //数据为 string,any[,number]...string,any[,number]
-                let cpath = writeJSONData_1.writeJSONData(fname, gcfg.clientPath, output);
-                if (cpath) {
-                    log(`文件${fname}，将客户端附加数据保存至：${cpath}`);
-                }
-                else {
-                    log(`文件${fname}，未将客户端附加数据保存到${cpath}，请检查`);
-                }
-                let spath = writeJSONData_1.writeJSONData(fname, gcfg.serverPath, output);
-                if (spath) {
-                    log(`文件${fname}，将服务端附加数据保存至：${spath}`);
-                }
-                else {
-                    log(`文件${fname}，未将服务端附加数据保存到${spath}，请检查`);
-                }
-                return true;
-            }
-            return false;
-        }
-        //递归创建目录 同步方法
-        mkdirsSync(dirname) {
-            console.log(dirname);
-            if (fs.existsSync(dirname)) {
-                return true;
-            }
-            else {
-                if (this.mkdirsSync(path.dirname(dirname))) {
-                    fs.mkdirSync(dirname);
-                    return true;
-                }
-            }
-        }
-        /**
-         * 存储文件
-         *
-         */
-        saveCodeFile(dir, filePackage, content, fname, ext = ".ts") {
-            if (!content) {
-                return;
-            }
-            if (dir && filePackage) { // 如果没有包名或者路径不填 则不生成，也不报错
-                fname += ext;
-                let fullPath = path.join(dir, filePackage);
-                if (fullPath) {
-                    if (!fs.existsSync(fullPath)) {
-                        this.mkdirsSync(fullPath);
-                    }
-                    let re = fs.statSync(fullPath);
-                    if (re.isDirectory()) {
-                        let file = path.join(fullPath, fname);
-                        try {
-                            fs.writeFileSync(file, content);
-                        }
-                        catch (e) {
-                            error(`写入文件时失败，路径："${fullPath}"，文件名："${fname}"，错误信息：${e.message}\n${e.stack}`);
-                            return;
-                        }
-                        log(`<font color="#0c0">生成代码成功，${file}</font>`);
-                        return;
-                    }
-                }
-                error(`生成路径有误，无法生成，路径："${fullPath}"，文件名："${fname}"`);
-            }
-        }
     }
-    let classHelper = new ClassHelper_1.default();
-    /**
-     * 生成服务端的Import语句
-     *
-     * @param {string} className 类名
-     * @param {string} base 文件路径
-     * @returns (description)
-     */
-    function writeServerImport(className, base) {
-        var out = `///ts:import=${className}\n`;
-        let p = classHelper.getRelativePath(className, base);
-        if (p) {
-            out += `import ${className} = require('${p}');///ts:import:generated\n`;
-        }
-        return out;
+    function genLuaConfigOneLine(name, data) {
+        return `\t\t${name} = ${data},`;
     }
-    function writeSServerImport() {
+    function genLuaConfigOneData(name, datas) {
+        return `\t[${name}] = {
+${datas.join("\n")}
+\t},`;
     }
-    function toXmlString(data) {
-        let ret = `<?xml version="1.0" encoding="UTF-8"?>\r\n<root>\r\n`;
-        for (let key1 in data) {
-            ret += `<${key1}>\r\n`;
-            for (let i = 0; i < data[key1].length; i++) {
-                ret += `\t<entry `;
-                for (let key2 in data[key1][i]) {
-                    ret += ` ${key2}="${xmlEncode(data[key1][i][key2].toString())}" `;
-                }
-                ret += ` />\r\n`;
-            }
-            ret += `</${key1}>\r\n`;
-        }
-        ret += `</root>`;
-        return ret;
+    function genLuaConfig(datas) {
+        return `local config = {
+${datas.join("\n")}
+\t}
+
+return config`;
     }
-    function xmlEncode(str) {
-        return str.replace(/&/g, "&amp;")
-            .replace(/"/g, "&quot;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/'/g, "&apos;");
-    }
-    function getJavaName(name) {
-        return name[0].toUpperCase() + name.substr(1);
-    }
-    function getNameNoSymbol(name) {
-        let str = name.split('_');
-        let ret = '';
-        if (str.length == 1) {
-            return name;
-        }
-        else {
-            for (let i = 0; i < str.length; i++) {
-                if (i > 0) {
-                    ret += str[i].replace(/^\S/, function (s) { return s.toUpperCase(); });
-                }
-                else {
-                    ret += str[i];
-                }
-            }
-            return ret;
-        }
+    function saveLuaFile(fname, directory, content) {
+        const path = nodeRequire("path");
+        const fs = nodeRequire("fs");
+        let outpath = path.join(directory, fname + ".lua");
+        fs.writeFileSync(outpath, content);
+        return outpath;
     }
 });
 //# sourceMappingURL=index.js.map

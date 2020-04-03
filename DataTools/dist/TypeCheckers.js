@@ -59,7 +59,7 @@ define(["require", "exports"], function (require, exports) {
             return 1;
         }
         check(value) {
-            return value;
+            return `"${value}"`;
         }
     }
     /**
@@ -112,10 +112,10 @@ define(["require", "exports"], function (require, exports) {
         }
         check(value) {
             if (!value || value.toLowerCase() == "false") {
-                return 0;
+                return false;
             }
             else {
-                return 1;
+                return true;
             }
         }
     }

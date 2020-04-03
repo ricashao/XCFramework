@@ -62,7 +62,7 @@ class StringChecker implements TypeChecker {
     }
 
     check(value: string) {
-        return value;
+        return `"${value}"`;
     }
 }
 
@@ -115,9 +115,9 @@ class BooleanChecker implements TypeChecker {
     solveString = `!!{value}`;
     check(value: string) {
         if (!value || value.toLowerCase() == "false") {
-            return 0;
+            return false;
         } else {
-            return 1;
+            return true;
         }
     }
 }
