@@ -15,6 +15,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
+using MiniJSON;
 
 public static class TexturePackerExtensions{
 	public static Rect TPHashtableToRect(this Hashtable table){
