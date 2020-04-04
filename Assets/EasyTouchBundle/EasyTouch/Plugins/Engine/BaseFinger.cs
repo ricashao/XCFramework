@@ -37,7 +37,7 @@ public class BaseFinger{
 
 	public float radius;
 	public float radiusVariance;
-	public TouchType touchType;
+	public UnityEngine.TouchType touchType;
 
 	
 

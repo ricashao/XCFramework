@@ -1,0 +1,11 @@
+{
+  "name": "langtools",
+  "version": "0.0.1",
+  "description": "解析wiki，自动生成前后端代码",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ricashao",
+  "license": "ISC"
+}
