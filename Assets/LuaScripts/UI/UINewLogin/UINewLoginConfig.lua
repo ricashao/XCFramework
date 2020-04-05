@@ -23,17 +23,17 @@ local UINewLogin = {
     PrefabPath = "UI/Prefabs/View/UINewLogin.prefab",
 }
 
---local UILoginServer = {
---    Name = UIWindowNames.UILoginServer,
---    Layer = UILayers.NormalLayer,
---    Model = require "UI.UILogin.Model.UILoginServerModel",
---    Ctrl = require "UI.UILogin.Controller.UILoginServerCtrl",
---    View = require "UI.UILogin.View.UILoginServerView",
---    PrefabPath = "UI/Prefabs/View/UILoginServer.prefab",
---}
+local UITreaty = {
+    Name = UIWindowNames.UITreaty,
+    Layer = UILayers.NormalLayer,
+    Model = nil,
+    Ctrl = require "UI.UINewLogin.Controller.UITreatyCtrl",
+    View = require "UI.UINewLogin.View.UITreatyView",
+    PrefabPath = "UI/Prefabs/View/UITreaty.prefab",
+}
 
 return {
     -- 配置
     UINewLogin = UINewLogin,
-    --UILoginServer = UILoginServer,
+    UITreaty = UITreaty,
 }

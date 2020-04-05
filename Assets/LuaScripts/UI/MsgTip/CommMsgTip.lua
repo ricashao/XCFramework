@@ -19,7 +19,7 @@ local function __init(self)
 end
 
 local function Show(self, warningMsg)
-    local msg = codeFile[warningMsg] or msg
+    local msg = LangUtil.GetMsg(warningMsg)
     table.insert(self.infoDataList, msg)
     if (self.timer == nil) then
         self.timer = TimerManager:GetInstance():GetTimer(1, self.Tick, self, false, true)

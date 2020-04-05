@@ -3,6 +3,8 @@
 -- 本地化工具类
 --]]
 
+local codeFile = require "Config.Data.LangFile"
+
 local LangUtil = {}
 
 local function GetData(path, lang)
@@ -26,6 +28,11 @@ local function GetServerAreaName(area_id)
 	return data[area_id].name
 end
 
+local function GetMsg(msgId)
+	return codeFile[msgId] or msg
+end
+
+LangUtil.GetMsg = GetMsg
 LangUtil.GetServerName = GetServerName
 LangUtil.GetServerAreaName = GetServerAreaName
 

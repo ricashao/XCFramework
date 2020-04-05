@@ -58,8 +58,13 @@ local function LoginServer(self, name, password)
     --SceneManager:GetInstance():SwitchScene(SceneConfig.HomeScene)
 end
 
+local function OpenTreaty(self)
+    UIManager:GetInstance():OpenWindow(UIWindowNames.UITreaty)
+end
+
 
 UINewLoginCtrl.LoginServer = LoginServer
 UINewLoginCtrl.ConnectServer = ConnectServer
+UINewLoginCtrl.OpenTreaty = OpenTreaty
 
 return UINewLoginCtrl

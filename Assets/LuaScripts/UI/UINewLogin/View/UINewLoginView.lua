@@ -19,12 +19,17 @@ local res_version_text_path = "BottomRoot/ResVersionText"
 local agree_toggle_path = "ContentRoot/LoginRoot/TreatyRoot/TreatyToggle"
 local enter_btn_path = "ContentRoot/EnterBtn"
 local login_view_path = "ContentRoot/LoginRoot"
+local treaty_btn_path = "ContentRoot/LoginRoot/TreatyRoot/TreatyBtn"
 
 
 local function ClickOnLoginBtn(self)
     local name = self.account_input:GetText()
     local password = self.password_input:GetText()
     self.ctrl:LoginServer(name, password)
+end
+
+local function ClickOnTreatyBtn(self)
+    self.ctrl:OpenTreaty()
 end
 
 local function OnCreate(self)
@@ -38,8 +43,10 @@ local function OnCreate(self)
     self.login_btn = self:AddComponent(UIButton, login_btn_path)
     self.enter_btn = self:AddComponent(UIButton, enter_btn_path)
     self.login_view = self:AddComponent(UIBaseComponent, login_view_path)
+    self.treaty_btn = self:AddComponent(UIButton, treaty_btn_path)
     -- 使用方式二：私有函数、成员函数绑定
     self.login_btn:SetOnClick(self, ClickOnLoginBtn)
+    self.treaty_btn:SetOnClick(self, ClickOnTreatyBtn)
     
 end
 
@@ -89,8 +96,11 @@ local function OnDestroy(self)
     self.res_version_text = nil
     self.account_input = nil
     self.password_input = nil
-    self.login_btn = nil
     self.agree_toggle = nil
+    self.login_btn = nil
+    self.login_btn = nil
+    self.enter_btn = nil
+    self.login_view = nil
     -- 测试代码
     base.OnDestroy(self)
 end

@@ -5,19 +5,20 @@
 
 local UIWindowNames = {
 
-	-- 新登陆模块
-	UINewLogin = "UINewLogin",
-	-- 登陆模块
-	UILogin = "UILogin",
-	UILoginServer = "UILoginServer",
-	-- 场景加载模块
-	UILoading = "UILoading",
-	-- Tip窗口
-	UINoticeTip = "UINoticeTip",
-	-- TestMain
-	UITestMain = "UITestMain",
-	-- BattleMain
-	UIBattleMain = "UIBattleMain",
+    -- 新登陆模块
+    UINewLogin = "UINewLogin",
+    UITreaty = "UITreaty",
+    -- 登陆模块
+    UILogin = "UILogin",
+    UILoginServer = "UILoginServer",
+    -- 场景加载模块
+    UILoading = "UILoading",
+    -- Tip窗口
+    UINoticeTip = "UINoticeTip",
+    -- TestMain
+    UITestMain = "UITestMain",
+    -- BattleMain
+    UIBattleMain = "UIBattleMain",
 }
 
 return ConstClass("UIWindowNames", UIWindowNames)
