@@ -5,6 +5,7 @@
 
 local UIModule = {
 	-- 模块 = 模块配置表
+	UINewLogin = require "UI.UINewLogin.UINewLoginConfig",
 	UILogin = require "UI.UILogin.UILoginConfig",
 	UILoading = require "UI.UILoading.UILoadingConfig",
 	UINoticeTip = require "UI.UINoticeTip.UINoticeTipConfig",

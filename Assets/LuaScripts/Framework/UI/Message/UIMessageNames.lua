@@ -17,6 +17,7 @@ local UIMessageNames = {
 	-- 模块消息添加到下面
 	-- UILogin模块
 	UILOGIN_ON_SELECTED_SVR_CHG = "UILoginOnSelectedSvrChg",
+	UILOGIN_ON_LOGIN_SUCCESS = "UILoginOnLoginSuccess"
 }
 
 return ConstClass("UIMessageNames", UIMessageNames)

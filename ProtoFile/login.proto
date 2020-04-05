@@ -4,8 +4,7 @@ message Login_C2S_Msg{
 	optional string password = 2;//密码
 }
 message Login_S2C_Msg{
-	optional UserInfo player = 1;//角色
-	optional ServerInfoDTO serverInfoDTO = 2;//服务器时间
+	optional Code code = 1;//
 }
 message Regist_C2S_Msg{
 	optional string username = 1;//用户名
@@ -29,4 +28,11 @@ message RandomName_S2C_Msg{
 }
 message ForceOffline_S2C_Msg{
 	optional int32 forceOfflineReason = 1;//
+}
+message EnterGame_C2S_Msg{
+
+}
+message EnterGame_S2C_Msg{
+	optional UserInfo player = 1;//角色
+	optional ServerInfoDTO serverInfoDTO = 2;//服务器时间
 }

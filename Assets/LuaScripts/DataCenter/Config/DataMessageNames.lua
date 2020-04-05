@@ -6,7 +6,8 @@
 local DataMessageNames = {
 	ON_ACCOUNT_INFO_CHG = "DataOnAccountInfoChg",
 	ON_LOGIN_SERVER_ID_CHG = "DataOnLoginServerIDChg",
-	ON_SERVER_LIST_CHG = "DataOnServerListChg"
+	ON_SERVER_LIST_CHG = "DataOnServerListChg",
+	ON_LOGIN_SUCCESS = "DataOnLoginSuccess",
 }
 
 return ConstClass("DataMessageNames", DataMessageNames)

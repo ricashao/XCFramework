@@ -5,20 +5,22 @@
 ---
 local CommMsgTip = BaseClass("CommMsgTip", Singleton)
 local infoItem = require "UI.MsgTip.Item.TextTipItem"
+local codeFile = require "Config.Data.LangFile"
 
 local function __init(self)
     self.maxItemNum = 3 --可显示的最大提示框个数 
-    self.moveSpeed = 73 / 1000 --移动速度
+    self.moveSpeed = 110 / 1000 --移动速度
     self.destroyTime = 1820 / 1000 --秒为单位，提示框销毁时间
-    self.startPosY = 20 --item创建位置
-    self.movePosY = 70 -- 移动到指定位置
+    self.startPosY = 40 --item创建位置
+    self.movePosY = 140 -- 移动到指定位置
 
     self.itemList = {} --存放itemlist
     self.infoDataList = {} --存放数据
 end
 
 local function Show(self, warningMsg)
-    table.insert(self.infoDataList, warningMsg)
+    local msg = codeFile[warningMsg] or msg
+    table.insert(self.infoDataList, msg)
     if (self.timer == nil) then
         self.timer = TimerManager:GetInstance():GetTimer(1, self.Tick, self, false, true)
         self.timer:Start()

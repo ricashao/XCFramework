@@ -4,6 +4,9 @@
 --]]
 
 local UIWindowNames = {
+
+	-- 新登陆模块
+	UINewLogin = "UINewLogin",
 	-- 登陆模块
 	UILogin = "UILogin",
 	UILoginServer = "UILoginServer",

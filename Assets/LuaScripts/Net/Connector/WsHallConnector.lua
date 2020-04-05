@@ -42,6 +42,7 @@ local function OnReceivePackage(self, data)
     index = index + 4
     if (code > 0) then
         --todo 弹消息框
+        CommMsgTip:GetInstance():Show(code)
         return ;
     end
 
