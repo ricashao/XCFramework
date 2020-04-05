@@ -24,7 +24,7 @@ end
 local function Login_S2C (self, data)
 	--/*-*begin Login_S2C*-*/--
 	-- 这里填写方法中的手写内容
-	CommMsgTip:GetInstance():Show(10119);
+	CommMsgTip:GetInstance():Show(10119)
 	DataManager:GetInstance():Broadcast(DataMessageNames.ON_LOGIN_SUCCESS)
 	--/*-*end Login_S2C*-*/--
 end
@@ -32,6 +32,7 @@ end
 local function Regist_S2C (self, data)
 	--/*-*begin Regist_S2C*-*/--
 	-- 这里填写方法中的手写内容
+	CommMsgTip:GetInstance():Show(10101)
 	--/*-*end Regist_S2C*-*/--
 end
 

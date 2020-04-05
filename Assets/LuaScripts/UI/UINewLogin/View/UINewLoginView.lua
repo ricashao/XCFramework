@@ -20,6 +20,8 @@ local agree_toggle_path = "ContentRoot/LoginRoot/TreatyRoot/TreatyToggle"
 local enter_btn_path = "ContentRoot/EnterBtn"
 local login_view_path = "ContentRoot/LoginRoot"
 local treaty_btn_path = "ContentRoot/LoginRoot/TreatyRoot/TreatyBtn"
+local regist_btn_path = "ContentRoot/LoginRoot/RegistBtn"
+local enter_btn_path = "ContentRoot/EnterBtn"
 
 
 local function ClickOnLoginBtn(self)
@@ -31,6 +33,15 @@ end
 local function ClickOnTreatyBtn(self)
     self.ctrl:OpenTreaty()
 end
+
+local function ClickOnRegistBtn(self)
+    self.ctrl:OpenRegist()
+end
+
+local function ClickOnEnterBtn(self)
+    self.ctrl:EnterGame()
+end
+
 
 local function OnCreate(self)
     base.OnCreate(self)
@@ -44,9 +55,12 @@ local function OnCreate(self)
     self.enter_btn = self:AddComponent(UIButton, enter_btn_path)
     self.login_view = self:AddComponent(UIBaseComponent, login_view_path)
     self.treaty_btn = self:AddComponent(UIButton, treaty_btn_path)
+    self.regist_btn = self:AddComponent(UIButton, regist_btn_path)
     -- 使用方式二：私有函数、成员函数绑定
     self.login_btn:SetOnClick(self, ClickOnLoginBtn)
     self.treaty_btn:SetOnClick(self, ClickOnTreatyBtn)
+    self.regist_btn:SetOnClick(self, ClickOnRegistBtn)
+    self.enter_btn:SetOnClick(self, ClickOnEnterBtn)
     
 end
 
@@ -101,6 +115,8 @@ local function OnDestroy(self)
     self.login_btn = nil
     self.enter_btn = nil
     self.login_view = nil
+    self.treaty_btn = nil
+    self.regist_btn = nil
     -- 测试代码
     base.OnDestroy(self)
 end

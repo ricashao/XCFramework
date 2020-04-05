@@ -32,8 +32,18 @@ local UITreaty = {
     PrefabPath = "UI/Prefabs/View/UITreaty.prefab",
 }
 
+local UIRegist = {
+    Name = UIWindowNames.UIRegist,
+    Layer = UILayers.NormalLayer,
+    Model = nil,
+    Ctrl = require "UI.UINewLogin.Controller.UIRegistCtrl",
+    View = require "UI.UINewLogin.View.UIRegistView",
+    PrefabPath = "UI/Prefabs/View/UIRegist.prefab",
+}
+
 return {
     -- 配置
     UINewLogin = UINewLogin,
     UITreaty = UITreaty,
+    UIRegist = UIRegist,
 }

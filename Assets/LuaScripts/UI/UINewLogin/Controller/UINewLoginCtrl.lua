@@ -6,7 +6,6 @@
 local UINewLoginCtrl = BaseClass("UINewLoginCtrl", UIBaseCtrl)
 local MsgIDMap = require "Net.Config.MsgIDMap"
 
-
 local function OnConnect(self, sender, result, msg)
     if result < 0 then
         Logger.LogError("Connect err : " .. msg)
@@ -50,11 +49,11 @@ local function LoginServer(self, name, password)
 
     ClientData:GetInstance():SetAccountInfo(name, password)
 
-    local msg = MsgIDMap.Login_C2S_Msg();
-    msg.username = name;
+    local msg = MsgIDMap.Login_C2S_Msg()
+    msg.username = name
     msg.password = CS.Md5Helper.Md5(password)
     local service = WsHallConnector:GetInstance():GetService(ServiceName.LoginService)
-    service:Login_C2S(msg);
+    service:Login_C2S(msg)
     --SceneManager:GetInstance():SwitchScene(SceneConfig.HomeScene)
 end
 
@@ -62,9 +61,18 @@ local function OpenTreaty(self)
     UIManager:GetInstance():OpenWindow(UIWindowNames.UITreaty)
 end
 
+local function OpenRegist(self)
+    UIManager:GetInstance():OpenWindow(UIWindowNames.UIRegist)
+end
+
+local function EnterGame(self)
+    SceneManager:GetInstance():SwitchScene(SceneConfig.HomeScene)
+end
 
 UINewLoginCtrl.LoginServer = LoginServer
 UINewLoginCtrl.ConnectServer = ConnectServer
 UINewLoginCtrl.OpenTreaty = OpenTreaty
+UINewLoginCtrl.OpenRegist = OpenRegist
+UINewLoginCtrl.EnterGame = EnterGame
 
 return UINewLoginCtrl

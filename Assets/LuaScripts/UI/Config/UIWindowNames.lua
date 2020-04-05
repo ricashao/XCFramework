@@ -8,6 +8,7 @@ local UIWindowNames = {
     -- 新登陆模块
     UINewLogin = "UINewLogin",
     UITreaty = "UITreaty",
+    UIRegist = "UIRegist",
     -- 登陆模块
     UILogin = "UILogin",
     UILoginServer = "UILoginServer",
