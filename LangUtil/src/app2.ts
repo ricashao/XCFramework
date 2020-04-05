@@ -147,7 +147,7 @@ function createCodeFile(kv: { [id: string]: string }) {
 	let prefix = `local codefile = {`;
 	for (let id in kv) {
 		let value = kv[id];
-		prefix += `\n\t[${id}] = [["${value}"]],`
+		prefix += `\n\t[${id}] = [[${value}]],`
 	}
 	prefix += `
 }
