@@ -18,8 +18,8 @@ local function __delete(self)
     self.centPos = Vector3.zero;
 end
 
+-- 计算显示区域的四个顶点
 local function GetCorners(camera, distance)
-    local corners = CameraUtil.CalCornersByCamera(camera, distance)
     local halfFOV = (camera.fieldOfView * 0.5) * Mathf.Deg2Rad
     local aspect = camera.aspect
 
@@ -27,22 +27,23 @@ local function GetCorners(camera, distance)
     local width = height * aspect
     local tx = camera.transform
     local tempcorners = {}
-    tempcorners[1] = Vector3.New(corners[0].x, corners[0].y, corners[0].z)
-    tempcorners[2] = Vector3.New(corners[1].x, corners[1].y, corners[1].z)
-    tempcorners[3] = Vector3.New(corners[2].x, corners[2].y, corners[2].z)
-    tempcorners[4] = Vector3.New(corners[3].x, corners[3].y, corners[3].z)
+    --UpperLeft
+    local tmp = tx.position - (tx.right * width) + tx.up * height + tx.forward * distance
+    tempcorners[1] = tmp
+    --UpperRight
+    tmp = tx.position + (tx.right * width) + tx.up * height + tx.forward * distance
+    tempcorners[2] = tmp
+    --LowerLeft
+    tmp = tx.position - (tx.right * width) - tx.up * height + tx.forward * distance
+    tempcorners[3] = tmp
+    --LowerRight
+    tmp = tx.position + (tx.right * width) - tx.up * height + tx.forward * distance
+    tempcorners[4] = tmp
     return tempcorners
 end
 
-local function InitScene(self)
-    --todo 设置背景
-    self.planeBackground:SetActive(true)
-    -- 计算面板位置
-    self:CalPlaneTransform()
-    -- 计算战斗区域的位置点
-    self:CalAllBattlerPos()
-end
 
+-- 属性计算 战斗场景自适应场景相机
 local function CalPlaneTransform(self)
     -- 获取主摄像机
     local camera = CameraManager:GetInstance().mainCamera:GetCamera()
@@ -74,5 +75,24 @@ local function CalPlaneTransform(self)
 
 end
 
+--计算所有点位的坐标
+local function CalAllBattlerPos(self)
+    local centerPos = Vector3.New(self.centPos.x, self.centPos.y, self.centPos.z);
+    for k, v in pairs(BattleSceneCommon.WarPosition) do
+        local pos = centerPos + v;
+        self.allBattlePos[k] = pos;
+    end
+end
+
+local function InitScene(self)
+    --todo 设置背景
+    self.planeBackground:SetActive(true)
+    -- 计算面板位置
+    CalPlaneTransform(self)
+    -- 计算战斗区域的位置点
+    CalAllBattlerPos(self)
+end
+
 BattleScenePlane.__init = __init
+BattleScenePlane.InitScene = InitScene
 return BattleScenePlane
