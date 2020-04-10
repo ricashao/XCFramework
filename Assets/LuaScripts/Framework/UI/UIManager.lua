@@ -53,22 +53,24 @@ local function __init(self)
     CS.UnityEngine.Object.DontDestroyOnLoad(event_system)
     assert(not IsNull(self.transform))
     assert(not IsNull(self.UICamera))
-
+    GameLayerManager:GetInstance():Init()
+    self.layers = GameLayerManager:GetInstance().layers
     -- 初始化层级
-    local layers = table.choose(Config.Debug and getmetatable(UILayers) or UILayers, function(k, v)
-        return type(v) == "table" and v.OrderInLayer ~= nil and v.Name ~= nil and type(v.Name) == "string" and #v.Name > 0
-    end)
-    table.walksort(layers, function(lkey, rkey)
-        return layers[lkey].OrderInLayer < layers[rkey].OrderInLayer
-    end, function(index, layer)
-        assert(self.layers[layer.Name] == nil, "Aready exist layer : " .. layer.Name)
-        local go = CS.UnityEngine.GameObject(layer.Name)
-        local trans = go.transform
-        trans:SetParent(self.transform)
-        local new_layer = UILayer.New(self, layer.Name)
-        new_layer:OnCreate(layer)
-        self.layers[layer.Name] = new_layer
-    end)
+    --local layers = table.choose(Config.Debug and getmetatable(UILayers) or UILayers, function(k, v)
+    --    return type(v) == "table" and v.OrderInLayer ~= nil and v.Name ~= nil and type(v.Name) == "string" and #v.Name > 0
+    --end)
+    --table.walksort(layers, function(lkey, rkey)
+    --    return layers[lkey].OrderInLayer < layers[rkey].OrderInLayer
+    --end, function(index, layer)
+    --    assert(self.layers[layer.Name] == nil, "Aready exist layer : " .. layer.Name)
+    --    local go = CS.UnityEngine.GameObject(layer.Name)
+    --    local trans = go.transform
+    --    trans:SetParent(self.transform)
+    --    local new_layer = UILayer.New(self, layer.Name)
+    --    new_layer:OnCreate(layer)
+    --    self.layers[layer.Name] = new_layer
+    --end)
+
 end
 
 -- 注册消息
@@ -487,10 +489,6 @@ local function __delete(self)
     self.keep_model = nil
 end
 
-local function GetLayer(self, layer_name)
-    return self.layers[layer_name]
-end
-
 UIManager.__init = __init
 UIManager.AddListener = AddListener
 UIManager.Broadcast = Broadcast
@@ -523,6 +521,5 @@ UIManager.WaitForViewCreated = WaitForViewCreated
 UIManager.WaitForTipResponse = WaitForTipResponse
 UIManager.GetTipLastClickIndex = GetTipLastClickIndex
 UIManager.__delete = __delete
-UIManager.GetLayer = GetLayer
 
 return UIManager;

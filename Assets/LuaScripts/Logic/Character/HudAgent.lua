@@ -5,6 +5,19 @@
 ---
 local HudAgent = BaseClass("HudAgent")
 
+local HUDTYPE_OFFSET = {
+    TOP_NAME = Vector3.New(0, 1.72, 0); -- 头顶名字
+    CHARACTER_BLOOD = Vector3.New(0, 1.2, 0); -- 血条
+
+    PLAYER_CHAT = 10; -- 聊天气泡
+
+    BATTLE_EFFECTS = 11; -- 战斗特效
+    BATTLE_HP = 12; -- 战斗掉血
+}
+
+local PLAYER_NAME_COLOR_ID = 223;
+local NPC_NAME_COLOR_ID = 221;
+
 local function __init(self, character)
     self.character = character
     self.uiName = nil
@@ -35,10 +48,6 @@ local function SetName(self, name, cameraLayer, hudType)
     if hudType == HUD_TYPE.TOP_NAME then
         offset = HUDTYPE_OFFSET.TOP_NAME
 
-    elseif hudType == HUD_TYPE.BOTTOM_NAME then
-        offset = HUDTYPE_OFFSET.BOTTOM_NAME
-    else
-
     end
 
     if not offset then
@@ -57,6 +66,18 @@ local function SetName(self, name, cameraLayer, hudType)
     end
 
     self.uiName:SetUIName(name, nameColor);
+end
+
+function M:SetChat(message)
+    if not message or not self.character then
+        return
+    end
+
+    if self.uiChat == nil then
+        self.uiChat = require "Logic.Character.UIChat".New(self.character);
+    end
+
+    self.uiChat:ShowChat(message);
 end
 
 HudAgent.__init = __init

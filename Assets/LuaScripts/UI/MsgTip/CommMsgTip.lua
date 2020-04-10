@@ -5,7 +5,6 @@
 ---
 local CommMsgTip = BaseClass("CommMsgTip", Singleton)
 local infoItem = require "UI.MsgTip.Item.TextTipItem"
-local codeFile = require "Config.Data.LangFile"
 
 local function __init(self)
     self.maxItemNum = 3 --可显示的最大提示框个数 

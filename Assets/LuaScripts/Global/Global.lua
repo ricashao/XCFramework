@@ -67,6 +67,10 @@ UIMessageNames = require "Framework.UI.Message.UIMessageNames"
 UIWindowNames = require "UI.Config.UIWindowNames"
 UIConfig = require "UI.Config.UIConfig"
 
+-- gamelayer
+
+GameLayerManager = require "UI.GameLayerManager"
+
 -- res
 ResourcesManager = require "Framework.Resource.ResourcesManager"
 GameObjectPool = require "Framework.Resource.GameObjectPool"

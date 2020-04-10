@@ -40,7 +40,7 @@ local function __init(self, content, posy, callback)
 end
 
 local function OnCreate(self)
-    self.transform:SetParent(UIManager:GetInstance():GetLayer(UILayers.SystemInfoLayer.Name).transform, false)
+    self.transform:SetParent(GameLayerManager:GetInstance():GetSystemInfoLayerTransform().transform, false)
     self.infoText = self.transform:Find("ep_bg_width-height/et_text").gameObject:GetComponent(typeof(CS.UnityEngine.UI.Text))
     self.movePos = self.transform:Find("ep_bg_width-height")
     self.rectTransform = self.movePos.gameObject:GetComponent(typeof(CS.UnityEngine.RectTransform))
