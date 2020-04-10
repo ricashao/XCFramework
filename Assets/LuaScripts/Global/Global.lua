@@ -78,6 +78,7 @@ UpdateManager = require "Framework.Updater.UpdateManager"
 LogicUpdater = require "GameLogic.Main.LogicUpdater"
 
 -- scenes
+require "Scenes.Config.SceneLayer"
 BaseScene = require "Framework.Scene.Base.BaseScene"
 SceneManager = require "Framework.Scene.SceneManager"
 SceneConfig = require "Scenes.Config.SceneConfig"
