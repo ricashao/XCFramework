@@ -29,7 +29,7 @@ local function GetServerAreaName(area_id)
 end
 
 local function GetMsg(msgId)
-	return codeFile[msgId] or msg
+	return codeFile[msgId] or msgId
 end
 
 LangUtil.GetMsg = GetMsg

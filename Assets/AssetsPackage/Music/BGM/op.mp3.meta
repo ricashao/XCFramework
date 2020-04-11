@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0ba6cf05f8700c349a53e05c6bddbf95
-timeCreated: 1585498198
+guid: 94e17d32b873edc4fb41bae4636ad987
+timeCreated: 1586538097
 licenseType: Free
 AudioImporter:
   serializedVersion: 6
@@ -18,5 +18,5 @@ AudioImporter:
   loadInBackground: 0
   3D: 1
   userData: 
-  assetBundleName: music/bgm/op_mp3.assetbundle
+  assetBundleName: 
   assetBundleVariant: 

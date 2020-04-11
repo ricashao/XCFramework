@@ -36,18 +36,18 @@ local function Init(self)
 end
 
 local function GetSystemInfoLayerTransform(self)
-    return self:GetCameraLayerTransform(UILayers.SystemInfosLayer.Name)
+    return self:GetCameraLayerTransform(UILayers.SystemInfoLayer.Name)
 end
 
 
 local function GetCameraLayerTransform(self,cameraLayerName)
     if not cameraLayerName then
-        return;
+        return
     end
 
     local cameraLayer = self.layers[cameraLayerName];
     if cameraLayer then
-        return cameraLayer:GetLayerTransform();
+        return cameraLayer.transform
     end
 end
 

@@ -30,6 +30,7 @@ local function LoginServer(self, name, password)
     -- 合法性检验
     if string.len(name) > 20 or string.len(name) < 1 then
         -- TODO：错误弹窗
+        CommMsgTip:GetInstance():Show("nononono")
         return
     end
     if string.len(password) > 20 or string.len(password) < 1 then
