@@ -25,6 +25,7 @@ Logger = require "Framework.Logger.Logger"
 require "Framework.Updater.Coroutine"
 TransformObject = require "Framework.Basic.TransformObject"
 require "Common.LocalStorage"
+require "Scenes.Config.SceneLayer"
 
 -- game data
 DataMessageNames = require "DataCenter.Config.DataMessageNames"
@@ -82,7 +83,6 @@ UpdateManager = require "Framework.Updater.UpdateManager"
 LogicUpdater = require "GameLogic.Main.LogicUpdater"
 
 -- scenes
-require "Scenes.Config.SceneLayer"
 BaseScene = require "Framework.Scene.Base.BaseScene"
 SceneManager = require "Framework.Scene.SceneManager"
 SceneConfig = require "Scenes.Config.SceneConfig"

@@ -15,7 +15,7 @@ local function OnCreate(self, layer, camera)
     self.unity_graphic_raycaster = nil
 
     -- ui layer
-    self.gameObject.layer = 5
+    self.gameObject.layer = layer.SceneLayer
 
     -- canvas
     self.unity_canvas = UIUtil.FindComponent(self.transform, typeof(CS.UnityEngine.Canvas))

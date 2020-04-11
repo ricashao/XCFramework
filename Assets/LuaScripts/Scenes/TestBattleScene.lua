@@ -28,24 +28,22 @@ end
 local function OnComplete(self)
     base.OnComplete(self)
     InputTouch:GetInstance():SetCamera(CS.UnityEngine.Camera.main)
+    local battleScene = require("Battle.Scene.BattleScenePlane").New()
+    battleScene:InitScene()
     -- 创建角色
     local chara = GameObjectPool:GetInstance():GetGameObjectAsync(chara_res_path, function(inst)
         if IsNull(inst) then
             error("Load chara res err!")
-            do return end
+            do
+                return
+            end
         end
 
-        local chara_root = CS.UnityEngine.GameObject.Find("CharacterRoot")
-        if IsNull(chara_root) then
-            error("chara_root null!")
-            do return end
-        end
-
-        inst.transform:SetParent(chara_root.transform)
-        inst.transform.localPosition = Vector3.New(-7.86, 50, 5.85)
+        inst.transform:SetParent(battleScene.planeBackground.transform, false)
 
         UIManager:GetInstance():OpenWindow(UIWindowNames.UIBattleMain)
     end)
+
 end
 
 -- 离开场景
