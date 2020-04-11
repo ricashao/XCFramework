@@ -145,24 +145,24 @@ local function RegisterUIPress(self, target, callBack, data, delay, loop, useFra
         return
     end
 
-    local key = target.gameObject:GetInstanceID();
+    local key = target.gameObject:GetInstanceID()
     if uiPressMaps[key] then
-        local timer = uiPressMaps[key].timer;
+        local timer = uiPressMaps[key].timer
         if timer then
-            timer:Stop();
-            timer = nil;
+            timer:Stop()
+            timer = nil
         end
     else
-        uiPressMaps[key] = {};
+        uiPressMaps[key] = {}
     end
 
     if not delay and not loop and not useFrame then
-        local pressTarget = {};
-        pressTarget.callBack = callBack;
-        pressTarget.data = data;
-        uiPressMaps[key].pressTarget = pressTarget;
+        local pressTarget = {}
+        pressTarget.callBack = callBack
+        pressTarget.data = data
+        uiPressMaps[key].pressTarget = pressTarget
     else
-        uiPressMaps[key].timer = require "Framework.Timer".New(delay, callBack, data, loop, useFrame);
+        uiPressMaps[key].timer = require "Framework.Timer".New(delay, callBack, data, loop, useFrame)
     end
 end
 
@@ -285,7 +285,7 @@ local function OnTouchClick(self, eventData)
     end
 
     -- UI点击
-    if eventData.currentSelectedGameObject then
+    if not IsNull(eventData.currentSelectedGameObject) then
         local key = eventData.currentSelectedGameObject:GetInstanceID();
         if uiClickMaps and uiClickMaps[key] then
             local clickTarget = uiClickMaps[key];
@@ -303,7 +303,7 @@ end
 -- 触发按住事件
 local function OnTouchPress(self, eventData)
     --print("触发按住事件")
-    if eventData.currentSelectedGameObject then
+    if not IsNull(eventData.currentSelectedGameObject) then
         local key = eventData.currentSelectedGameObject:GetInstanceID();
         if uiPressMaps and uiPressMaps[key] and uiPressMaps[key].timer then
             uiPressMaps[key].timer:Stop();
@@ -314,7 +314,7 @@ end
 -- 按住事件结束
 local function OnTouchPressEnd(self, eventData)
     --print("按住事件结束")
-    if eventData.currentSelectedGameObject then
+    if not IsNull(eventData.currentSelectedGameObject) then
         local key = eventData.currentSelectedGameObject:GetInstanceID();
         if uiPressMaps and uiPressMaps[key] and uiPressMaps[key].timer then
             uiPressMaps[key].timer:Stop();

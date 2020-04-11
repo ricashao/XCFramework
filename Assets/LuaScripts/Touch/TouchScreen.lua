@@ -5,7 +5,7 @@
 ---
 local TouchScreen = BaseClass("TouchScreen")
 local MIN_TIME = 0.5
-local _currentTouchTime = 0.5
+local _currentTouchTime = 0
 local rayCamera = CS.UnityEngine.Camera.main
 local Input = CS.UnityEngine.Input
 local PointerEventData = CS.UnityEngine.EventSystems.PointerEventData

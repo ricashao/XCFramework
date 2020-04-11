@@ -23,7 +23,7 @@ local UILayers = {
         OrderInLayer = 120,
         CameraType = 0,
     },
-    GuiCamera_1_2 = {
+    battlerNameCamera_1 = {
         Name = "battlerNameCamera_1",
         PlaneDistance = 8000,
         OrderInLayer = 0,

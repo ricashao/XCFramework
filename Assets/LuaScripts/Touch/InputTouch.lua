@@ -20,7 +20,7 @@ end
 
 local function SetCamera(self, camera)
     mainCamera = camera;
-    if not finger then
+    if finger then
         finger:SetCamera(camera);
     end
 end
@@ -29,7 +29,7 @@ local function Tick(self, delta_time)
 
     if finger then
         finger:Tick();
-        if (not finger.CurrentSelectedGameObject) then
+        if (IsNull(finger.CurrentSelectedGameObject)) then
             touchScreen:Tick(deltaTime);
         end
     else

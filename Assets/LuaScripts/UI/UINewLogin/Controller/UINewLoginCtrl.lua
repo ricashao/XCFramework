@@ -27,6 +27,11 @@ local function ConnectServer(self)
 end
 
 local function LoginServer(self, name, password)
+    if Config.Debug then
+        SceneManager:GetInstance():SwitchScene(SceneConfig.HomeScene)
+        return
+    end
+    --todo 测试
     -- 合法性检验
     if string.len(name) > 20 or string.len(name) < 1 then
         -- TODO：错误弹窗
@@ -55,7 +60,6 @@ local function LoginServer(self, name, password)
     msg.password = CS.Md5Helper.Md5(password)
     local service = WsHallConnector:GetInstance():GetService(ServiceName.LoginService)
     service:Login_C2S(msg)
-    --SceneManager:GetInstance():SwitchScene(SceneConfig.HomeScene)
 end
 
 local function OpenTreaty(self)

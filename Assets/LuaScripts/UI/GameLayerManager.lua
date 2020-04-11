@@ -2,20 +2,22 @@
 local GameLayerManager = BaseClass("GameLayerManager", Singleton)
 
 local function Init(self)
-    local battleCameraObj = CS.UnityEngine.GameObject.Find("BattlerCamera");
+    local battleCameraObj = CS.UnityEngine.GameObject.Find("BattlerCamera")
     if battleCameraObj then
-        battleCamera = battleCameraObj:GetComponent("Camera");
+        CS.UnityEngine.Object.DontDestroyOnLoad(battleCameraObj)
+        battleCamera = battleCameraObj:GetComponent("Camera")
     end
     self.battleCamera = battleCamera;
 
     self.guiCamera = UIManager:GetInstance().UICamera
-    
+     
     -- 所有可用的层级
     self.layers = {}
 
-    local battlerNameCameraObj = CS.UnityEngine.GameObject.Find("BattlerNameCamera");
+    local battlerNameCameraObj = CS.UnityEngine.GameObject.Find("BattlerNameCamera")
+    CS.UnityEngine.Object.DontDestroyOnLoad(battlerNameCameraObj)
     self.battlerNameCamera = battlerNameCameraObj.gameObject:GetComponent("Camera");
-    -- 初始化层级
+    -- 初始化层
     local layers = table.choose(Config.Debug and getmetatable(UILayers) or UILayers, function(k, v)
         return type(v) == "table" and v.OrderInLayer ~= nil and v.Name ~= nil and type(v.Name) == "string" and #v.Name > 0
     end)

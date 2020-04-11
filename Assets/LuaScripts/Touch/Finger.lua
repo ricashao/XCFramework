@@ -53,12 +53,8 @@ end
 
 local function RayCaster(self)
     local go = nil
-    if Application.isPlaying and self.camera then
-        local ray = self.camera:ScreenPointToRay(Input.mousePosition);
-        local isHit, hit = Physics.Raycast(ray)
-        if (isHit) then
-            go = hit.collider.gameObject
-        end
+    if Application.isPlaying and not IsNull(self.camera) then
+        go = CS.RaycastUtils.RayCaster(self.camera)
     end
     return go
 end
@@ -67,7 +63,7 @@ local function GetPickedInfo(self)
     self.pickedGameObject = self:RayCaster()
     self.isOverUI = not (InputTouch:GetInstance().isMobilePlatform and EventSystem.current:IsPointerOverGameObject(Input.GetTouch(0).fingerId) or EventSystem.current:IsPointerOverGameObject())
     self.currentSelectedGameObject = EventSystem.current.currentSelectedGameObject
-    if self.currentSelectedGameObject then
+    if not IsNull(self.currentSelectedGameObject) then
         self.currentSelectedGameObjectRT = self.currentSelectedGameObject:GetComponent(typeof(RectTransform));
     end
 end

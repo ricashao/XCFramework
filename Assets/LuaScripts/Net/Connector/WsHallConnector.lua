@@ -85,7 +85,7 @@ local function SendMessage(self, msg_id, msg_obj, show_mask, need_resend)
 end
 
 local function Update(self)
-    if not IsNull(self.hallSocket) then
+    if not IsNull(self.hallSocket) and self.hallSocket:IsConnect() then
         self.hallSocket:UpdateNetwork()
     end
 end
