@@ -16,7 +16,7 @@ public class CameraProjection : MonoBehaviour
     {
         if (!theCamera)
         {
-            theCamera = Camera.main;
+            theCamera = GetComponent<Camera>();
         }
         tx = theCamera.transform;
     }

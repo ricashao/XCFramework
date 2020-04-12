@@ -27,7 +27,7 @@ end
 -- 准备工作
 local function OnComplete(self)
     base.OnComplete(self)
-    InputTouch:GetInstance():SetCamera(CS.UnityEngine.Camera.main)
+    InputTouch:GetInstance():SetCamera(GameLayerManager:GetInstance().battleCamera)
     local battleScene = require("Battle.Scene.BattleScenePlane").New()
     battleScene:InitScene()
     -- 创建角色

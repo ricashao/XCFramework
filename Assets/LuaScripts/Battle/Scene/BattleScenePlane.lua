@@ -47,7 +47,7 @@ end
 local function CalPlaneTransform(self)
     -- 获取主摄像机
     --local camera = CameraManager:GetInstance().mainCamera:GetCamera()
-    local camera = CS.UnityEngine.Camera.main
+    local camera = GameLayerManager:GetInstance().battleCamera
     -- 获取相机距离
     local distance = 10
     -- 获取相机显示区域的四个角
