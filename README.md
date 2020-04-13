@@ -1,2 +1,2 @@
 # XCFramework
-xlua
+xlua-websocket
