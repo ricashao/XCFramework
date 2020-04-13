@@ -22,11 +22,6 @@ local function __init(self, character)
     self.character = character
     self.uiName = nil
     self.uiChat = nil
-    self.uiLifeBar = nil
-    self.uiState = nil
-
-    self.battleEffs = {}
-    self.battleHps = {}
 
 end
 
@@ -68,7 +63,7 @@ local function SetName(self, name, cameraLayer, hudType)
     self.uiName:SetUIName(name, nameColor);
 end
 
-function M:SetChat(message)
+local function SetChat(self, message)
     if not message or not self.character then
         return
     end
@@ -80,6 +75,41 @@ function M:SetChat(message)
     self.uiChat:ShowChat(message);
 end
 
+local function SetVisible(self, visible)
+
+    if self.uiName then
+        self.uiName:SetVisible(visible)
+    end
+
+    if self.uiChat then
+        self.uiChat:SetVisible(visible)
+    end
+end
+
+local function LateTick(self, delta)
+    if self.uiName and (self.uiName:IsVisible()) then
+        self.uiName:LateTick(delta)
+    end
+
+    if self.uiChat and (self.uiChat:IsVisible()) then
+        self.uiChat:LateTick(delta)
+    end
+end
+
+local function __delete(self)
+    if self.uiName then
+        self.uiName = nil
+    end
+
+    if self.uiChat then
+        self.uiChat = nil
+    end
+end
+
 HudAgent.__init = __init
 HudAgent.SetName = SetName
+HudAgent.SetChat = SetChat
+HudAgent.SetVisible = SetVisible
+HudAgent.LateTick = LateTick
+HudAgent.__delete = __delete
 return HudAgent;

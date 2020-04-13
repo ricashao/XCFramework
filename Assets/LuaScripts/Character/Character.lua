@@ -110,10 +110,28 @@ local function UpdateLayer()
     end
 end
 
+local function LateTick(self, delta)
+    if not self.visible then
+        return
+    end
+
+    if self.hudAgent then
+        self.hudAgent:LateTick(delta)
+    end
+end
+
+local function __delete(self)
+    if self.hudAgent then
+        self.hudAgent = nil
+    end
+end
+
 Character.__init = __init
 Character.Initialize = Initialize
 Character.CharacterLoadedEnd = CharacterLoadedEnd
 Character.RefreshCharacterView = RefreshCharacterView
 Character.RefreshHudView = RefreshHudView
 Character.UpdateLayer = UpdateLayer
+Character.LateTick = LateTick
+Character.__delete = __delete
 return Character
