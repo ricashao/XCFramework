@@ -10,7 +10,7 @@ local base = BaseScene
 local CharacterAnimation = require "GameLogic.Battle.CharacterAnimation"
 
 -- 临时：角色资源路径
-local chara_res_path = "Models/guijiang/guijiang.prefab"
+local chara_res_path = "Models/xixuegui/xixuegui.prefab"
 
 -- 创建：准备预加载资源
 local function OnCreate(self)
