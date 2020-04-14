@@ -3,6 +3,7 @@
 --- Created by Administrator.
 --- DateTime: 2020/4/8 9:28
 ---
+require "Battle.Scene.BattleSceneCommon"
 local BattleScenePlane = BaseClass("BattleScenePlane")
 
 local function __init(self)
@@ -91,9 +92,11 @@ local function InitScene(self)
     -- 计算面板位置
     CalPlaneTransform(self)
     -- 计算战斗区域的位置点
-    --CalAllBattlerPos(self)
+    CalAllBattlerPos(self)
 end
 
 BattleScenePlane.__init = __init
 BattleScenePlane.InitScene = InitScene
+BattleScenePlane.__delete = __delete
+
 return BattleScenePlane

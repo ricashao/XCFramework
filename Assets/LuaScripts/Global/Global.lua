@@ -124,6 +124,7 @@ require "Unit.UnitCommon"
 Character = require "Character.Character"
 
 
+
 -- 单例类初始化
 UIManager:GetInstance()
 DataManager:GetInstance()
