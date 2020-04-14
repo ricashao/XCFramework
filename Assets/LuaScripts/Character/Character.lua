@@ -6,6 +6,13 @@
 
 local Character = BaseClass("Character", TransformObject)
 
+local function InitDefaultAction(self)
+    self.aStandBy = require("Unit.UnitAction").New()
+end
+
+local currentAction = nil
+local nextAction = nil
+
 local function __init(self)
     --战斗id
     self.fighterId = nil
@@ -41,6 +48,7 @@ local function __init(self)
 
     self.actionConttroller = nil
 
+    InitDefaultAction(self)
 
 end
 
@@ -50,7 +58,7 @@ local function Initialize(self, shape, pos, dir, callback)
     self.worldDir = dir
     self.resourceCallBack = callback
     if self.inited then
-        return ;
+        return
     end
     self.hudAgent = require "Logic.Character.HudAgent".New(self)
     local fullPath = "" .. shape
@@ -69,7 +77,6 @@ local function CharacterLoadedEnd(self, pfb)
     self.model = require "Character.Model.Model".New(self)
     self.initResourceOK = true
 
-
     -- self.hide为false表示默认不隐藏
     self:SetVisible(self.hide)
 
@@ -77,6 +84,40 @@ local function CharacterLoadedEnd(self, pfb)
     if self.resourceCallBack then
         self.resourceCallBack()
     end
+
+    self:StartUnitAction()
+end
+
+
+-- 开始执行单位动作
+-- @return true     成功执行动作
+--         false    未成功执行动作，将动作覆盖到下一个动作
+local function StartUnitAction(self, action, stop, callback)
+    action = action or self.aStandBy
+    stop = stop or false
+    if currentAction then
+        if currentAction ~= action then
+            if (currentAction:IsEnd()) then
+                currentAction = action
+                currentAction:Start(self, true, callback)
+            elseif stop or currentAction:CanStop() then
+                currentAction:Terminate(self)
+                currentAction = nil
+                currentAction = action
+                currentAction:Start(self, true, callback)
+            else
+                --不可结束，覆盖下一个动作
+                if (nextAction) then
+                    nextAction = nil
+                end
+                nextAction = action
+            end
+        end
+    else
+        currentAction = action
+        currentAction:Start(self, true, callback)
+    end
+    currentAction:PlayAction(self, 0, now);
 end
 
 -- 刷新所外形相关数据
@@ -131,6 +172,7 @@ Character.Initialize = Initialize
 Character.CharacterLoadedEnd = CharacterLoadedEnd
 Character.RefreshCharacterView = RefreshCharacterView
 Character.RefreshHudView = RefreshHudView
+Character.StartUnitAction = StartUnitAction
 Character.UpdateLayer = UpdateLayer
 Character.LateTick = LateTick
 Character.__delete = __delete
