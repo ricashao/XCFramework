@@ -29,10 +29,10 @@ ActionAim = {
 
 --人物容器转向时候，对应的scaleX
 FaceScaleX = {
-    --[[↘]]1,
-    --[[↗]]1,
-    --[[↖]]-1,
-    --[[↙]]-1,
+    --[[↘]]false,
+    --[[↗]]false,
+    --[[↖]]true,
+    --[[↙]]true,
 }
 
 FaceDirection = {

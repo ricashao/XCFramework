@@ -207,7 +207,8 @@ end
 local function DoAction(self, action)
     --lua 数组从1 开始 action= action+1
     self.a = action + 1
-    local curaim = ActionAim[self.a] .. self.d
+    local curaim = ActionAim[self.a] .. FaceDirection[self.d]
+    self._uRender.armature.flipX = FaceScaleX[self.d]
     self._uRender.animation:Play(curaim)
 end
 
