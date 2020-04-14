@@ -42,7 +42,6 @@ local function SetName(self, name, cameraLayer, hudType)
     local offset
     if hudType == HUD_TYPE.TOP_NAME then
         offset = HUDTYPE_OFFSET.TOP_NAME
-
     end
 
     if not offset then
@@ -50,11 +49,11 @@ local function SetName(self, name, cameraLayer, hudType)
     end
 
     local nameColor;
-    if self.character:GetType() == CHARACTER_TYPE.NPC then
-        nameColor = self:GetColorValue(NPC_NAME_COLOR_ID)
-    else
-        nameColor = self:GetColorValue(PLAYER_NAME_COLOR_ID)
-    end
+    --if self.character:GetType() == CHARACTER_TYPE.NPC then
+    --    nameColor = self:GetColorValue(NPC_NAME_COLOR_ID)
+    --else
+    --    nameColor = self:GetColorValue(PLAYER_NAME_COLOR_ID)
+    --end
 
     if self.uiName == nil then
         self.uiName = require "Logic.Character.UIName".New(self.character, cameraLayer, offset);

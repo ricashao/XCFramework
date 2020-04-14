@@ -32,11 +32,11 @@ local function OnComplete(self)
     battleScene:InitScene()
     -- 创建角色
     local testCharacter = Character.New()
-    testCharacter:Initialize(chara_res_path, Vector3.zero, 3,function()
+    testCharacter:Initialize(chara_res_path, Vector3.zero, 3, function()
         testCharacter.pfb.transform:SetParent(battleScene.planeBackground.transform, false)
         UIManager:GetInstance():OpenWindow(UIWindowNames.UIBattleMain)
-    end )
-    testCharacter:SetName(tostring("testname"), UILayers.BattlerNameCamera_1, HUD_TYPE.TOP_NAME);
+    end)
+    testCharacter:SetName(tostring("testname"), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME);
 end
 
 -- 离开场景

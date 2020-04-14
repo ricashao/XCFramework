@@ -72,9 +72,14 @@ local function OnDestroy(self)
     base.OnDestroy(self)
 end
 
+local function GetCamera(self)
+    return self.unity_canvas.worldCamera
+end
+
 UILayer.OnCreate = OnCreate
 UILayer.PopWindowOder = PopWindowOder
 UILayer.PushWindowOrder = PushWindowOrder
+UILayer.GetCamera = GetCamera
 UILayer.OnDestroy = OnDestroy
 
 return UILayer

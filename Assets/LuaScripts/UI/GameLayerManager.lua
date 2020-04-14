@@ -10,7 +10,7 @@ local function Init(self)
     self.battleCamera = battleCamera;
 
     self.guiCamera = UIManager:GetInstance().UICamera
-     
+
     -- 所有可用的层级
     self.layers = {}
 
@@ -21,7 +21,7 @@ local function Init(self)
     local layers = table.choose(Config.Debug and getmetatable(UILayers) or UILayers, function(k, v)
         return type(v) == "table" and v.OrderInLayer ~= nil and v.Name ~= nil and type(v.Name) == "string" and #v.Name > 0
     end)
-    
+
     local uimanager = UIManager:GetInstance()
     table.walksort(layers, function(lkey, rkey)
         return layers[lkey].OrderInLayer < layers[rkey].OrderInLayer
@@ -41,8 +41,7 @@ local function GetSystemInfoLayerTransform(self)
     return self:GetCameraLayerTransform(UILayers.SystemInfoLayer.Name)
 end
 
-
-local function GetCameraLayerTransform(self,cameraLayerName)
+local function GetCameraLayerTransform(self, cameraLayerName)
     if not cameraLayerName then
         return
     end
@@ -51,6 +50,19 @@ local function GetCameraLayerTransform(self,cameraLayerName)
     if cameraLayer then
         return cameraLayer.transform
     end
+end
+
+local function GetCamera(self, cameraLayerName)
+    if not cameraLayerName then
+        return
+    end
+    local cameraLayer = self.layers[cameraLayerName]
+    if not cameraLayer then
+        return
+    end
+
+    return cameraLayer:GetCamera()
+
 end
 
 
@@ -62,5 +74,6 @@ end
 GameLayerManager.Init = Init
 GameLayerManager.GetCameraLayerTransform = GetCameraLayerTransform
 GameLayerManager.GetSystemInfoLayerTransform = GetSystemInfoLayerTransform
+GameLayerManager.GetCamera = GetCamera
 GameLayerManager.__delete = __delete
 return GameLayerManager

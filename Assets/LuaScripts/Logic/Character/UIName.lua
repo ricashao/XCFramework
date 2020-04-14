@@ -3,7 +3,7 @@ local UIName = BaseClass("UIName")
 
 local pos1;
 local function Init(self)
-    self.camera = GameLayerManager.GetCamera(self.cameraLayer)
+    self.camera = GameLayerManager:GetInstance():GetCamera(self.cameraLayer)
     if not self.camera then
         if error then
             error("UIName camera can not nil")
@@ -14,7 +14,7 @@ local function Init(self)
         return
     end
 
-    self.type = self.character:GetType()
+    --self.type = self.character:GetType()
     self.planeDistance = GameLayerManager.GetCameraLayerPlaneDistance(self.cameraLayer)
     self.loadPath = "UI/Prefabs/Model/Win_SomethFly_Name"
     GameObjectPool:GetInstance():GetGameObjectAsync(path, BindCallback(self, self.OnPrefabLoad))
@@ -104,18 +104,8 @@ local function UpdateTransformPos(self)
 
     pos1 = self.handPoint + self.offset
 
-    if (self.type == CHARACTER_TYPE.PLAYER) or (self.type == CHARACTER_TYPE.NPC) then
-        if Camera.main then
-            pos1 = CS.UnityEngine.Camera.main:WorldToScreenPoint(pos1)
-        else
-            return
-        end
-    elseif (self.type == CHARACTER_TYPE.WARRIOR) then
-        pos1 = GameLayerManager.battleCamera:WorldToScreenPoint(pos1)
-    else
-
-    end
-
+    pos1 = GameLayerManager.battleCamera:WorldToScreenPoint(pos1)
+    
     if self.planeDistance then
         pos1.z = self.planeDistance
     end
