@@ -76,10 +76,15 @@ local function GetCamera(self)
     return self.unity_canvas.worldCamera
 end
 
+local function GetPlaneDistance(self)
+    return self.unity_canvas.planeDistance
+end
+
 UILayer.OnCreate = OnCreate
 UILayer.PopWindowOder = PopWindowOder
 UILayer.PushWindowOrder = PushWindowOrder
 UILayer.GetCamera = GetCamera
+UILayer.GetPlaneDistance = GetPlaneDistance
 UILayer.OnDestroy = OnDestroy
 
 return UILayer

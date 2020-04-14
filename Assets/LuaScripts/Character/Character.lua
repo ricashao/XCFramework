@@ -3,8 +3,7 @@
 --- Created by admin.
 --- DateTime: 2020/4/10 14:33
 ---
-
-local Character = BaseClass("Character", Updatable)
+local Character = BaseClass("Character", TransformObject)
 
 local function InitDefaultAction(self)
     self.aStandBy = require("Unit.UnitAction").New()
@@ -61,6 +60,11 @@ local function __init(self)
     self.actionConttroller = nil
 
     InitDefaultAction(self)
+    
+    if self.Update ~= nil then
+        self.__update_handle = BindCallback(self, self.Update)
+        UpdateManager:GetInstance():AddUpdate(self.__update_handle)
+    end
 
 end
 
@@ -85,14 +89,14 @@ local function CharacterLoadedEnd(self, pfb)
     end
     self.pfb = pfb
     pfb.transform.position = Vector3.zero
-    pfb.transform:SetParent(self.transform, false)
+    pfb.transform:SetParent(self.transform, false);
     -- todo 临时注释
     --self.model = require "Character.Model.Model".New(self)
     self.initResourceOK = true
 
     -- self.hide为false表示默认不隐藏
     -- todo 临时注释
-    --self:SetVisible(self.hide)
+    self:SetVisible(not self.hide)
 
     self:RefreshCharacterView()
     if self.resourceCallBack then
@@ -228,6 +232,29 @@ local function __delete(self)
     end
 end
 
+----------------------- Set and Get 成员变量 Begin --------------------------------
+
+local function IsVisible(self)
+    return self.visible
+end
+
+local function SetVisible(self,visible)
+    if not self.initResourceOK then
+        return
+    end
+
+    self.visible = visible
+    --self.gameObject:SetActive(visible)
+
+
+    if self.hudAgent then
+        self.hudAgent:SetVisible(self.visible)
+    end
+
+end
+
+----------------------- Set and Get 成员变量 End   --------------------------------
+
 ----------------------------战斗相关显示 ---------------------------------
 local function SetName(self, name, cameraLayer, hudType)
     if not self.hudAgent then
@@ -247,6 +274,8 @@ Character.PlayComplete = PlayComplete
 Character.DoAction = DoAction
 Character.UpdateLayer = UpdateLayer
 Character.LateTick = LateTick
+Character.SetVisible = SetVisible
+Character.IsVisible = IsVisible
 --测试方便使用
 Character.Update = Update
 Character.SetName = SetName

@@ -1,7 +1,8 @@
 -- 设置角色头顶名字
 local UIName = BaseClass("UIName")
 
-local pos1;
+local pos1
+local path = "UI/Prefabs/Model/Win_SomethFly_Name.prefab"
 local function Init(self)
     self.camera = GameLayerManager:GetInstance():GetCamera(self.cameraLayer)
     if not self.camera then
@@ -15,8 +16,7 @@ local function Init(self)
     end
 
     --self.type = self.character:GetType()
-    self.planeDistance = GameLayerManager.GetCameraLayerPlaneDistance(self.cameraLayer)
-    self.loadPath = "UI/Prefabs/Model/Win_SomethFly_Name"
+    self.planeDistance = GameLayerManager:GetInstance():GetCameraLayerPlaneDistance(self.cameraLayer)
     GameObjectPool:GetInstance():GetGameObjectAsync(path, BindCallback(self, self.OnPrefabLoad))
 end
 
@@ -40,11 +40,11 @@ end
 
 local function OnPrefabLoad(self, pfb)
     self.pfb = pfb
-    self.rectTransform = pfb:GetComponent(CS.UnityEngine.RectTransform)
-    local txtTransform = pfb.transform:FindChild("et_text")
+    self.rectTransform = pfb:GetComponent(typeof(CS.UnityEngine.RectTransform))
+    local txtTransform = pfb.transform:Find("et_text")
     self.nameTxt = txtTransform.gameObject:GetComponent("Text")
 
-    GameLayerManager.AddGameObjectToCameraLayer(pfb, self.cameraLayer)
+    GameLayerManager:GetInstance():AddGameObjectToCameraLayer(pfb, self.cameraLayer)
     self.loaded = true
     if self.color ~= nil then
         self.nameTxt.color = self.color
@@ -96,16 +96,15 @@ local function UpdateTransformPos(self)
         return
     end
 
-    self.handPoint = self.character:GetModel():GetHandPos(CharacterHandPoint.Bottom)
+    --self.handPoint = self.character:GetModel():GetHandPos(CharacterHandPoint.Bottom)
 
-    if self.handPoint == nil then
-        self.handPoint = self.character:GetWorldPosition()
-    end
-
+    --if self.handPoint == nil then
+    self.handPoint = self.character:GetWorldPosition()
+    --end
     pos1 = self.handPoint + self.offset
 
-    pos1 = GameLayerManager.battleCamera:WorldToScreenPoint(pos1)
-    
+    pos1 = GameLayerManager:GetInstance().battleCamera:WorldToScreenPoint(pos1)
+
     if self.planeDistance then
         pos1.z = self.planeDistance
     end

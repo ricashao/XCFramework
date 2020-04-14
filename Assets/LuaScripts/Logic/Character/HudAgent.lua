@@ -56,10 +56,11 @@ local function SetName(self, name, cameraLayer, hudType)
     --end
 
     if self.uiName == nil then
-        self.uiName = require "Logic.Character.UIName".New(self.character, cameraLayer, offset);
+        self.uiName = require "Logic.Character.UIName".New(self.character, cameraLayer, offset)
     end
 
-    self.uiName:SetUIName(name, nameColor);
+    self.uiName:SetUIName(name, nameColor)
+    self.uiName:SetVisible(true)
 end
 
 local function SetChat(self, message)
@@ -68,7 +69,7 @@ local function SetChat(self, message)
     end
 
     if self.uiChat == nil then
-        self.uiChat = require "Logic.Character.UIChat".New(self.character);
+        self.uiChat = require "Logic.Character.UIChat".New(self.character)
     end
 
     self.uiChat:ShowChat(message);
