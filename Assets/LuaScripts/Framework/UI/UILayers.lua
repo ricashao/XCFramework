@@ -26,8 +26,8 @@ local UILayers = {
         CameraType = 0,
         SceneLayer = SceneLayer.UI,
     },
-    battlerNameCamera_1 = {
-        Name = "battlerNameCamera_1",
+    BattlerNameCamera_1 = {
+        Name = "BattlerNameCamera_1",
         PlaneDistance = 800,
         OrderInLayer = 0,
         CameraType = 1,

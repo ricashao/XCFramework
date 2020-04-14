@@ -89,6 +89,7 @@ end
 local function InitScene(self)
     --todo 设置背景
     self.planeBackground:SetActive(true)
+    self.centPos = Vector3.zero
     -- 计算面板位置
     CalPlaneTransform(self)
     -- 计算战斗区域的位置点

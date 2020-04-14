@@ -36,6 +36,7 @@ local function OnComplete(self)
         testCharacter.pfb.transform:SetParent(battleScene.planeBackground.transform, false)
         UIManager:GetInstance():OpenWindow(UIWindowNames.UIBattleMain)
     end )
+    testCharacter:SetName(tostring("testname"), UILayers.BattlerNameCamera_1, HUD_TYPE.TOP_NAME);
 end
 
 -- 离开场景

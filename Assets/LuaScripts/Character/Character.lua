@@ -4,7 +4,7 @@
 --- DateTime: 2020/4/10 14:33
 ---
 
-local Character = BaseClass("Character")
+local Character = BaseClass("Character", Updatable)
 
 local function InitDefaultAction(self)
     self.aStandBy = require("Unit.UnitAction").New()
@@ -175,7 +175,6 @@ local function RefreshCharacterView(self)
 end
 
 local function RefreshHudView(self)
-
 end
 
 local function UpdateLayer()
@@ -192,6 +191,17 @@ local function UpdateLayer()
 end
 
 local function LateTick(self, delta)
+    if not self.visible then
+        return
+    end
+
+    if self.hudAgent then
+        self.hudAgent:LateTick(delta)
+    end
+end
+
+local function Update(self)
+    local delta = Time.deltaTime
     if not self.visible then
         return
     end
@@ -218,6 +228,14 @@ local function __delete(self)
     end
 end
 
+----------------------------战斗相关显示 ---------------------------------
+local function SetName(self, name, cameraLayer, hudType)
+    if not self.hudAgent then
+        return
+    end
+    self.hudAgent:SetName(name, cameraLayer, hudType)
+end
+
 Character.__init = __init
 Character.Initialize = Initialize
 Character.CharacterLoadedEnd = CharacterLoadedEnd
@@ -229,5 +247,8 @@ Character.PlayComplete = PlayComplete
 Character.DoAction = DoAction
 Character.UpdateLayer = UpdateLayer
 Character.LateTick = LateTick
+--测试方便使用
+Character.Update = Update
+Character.SetName = SetName
 Character.__delete = __delete
 return Character
