@@ -4,7 +4,7 @@ MountType = {
     ride = 1,
 }
 
---动作类型
+--动作类型 要和ts对应
 ActionType = {
     --待机
     standBy = 0,
@@ -17,3 +17,29 @@ ActionType = {
     --受伤
     hurt = 4
 }
+
+-- 数量和acitontype对应
+ActionAim = {
+    "a",
+    "b",
+    "c",
+    "d",
+    "e"
+}
+
+--人物容器转向时候，对应的scaleX
+FaceScaleX = {
+    --[[↘]]1,
+    --[[↗]]1,
+    --[[↖]]-1,
+    --[[↙]]-1,
+}
+
+FaceDirection = {
+    --[[↘]]0,
+    --[[↗]]1,
+    --[[↖]]1,
+    --[[↙]]0,
+}
+
+

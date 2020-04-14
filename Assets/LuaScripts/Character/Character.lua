@@ -4,7 +4,7 @@
 --- DateTime: 2020/4/10 14:33
 ---
 
-local Character = BaseClass("Character", TransformObject)
+local Character = BaseClass("Character")
 
 local function InitDefaultAction(self)
     self.aStandBy = require("Unit.UnitAction").New()
@@ -13,14 +13,19 @@ end
 local currentAction = nil
 local nextAction = nil
 
+--绑定监听
+local function StartRender(self)
+    self._uRender:AddDBEventListener(CS.DragonBones.EventObject.COMPLETE, Bind(self, self.PlayComplete))
+    self._uRender:AddDBEventListener(CS.DragonBones.EventObject.FRAME_EVENT, Bind(self, self.DispatchEvent))
+    self:StartUnitAction()
+end
+
 local function __init(self)
     --战斗id
     self.fighterId = nil
     --龙骨模型
     self.shape = nil
 
-    --朝向
-    self.worldDir = nil
     --坐标
     self.worldPos = nil
     self.speed = nil
@@ -43,6 +48,13 @@ local function __init(self)
     self.model = nil
     self.modelName = nil
 
+    --模型朝向
+    self.d = nil
+    --模型动作
+    self.a = nil
+
+
+
     -- 角色资源加载回调
     self.resourceCallBack = nil
 
@@ -55,7 +67,7 @@ end
 local function Initialize(self, shape, pos, dir, callback)
     self.shape = shape
     self.worldPos = pos
-    self.worldDir = dir
+    self.d = dir
     self.resourceCallBack = callback
     if self.inited then
         return
@@ -74,18 +86,46 @@ local function CharacterLoadedEnd(self, pfb)
     self.pfb = pfb
     pfb.transform.position = Vector3.zero
     pfb.transform:SetParent(self.transform, false)
-    self.model = require "Character.Model.Model".New(self)
+    -- todo 临时注释
+    --self.model = require "Character.Model.Model".New(self)
     self.initResourceOK = true
 
     -- self.hide为false表示默认不隐藏
-    self:SetVisible(self.hide)
+    -- todo 临时注释
+    --self:SetVisible(self.hide)
 
     self:RefreshCharacterView()
     if self.resourceCallBack then
         self.resourceCallBack()
     end
 
-    self:StartUnitAction()
+    -- 获取龙骨
+    self._uRender = self.pfb:GetComponent(typeof(CS.DragonBones.UnityArmatureComponent))
+    StartRender(self)
+end
+
+local function DispatchEvent(self, type, eventObject)
+    if (currentAction) then
+        currentAction:DispatchEvent(self, eventObject.name)
+    end
+end
+
+local function PlayComplete(self, type, eventObject)
+    local flag = false
+    if (currentAction) then
+        currentAction:PlayComplete(self)
+        if (currentAction:IsEnd()) then
+            flag = true
+        end
+    else
+        flag = true
+    end
+
+    if flag then
+        local next = nextAction
+        nextAction = nil
+        self:StartUnitAction(next)
+    end
 end
 
 
@@ -161,6 +201,16 @@ local function LateTick(self, delta)
     end
 end
 
+
+-- 执行动作序列
+-- @private 只允许UnitAction调用
+local function DoAction(self, action)
+    --lua 数组从1 开始 action= action+1
+    self.a = action + 1
+    local curaim = ActionAim[self.a] .. self.d
+    self._uRender.animation:Play(curaim)
+end
+
 local function __delete(self)
     if self.hudAgent then
         self.hudAgent = nil
@@ -173,6 +223,9 @@ Character.CharacterLoadedEnd = CharacterLoadedEnd
 Character.RefreshCharacterView = RefreshCharacterView
 Character.RefreshHudView = RefreshHudView
 Character.StartUnitAction = StartUnitAction
+Character.DispatchEvent = DispatchEvent
+Character.PlayComplete = PlayComplete
+Character.DoAction = DoAction
 Character.UpdateLayer = UpdateLayer
 Character.LateTick = LateTick
 Character.__delete = __delete

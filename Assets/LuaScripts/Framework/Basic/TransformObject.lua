@@ -8,7 +8,7 @@ local TransformObject = BaseClass("TransformObject")
 local function __init(self, obj)
     self.gameObject = obj
     if self.gameObject == nil then
-        self.gameObject = GameObject.New(self.class_type.__cname);
+        self.gameObject = CS.UnityEngine.GameObject(self._class_type.__cname);
     end
     self.transform = self.gameObject.transform;
 end

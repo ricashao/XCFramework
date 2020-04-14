@@ -119,6 +119,10 @@ AudioManager = require "Audio.AudioManager"
 --tip
 CommMsgTip = require "UI.MsgTip.CommMsgTip"
 
+--unit
+require "Unit.UnitCommon"
+Character = require "Character.Character"
+
 
 -- 单例类初始化
 UIManager:GetInstance()

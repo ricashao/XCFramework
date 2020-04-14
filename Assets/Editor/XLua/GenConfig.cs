@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 using System;
+using DragonBones;
 using UnityEngine;
 using XLua;
+using Transform = UnityEngine.Transform;
 
 public static class GenConfig
 {
     //lua中要使用到C#库的配置，比如C#标准库，或者Unity API，第三方库等。
-    [LuaCallCSharp]
-    public static List<Type> LuaCallCSharp = new List<Type>() {
-		// unity
-		typeof(System.Object),
+    [LuaCallCSharp] public static List<Type> LuaCallCSharp = new List<Type>()
+    {
+        // unity
+        typeof(System.Object),
         typeof(UnityEngine.Object),
         typeof(Ray2D),
         typeof(GameObject),
@@ -48,10 +50,10 @@ public static class GenConfig
         typeof(Vector2),
         typeof(Vector3),
         typeof(Vector4),
-        
+
         // 渲染
         typeof(RenderMode),
-        
+
         // UGUI  
         typeof(UnityEngine.Canvas),
         typeof(UnityEngine.Rect),
@@ -88,17 +90,17 @@ public static class GenConfig
         typeof(UnityEngine.Resources),
         typeof(UnityEngine.ResourceRequest),
         typeof(UnityEngine.SceneManagement.SceneManager),
-        
+
         // 其它
         typeof(PlayerPrefs),
         typeof(System.GC),
     };
 
     //C#静态调用Lua的配置（包括事件的原型），仅可以配delegate，interface
-    [CSharpCallLua]
-    public static List<Type> CSharpCallLua = new List<Type>() {
-		// unity
-		typeof(Action),
+    [CSharpCallLua] public static List<Type> CSharpCallLua = new List<Type>()
+    {
+        // unity
+        typeof(Action),
         typeof(Action<int>),
         typeof(Action<WWW>),
         typeof(Callback),
@@ -106,32 +108,40 @@ public static class GenConfig
         typeof(UnityEngine.Events.UnityAction),
         typeof(System.Collections.IEnumerator),
         typeof(UnityEngine.Events.UnityAction<Vector2>),
+        typeof(ListenerDelegate<EventObject>),
     };
 
-	//黑名单
-	[BlackList]
-	public static List<List<string>> BlackList = new List<List<string>>()  {
-		// unity
-		new List<string>(){"UnityEngine.WWW", "movie"},
-		new List<string>(){"UnityEngine.Texture2D", "alphaIsTransparency"},
-        new List<string>(){"UnityEngine.WWW", "GetMovieTexture"},
-        new List<string>(){"UnityEngine.Texture2D", "alphaIsTransparency"},
-		new List<string>(){"UnityEngine.Security", "GetChainOfTrustValue"},
-		new List<string>(){"UnityEngine.CanvasRenderer", "onRequestRebuild"},
-		new List<string>(){"UnityEngine.Light", "areaSize"},
-		new List<string>(){"UnityEngine.AnimatorOverrideController", "PerformOverrideClipListCleanup"},
-		#if !UNITY_WEBPLAYER
-		new List<string>(){"UnityEngine.Application", "ExternalEval"},
-		#endif
-		new List<string>(){"UnityEngine.GameObject", "networkView"}, //4.6.2 not support
-		new List<string>(){"UnityEngine.Component", "networkView"},  //4.6.2 not support
-		new List<string>(){"System.IO.FileInfo", "GetAccessControl", "System.Security.AccessControl.AccessControlSections"},
-		new List<string>(){"System.IO.FileInfo", "SetAccessControl", "System.Security.AccessControl.FileSecurity"},
-		new List<string>(){"System.IO.DirectoryInfo", "GetAccessControl", "System.Security.AccessControl.AccessControlSections"},
-		new List<string>(){"System.IO.DirectoryInfo", "SetAccessControl", "System.Security.AccessControl.DirectorySecurity"},
-		new List<string>(){"System.IO.DirectoryInfo", "CreateSubdirectory", "System.String", "System.Security.AccessControl.DirectorySecurity"},
-		new List<string>(){"System.IO.DirectoryInfo", "Create", "System.Security.AccessControl.DirectorySecurity"},
-		new List<string>(){"UnityEngine.MonoBehaviour", "runInEditMode"},
-		new List<string>(){"UnityEngine.UI.Text", "OnRebuildRequested"},
-	};
+    //黑名单
+    [BlackList] public static List<List<string>> BlackList = new List<List<string>>()
+    {
+        // unity
+        new List<string>() {"UnityEngine.WWW", "movie"},
+        new List<string>() {"UnityEngine.Texture2D", "alphaIsTransparency"},
+        new List<string>() {"UnityEngine.WWW", "GetMovieTexture"},
+        new List<string>() {"UnityEngine.Texture2D", "alphaIsTransparency"},
+        new List<string>() {"UnityEngine.Security", "GetChainOfTrustValue"},
+        new List<string>() {"UnityEngine.CanvasRenderer", "onRequestRebuild"},
+        new List<string>() {"UnityEngine.Light", "areaSize"},
+        new List<string>() {"UnityEngine.AnimatorOverrideController", "PerformOverrideClipListCleanup"},
+#if !UNITY_WEBPLAYER
+        new List<string>() {"UnityEngine.Application", "ExternalEval"},
+#endif
+        new List<string>() {"UnityEngine.GameObject", "networkView"}, //4.6.2 not support
+        new List<string>() {"UnityEngine.Component", "networkView"}, //4.6.2 not support
+        new List<string>()
+            {"System.IO.FileInfo", "GetAccessControl", "System.Security.AccessControl.AccessControlSections"},
+        new List<string>() {"System.IO.FileInfo", "SetAccessControl", "System.Security.AccessControl.FileSecurity"},
+        new List<string>()
+            {"System.IO.DirectoryInfo", "GetAccessControl", "System.Security.AccessControl.AccessControlSections"},
+        new List<string>()
+            {"System.IO.DirectoryInfo", "SetAccessControl", "System.Security.AccessControl.DirectorySecurity"},
+        new List<string>()
+        {
+            "System.IO.DirectoryInfo", "CreateSubdirectory", "System.String",
+            "System.Security.AccessControl.DirectorySecurity"
+        },
+        new List<string>() {"System.IO.DirectoryInfo", "Create", "System.Security.AccessControl.DirectorySecurity"},
+        new List<string>() {"UnityEngine.MonoBehaviour", "runInEditMode"},
+        new List<string>() {"UnityEngine.UI.Text", "OnRebuildRequested"},
+    };
 }

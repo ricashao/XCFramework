@@ -31,19 +31,11 @@ local function OnComplete(self)
     local battleScene = require("Battle.Scene.BattleScenePlane").New()
     battleScene:InitScene()
     -- 创建角色
-    local chara = GameObjectPool:GetInstance():GetGameObjectAsync(chara_res_path, function(inst)
-        if IsNull(inst) then
-            error("Load chara res err!")
-            do
-                return
-            end
-        end
-
-        inst.transform:SetParent(battleScene.planeBackground.transform, false)
-
+    local testCharacter = Character.New()
+    testCharacter:Initialize(chara_res_path, Vector3.zero, 1,function()
+        testCharacter.pfb.transform:SetParent(battleScene.planeBackground.transform, false)
         UIManager:GetInstance():OpenWindow(UIWindowNames.UIBattleMain)
-    end)
-
+    end )
 end
 
 -- 离开场景
