@@ -12,6 +12,7 @@ local CharacterAnimation = require "GameLogic.Battle.CharacterAnimation"
 -- 临时：角色资源路径
 local chara_res_path = "Models/xixuegui/xixuegui.prefab"
 local testCharacter
+local timer
 
 -- 创建：准备预加载资源
 local function OnCreate(self)
@@ -38,7 +39,7 @@ local function OnComplete(self)
         UIManager:GetInstance():OpenWindow(UIWindowNames.UIBattleMain)
     end)
     testCharacter:SetName(tostring("testname"), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME);
-    local timer = TimerManager:GetInstance():GetTimer(5, self.TestSpeak, self, false, false)
+    timer = TimerManager:GetInstance():GetTimer(5, self.TestSpeak, self, false, false)
     timer:Start()
 end
 
@@ -49,6 +50,9 @@ end
 -- 离开场景
 local function OnLeave(self)
     self.charaAnim = nil
+    timer:Stop()
+    timer = nil
+    testCharacter:Delete()
     UIManager:GetInstance():CloseWindow(UIWindowNames.UIBattleMain)
     base.OnLeave(self)
 end

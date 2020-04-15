@@ -77,9 +77,8 @@ local function Initialize(self, shape, pos, dir, callback)
         return
     end
     self.hudAgent = require "Logic.Character.HudAgent".New(self)
-    local fullPath = "" .. shape
     -- 加载
-    GameObjectPool:GetInstance():GetGameObjectAsync(fullPath, BindCallback(self, self.CharacterLoadedEnd))
+    GameObjectPool:GetInstance():GetGameObjectAsync(self.shape, BindCallback(self, self.CharacterLoadedEnd))
     self.inited = true
 end
 
@@ -228,8 +227,13 @@ end
 
 local function __delete(self)
     if self.hudAgent then
-        self.hudAgent = nil
+        self.hudAgent:Delete()
     end
+    if self.__update_handle ~= nil then
+        UpdateManager:GetInstance():RemoveUpdate(self.__update_handle)
+        self.__update_handle = nil
+    end
+    GameObjectPool:GetInstance():RecycleGameObject(self.shape, self.pfb)
 end
 
 ----------------------- Set and Get 成员变量 Begin --------------------------------

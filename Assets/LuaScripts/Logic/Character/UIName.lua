@@ -73,7 +73,7 @@ local function SetUIName(self, name, color)
 end
 
 local function LateTick(self, delta)
-    self:UpdateTransformPos();
+    self:UpdateTransformPos()
 end
 
 local function SetVisible(self, visible)
@@ -118,9 +118,8 @@ local function __delete(self)
     self.camera = nil
     self.character = nil
     self.isNeedToDestory = false
-    GameObjectPool:GetInstance():RecycleGameObject(self.loadPath, self.pfb)
+    GameObjectPool:GetInstance():RecycleGameObject(path, self.pfb)
     self.loadPath = nil
-    self.pfb = nil
     self.color = nil
 end
 

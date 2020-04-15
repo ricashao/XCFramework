@@ -15,9 +15,6 @@ local HUDTYPE_OFFSET = {
     BATTLE_HP = 12; -- 战斗掉血
 }
 
-local PLAYER_NAME_COLOR_ID = 223;
-local NPC_NAME_COLOR_ID = 221;
-
 local function __init(self, character)
     self.character = character
     self.uiName = nil
@@ -98,11 +95,11 @@ end
 
 local function __delete(self)
     if self.uiName then
-        self.uiName = nil
+        self.uiName:Delete()
     end
 
     if self.uiChat then
-        self.uiChat = nil
+        self.uiName:Delete()
     end
 end
 
