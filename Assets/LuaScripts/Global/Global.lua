@@ -120,6 +120,7 @@ AudioManager = require "Audio.AudioManager"
 CommMsgTip = require "UI.MsgTip.CommMsgTip"
 
 --unit
+CharacterUtil = require "Character.CharacterUtil"
 require "Character.CharacterCommon"
 require "Unit.UnitCommon"
 Character = require "Character.Character"

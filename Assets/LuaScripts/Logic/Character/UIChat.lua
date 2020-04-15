@@ -1,7 +1,6 @@
 ---设置头顶聊天泡泡
 local UIChat = BaseClass("UIChat")
 
-local POS = Vector3.zero;
 local OFFSET = Vector3.New(0, 2, 0);
 local path = "UI/Prefabs/Model/Win_Somethfly_ChatPao.prefab"
 
@@ -14,7 +13,7 @@ local function Init(self)
     self.isBattle = true
     self.cameraLayer = UILayers.GuiCamera_1_2.Name
 
-    self.camera = GameLayerManager:GetInstance().GetCamera(self.cameraLayer)
+    self.camera = GameLayerManager:GetInstance():GetCamera(self.cameraLayer)
     self.planeDistance = GameLayerManager.GetCameraLayerPlaneDistance(self.cameraLayer)
     GameObjectPool:GetInstance():GetGameObjectAsync(path, BindCallback(self, self.OnPrefabLoad))
 end
@@ -77,32 +76,32 @@ local function ShowChat(self, message)
         self.prefab.gameObject:SetActive(true)
         -- 文本赋值前设置一次RectTransform可以避免出现Text.preferredHight取值错误的BUG
         self.txtRT.sizeDelta = Vector2.New(self.maxWidth, self.txtRT.sizeDelta.y)
-        self.txt.text = message.msg
+        self.txt.text = message
         self:UpdateLayout()
 
-        --local time = 3
-        --if not self.timer then
-        --    self.timer = TimerManager:GetInstance():GetTimer(time, self.TimerComplete, self, true, true)
-        --else
-        --    self.timer:Reset()
-        --end
-        --
-        --self.timer:Start()
+        local time = 2
+        if not self.timer then
+            self.timer = TimerManager:GetInstance():GetTimer(time, self.TimerComplete, self, true, false)
+        else
+            self.timer:Reset()
+        end
+
+        self.timer:Start()
     end
 end
 
 local function LateTick(self, delta)
-    if not self.loaded or not self.visible or not self.camera or not self.character then
+    if not self.loaded or not self.visible or IsNull(self.camera) or not self.character then
         return
     end
 
-    --self.handPoint = self.character:GetModel():GetHandPos(CharacterHandPoint.Bottom)
-    --if self.handPoint == nil then
-    self.handPoint = self.character:GetWorldPosition()
-    --end
+    self.handPoint = self.character:GetModel():GetHandPos(CharacterHandPoint.Bottom)
+    if self.handPoint == nil then
+        self.handPoint = self.character:GetWorldPosition()
+    end
 
     if self.handPoint == nil then
-        self:Destroy()
+        self = nil
         return false
     end
 
@@ -111,13 +110,12 @@ local function LateTick(self, delta)
     pos1 = GameLayerManager:GetInstance().battleCamera:WorldToScreenPoint(pos1)
 
     if self.planeDistance then
-        pos1.z = self.planeDistance;
+        pos1.z = self.planeDistance
     end
 
     pos1 = self.camera:ScreenToWorldPoint(pos1)
     self.rectTransform.position = pos1
 end
-
 
 
 --自身布局

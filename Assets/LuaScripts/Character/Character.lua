@@ -28,7 +28,7 @@ local function __init(self)
     --坐标
     self.worldPos = nil
     self.speed = nil
-    self.layer = SceneLayer.Character
+    self.layer = SceneLayer.Battler
 
     --加载模型标志位
     self.initResourceOk = false
@@ -91,7 +91,7 @@ local function CharacterLoadedEnd(self, pfb)
     pfb.transform.position = Vector3.zero
     pfb.transform:SetParent(self.transform, false);
     -- todo 临时注释
-    --self.model = require "Character.Model.Model".New(self)
+    self.model = require "Character.Model.Model".New(self)
     self.initResourceOK = true
 
     -- self.hide为false表示默认不隐藏
@@ -181,16 +181,16 @@ end
 local function RefreshHudView(self)
 end
 
-local function UpdateLayer()
+local function UpdateLayer(self)
     if not (self.initResourceOK) then
         return
     end
 
-    self.gameObject.layer = self:GetLayer();
-    local components = self.gameObject:GetComponentsInChildren(CS.UnityEngine.Transform);
-    local length = components.Length - 1;
+    self.gameObject.layer = self:GetLayer()
+    local components = self.gameObject:GetComponentsInChildren(typeof(CS.UnityEngine.Transform))
+    local length = components.Length - 1
     for i = 0, length do
-        components[i].gameObject.layer = self.layer;
+        components[i].gameObject.layer = self.layer
     end
 end
 
@@ -234,6 +234,11 @@ end
 
 ----------------------- Set and Get 成员变量 Begin --------------------------------
 
+-- 子类实现
+local function GetType(self)
+    return CHARACTER_TYPE.NONE;
+end
+
 local function IsVisible(self)
     return self.visible
 end
@@ -251,6 +256,18 @@ local function SetVisible(self, visible)
         self.hudAgent:SetVisible(self.visible)
     end
 
+end
+
+local function GetPrefabRes(self)
+    return self.pfb
+end
+
+local function GetModel(self)
+    return self.model
+end
+
+local function GetLayer(self)
+    return self.layer
 end
 
 ----------------------- Set and Get 成员变量 End   --------------------------------
@@ -281,11 +298,16 @@ Character.PlayComplete = PlayComplete
 Character.DoAction = DoAction
 Character.UpdateLayer = UpdateLayer
 Character.LateTick = LateTick
-Character.SetVisible = SetVisible
 Character.Speak = Speak
-Character.IsVisible = IsVisible
 --测试方便使用
 Character.Update = Update
 Character.SetName = SetName
 Character.__delete = __delete
+
+Character.IsVisible = IsVisible
+Character.GetType = GetType
+Character.SetVisible = SetVisible
+Character.GetPrefabRes = GetPrefabRes
+Character.GetModel = GetModel
+Character.GetLayer = GetLayer
 return Character

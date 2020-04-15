@@ -48,7 +48,7 @@ local function SetName(self, name, cameraLayer, hudType)
         return
     end
 
-    local nameColor;
+    local nameColor
     --if self.character:GetType() == CHARACTER_TYPE.NPC then
     --    nameColor = self:GetColorValue(NPC_NAME_COLOR_ID)
     --else
@@ -71,8 +71,8 @@ local function SetChat(self, message)
     if self.uiChat == nil then
         self.uiChat = require "Logic.Character.UIChat".New(self.character)
     end
-
-    self.uiChat:ShowChat(message);
+    self.uiChat:SetVisible(true)
+    self.uiChat:ShowChat(message)
 end
 
 local function SetVisible(self, visible)

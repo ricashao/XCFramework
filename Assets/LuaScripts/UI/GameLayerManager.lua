@@ -56,6 +56,7 @@ local function GetCamera(self, cameraLayerName)
     if not cameraLayerName then
         return
     end
+    
     local cameraLayer = self.layers[cameraLayerName]
     if not cameraLayer then
         return

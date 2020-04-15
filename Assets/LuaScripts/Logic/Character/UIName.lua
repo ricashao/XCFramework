@@ -96,11 +96,12 @@ local function UpdateTransformPos(self)
         return
     end
 
-    --self.handPoint = self.character:GetModel():GetHandPos(CharacterHandPoint.Bottom)
+    self.handPoint = self.character:GetModel():GetHandPos(CharacterHandPoint.Bottom)
 
-    --if self.handPoint == nil then
-    self.handPoint = self.character:GetWorldPosition()
-    --end
+    if self.handPoint == nil then
+        self.handPoint = self.character:GetWorldPosition()
+    end
+    
     pos1 = self.handPoint + self.offset
 
     pos1 = GameLayerManager:GetInstance().battleCamera:WorldToScreenPoint(pos1)

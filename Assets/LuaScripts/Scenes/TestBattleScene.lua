@@ -38,7 +38,7 @@ local function OnComplete(self)
         UIManager:GetInstance():OpenWindow(UIWindowNames.UIBattleMain)
     end)
     testCharacter:SetName(tostring("testname"), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME);
-    local timer = TimerManager:GetInstance():GetTimer(10, self.TestSpeak, self, true, true)
+    local timer = TimerManager:GetInstance():GetTimer(5, self.TestSpeak, self, false, false)
     timer:Start()
 end
 
