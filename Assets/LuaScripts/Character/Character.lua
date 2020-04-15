@@ -60,7 +60,7 @@ local function __init(self)
     self.actionConttroller = nil
 
     InitDefaultAction(self)
-    
+
     if self.Update ~= nil then
         self.__update_handle = BindCallback(self, self.Update)
         UpdateManager:GetInstance():AddUpdate(self.__update_handle)
@@ -238,7 +238,7 @@ local function IsVisible(self)
     return self.visible
 end
 
-local function SetVisible(self,visible)
+local function SetVisible(self, visible)
     if not self.initResourceOK then
         return
     end
@@ -263,6 +263,13 @@ local function SetName(self, name, cameraLayer, hudType)
     self.hudAgent:SetName(name, cameraLayer, hudType)
 end
 
+-- 头顶泡泡，会根据character判断是场景聊天还是战斗喊话
+local function Speak(self, message)
+    if self.hudAgent then
+        self.hudAgent:SetChat(message);
+    end
+end
+
 Character.__init = __init
 Character.Initialize = Initialize
 Character.CharacterLoadedEnd = CharacterLoadedEnd
@@ -275,6 +282,7 @@ Character.DoAction = DoAction
 Character.UpdateLayer = UpdateLayer
 Character.LateTick = LateTick
 Character.SetVisible = SetVisible
+Character.Speak = Speak
 Character.IsVisible = IsVisible
 --测试方便使用
 Character.Update = Update

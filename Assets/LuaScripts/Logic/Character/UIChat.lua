@@ -3,34 +3,24 @@ local UIChat = BaseClass("UIChat")
 
 local POS = Vector3.zero;
 local OFFSET = Vector3.New(0, 2, 0);
-local path = "UI/Prefabs/Model/Win_Somethfly_ChatPao"
+local path = "UI/Prefabs/Model/Win_Somethfly_ChatPao.prefab"
 
 local function Init(self)
     if not self.character then
         return
     end
 
-    local characterType = self.character:GetType()
-    self.isBattle = characterType == CHARACTER_TYPE.WARRIOR
-    self.isScene = (characterType == CHARACTER_TYPE.PLAYER) or (characterType == CHARACTER_TYPE.NPC)
+    --self.isBattle = characterType == CHARACTER_TYPE.WARRIOR
+    self.isBattle = true
+    self.cameraLayer = UILayers.GuiCamera_1_2.Name
 
-    if self.isScene then
-        self.cameraLayer = CameraLayer.MapUILayer
-    elseif self.isBattle then
-        self.cameraLayer = CameraLayer.GuiCamera_1_2
-    end
-
-    if not self.cameraLayer then
-        return
-    end
-
-    self.camera = GameLayerManager.GetCamera(self.cameraLayer)
+    self.camera = GameLayerManager:GetInstance().GetCamera(self.cameraLayer)
     self.planeDistance = GameLayerManager.GetCameraLayerPlaneDistance(self.cameraLayer)
     GameObjectPool:GetInstance():GetGameObjectAsync(path, BindCallback(self, self.OnPrefabLoad))
 end
 
 local function __init(self, character)
-    self.pfb = nil
+    self.prefab = nil
     self.message = nil
     self.loaded = false
     self.timer = nil        -- 计时器
@@ -45,13 +35,14 @@ local function __init(self, character)
 end
 
 local function OnPrefabLoad(self, pfb)
-    self.rectTransform = pfb:GetComponent(CS.UnityEngine.RectTransform)
-    self.bgRT = pfb.transform:FindChild("p_pic"):GetComponent("RectTransform")
-    self.txt = pfb.transform:FindChild("p_pic/et_text"):GetComponent("Text")
-    self.txtRT = self.txt.gameObject:GetComponent("RectTransform")
+    self.prefab = pfb
+    self.rectTransform = pfb:GetComponent(typeof(CS.UnityEngine.RectTransform))
+    self.bgRT = pfb.transform:Find("p_pic"):GetComponent(typeof(CS.UnityEngine.RectTransform))
+    self.txt = pfb.transform:Find("p_pic/et_text"):GetComponent("Text")
+    self.txtRT = self.txt.gameObject:GetComponent(typeof(CS.UnityEngine.RectTransform))
     self.maxWidth = self.txtRT.rect.width
 
-    GameLayerManager.AddGameObjectToCameraLayer(pfb, self.cameraLayer)
+    GameLayerManager:GetInstance():AddGameObjectToCameraLayer(pfb, self.cameraLayer)
     self.loaded = true
     if self.message and self.character:IsVisible() then
         self:SetVisible(true)
@@ -73,9 +64,10 @@ local function IsVisible(self)
 end
 
 local function TimerComplete(self)
-    self.message = nil;
+    self.timer = nil
+    self.message = nil
     if self.prefab then
-        self.prefab.gameObject:SetActive(false);
+        self.prefab.gameObject:SetActive(false)
     end
 end
 
@@ -88,16 +80,45 @@ local function ShowChat(self, message)
         self.txt.text = message.msg
         self:UpdateLayout()
 
-        local time = 3
-        if not self.timer then
-            self.timer = TimerManager:GetInstance():GetTimer(time, self.TimerComplete, self, true, true)
-        else
-            self.timer:Reset()
-        end
-
-        self.timer:Start()
+        --local time = 3
+        --if not self.timer then
+        --    self.timer = TimerManager:GetInstance():GetTimer(time, self.TimerComplete, self, true, true)
+        --else
+        --    self.timer:Reset()
+        --end
+        --
+        --self.timer:Start()
     end
 end
+
+local function LateTick(self, delta)
+    if not self.loaded or not self.visible or not self.camera or not self.character then
+        return
+    end
+
+    --self.handPoint = self.character:GetModel():GetHandPos(CharacterHandPoint.Bottom)
+    --if self.handPoint == nil then
+    self.handPoint = self.character:GetWorldPosition()
+    --end
+
+    if self.handPoint == nil then
+        self:Destroy()
+        return false
+    end
+
+    pos1 = self.handPoint + OFFSET
+
+    pos1 = GameLayerManager:GetInstance().battleCamera:WorldToScreenPoint(pos1)
+
+    if self.planeDistance then
+        pos1.z = self.planeDistance;
+    end
+
+    pos1 = self.camera:ScreenToWorldPoint(pos1)
+    self.rectTransform.position = pos1
+end
+
+
 
 --自身布局
 local function UpdateLayout(self)
@@ -127,6 +148,7 @@ UIChat.IsVisible = IsVisible
 UIChat.ShowChat = ShowChat
 UIChat.TimerComplete = TimerComplete
 UIChat.UpdateLayout = UpdateLayout
+UIChat.LateTick = LateTick
 UIChat.__delete = __delete
 
 return UIChat

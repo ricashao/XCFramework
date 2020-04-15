@@ -11,6 +11,7 @@ local CharacterAnimation = require "GameLogic.Battle.CharacterAnimation"
 
 -- 临时：角色资源路径
 local chara_res_path = "Models/xixuegui/xixuegui.prefab"
+local testCharacter
 
 -- 创建：准备预加载资源
 local function OnCreate(self)
@@ -31,12 +32,18 @@ local function OnComplete(self)
     local battleScene = require("Battle.Scene.BattleScenePlane").New()
     battleScene:InitScene()
     -- 创建角色
-    local testCharacter = Character.New()
+    testCharacter = Character.New()
     testCharacter:Initialize(chara_res_path, Vector3.zero, 3, function()
         testCharacter.transform:SetParent(battleScene.planeBackground.transform, false)
         UIManager:GetInstance():OpenWindow(UIWindowNames.UIBattleMain)
     end)
     testCharacter:SetName(tostring("testname"), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME);
+    local timer = TimerManager:GetInstance():GetTimer(10, self.TestSpeak, self, true, true)
+    timer:Start()
+end
+
+local function TestSpeak(self)
+    testCharacter:Speak("wahahaahahahhahha")
 end
 
 -- 离开场景
@@ -49,5 +56,6 @@ end
 TestBattleScene.OnCreate = OnCreate
 TestBattleScene.OnComplete = OnComplete
 TestBattleScene.OnLeave = OnLeave
+TestBattleScene.TestSpeak = TestSpeak
 
 return TestBattleScene;
