@@ -108,6 +108,7 @@ local function CharacterLoadedEnd(self, pfb)
 end
 
 local function DispatchEvent(self, type, eventObject)
+    print("event" .. eventObject.name)
     if (currentAction) then
         currentAction:DispatchEvent(self, eventObject.name)
     end
