@@ -124,6 +124,10 @@ end
 local function GetBattleShow(self)
     return battleShow
 end
+
+local function GetAIActionBeforeOpearte(self)
+    return beforeOperateAI
+end
 --- get set end ---
 
 Battle.__init = __init
@@ -138,6 +142,7 @@ Battle.PrintResult = PrintResult
 Battle.GetMapInfo = GetMapInfo
 Battle.GetBattleState = GetBattleState
 Battle.GetBattleShow = GetBattleShow
+Battle.GetAIActionBeforeOpearte = GetAIActionBeforeOpearte
 
 Battle.__delete = __delete
 return Battle

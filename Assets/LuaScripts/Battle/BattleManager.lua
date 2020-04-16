@@ -9,7 +9,7 @@ local isBattle = false
 local battle = nil
 --- 播放数据
 local battlePlay = nil
-local playIndex = 0
+local playIndex = 1
 local rounds = nil
 local curRound = nil
 
@@ -110,10 +110,25 @@ local function PlayRound(self)
     InitRoundStart(curRound.roundStart)
 end
 
+local function PlayNextRound(self)
+    playIndex = playIndex + 1
+    if playIndex > table.count(rounds) then
+        battle:PrintResult()
+        --TODO 战斗结束前AI
+        battle:GetBattleState():TriggerEvent(BattleStateEvent.BattleAIBeforeEnd)
+        return
+    end
+    curRound = rounds[playIndex]
+    --facade.executeMediator(ModuleId.Battle, false, "setBattleRound", true, this.playIndex)
+    InitRoundScript(round.roundScript)
+    InitRoundStart(round.roundStart)
+end
+
 BattleManager.InitData = InitData
 BattleManager.Start = Start
 BattleManager.GetBattle = GetBattle
 BattleManager.Clear = Clear
 BattleManager.Replay = Replay
 BattleManager.PlayRound = PlayRound
+BattleManager.PlayNextRound = PlayNextRound
 return BattleManager
