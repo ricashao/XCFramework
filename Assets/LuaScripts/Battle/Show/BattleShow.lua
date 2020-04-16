@@ -3,7 +3,6 @@
 --- Created by ricashao.
 --- DateTime: 2020/4/16 12:15
 ---
-require "Battle.Show.BattleShowCommon"
 local BattleShow = BaseClass("BattleShow")
 local function InitShow(self)
     self.isFinish = false
@@ -52,7 +51,7 @@ local function BattleShowUnitEnd(self)
 end
 
 local function TryGetFirstShowData(self)
-    local skillCount = table.count(M.roundData)
+    local skillCount = table.length(M.roundData)
     if skillCount > 0 then
         return true
     end
@@ -61,7 +60,7 @@ end
 
 local function GetFirstShowData(self)
     if (self.roundData) then
-        local skillCount = table.count(self.roundData)
+        local skillCount = table.length(self.roundData)
         if skillCount > 0 then
             return table.remove(self.roundData, 1)
         end

@@ -21,6 +21,22 @@ local function GetType(self)
     return CHARACTER_TYPE.WARRIOR
 end
 
+
+------------ 移动相关 Begin -----------
+--- 战斗中进行移动
+local function MoveInBattle(self, movePaths, cb)
+
+end
+
+--- 被动移动时使用
+local function MoveByTime(self, destpos, time, cb)
+
+end
+
+------------  移动相关 End   ----------
+
+Warrior.MoveInBattle = MoveInBattle
+Warrior.MoveByTime = MoveByTime
 Warrior.Initialize = Initialize
 Warrior.GetType = GetType
 return Warrior

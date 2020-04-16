@@ -86,6 +86,51 @@ local function RemoveEffectById(self, id)
     end
 end
 
+--变化属性 并且做受击动作
+local function DealAttrWithBattleResult(self, resultUnit)
+    for i = 1, BattleResult.eBattleResultMax do
+        local result = CS.BitOperator.lMove(1, BattleResult.eBattleResultMax - i)
+        if CS.BitOperator.And(result, resultUnit.eTargetResult) == result then
+            if result == BattleResult.eBattleResultHPChange then
+                self:UpdateHP(resultUnit.hpChange)
+            end
+        end
+    end
+end
+
+--受击动作后 后续动作 比如死亡 眩晕等
+local function DealActionWithBattleResult(self, resultUnit, cb)
+    for i = 1, BattleResult.eBattleResultMax do
+        local result = CS.BitOperator.lMove(1, BattleResult.eBattleResultMax - i);
+        if CS.BitOperator.And(result, resultUnit.eTargetResult) == result then
+            if result == BattleResult.eBattleResultDeath then
+                self.isDeath = true
+                self.character:UpdateDeath(cb)
+            elseif result == BattleResult.eBattleResultFlyOut then
+                --TODO 先在击飞里添加倒地死亡的动作，今后改成击飞
+                self.isDeath = true
+                self.isFlyOut = true
+                self:FlyOut();
+            else
+                if (cb) then
+                    cb()
+                end
+            end
+        end
+    end
+end
+
+local function UpdateHp(self, changeHp)
+    local attrValues = {}
+    attrValues[ATTR_TYPE.HP] = changeHp
+    self.attrAgent:UpdateAttrs(attrValues)
+    --todo 更新血量
+end
+
+local function FlyOut(self)
+
+end
+
 --- get set start ---
 local function GetCharacter(self)
     return self.character
@@ -113,6 +158,10 @@ Battler.InitBuffs = InitBuffs
 Battler.Parse = Parse
 Battler.AddEffectById = AddEffectById
 Battler.RemoveEffectById = RemoveEffectById
+Battler.DealAttrWithBattleResult = DealAttrWithBattleResult
+Battler.UpdateHp = UpdateHp
+Battler.DealActionWithBattleResult = DealActionWithBattleResult
+Battler.FlyOut = FlyOut
 
 Battler.GetCharacter = GetCharacter
 Battler.GetCharacter = GetBuffAgent

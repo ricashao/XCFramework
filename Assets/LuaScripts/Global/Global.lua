@@ -133,6 +133,10 @@ BattleManager = require "Battle.BattleManager"
 --show
 BattleShowUnit = require "Battle.Show.Unit.BattleShowUnit"
 
+--unit action
+GUnitAction = require "Unit.Actions.GUnitAction"
+UnitActionManager = require "Unit.UnitActionManager"
+
 
 
 -- 单例类初始化
@@ -151,3 +155,4 @@ CameraManager:GetInstance()
 AudioManager:GetInstance()
 CommMsgTip:GetInstance()
 BattleShowUnit:GetInstance()
+UnitActionManager:GetInstance()

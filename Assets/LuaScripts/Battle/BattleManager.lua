@@ -112,7 +112,7 @@ end
 
 local function PlayNextRound(self)
     playIndex = playIndex + 1
-    if playIndex > table.count(rounds) then
+    if playIndex > table.length(rounds) then
         battle:PrintResult()
         --TODO 战斗结束前AI
         battle:GetBattleState():TriggerEvent(BattleStateEvent.BattleAIBeforeEnd)

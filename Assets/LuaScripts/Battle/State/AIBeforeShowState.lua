@@ -7,7 +7,7 @@ local AIBeforeShowState = BaseClass("AIBeforeShowState", BaseState)
 
 local function Enter(self, context)
     local aiAction = BattleManager:getInstance():GetBattle():GetAIActionBeforeOpearte()
-    if (aiAction == nil or table.count(aiAction) == 0) then
+    if (aiAction == nil or table.length(aiAction) == 0) then
         context:TriggerEvent(BattleStateEvent.BattleShow)
     end
     BattleManager:getInstance():GetBattle():DealAIAction(aiAction)

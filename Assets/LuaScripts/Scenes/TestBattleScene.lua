@@ -34,7 +34,7 @@ local function OnComplete(self)
     battleScene:InitScene()
     -- 创建角色
     testCharacter = Character.New()
-    testCharacter:Initialize(chara_res_path, Vector3.zero, 3, function()
+    testCharacter:Initialize({ shape = chara_res_path }, Vector3.zero, 3, function()
         testCharacter.transform:SetParent(battleScene.planeBackground.transform, false)
         UIManager:GetInstance():OpenWindow(UIWindowNames.UIBattleMain)
     end)

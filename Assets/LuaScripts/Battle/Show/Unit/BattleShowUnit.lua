@@ -3,6 +3,7 @@
 --- Created by ricashao.
 --- DateTime: 2020/4/16 18:16
 ---
+require "Battle.Show.BattleShowCommon"
 local BattleShowUnit = BaseClass("BattleShowUnit", Singleton)
 
 local function __init(self)
@@ -26,11 +27,11 @@ local function StartShowUnit(self, showUnitData, cb)
     self.showUnitData = showUnitData
     self.finishCallBack = cb
     self:Parse(showUnitData)
-    self:BuildBattleShowUnit()
+    self:BattleShowUnitMove()
 end
 
 local function Parse(self, data)
-    local curExecute = require "Battle.Show.Data.RoundExecute".New();
+    local curExecute = require "Battle.Show.Data.RoundExecute".New()
     curExecute:Parse(data.execute)
     self.curExecute = curExecute
 
@@ -46,23 +47,92 @@ local function Parse(self, data)
     if (data.resultlist) then
         -- 战斗结果
         for k, v in pairs(data.resultlist) do
-            local result = require "Battle.Show.Data.RoundResultUnit".New();
-            result:Parse(v);
-            table.insert(M.curUnitResult, result);
+            local result = require "Battle.Show.Data.RoundResultUnit".New()
+            result:Parse(v)
+            table.insert(M.curUnitResult, result)
         end
     end
 
-    -- 战斗脚本接收者，此动作后属性的变化
-    for k, v in pairs(data.rolechangedattrs) do
-        M.curRoleAttribute[k] = v;
-    end
-
-    -- 战斗脚本接收者的宠物，此动作后属性的变化
-    for k, v in pairs(data.petchangedattrs) do
-        M.curPetAttribute[k] = v;
+    if (data.rolechangedattrs) then
+        -- 战斗脚本接收者，此动作后属性的变化
+        for k, v in pairs(data.rolechangedattrs) do
+            self.curRoleAttribute[k] = v
+        end
     end
 end
 
+local function BattleShowUnitMove(self)
+    local curExecute = self.showUnitData.execute
+    if (curExecute.movePaths and table.length(curExecute.movePaths) > 0) then
+        local battle = BattleManager:GetInstance():GetBattle()
+        local character = battle:FindBattlerByID(curExecute.attackerid):GetCharacter()
+        character:MoveInBattle(curExecute.movePaths, BindCallback(self, self.MoveEnd))
+    else
+        self:BuildBattleShowUnit()
+    end
+end
+
+local function MoveEnd(self)
+    local timer = TimerManager:GetInstance():GetTimer(15, self.BuildBattleShowUnit, self, true, true)
+    timer:Start()
+end
+
+--创建回合表现数据
+local function BuildBattleShowUnit(self)
+    if self.curExecute.eBattleOperate == BattleOperate.eOperateFailure then
+        --操作失败
+        self.showType = BattleShowRound.NoSkill
+        self:CurrentNoSkillEnd()
+        return
+    elseif self.curExecute.eBattleOperate == BattleOperate.eRoundEndDemo then
+        --特殊结果处理
+        self.showType = BattleShowRound.NoSkill
+        for _, result in pairs(self.curUnitResult) do
+            result:DealResult()
+        end
+        self:CurrentNoSkillEnd()
+        return
+    elseif self.curExecute.eBattleOperate == BattleOperate.eSummonOperate then
+        --召唤
+        return
+    elseif self.curExecute.eBattleOperate == BattleOperate.eRunawayOperate then
+        --逃跑
+        return
+    elseif self.curExecute.eBattleOperate == BattleOperate.eItemOperate then
+        --使用物品
+        return
+    elseif self.curExecute.eBattleOperate == BattleOperate.eOnlyMove then
+        --仅移动 什么都不用做所有的操作之前都先进行了移动判断
+        self.showType = BattleShowRound.NoSkill
+        self:CurrentNoSkillEnd()
+        return
+    else
+        --技能攻击
+        self.showType = BattleShowRound.Skill
+        if self.curExecute.operatorId == 0 then
+            self.curExecute.operatorId = BattleCommon.DefaultSkill
+        end
+
+        self.curBattleSkill = require("Battle.Skill.BattleSkill").New(battlerId, self.curExecute.operatorId, self.curExecute, self.curUnitResult, BindCallback(self, self.CurrentSkillEnd))
+        self.curBattleSkill:ShowBattleSkill()
+        --self.curBattleHit = require("Battle.Hit.BattleHit").New(self.CurrentActionUnitHitFinish, self)
+
+        return
+    end
+    if error then
+        error("unknown skill, M.curExecute.eBattleOperate = " .. self.curExecute.eBattleOperate)
+    end
+    return
+end
+
+local function CurrentSkillEnd(self)
+    self.skillActionEnd = true
+    self.finishCallBack()
+end
+
+local function CurrentNoSkillEnd(self)
+    self.finishCallBack()
+end
 
 --清理上回合表现数据
 local function Clear(self)
@@ -81,4 +151,9 @@ BattleShowUnit.__init = __init
 BattleShowUnit.StartShowUnit = StartShowUnit
 BattleShowUnit.Clear = Clear
 BattleShowUnit.Parse = Parse
+BattleShowUnit.BattleShowUnitMove = BattleShowUnitMove
+BattleShowUnit.MoveEnd = MoveEnd
+BattleShowUnit.BuildBattleShowUnit = BuildBattleShowUnit
+BattleShowUnit.CurrentSkillEnd = CurrentSkillEnd
+BattleShowUnit.CurrentNoSkillEnd = CurrentNoSkillEnd
 return BattleShowUnit
