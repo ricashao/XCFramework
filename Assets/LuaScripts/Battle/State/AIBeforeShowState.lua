@@ -5,5 +5,27 @@
 ---
 local AIBeforeShowState = BaseClass("AIBeforeShowState", BaseState)
 
+local function Enter(self, context)
+    local aiAction = getInstance(BattleManager).getBattle().getAIActionBeforeOpearte()
+    if (aiAction == nil or aiAction.length == 0) then
+        context.triggerEvent(BattleStateEvent.BattleShow)
+    end
+    getInstance(BattleManager).getBattle().dealAIAction(aiAction)
+end
+
+local function TriggerEvent(eventName, context)
+    --- 回合前AI -> 战斗演示
+    if (eventName == BattleStateEvent.BattleShow) then
+        context.setStateByName(BattleState.eBattleStateShow)
+    end
+end
+
+local function GetStateName(self)
+    return BattleState.eBattleStateAIBeforeOperate
+end
+
+AIBeforeShowState.Enter = Enter
+AIBeforeShowState.GetStateName = GetStateName
+AIBeforeShowState.TriggerEvent = TriggerEvent
 
 return AIBeforeShowState

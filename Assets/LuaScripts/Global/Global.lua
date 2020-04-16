@@ -128,6 +128,11 @@ Character = require "Character.Character"
 --battle 
 require "Battle.BattleCommon"
 BaseState = require "Battle.State.BaseState"
+BattleShow = require "Battle.Show.BattleShow"
+BattleStateContext = require "Battle.BattleStateContext"
+Battler = require "Battler.Battler"
+Battle = require "Battle.Battle"
+BattleManager = require "Battle.BattleManager"
 
 
 

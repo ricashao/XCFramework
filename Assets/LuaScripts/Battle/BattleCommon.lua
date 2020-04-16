@@ -28,3 +28,15 @@ BattleState = {
     eBattleStateEnd = 9,
     eBattleStateMax = 10,
 }
+
+BattleStateEvent = {
+    BattleBegin = 1,
+    BattleBeforeAI = 2,
+    BattleOpeChar = 3, --本项目无用
+    BattleOpePet = 4, --本项目无用
+    BattleWaitShow = 5, --本项目无用
+    BattleShow = 6,
+    BattleWaitEnd = 7,
+    BattleAIBeforeEnd = 8,
+    BattleEnd = 9,
+}
