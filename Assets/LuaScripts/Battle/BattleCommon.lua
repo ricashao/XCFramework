@@ -40,3 +40,10 @@ BattleStateEvent = {
     BattleAIBeforeEnd = 8,
     BattleEnd = 9,
 }
+
+BattlerType = {
+    eBattlerCharacter = 1, --角色
+    eBattlerCreeps = 2, --怪物
+    eBattlerNpc = 3, --NPC（特殊的）
+    eBattlerMax = 4,
+}

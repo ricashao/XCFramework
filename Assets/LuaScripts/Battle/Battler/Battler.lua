@@ -3,4 +3,114 @@
 --- Created by admin.
 --- DateTime: 2020/4/16 12:40
 ---
+local Battler = BaseClass("Battler")
 
+--- private start ---
+local function InitAttrs(self)
+    self.attrAgent = ClientAttrAgent.NeW(self)
+    self.attrAgent:SetAttr(AttrType.HP, self.hp)
+    self.attrAgent:SetAttr(AttrType.MAX_HP, self.maxhp)
+end
+
+--- private end ---
+
+local function __init(self)
+
+    self.battlerId = 0
+    self.eBattlerType = BattlerType.eBattlerCharacter
+    self.bornPos = nil
+    self.bornDir = nil
+    self.buffAgent = nil
+    self.attrAgent = nil
+    self.hp = 0
+    self.maxhp = 0
+    self.isdeath = false
+    self.isFlyOut = false
+    self.isDisappear = false
+    -- 特效渲染列表
+    self.effects = {}
+    self.character = nil
+    self.data = nil
+end
+
+local function CreateBattler(self)
+    InitAttrs(self)
+    InitCharacter(self)
+end
+
+local function InitCharacter(self)
+    self.bornPos = { x = self.data.posx, y = self.data.posy }
+    self.bornDir = self:IsFriendSide() and BattleCommon.FriendSideDir or BattleCommon.EnemySideDir
+    self.character = Warrior.New(self.battlerId)
+    self:CreateChracterData()
+    self.character:Initialize(self.data, self.bornPos, self.bornDir, Bind(self, self.InitBuffs))
+    self.character:SetFighterId(self.battlerId)
+    self.character:SetName(tostring(self.strName), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME)
+end
+
+local function InitBuffs(self)
+    self.buffAgent = ClientBuffAgent.New(self)
+    for k, v in pairs(self.buffs) do
+        self.buffAgent:InitBuff(k, v)
+    end
+end
+
+--是否在战场左下角
+local function IsFriendSide(self)
+    return (self.battlerId <= BattleCommon.FriendMaxID and self.battlerId >= BattleCommon.FriendMinID)
+end
+
+local function Parse(fighterInfo)
+    self.battlerId = fighterInfo.index
+    self.eBattlerType = fighterInfo.fightertype
+    self.hp = fighterInfo.hp
+    self.maxhp = fighterInfo.maxhp
+    self:SetShape(fighterInfo.shape)
+    self.fighterInfo = fighterInfo
+end
+
+local function AddEffectById(self, id)
+    if self.effects[id] then
+        self:RemoveEffectById(id)
+    end
+    if self.character:IsVisible() then
+        --加载特效
+    end
+end
+
+local function RemoveEffectById(self, id)
+    if self.effects[id] then
+        --移除特效
+        self.effects[id]:Delete()
+        self.effects[id] = nil
+    end
+end
+
+--- get set start ---
+local function GetCharacter(self)
+    return self.character
+end
+
+local function GetBuffAgent(self)
+    return self.buffAgent
+end
+
+local function GetAttrAgent(self)
+    return self.attrAgent
+end
+
+--- get set end ---
+
+Battler.__init = __init
+Battler.CreateBattler = CreateBattler
+Battler.InitCharacter = InitCharacter
+Battler.IsFriendSide = IsFriendSide
+Battler.InitBuffs = InitBuffs
+Battler.Parse = Parse
+Battler.AddEffectById = AddEffectById
+Battler.RemoveEffectById = RemoveEffectById
+
+Battler.GetCharacter = GetCharacter
+Battler.GetCharacter = GetBuffAgent
+Battler.GetCharacter = GetAttrAgent
+return Battler

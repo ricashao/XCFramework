@@ -28,7 +28,7 @@ local function __init(self)
     --坐标
     self.worldPos = nil
     self.speed = nil
-    self.layer = SceneLayer.Battler
+    self.layer = SceneLayer.Character
 
     --加载模型标志位
     self.initResourceOk = false
@@ -68,8 +68,8 @@ local function __init(self)
 
 end
 
-local function Initialize(self, shape, pos, dir, callback)
-    self.shape = shape
+local function Initialize(self, fighterInfo, pos, dir, callback)
+    self.shape = fighterInfo.shape
     self.worldPos = pos
     self.d = dir
     self.resourceCallBack = callback

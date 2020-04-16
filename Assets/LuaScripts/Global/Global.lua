@@ -124,6 +124,11 @@ CharacterUtil = require "Character.CharacterUtil"
 require "Character.CharacterCommon"
 require "Unit.UnitCommon"
 Character = require "Character.Character"
+Warrior = require "Character.Warrior.Warrior"
+
+--attr
+ClientAttrAgent = require "Battle.Attr.ClientAttrAgent"
+ClientBuffAgent = require "Battle.Buff.ClientBuffAgent"
 
 --battle 
 require "Battle.BattleCommon"
@@ -133,7 +138,6 @@ BattleStateContext = require "Battle.BattleStateContext"
 Battler = require "Battler.Battler"
 Battle = require "Battle.Battle"
 BattleManager = require "Battle.BattleManager"
-
 
 
 
