@@ -7,7 +7,7 @@ local Battler = BaseClass("Battler")
 
 --- private start ---
 local function InitAttrs(self)
-    self.attrAgent = ClientAttrAgent.NeW(self)
+    self.attrAgent = require "Battle.Attr.ClientAttrAgent".NeW(self)
     self.attrAgent:SetAttr(AttrType.HP, self.hp)
     self.attrAgent:SetAttr(AttrType.MAX_HP, self.maxhp)
 end
@@ -41,7 +41,7 @@ end
 local function InitCharacter(self)
     self.bornPos = { x = self.data.posx, y = self.data.posy }
     self.bornDir = self:IsFriendSide() and BattleCommon.FriendSideDir or BattleCommon.EnemySideDir
-    self.character = Warrior.New(self.battlerId)
+    self.character = require "Character.Warrior.Warrior".New(self.battlerId)
     self:CreateChracterData()
     self.character:Initialize(self.data, self.bornPos, self.bornDir, Bind(self, self.InitBuffs))
     self.character:SetFighterId(self.battlerId)
@@ -49,7 +49,7 @@ local function InitCharacter(self)
 end
 
 local function InitBuffs(self)
-    self.buffAgent = ClientBuffAgent.New(self)
+    self.buffAgent = require "Battle.Buff.ClientBuffAgent".New(self)
     for k, v in pairs(self.buffs) do
         self.buffAgent:InitBuff(k, v)
     end
@@ -99,6 +99,10 @@ local function GetAttrAgent(self)
     return self.attrAgent
 end
 
+local function IsDeath(self)
+    return self.isdeath
+end
+
 --- get set end ---
 
 Battler.__init = __init
@@ -113,4 +117,5 @@ Battler.RemoveEffectById = RemoveEffectById
 Battler.GetCharacter = GetCharacter
 Battler.GetCharacter = GetBuffAgent
 Battler.GetCharacter = GetAttrAgent
+Battler.IsDeath = IsDeath
 return Battler

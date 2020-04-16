@@ -29,22 +29,23 @@ local function Parse(data)
 end
 
 local function InitBattleState()
-    battleState = BattleStateContext.New()
+    battleState = require "Battle.BattleStateContext".New()
     battleState:InitState()
 end
 
 local function InitbattleShow()
-    battleShow = BattleShow.New()
+    battleShow = require "Battle.Show.BattleShow".New()
     battleShow:InitShow()
 end
 
 local function InitBattleScene()
-
+    self.battleScene = require("Battle.Scene.BattleScenePlane").New()
+    self.battleScene:InitScene()
 end
 
 local function AddJoinBattlerList(data)
     for _, v in pairs(data) do
-        local battler = Battler.New()
+        local battler = require "Battler.Battler".New()
         battler:Parse(v)
         battler:CreateBattler()
         table.insert(battlers, battler)

@@ -20,7 +20,7 @@ local function InitBattleStart(data)
     end
     isBattle = true
     --- 创建新的战场
-    battle = Battle.New()
+    battle = require "Battle.Battle".New()
     battle:EnterBattle(data)
 end
 

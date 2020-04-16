@@ -124,20 +124,14 @@ CharacterUtil = require "Character.CharacterUtil"
 require "Character.CharacterCommon"
 require "Unit.UnitCommon"
 Character = require "Character.Character"
-Warrior = require "Character.Warrior.Warrior"
-
---attr
-ClientAttrAgent = require "Battle.Attr.ClientAttrAgent"
-ClientBuffAgent = require "Battle.Buff.ClientBuffAgent"
 
 --battle 
 require "Battle.BattleCommon"
 BaseState = require "Battle.State.BaseState"
-BattleShow = require "Battle.Show.BattleShow"
-BattleStateContext = require "Battle.BattleStateContext"
-Battler = require "Battler.Battler"
-Battle = require "Battle.Battle"
 BattleManager = require "Battle.BattleManager"
+
+--show
+BattleShowUnit = require "Battle.Show.Unit.BattleShowUnit"
 
 
 
@@ -156,3 +150,4 @@ CameraContext:GetInstance()
 CameraManager:GetInstance()
 AudioManager:GetInstance()
 CommMsgTip:GetInstance()
+BattleShowUnit:GetInstance()
