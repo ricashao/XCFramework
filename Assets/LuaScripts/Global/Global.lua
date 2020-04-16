@@ -125,6 +125,11 @@ require "Character.CharacterCommon"
 require "Unit.UnitCommon"
 Character = require "Character.Character"
 
+--battle 
+require "Battle.BattleCommon"
+BaseState = require "Battle.State.BaseState"
+
+
 
 
 -- 单例类初始化
