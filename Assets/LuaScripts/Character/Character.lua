@@ -26,7 +26,7 @@ local function __init(self)
     self.shape = nil
 
     --坐标
-    self.worldPos = nil
+    self.pos = nil
     self.speed = nil
     self.layer = SceneLayer.Character
 
@@ -70,7 +70,7 @@ end
 
 local function Initialize(self, fighterInfo, pos, dir, callback)
     self.shape = fighterInfo.shape
-    self.worldPos = pos
+    self.pos = pos
     self.d = dir
     self.resourceCallBack = callback
     if self.inited then
@@ -226,6 +226,13 @@ local function DoAction(self, action)
     self._uRender.animation:Play(curaim)
 end
 
+local function ChangeFace(self, dir)
+    self.d = dir
+    local curaim = ActionAim[self.a] .. FaceDirection[self.d]
+    self._uRender.armature.flipX = FaceScaleX[self.d]
+    self._uRender.animation:Play(curaim)
+end
+
 local function __delete(self)
     if self.hudAgent then
         self.hudAgent:Delete()
@@ -275,6 +282,15 @@ local function GetLayer(self)
     return self.layer
 end
 
+local function GetRealPos(self)
+    local pos = self:GetLocalPosition()
+    return { x = pos.x, y = pos.y }
+end
+
+local function FaceTo(self)
+    return self.d
+end
+
 ----------------------- Set and Get 成员变量 End   --------------------------------
 
 ----------------------------战斗相关显示 ---------------------------------
@@ -301,6 +317,7 @@ Character.StartUnitAction = StartUnitAction
 Character.DispatchEvent = DispatchEvent
 Character.PlayComplete = PlayComplete
 Character.DoAction = DoAction
+Character.ChangeFace = ChangeFace
 Character.UpdateLayer = UpdateLayer
 Character.LateTick = LateTick
 Character.Speak = Speak
@@ -315,4 +332,6 @@ Character.SetVisible = SetVisible
 Character.GetPrefabRes = GetPrefabRes
 Character.GetModel = GetModel
 Character.GetLayer = GetLayer
+Character.GetRealPos = GetRealPos
+Character.FaceTo = FaceTo
 return Character

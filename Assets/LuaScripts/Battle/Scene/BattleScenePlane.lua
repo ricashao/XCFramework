@@ -100,9 +100,15 @@ local function InitScene(self)
     CalAllBattlerPos(self)
 end
 
+local function GetBattlePosBySlot(self, x, y)
+    local index = x * 9 + y + 1
+    return self.allBattlePos[index]
+end
+
 BattleScenePlane.__init = __init
 BattleScenePlane.InitScene = InitScene
 BattleScenePlane.__delete = __delete
 BattleScenePlane.GetBattlePos = GetBattlePos
+BattleScenePlane.GetBattlePosBySlot = GetBattlePosBySlot
 
 return BattleScenePlane

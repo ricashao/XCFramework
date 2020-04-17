@@ -139,6 +139,9 @@ BattleShowUnit = require "Battle.Show.Unit.BattleShowUnit"
 GUnitAction = require "Unit.Actions.GUnitAction"
 UnitActionManager = require "Unit.UnitActionManager"
 
+--Utils
+FaceToUtils = require "Utils.FaceToUtils"
+
 
 
 -- 单例类初始化

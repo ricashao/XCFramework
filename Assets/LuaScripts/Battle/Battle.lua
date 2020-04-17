@@ -17,8 +17,6 @@ local battleState = nil
 local battleScene = nil
 local battleShow = nil
 local beforeOperateAI = nil
--- 地图信息
-local mapInfo = nil
 
 --- private start ---
 
@@ -115,7 +113,7 @@ end
 
 --- get set start ---
 local function GetMapInfo(self)
-    return mapInfo
+    return battleScene
 end
 
 local function GetBattleState(self)

@@ -12,7 +12,7 @@ local function Parse(self, fightInfo, pos, dir)
 end
 
 local function Initialize(self, fighterInfo, pos, dir, cb)
-    this.parse(basicOctects, pos, dir)
+    self:Parse(fighterInfo, pos, dir)
     self.layer = SceneLayer.Battler
     Character.Initialize(self, fighterInfo, pos, dir, cb)
 end
@@ -21,11 +21,11 @@ local function GetType(self)
     return CHARACTER_TYPE.WARRIOR
 end
 
-
 ------------ 移动相关 Begin -----------
 --- 战斗中进行移动
 local function MoveInBattle(self, movePaths, cb)
-
+    local action = require "Unit.Actions.WalkSlgAction".New(movePaths)
+    self:StartUnitAction(action, false, cb)
 end
 
 --- 被动移动时使用
@@ -39,4 +39,5 @@ Warrior.MoveInBattle = MoveInBattle
 Warrior.MoveByTime = MoveByTime
 Warrior.Initialize = Initialize
 Warrior.GetType = GetType
+Warrior.Parse = Parse
 return Warrior
