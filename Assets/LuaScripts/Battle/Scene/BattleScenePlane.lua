@@ -86,6 +86,10 @@ local function CalAllBattlerPos(self)
     end
 end
 
+local function GetBattlePos(self, index)
+    return self.allBattlePos[index]
+end
+
 local function InitScene(self)
     --todo 设置背景
     self.planeBackground:SetActive(true)
@@ -99,5 +103,6 @@ end
 BattleScenePlane.__init = __init
 BattleScenePlane.InitScene = InitScene
 BattleScenePlane.__delete = __delete
+BattleScenePlane.GetBattlePos = GetBattlePos
 
 return BattleScenePlane

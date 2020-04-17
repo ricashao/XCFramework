@@ -3,3 +3,18 @@
 --- Created by ricashao.
 --- DateTime: 2020/4/16 23:51
 ---
+local WalkSlgAction = BaseClass("WalkSlgAction", GUnitAction)
+
+local function __init(self, movePath)
+    self._movePath = movePath
+    self._action = UnitActionManager:GetInstance():GetAction(ActionType.move)
+end
+
+--播放动作
+local function Start(self, unit, has, callback)
+    _isEnd = false
+end
+
+WalkSlgAction.__init = __init
+WalkSlgAction.Start = Start
+return WalkSlgAction

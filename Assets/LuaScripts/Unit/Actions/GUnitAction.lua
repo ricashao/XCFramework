@@ -6,6 +6,14 @@
 local UnitAction = require "Unit.UnitAction"
 local GUnitAction = BaseClass("GUnitAction", UnitAction)
 
+local function __init(self)
+    self._action = nil
+end
 
+local function GetAction(self, mountType)
+    return self._action
+end
 
+GUnitAction.__init = __init
+GUnitAction.GetAction = GetAction
 return GUnitAction

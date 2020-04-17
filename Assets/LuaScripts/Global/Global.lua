@@ -68,8 +68,10 @@ UIMessageNames = require "Framework.UI.Message.UIMessageNames"
 UIWindowNames = require "UI.Config.UIWindowNames"
 UIConfig = require "UI.Config.UIConfig"
 
--- gamelayer
+--tween
+TweenNano = require "Utils.Tween.TweenNano"
 
+-- gamelayer
 GameLayerManager = require "UI.GameLayerManager"
 
 -- res

@@ -3,7 +3,6 @@
 -- 单位动作
 --]]
 local UnitAction = BaseClass("UnitAction")
-local _isEnd
 local defaultAction = {
     mountType = MountType.ground,
     action = ActionType.standBy,
@@ -27,7 +26,8 @@ end
 
 --播放动作
 local function Start(self, unit, has, callback)
-    _isEnd = false
+    self._isEnd = false
+    
 end
 
 -- 检查当前动作是否可以结束
@@ -45,14 +45,14 @@ end
 
 --动画播放结束的回调
 local function PlayComplete(self)
-    _isEnd = true
+    self._isEnd = true
 end
 
 --动作是否已经结束
 -- @return true，动作已经结束，可以做下一个动作
 --         false, 动作未结束，
 local function IsEnd(self)
-    return _isEnd
+    return self._isEnd
 end
 
 local function DispatchEvent(self, unit, eventType)

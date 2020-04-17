@@ -13,6 +13,7 @@ local CharacterAnimation = require "GameLogic.Battle.CharacterAnimation"
 local chara_res_path = "Models/xixuegui/xixuegui.prefab"
 local testCharacter
 local timer
+local battleScene
 
 -- 创建：准备预加载资源
 local function OnCreate(self)
@@ -30,7 +31,7 @@ end
 local function OnComplete(self)
     base.OnComplete(self)
     InputTouch:GetInstance():SetCamera(GameLayerManager:GetInstance().battleCamera)
-    local battleScene = require("Battle.Scene.BattleScenePlane").New()
+    battleScene = require("Battle.Scene.BattleScenePlane").New()
     battleScene:InitScene()
     -- 创建角色
     testCharacter = Character.New()
@@ -43,8 +44,12 @@ local function OnComplete(self)
     timer:Start()
 end
 
+local test = 1
 local function TestSpeak(self)
+    test = test + 1
     testCharacter:Speak("wahahaahahahhahha")
+    local target = battleScene:GetBattlePos(test)
+    TweenNano.Create(0.3, testCharacter, { x = target.x, y = target.y }, "linear")
 end
 
 -- 离开场景
