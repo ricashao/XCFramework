@@ -148,7 +148,22 @@ local function IsDeath(self)
     return self.isdeath
 end
 
+local function GetBattlerId(self)
+    return self.battlerId
+end
+
 --- get set end ---
+
+local function __delete(self)
+    for _, v in pairs(self.effects) do
+        v:Delete()
+    end
+    self.effects = {}
+    self.character:Delete()
+    self.buffAgent = nil
+    self.attrAgent = nil
+end
+
 
 Battler.__init = __init
 Battler.CreateBattler = CreateBattler
@@ -162,9 +177,11 @@ Battler.DealAttrWithBattleResult = DealAttrWithBattleResult
 Battler.UpdateHp = UpdateHp
 Battler.DealActionWithBattleResult = DealActionWithBattleResult
 Battler.FlyOut = FlyOut
+Battler.__delete = __delete
 
 Battler.GetCharacter = GetCharacter
 Battler.GetBuffAgent = GetBuffAgent
 Battler.GetAttrAgent = GetAttrAgent
+Battler.GetBattlerId = GetBattlerId
 Battler.IsDeath = IsDeath
 return Battler

@@ -17,10 +17,6 @@ local function SetBornPos(self)
     self:SetLocalPosition(Vector3.New(screenPt.x, screenPt.y, 0))
 end
 
-local function SetBornDir(self)
-    
-end
-
 local function Initialize(self, fighterInfo, pos, dir, cb)
     self:Parse(fighterInfo, pos, dir)
     self.layer = SceneLayer.Battler

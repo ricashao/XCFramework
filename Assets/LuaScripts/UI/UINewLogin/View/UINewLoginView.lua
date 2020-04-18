@@ -23,7 +23,6 @@ local treaty_btn_path = "ContentRoot/LoginRoot/TreatyRoot/TreatyBtn"
 local regist_btn_path = "ContentRoot/LoginRoot/RegistBtn"
 local enter_btn_path = "ContentRoot/EnterBtn"
 
-
 local function ClickOnLoginBtn(self)
     local name = self.account_input:GetText()
     local password = self.password_input:GetText()
@@ -41,7 +40,6 @@ end
 local function ClickOnEnterBtn(self)
     self.ctrl:EnterGame()
 end
-
 
 local function OnCreate(self)
     base.OnCreate(self)
@@ -61,7 +59,7 @@ local function OnCreate(self)
     self.treaty_btn:SetOnClick(self, ClickOnTreatyBtn)
     self.regist_btn:SetOnClick(self, ClickOnRegistBtn)
     self.enter_btn:SetOnClick(self, ClickOnEnterBtn)
-    
+
 end
 
 local function OnEnable(self)
@@ -70,15 +68,12 @@ local function OnEnable(self)
     --临时TODO
     self.enter_btn:SetActive(false)
     -- 登录开启链接服务器
-    self.ctrl:ConnectServer();
+    if (not WsHallConnector:GetInstance():IsConnect()) then
+        self.ctrl:ConnectServer()
+    end
     AudioManager:GetInstance():PlayBg("Music/BGM/op.mp3")
 end
 
--- Update测试
-local function Update(self)
-    --self.update_value = self.update_value + Time.deltaTime
-    --self.test_updater_text:SetText(tostring(string.format("%.3f", self.update_value)))
-end
 
 local function OnRefresh(self)
     -- 各组件刷新
@@ -123,7 +118,6 @@ end
 
 UINewLoginView.OnCreate = OnCreate
 UINewLoginView.OnEnable = OnEnable
-UINewLoginView.Update = Update
 UINewLoginView.OnRefresh = OnRefresh
 UINewLoginView.OnAddListener = OnAddListener
 UINewLoginView.OnRemoveListener = OnRemoveListener

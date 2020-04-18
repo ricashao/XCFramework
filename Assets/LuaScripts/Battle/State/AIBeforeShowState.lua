@@ -6,17 +6,18 @@
 local AIBeforeShowState = BaseClass("AIBeforeShowState", BaseState)
 
 local function Enter(self, context)
-    local aiAction = BattleManager:getInstance():GetBattle():GetAIActionBeforeOpearte()
+    local aiAction = BattleManager:GetInstance():GetBattle():GetAIActionBeforeOpearte()
     if (aiAction == nil or table.length(aiAction) == 0) then
         context:TriggerEvent(BattleStateEvent.BattleShow)
+        return
     end
-    BattleManager:getInstance():GetBattle():DealAIAction(aiAction)
+    BattleManager:GetInstance():GetBattle():DealAIAction(aiAction)
 end
 
-local function TriggerEvent(eventName, context)
+local function TriggerEvent(self, eventName, context)
     --- 回合前AI -> 战斗演示
     if (eventName == BattleStateEvent.BattleShow) then
-        context.setStateByName(BattleState.eBattleStateShow)
+        context:SetStateByName(BattleState.eBattleStateShow)
     end
 end
 

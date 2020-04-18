@@ -16,7 +16,6 @@ local function __delete(self)
     self.centPos = nil
     self.allBattlePos = {}
     self.planeBackground:SetActive(false)
-    self.centPos = Vector3.zero
 end
 
 -- 计算显示区域的四个顶点

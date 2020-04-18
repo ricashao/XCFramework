@@ -32,4 +32,5 @@ local function Parse(self, data)
 end
 
 RoundExecute.__init = __init
+RoundExecute.Parse = Parse
 return RoundExecute

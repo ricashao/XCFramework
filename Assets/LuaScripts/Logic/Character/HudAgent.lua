@@ -99,7 +99,7 @@ local function __delete(self)
     end
 
     if self.uiChat then
-        self.uiName:Delete()
+        self.uiChat:Delete()
     end
 end
 

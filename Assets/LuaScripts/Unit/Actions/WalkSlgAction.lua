@@ -39,8 +39,7 @@ local function RealTween(self, unit)
     end
 
     local node = self._movePath[step]
-    --local pos = BattleManager:GetInstance():GetBattle():GetMapInfo():GetBattlePosBySlot(node.x, node.y)
-    local pos = TestGlobal.battleScene:GetBattlePosBySlot(node.x, node.y)
+    local pos = BattleManager:GetInstance():GetBattle():GetMapInfo():GetBattlePosBySlot(node.x, node.y)
     local unitpos = unit:GetRealPos()
     if unitpos.x == node.x and unitpos.y == node.y then
         self:RealTween(unit, cb)

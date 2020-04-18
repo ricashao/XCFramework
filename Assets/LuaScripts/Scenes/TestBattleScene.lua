@@ -49,6 +49,7 @@ end
 local function OnLeave(self)
     self.charaAnim = nil
     UIManager:GetInstance():CloseWindow(UIWindowNames.UIBattleMain)
+    BattleManager:GetInstance():Clear()
     base.OnLeave(self)
 end
 

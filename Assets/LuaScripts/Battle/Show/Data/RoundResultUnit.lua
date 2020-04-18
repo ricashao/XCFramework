@@ -28,25 +28,27 @@ end
 local function Parse(self, data)
     self.targetId = data.targetId
     self.buffs = data.demobuffs
-    for _, v in pairs(self.buffs) do
-        if v.key == NewDemoResult.HP_CHANGE then
-            self.hpChange = v
-        elseif v.key == NewDemoResult.TARGET_RESULT then
-            self.eTargetResult = v
-        elseif v.key == NewDemoResult.RETURN_HURT then
-            self.returnHurt = v
-        elseif v.key == NewDemoResult.ATTACK_BACK then
-            self.attackBack = v
-        elseif v.key == NewDemoResult.ATTACKER_RESULT then
-            self.eAttackerResult = v
-        elseif v.key == NewDemoResult.PROTECTER_ID then
-            self.protecterId = v
-        elseif v.key == NewDemoResult.PROTECTER_HP_CHANGE then
-            self.protectHpChange = v
-        elseif v.key == NewDemoResult.PROTECTER_RESULT then
-            self.eProtecterResult = v
-        elseif v.key == NewDemoResult.ASSISTER_ID then
-            self.assisterId = v
+    if (self.buffs) then
+        for _, v in ipairs(self.buffs) do
+            if v.key == NewDemoResult.HP_CHANGE then
+                self.hpChange = v
+            elseif v.key == NewDemoResult.TARGET_RESULT then
+                self.eTargetResult = v
+            elseif v.key == NewDemoResult.RETURN_HURT then
+                self.returnHurt = v
+            elseif v.key == NewDemoResult.ATTACK_BACK then
+                self.attackBack = v
+            elseif v.key == NewDemoResult.ATTACKER_RESULT then
+                self.eAttackerResult = v
+            elseif v.key == NewDemoResult.PROTECTER_ID then
+                self.protecterId = v
+            elseif v.key == NewDemoResult.PROTECTER_HP_CHANGE then
+                self.protectHpChange = v
+            elseif v.key == NewDemoResult.PROTECTER_RESULT then
+                self.eProtecterResult = v
+            elseif v.key == NewDemoResult.ASSISTER_ID then
+                self.assisterId = v
+            end
         end
     end
 end

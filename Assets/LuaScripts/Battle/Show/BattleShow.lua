@@ -13,11 +13,11 @@ end
 
 local function SetBattleShowData(self, data)
     if self.isFinish == false then
-        self.Clear()
+        self:Clear()
     end
     self.playIndex = 0
-    M.roundAI = data.aiactions
-    M.roundData = data.playitem
+    self.roundAI = data.aiactions
+    self.roundData = data.playitem
 end
 
 local function Clear(self)
@@ -51,7 +51,7 @@ local function BattleShowUnitEnd(self)
 end
 
 local function TryGetFirstShowData(self)
-    local skillCount = table.length(M.roundData)
+    local skillCount = table.length(self.roundData)
     if skillCount > 0 then
         return true
     end

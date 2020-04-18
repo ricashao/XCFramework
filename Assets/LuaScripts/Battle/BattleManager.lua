@@ -61,14 +61,14 @@ local function InitRoundStart(data)
         Logger.LogError("BattleManager InitRoundScript warn, not in battle")
     end
 
-    battle:DoBattleClear()
+    --battle:DoBattleClear()
     battle:RoundStart(data)
     battle:GetBattleState():TriggerEvent(BattleStateEvent.BattleBeforeAI)
 end
 
 local function InitRound(data)
     rounds = data
-    playIndex = 0
+    playIndex = 1
 end
 
 --- private end --- 
@@ -93,7 +93,7 @@ end
 
 local function Clear(self)
     isBattle = false
-    battle:Deleta()
+    battle:Delete()
     battle = nil
 end
 

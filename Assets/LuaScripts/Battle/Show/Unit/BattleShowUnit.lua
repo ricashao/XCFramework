@@ -37,7 +37,7 @@ local function Parse(self, data)
 
     if (data.newfighter) then
         -- 战斗添加新Npc
-        for k, v in pairs(data.newfighter) do
+        for k, v in ipairs(data.newfighter) do
             local battler = require "Battle.Battler.Battler".New()
             battler:Parse(v)
             table.insert(self.curNewFighter, battler)
@@ -46,16 +46,16 @@ local function Parse(self, data)
 
     if (data.resultlist) then
         -- 战斗结果
-        for k, v in pairs(data.resultlist) do
+        for k, v in ipairs(data.resultlist) do
             local result = require "Battle.Show.Data.RoundResultUnit".New()
             result:Parse(v)
-            table.insert(M.curUnitResult, result)
+            table.insert(self.curUnitResult, result)
         end
     end
 
     if (data.rolechangedattrs) then
         -- 战斗脚本接收者，此动作后属性的变化
-        for k, v in pairs(data.rolechangedattrs) do
+        for k, v in ipairs(data.rolechangedattrs) do
             self.curRoleAttribute[k] = v
         end
     end
@@ -120,7 +120,7 @@ local function BuildBattleShowUnit(self)
         return
     end
     if error then
-        error("unknown skill, M.curExecute.eBattleOperate = " .. self.curExecute.eBattleOperate)
+        error("unknown skill, curExecute.eBattleOperate = " .. self.curExecute.eBattleOperate)
     end
     return
 end

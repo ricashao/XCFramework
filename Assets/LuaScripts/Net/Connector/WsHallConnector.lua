@@ -123,6 +123,13 @@ local function GetService(self, servicename)
     return self.serviceMaps[servicename];
 end
 
+local function IsConnect(self)
+    if not IsNull(self.hallSocket) and self.hallSocket:IsConnect() then
+        return true
+    end
+    return false
+end
+
 WsHallConnector.__init = __init
 WsHallConnector.Connect = Connect
 WsHallConnector.SendMessage = SendMessage
@@ -133,5 +140,6 @@ WsHallConnector.Startup = Startup
 WsHallConnector.RegRecieveMSGRef = RegRecieveMSGRef
 WsHallConnector.Register = Register
 WsHallConnector.GetService = GetService
+WsHallConnector.IsConnect = IsConnect
 
 return WsHallConnector
