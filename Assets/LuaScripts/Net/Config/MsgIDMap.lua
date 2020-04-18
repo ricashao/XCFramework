@@ -11,5 +11,7 @@ local config = {
 	["RandomName_S2C_Msg"] = (require("Net.Protol.login_pb")).RandomName_S2C_Msg,
 	["Regist_C2S_Msg"] = (require("Net.Protol.login_pb")).Regist_C2S_Msg,
 	["Regist_S2C_Msg"] = (require("Net.Protol.login_pb")).Regist_S2C_Msg,
+	["TestBattle_C2S_Msg"] = (require("Net.Protol.commonbattle_pb")).TestBattle_C2S_Msg,
+	["TestBattle_S2C_Msg"] = (require("Net.Protol.commonbattle_pb")).TestBattle_S2C_Msg,
 }
     return config

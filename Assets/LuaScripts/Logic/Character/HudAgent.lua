@@ -6,7 +6,7 @@
 local HudAgent = BaseClass("HudAgent")
 
 local HUDTYPE_OFFSET = {
-    TOP_NAME = Vector3.New(0, 1.72, 0); -- 头顶名字
+    TOP_NAME = Vector3.New(0, 1.4, 0); -- 头顶名字
     CHARACTER_BLOOD = Vector3.New(0, 1.2, 0); -- 血条
 
     PLAYER_CHAT = 10; -- 聊天气泡

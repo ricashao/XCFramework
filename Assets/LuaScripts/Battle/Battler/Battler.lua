@@ -7,19 +7,27 @@ local Battler = BaseClass("Battler")
 
 --- private start ---
 local function InitAttrs(self)
-    self.attrAgent = require "Battle.Attr.ClientAttrAgent".NeW(self)
+    self.attrAgent = require "Battle.Attr.ClientAttrAgent".New(self)
     self.attrAgent:SetAttr(AttrType.HP, self.hp)
     self.attrAgent:SetAttr(AttrType.MAX_HP, self.maxhp)
 end
 
+local function InitCharacter(self)
+    local bornDir = self:IsFriendSide() and BattleCommon.FriendSideDir or BattleCommon.EnemySideDir
+    local battleScene = BattleManager:GetInstance():GetBattle():GetMapInfo()
+    self.character = require "Character.Warrior.Warrior".New()
+    self.character:SetParent(battleScene.planeBackground.transform)
+    --self:CreateChracterData()
+    self.character:Initialize(self.fighterInfo, { x = self.fighterInfo.posx, y = self.fighterInfo.posy }, bornDir, Bind(self, self.InitBuffs))
+    self.character:SetFighterId(self.battlerId)
+    self.character:SetName(tostring(self.strName), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME)
+end
 --- private end ---
 
 local function __init(self)
 
     self.battlerId = 0
     self.eBattlerType = BattlerType.eBattlerCharacter
-    self.bornPos = nil
-    self.bornDir = nil
     self.buffAgent = nil
     self.attrAgent = nil
     self.hp = 0
@@ -38,34 +46,26 @@ local function CreateBattler(self)
     InitCharacter(self)
 end
 
-local function InitCharacter(self)
-    self.bornPos = { x = self.data.posx, y = self.data.posy }
-    self.bornDir = self:IsFriendSide() and BattleCommon.FriendSideDir or BattleCommon.EnemySideDir
-    self.character = require "Character.Warrior.Warrior".New(self.battlerId)
-    self:CreateChracterData()
-    self.character:Initialize(self.data, self.bornPos, self.bornDir, Bind(self, self.InitBuffs))
-    self.character:SetFighterId(self.battlerId)
-    self.character:SetName(tostring(self.strName), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME)
-end
-
 local function InitBuffs(self)
     self.buffAgent = require "Battle.Buff.ClientBuffAgent".New(self)
-    for k, v in pairs(self.buffs) do
-        self.buffAgent:InitBuff(k, v)
+    if (self.buffs) then
+        for k, v in ipairs(self.buffs) do
+            self.buffAgent:InitBuff(k, v)
+        end
     end
 end
 
 --是否在战场左下角
 local function IsFriendSide(self)
-    return (self.battlerId <= BattleCommon.FriendMaxID and self.battlerId >= BattleCommon.FriendMinID)
+    return (self.battlerId <= BattleCommon.FriendMaxID) and (self.battlerId >= BattleCommon.FriendMinID)
 end
 
-local function Parse(fighterInfo)
+local function Parse(self, fighterInfo)
     self.battlerId = fighterInfo.index
     self.eBattlerType = fighterInfo.fightertype
     self.hp = fighterInfo.hp
     self.maxhp = fighterInfo.maxhp
-    self:SetShape(fighterInfo.shape)
+    --self:SetShape(fighterInfo.shape)
     self.fighterInfo = fighterInfo
 end
 

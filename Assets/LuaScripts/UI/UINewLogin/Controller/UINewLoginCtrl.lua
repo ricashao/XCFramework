@@ -4,7 +4,6 @@
 --]]
 
 local UINewLoginCtrl = BaseClass("UINewLoginCtrl", UIBaseCtrl)
-local MsgIDMap = require "Net.Config.MsgIDMap"
 
 local function OnConnect(self, sender, result, msg)
     if result < 0 then
@@ -48,10 +47,10 @@ local function LoginServer(self, name, password)
             return
         end
     end
-    if Config.Debug then
-        SceneManager:GetInstance():SwitchScene(SceneConfig.HomeScene)
-        return
-    end
+    --if Config.Debug then
+    --    SceneManager:GetInstance():SwitchScene(SceneConfig.HomeScene)
+    --    return
+    --end
 
     ClientData:GetInstance():SetAccountInfo(name, password)
 

@@ -84,8 +84,8 @@ namespace Networks
                     UnityEngine.Debug.Log("连接关闭");
                 };
 
-                mClientSocket.Connect();
                 mStatus = SOCKSTAT.CONNECTING;
+                mClientSocket.Connect();
             }
             catch (Exception e)
             {

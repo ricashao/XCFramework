@@ -1,0 +1,7 @@
+import "common.proto";
+message TestBattle_C2S_Msg{
+
+}
+message TestBattle_S2C_Msg{
+	optional SendBattlePlay battlePlay = 1;//战斗回放剧本
+}

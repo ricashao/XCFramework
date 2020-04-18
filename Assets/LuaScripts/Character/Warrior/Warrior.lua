@@ -11,22 +11,32 @@ local function Parse(self, fightInfo, pos, dir)
     self.hide = false
 end
 
-local function SetBornPos(pos)
+local function SetBornPos(self)
     local battleScene = BattleManager:GetInstance():GetBattle():GetMapInfo()
-    local screenPt = battleScene:GetBattlePosBySlot(pos.x, pos.y)
+    local screenPt = battleScene:GetBattlePosBySlot(self.pos.x, self.pos.y)
     self:SetLocalPosition(Vector3.New(screenPt.x, screenPt.y, 0))
+end
+
+local function SetBornDir(self)
+    
 end
 
 local function Initialize(self, fighterInfo, pos, dir, cb)
     self:Parse(fighterInfo, pos, dir)
     self.layer = SceneLayer.Battler
     Character.Initialize(self, fighterInfo, pos, dir, cb)
-    SetBornPos(self.pos)
+    SetBornPos(self)
 end
-
+------------- get set end --------------
 local function GetType(self)
     return CHARACTER_TYPE.WARRIOR
 end
+
+local function SetFighterId(self, fighterId)
+    self.fighterId = fighterId;
+end
+
+------------- get set end --------------
 
 local function GetOffsetByPointType(self, pointType)
     pointType = (pointType + self.d) % 4 + 1
@@ -65,6 +75,7 @@ Warrior.MoveInBattle = MoveInBattle
 Warrior.MoveByTime = MoveByTime
 Warrior.Initialize = Initialize
 Warrior.GetType = GetType
+Warrior.SetFighterId = SetFighterId
 Warrior.Parse = Parse
 Warrior.GetPosByIdAndArrivePointType = GetPosByIdAndArrivePointType
 return Warrior

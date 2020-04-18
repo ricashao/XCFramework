@@ -25,8 +25,6 @@ local function __init(self)
     --龙骨模型
     self.shape = nil
 
-    --坐标
-    self.pos = nil
     self.speed = nil
     self.layer = SceneLayer.Character
 
@@ -69,7 +67,7 @@ local function __init(self)
 end
 
 local function Initialize(self, fighterInfo, pos, dir, callback)
-    self.shape = fighterInfo.shape
+    self.shape = string.format("Models/%s/%s.prefab", fighterInfo.shape,fighterInfo.shape)
     self.pos = pos
     self.d = dir
     self.resourceCallBack = callback

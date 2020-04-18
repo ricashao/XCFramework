@@ -100,6 +100,7 @@ EffectManager = require "Framework.Resource.Effect.EffectManager"
 
 -- net
 ServiceName = require "Net.Config.ServiceName"
+MsgIDMap = require "Net.Config.MsgIDMap"
 WsBaseService = require "Framework.Net.Base.WsBaseService"
 WsHallConnector = require "Net.Connector.WsHallConnector"
 
@@ -126,6 +127,7 @@ CharacterUtil = require "Character.CharacterUtil"
 require "Character.CharacterCommon"
 require "Unit.UnitCommon"
 Character = require "Character.Character"
+AttrType = require "Battle.Attr.AttrType"
 
 --battle 
 require "Battle.BattleCommon"

@@ -101,13 +101,13 @@ local function UpdateTransformPos(self)
     if self.handPoint == nil then
         self.handPoint = self.character:GetWorldPosition()
     end
-    
+
     pos1 = self.handPoint + self.offset
 
     pos1 = GameLayerManager:GetInstance().battleCamera:WorldToScreenPoint(pos1)
 
     if self.planeDistance then
-        pos1.z = self.planeDistance
+        pos1.z = self.planeDistance - 100
     end
 
     pos1 = self.camera:ScreenToWorldPoint(pos1)

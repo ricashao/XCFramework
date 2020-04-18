@@ -27,6 +27,9 @@ local function Startup(self)
     local loginService = require("Net.Service.LoginService").New();
     self.serviceMaps[ServiceName.LoginService] = loginService;
     loginService:OnRegister();
+    local commonBattleService = require("Net.Service.CommonBattleService").New();
+    self.serviceMaps[ServiceName.CommonBattleService] = commonBattleService;
+    commonBattleService:OnRegister();
 end
 
 local function OnReceivePackage(self, data)

@@ -25,7 +25,7 @@ local function InitBattleStart(data)
 end
 
 local function InitBattlerData(data)
-    if (this.isBattle == false) then
+    if (isBattle == false) then
         Logger.LogError("BattleManager InitRoundScript warn, not in battle")
     end
     battle:AddBattlerData(data)

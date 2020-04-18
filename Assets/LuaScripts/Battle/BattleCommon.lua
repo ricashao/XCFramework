@@ -9,8 +9,8 @@ BattleCommon = {
     EnemyMinID = 16,
     EnemyMaxID = 29,
 
-    FriendSideDir = 1,
-    EnemySideDir = 3,
+    FriendSideDir = 2,
+    EnemySideDir = 4,
     DefaultSkill = 100001
 }
 
@@ -121,7 +121,7 @@ BattleHitCommon = {
     HitStiff = 1, --正常受击
     HitMiss = 2, --闪避
     HitCrit = 3, --暴击
-    HitDefense = 4, 防御
+    HitDefense = 4, --防御
 }
 
 BattleArrivePointType = {

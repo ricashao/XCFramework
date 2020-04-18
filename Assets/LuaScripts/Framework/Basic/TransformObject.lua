@@ -8,164 +8,164 @@ local TransformObject = BaseClass("TransformObject")
 local function __init(self, obj)
     self.gameObject = obj
     if self.gameObject == nil then
-        self.gameObject = CS.UnityEngine.GameObject(self._class_type.__cname);
+        self.gameObject = CS.UnityEngine.GameObject(self._class_type.__cname)
     end
-    self.transform = self.gameObject.transform;
+    self.transform = self.gameObject.transform
 end
 
 local function __delete(self)
     if self.gameObject ~= nil then
-        CS.UnityEngine.GameObject.Destroy(self.gameObject);
-        self.gameObject = nil;
-        self.transform = nil;
+        CS.UnityEngine.GameObject.Destroy(self.gameObject)
+        self.gameObject = nil
+        self.transform = nil
     end
 end
 
 local function GetInstanceID(self)
-    return self.gameObject:GetInstanceID();
+    return self.gameObject:GetInstanceID()
 end
 
 local function SetWorldPosition(self, position)
-    self.transform.position = position;
+    self.transform.position = position
 end
 
 local function GetWorldPosition(self)
-    return Vector3.New(self.transform.position.x, self.transform.position.y, self.transform.position.z);
+    return Vector3.New(self.transform.position.x, self.transform.position.y, self.transform.position.z)
 end
 
 local function SetLocalPosition(self, position)
-    self.transform.localPosition = position;
+    self.transform.localPosition = position
 end
 
 local function GetLocalPosition(self)
-    return Vector3.New(self.transform.localPosition.x, self.transform.localPosition.y, self.transform.localPosition.z);
+    return Vector3.New(self.transform.localPosition.x, self.transform.localPosition.y, self.transform.localPosition.z)
 end
 
 local function SetWorldRotation(self, rotation)
-    self.transform.rotation = rotation;
+    self.transform.rotation = rotation
 end
 
 local function GetWorldRotation(self)
-    return Quaternion.New(self.transform.rotation.x, self.transform.rotation.y, self.transform.rotation.z, self.transform.rotation.w);
+    return Quaternion.New(self.transform.rotation.x, self.transform.rotation.y, self.transform.rotation.z, self.transform.rotation.w)
 end
 
 local function SetLocalRotation(self, rotation)
-    self.transform.localRotation = rotation;
+    self.transform.localRotation = rotation
 end
 
 local function GetLocalRotation(self)
-    return Quaternion.New(self.transform.localRotation.x, self.transform.localRotation.y, self.transform.localRotation.z, self.transform.localRotation.w);
+    return Quaternion.New(self.transform.localRotation.x, self.transform.localRotation.y, self.transform.localRotation.z, self.transform.localRotation.w)
 end
 
 local function GetRight(self)
-    return self.transform.right;
+    return self.transform.right
 end
 
 local function GetForward(self)
-    return Vector3.New(self.transform.forward.x, self.transform.forward.y, self.transform.forward.z);
+    return Vector3.New(self.transform.forward.x, self.transform.forward.y, self.transform.forward.z)
 end
 
 local function GetUp(self)
-    return self.transform.up;
+    return self.transform.up
 end
 
 local function SetWorldEulerAngles(self, eulerAngles)
-    self.transform.eulerAngles = eulerAngles;
+    self.transform.eulerAngles = eulerAngles
 end
 
 local function GetWorldEulerAngles(self)
-    return self.transform.eulerAngles;
+    return self.transform.eulerAngles
 end
 
 local function SetLocalEulerAngles(self, eulerAngles)
-    self.transform.localEulerAngles = eulerAngles;
+    self.transform.localEulerAngles = eulerAngles
 end
 
 local function GetLocalEulerAngles(self)
-    return self.transform.localEulerAngles;
+    return self.transform.localEulerAngles
 end
 
 local function LookAtTarget(self, target)
-    return self.transform:LookAt(target);
+    return self.transform:LookAt(target)
 end
 --vector3
 local function SetScale(self, scale)
     if scale.x > 0.0 and scale.y > 0.0 and scale.z > 0.0 then
-        self.transform.localScale = scale;
+        self.transform.localScale = scale
     end
 end
 
 local function GetLocalToWorldMatrix(self)
-    return self.transform.localToWorldMatrix;
+    return self.transform.localToWorldMatrix
 end
 
 local function GetWorldToLocalMatrix(self)
-    return self.transform.worldToLocalMatrix;
+    return self.transform.worldToLocalMatrix
 end
 
 local function GetParent(self)
-    return self.transform.parent;
+    return self.transform.parent
 end
 
 local function SetParent(self, parent)
-    self.transform.parent = parent;
-    self:SetLocalPosition(Vector3.zero);
-    self:SetLocalRotation(Quaternion.identity);
-    self:SetScale(Vector3.one);
+    self.transform:SetParent(parent,false)
+    self:SetLocalPosition(Vector3.zero)
+    self:SetLocalRotation(Quaternion.identity)
+    self:SetScale(Vector3.one)
 end
 
 local function GetChildCount(self)
-    return self.transform.childCount;
+    return self.transform.childCount
 end
 
 function AttachChild(self, child, position, rotation)
     if child == nil then
-        return false;
+        return false
     end
     child.parent = self.transform;
-    child.localScale = Vector3.one;
+    child.localScale = Vector3.one
 
     if position ~= nil then
-        child.localPosition = position;
+        child.localPosition = position
     else
-        child.localPosition = Vector3.zero;
+        child.localPosition = Vector3.zero
     end
     if rotation ~= nil then
-        child.localRotation = rotation;
+        child.localRotation = rotation
     else
-        child.localRotation = Quaternion.identity;
+        child.localRotation = Quaternion.identity
     end
-    return true;
+    return true
 end
 
 local function DetachChild(self, child)
     if child ~= nil then
-        child.parent = nil;
+        child.parent = nil
     end
 end
 
 local function TranslateTo(self, position, time)
     -- if time > 0 then
     -- end
-    self:SetWorldPosition(position);
+    self:SetWorldPosition(position)
 end
 
 local function RotateTo(self, dir, up)
     -- if time > 0 then
     -- end
-    self:SetWorldRotation(Quaternion.LookRotation(dir, up));
+    self:SetWorldRotation(Quaternion.LookRotation(dir, up))
 end
 
 local function RotateToQua(self, rotation)
-    self:SetWorldRotation(rotation);
+    self:SetWorldRotation(rotation)
 end
 
 local function SetActive(self, active)
-    self.gameObject:SetActive(active);
+    self.gameObject:SetActive(active)
 end
 
 local function GetActive(self)
-    return self.gameObject.activeSelf;
+    return self.gameObject.activeSelf
 end
 
 
@@ -208,6 +208,5 @@ TransformObject.RotateToQua = RotateToQua
 TransformObject.SetActive = SetActive
 TransformObject.GetActive = GetActive
 TransformObject.Tick = Tick
-
 
 return TransformObject

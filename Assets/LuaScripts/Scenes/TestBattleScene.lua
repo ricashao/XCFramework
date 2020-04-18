@@ -31,30 +31,23 @@ end
 local function OnComplete(self)
     base.OnComplete(self)
     InputTouch:GetInstance():SetCamera(GameLayerManager:GetInstance().battleCamera)
-    TestGlobal.battleScene = require("Battle.Scene.BattleScenePlane").New()
-    TestGlobal.battleScene:InitScene()
-    -- 创建角色
-    testCharacter = require "Character.Warrior.Warrior".New()
-    testCharacter:Initialize({ shape = chara_res_path }, { x = 4, y = 4 }, 3, function()
-        testCharacter.transform:SetParent(TestGlobal.battleScene.planeBackground.transform, false)
-        UIManager:GetInstance():OpenWindow(UIWindowNames.UIBattleMain)
-    end)
-    testCharacter:SetName(tostring("testname"), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME);
-    testCharacter:MoveInBattle({ { x = 4, y = 5 }, { x = 4, y = 6 }, { x = 5, y = 6 }, { x = 4, y = 6 }, { x = 4, y = 5 } }, Bind(self, self.TestSpeak))
-    
-end
-
-local function TestSpeak(self)
-    print("move callback")
-    testCharacter:Speak("wahahaahahahhahha")
-    --local target = battleScene:GetBattlePos(test)
-    --TweenNano.Create(0.3, testCharacter, { x = target.x, y = target.y }, "linear")
+    BattleManager:GetInstance():Start()
+    UIManager:GetInstance():OpenWindow(UIWindowNames.UIBattleMain)
+    --TestGlobal.battleScene = require("Battle.Scene.BattleScenePlane").New()
+    --TestGlobal.battleScene:InitScene()
+    ---- 创建角色
+    --testCharacter = require "Character.Warrior.Warrior".New()
+    --testCharacter:Initialize({ shape = chara_res_path }, { x = 4, y = 4 }, 3, function()
+    --    testCharacter.transform:SetParent(TestGlobal.battleScene.planeBackground.transform, false)
+    --end)
+    --testCharacter:SetName(tostring("testname"), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME);
+    --testCharacter:MoveInBattle({ { x = 4, y = 5 }, { x = 4, y = 6 }, { x = 5, y = 6 }, { x = 4, y = 6 }, { x = 4, y = 5 } }, Bind(self, self.TestSpeak))
+    --
 end
 
 -- 离开场景
 local function OnLeave(self)
     self.charaAnim = nil
-    testCharacter:Delete()
     UIManager:GetInstance():CloseWindow(UIWindowNames.UIBattleMain)
     base.OnLeave(self)
 end
@@ -62,6 +55,5 @@ end
 TestBattleScene.OnCreate = OnCreate
 TestBattleScene.OnComplete = OnComplete
 TestBattleScene.OnLeave = OnLeave
-TestBattleScene.TestSpeak = TestSpeak
 
 return TestBattleScene;

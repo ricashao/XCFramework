@@ -17,7 +17,7 @@ end
 
 local function Init(self)
     InjectState(self, require "Battle.State.AIBeforeEndState".New())
-    InjectState(self, require "Battle.State.AIBeforeOpeState".New())
+    InjectState(self, require "Battle.State.AIBeforeShowState".New())
     InjectState(self, require "Battle.State.BeginState".New())
     InjectState(self, require "Battle.State.ShowState".New())
     InjectState(self, require "Battle.State.WaitEndState".New())
@@ -43,7 +43,7 @@ local function InitState(self)
     self:SetStateByName(BattleState.eBattleStateBegin)
 end
 
-local function SetStateByName(stateName)
+local function SetStateByName(self, stateName)
     if self.curState ~= nil then
         self:Leave()
     end
@@ -62,7 +62,6 @@ end
 local function TriggerEvent(self, eventName)
     self.curState:TriggerEvent(eventName, self)
 end
-
 
 BattleStateContext.__init = __init
 BattleStateContext.GetStateByStateName = GetStateByStateName
