@@ -11,14 +11,34 @@ local function Parse(self, fightInfo, pos, dir)
     self.hide = false
 end
 
+local function SetBornPos(pos)
+    local battleScene = BattleManager:GetInstance():GetBattle():GetMapInfo()
+    local screenPt = battleScene:GetBattlePosBySlot(pos.x, pos.y)
+    self:SetLocalPosition(Vector3.New(screenPt.x, screenPt.y, 0))
+end
+
 local function Initialize(self, fighterInfo, pos, dir, cb)
     self:Parse(fighterInfo, pos, dir)
     self.layer = SceneLayer.Battler
     Character.Initialize(self, fighterInfo, pos, dir, cb)
+    SetBornPos(self.pos)
 end
 
 local function GetType(self)
     return CHARACTER_TYPE.WARRIOR
+end
+
+local function GetOffsetByPointType(self, pointType)
+    pointType = (pointType + self.d) % 4 + 1
+    if (pointType == BattleArrivePointType.Front) then
+        return { x = 0.25, y = 0.12 }
+    elseif (pointType == BattleArrivePointType.Behind) then
+        return { x = 0.25, y = -0.12 }
+    elseif (pointType == BattleArrivePointType.Left) then
+        return { x = -0.25, y = -0.12 }
+    else
+        return { x = -0.25, y = 0.12 }
+    end
 end
 
 ------------ 移动相关 Begin -----------
@@ -30,7 +50,13 @@ end
 
 --- 被动移动时使用
 local function MoveByTime(self, destpos, time, cb)
+    TweenNano.Create(time, unit, { x = destpos.x, y = destpos.y }, "linear", nil, cb)
+end
 
+local function GetPosByIdAndArrivePointType(self, pointType, xishu)
+    local pos = self:GetRealPos()
+    local dir = GetOffsetByPointType(self, pointType)
+    return { x = pos.x + dir.x * xishu, y = pos.y + dir.y * xishu }
 end
 
 ------------  移动相关 End   ----------
@@ -40,4 +66,5 @@ Warrior.MoveByTime = MoveByTime
 Warrior.Initialize = Initialize
 Warrior.GetType = GetType
 Warrior.Parse = Parse
+Warrior.GetPosByIdAndArrivePointType = GetPosByIdAndArrivePointType
 return Warrior

@@ -164,7 +164,7 @@ Battler.DealActionWithBattleResult = DealActionWithBattleResult
 Battler.FlyOut = FlyOut
 
 Battler.GetCharacter = GetCharacter
-Battler.GetCharacter = GetBuffAgent
-Battler.GetCharacter = GetAttrAgent
+Battler.GetBuffAgent = GetBuffAgent
+Battler.GetAttrAgent = GetAttrAgent
 Battler.IsDeath = IsDeath
 return Battler

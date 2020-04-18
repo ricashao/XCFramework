@@ -108,7 +108,6 @@ local function CharacterLoadedEnd(self, pfb)
 end
 
 local function DispatchEvent(self, type, eventObject)
-    print("event" .. eventObject.name)
     if (currentAction) then
         currentAction:DispatchEvent(self, eventObject.name)
     end
@@ -293,6 +292,15 @@ end
 
 ----------------------- Set and Get 成员变量 End   --------------------------------
 
+---------------------------- 添加特效 --------------------------------
+local function AddToHalo(self, ani)
+    self.model:AddChild(CharacterHandPoint.Halo, ani)
+end
+
+local function AddToBodyBuff(self, ani)
+    self.model:AddChild(CharacterHandPoint.Body, ani)
+end
+
 ----------------------------战斗相关显示 ---------------------------------
 local function SetName(self, name, cameraLayer, hudType)
     if not self.hudAgent then
@@ -325,6 +333,8 @@ Character.Speak = Speak
 Character.Update = Update
 Character.SetName = SetName
 Character.__delete = __delete
+Character.AddToBodyBuff = AddToBodyBuff
+Character.AddToHalo = AddToHalo
 
 Character.IsVisible = IsVisible
 Character.GetType = GetType

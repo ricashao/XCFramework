@@ -105,7 +105,7 @@ local function LateTick(self, delta)
         return false
     end
 
-    pos1 = self.handPoint + OFFSET
+    local pos1 = self.handPoint + OFFSET
 
     pos1 = GameLayerManager:GetInstance().battleCamera:WorldToScreenPoint(pos1)
 

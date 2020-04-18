@@ -20,4 +20,6 @@ CharacterHandPoint = {
     TopText = "toptext",
     Center = "center",
     Bottom = "bottom",
+    Halo = "halo",
+    Body = "body",
 }

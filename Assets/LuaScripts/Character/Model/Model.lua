@@ -46,7 +46,14 @@ local function GetHandPos(self, name)
     return Vector3.zero
 end
 
+local function AddChild(self, name, child)
+    if self.allHandPointTransform[name] ~= nil then
+        child:SetParent(self.allHandPointTransform[name], false)
+    end
+end
+
 Model.__init = __init
 Model.GetHandPos = GetHandPos
+Model.AddChild = AddChild
 
 return Model

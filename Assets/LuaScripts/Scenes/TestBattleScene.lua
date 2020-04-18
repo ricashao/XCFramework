@@ -41,6 +41,7 @@ local function OnComplete(self)
     end)
     testCharacter:SetName(tostring("testname"), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME);
     testCharacter:MoveInBattle({ { x = 4, y = 5 }, { x = 4, y = 6 }, { x = 5, y = 6 }, { x = 4, y = 6 }, { x = 4, y = 5 } }, Bind(self, self.TestSpeak))
+    
 end
 
 local function TestSpeak(self)

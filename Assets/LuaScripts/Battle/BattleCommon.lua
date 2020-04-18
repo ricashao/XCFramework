@@ -93,27 +93,42 @@ NewDemoResult = {
 }
 
 BattleResult = {}
-BattleResult.eBattleResultHPChange	= CS.BitOperator.lMove(1, 0)	--生命值变化
-BattleResult.eBattleResultMPChange	= CS.BitOperator.lMove(1, 1)	--魔法值变化
-BattleResult.eBattleResultDefence	= CS.BitOperator.lMove(1, 2)	--目标防御
-BattleResult.eBattleResultDodge		= CS.BitOperator.lMove(1, 3)	--目标闪避
-BattleResult.eBattleResultDeath		= CS.BitOperator.lMove(1, 4)	--标死亡，倒在原地(现在只有人可以这样)
-BattleResult.eBattleResultSummonback= CS.BitOperator.lMove(1, 5)	--目标被召回
-BattleResult.eBattleResultRunaway	= CS.BitOperator.lMove(1, 6)	--目标逃跑
-BattleResult.eBattleResultSeized	= CS.BitOperator.lMove(1, 7)	--目标被捕捉
-BattleResult.eBattleResultRelive	= CS.BitOperator.lMove(1, 8)	--目标被复活
-BattleResult.eBattleResultSummon	= CS.BitOperator.lMove(1, 9)	--目标被召唤
-BattleResult.eBattleResultRest		= CS.BitOperator.lMove(1, 10)  --目标休息
-BattleResult.eBattleResultULHPChange= CS.BitOperator.lMove(1, 11)	--目标当前血上限变化
-BattleResult.eBattleResultFlyOut	= CS.BitOperator.lMove(1, 12)	--目标被击飞
-BattleResult.eBattleResultGhost		= CS.BitOperator.lMove(1, 13)	--目标进入鬼魂状态
-BattleResult.eBattleResultParry		= CS.BitOperator.lMove(1, 14)	--目标招架 (崩击标志位)
-BattleResult.eBattleResultCritic	= CS.BitOperator.lMove(1, 15)	--目标被暴击
-BattleResult.eBattleResultSPChange	= CS.BitOperator.lMove(1, 16)	--目标怒气变化
-BattleResult.eBattleResultShowInfo	= CS.BitOperator.lMove(1, 17)	--目标信息显示，使用明镜草
-BattleResult.eBattleResultRiseHalf	= CS.BitOperator.lMove(1, 18)	--目标倒地后原地复活（半血半蓝）
-BattleResult.eBattleResultRiseFull	= CS.BitOperator.lMove(1, 19)	--目标倒地后原地复活（满血满蓝）
-BattleResult.eBattleResultImmunity	= CS.BitOperator.lMove(1, 20)	--免疫
-BattleResult.eBattleResultDeadRelive= CS.BitOperator.lMove(1, 21)  --被动复活
+BattleResult.eBattleResultHPChange = CS.BitOperator.lMove(1, 0)    --生命值变化
+BattleResult.eBattleResultMPChange = CS.BitOperator.lMove(1, 1)    --魔法值变化
+BattleResult.eBattleResultDefence = CS.BitOperator.lMove(1, 2)    --目标防御
+BattleResult.eBattleResultDodge = CS.BitOperator.lMove(1, 3)    --目标闪避
+BattleResult.eBattleResultDeath = CS.BitOperator.lMove(1, 4)    --标死亡，倒在原地(现在只有人可以这样)
+BattleResult.eBattleResultSummonback = CS.BitOperator.lMove(1, 5)    --目标被召回
+BattleResult.eBattleResultRunaway = CS.BitOperator.lMove(1, 6)    --目标逃跑
+BattleResult.eBattleResultSeized = CS.BitOperator.lMove(1, 7)    --目标被捕捉
+BattleResult.eBattleResultRelive = CS.BitOperator.lMove(1, 8)    --目标被复活
+BattleResult.eBattleResultSummon = CS.BitOperator.lMove(1, 9)    --目标被召唤
+BattleResult.eBattleResultRest = CS.BitOperator.lMove(1, 10)  --目标休息
+BattleResult.eBattleResultULHPChange = CS.BitOperator.lMove(1, 11)    --目标当前血上限变化
+BattleResult.eBattleResultFlyOut = CS.BitOperator.lMove(1, 12)    --目标被击飞
+BattleResult.eBattleResultGhost = CS.BitOperator.lMove(1, 13)    --目标进入鬼魂状态
+BattleResult.eBattleResultParry = CS.BitOperator.lMove(1, 14)    --目标招架 (崩击标志位)
+BattleResult.eBattleResultCritic = CS.BitOperator.lMove(1, 15)    --目标被暴击
+BattleResult.eBattleResultSPChange = CS.BitOperator.lMove(1, 16)    --目标怒气变化
+BattleResult.eBattleResultShowInfo = CS.BitOperator.lMove(1, 17)    --目标信息显示，使用明镜草
+BattleResult.eBattleResultRiseHalf = CS.BitOperator.lMove(1, 18)    --目标倒地后原地复活（半血半蓝）
+BattleResult.eBattleResultRiseFull = CS.BitOperator.lMove(1, 19)    --目标倒地后原地复活（满血满蓝）
+BattleResult.eBattleResultImmunity = CS.BitOperator.lMove(1, 20)    --免疫
+BattleResult.eBattleResultDeadRelive = CS.BitOperator.lMove(1, 21)  --被动复活
 BattleResult.eBattleResultMax = 22
+
+BattleHitCommon = {
+    HitStiff = 1, --正常受击
+    HitMiss = 2, --闪避
+    HitCrit = 3, --暴击
+    HitDefense = 4, 防御
+}
+
+BattleArrivePointType = {
+    Front = 1,
+    Behind = 2,
+    Left = 3,
+    Right = 4,
+};
+
 

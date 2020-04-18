@@ -134,13 +134,19 @@ BattleManager = require "Battle.BattleManager"
 
 --show
 BattleShowUnit = require "Battle.Show.Unit.BattleShowUnit"
+BattleHit = require "Battle.Hit.BattleHit"
 
 --unit action
 GUnitAction = require "Unit.Actions.GUnitAction"
+AttackAction = require "Unit.Actions.AttackAction"
 UnitActionManager = require "Unit.UnitActionManager"
+
+--battle effect
+AniController = require "Battle.AniController"
 
 --Utils
 FaceToUtils = require "Utils.FaceToUtils"
+EfDecode = require "Utils.EfDecode"
 
 
 
