@@ -56,7 +56,7 @@ local function GetCamera(self, cameraLayerName)
     if not cameraLayerName then
         return
     end
-    
+
     local cameraLayer = self.layers[cameraLayerName]
     if not cameraLayer then
         return
@@ -79,16 +79,18 @@ local function GetCameraLayerPlaneDistance(self, cameraLayerName)
     return cameraLayer:GetPlaneDistance()
 end
 
-local function AddGameObjectToCameraLayer(self,go, cameraLayerName)
+local function AddGameObjectToCameraLayer(self, go, cameraLayerName)
     if (not go) or (not cameraLayerName) then
-        return;
+        return ;
     end
 
     local cameraLayer = self.layers[cameraLayerName];
 
     if not cameraLayer then
-        if error then error("CameraLayerManager AddGameObjectToCameraLayer cameraLayer " .. cameraLayerName .. " is not exist") end;
-        return;
+        if error then
+            error("CameraLayerManager AddGameObjectToCameraLayer cameraLayer " .. cameraLayerName .. " is not exist")
+        end ;
+        return ;
     end
     go.transform:SetParent(cameraLayer.transform, false)
 end

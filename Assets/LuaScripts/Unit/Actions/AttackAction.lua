@@ -8,7 +8,7 @@ AttackAction._creators = nil
 
 function AttackAction.GetCreator(id)
     if (AttackAction._creators) then
-        AttackAction._creators["1"] = require "Battle.Skills.Operator.Op1"
+        AttackAction._creators["1"] = require "Skills.Operator.Op1"
     end
 end
 

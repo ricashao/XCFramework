@@ -23,3 +23,13 @@ CharacterHandPoint = {
     Halo = "halo",
     Body = "body",
 }
+
+CHARACTER_POPUP_TYPE = {
+    NONE = 0,
+    HP = 1, -- 掉血
+    SKILL_NAME = 2, -- 技能名
+    PHY_CRIT = 3, -- 物理暴击
+    SPELL_CRIT = 4, -- 法术暴击
+    DODGE = 5, -- 闪避
+
+}

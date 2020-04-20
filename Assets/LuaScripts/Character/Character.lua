@@ -67,7 +67,7 @@ local function __init(self)
 end
 
 local function Initialize(self, fighterInfo, pos, dir, callback)
-    self.shape = string.format("Models/%s/%s.prefab", fighterInfo.shape,fighterInfo.shape)
+    self.shape = string.format("Models/%s/%s.prefab", fighterInfo.shape, fighterInfo.shape)
     self.pos = pos
     self.d = dir
     self.resourceCallBack = callback
@@ -87,12 +87,10 @@ local function CharacterLoadedEnd(self, pfb)
     self.pfb = pfb
     pfb.transform.position = Vector3.zero
     pfb.transform:SetParent(self.transform, false);
-    -- todo 临时注释
     self.model = require "Character.Model.Model".New(self)
     self.initResourceOK = true
 
     -- self.hide为false表示默认不隐藏
-    -- todo 临时注释
     self:SetVisible(not self.hide)
 
     self:RefreshCharacterView()
@@ -314,6 +312,18 @@ local function Speak(self, message)
     end
 end
 
+local function AddSkillAttrInBattle(self, skillAttr)
+    if self.hudAgent then
+        self.hudAgent:AddSkillAttrInBattle(skillAttr)
+    end
+end
+
+local function RemoveSkillAttrInBattle(self, skillAttr)
+    if self.hudAgent then
+        self.hudAgent:RemoveSkillAttrInBattle(skillAttr)
+    end
+end
+
 Character.__init = __init
 Character.Initialize = Initialize
 Character.CharacterLoadedEnd = CharacterLoadedEnd
@@ -333,6 +343,8 @@ Character.SetName = SetName
 Character.__delete = __delete
 Character.AddToBodyBuff = AddToBodyBuff
 Character.AddToHalo = AddToHalo
+Character.AddSkillAttrInBattle = AddSkillAttrInBattle
+Character.RemoveSkillAttrInBattle = RemoveSkillAttrInBattle
 
 Character.IsVisible = IsVisible
 Character.GetType = GetType

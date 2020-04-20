@@ -11,10 +11,16 @@ SkillShowType.Illusion = 2
 
 local function InitBasicCfg(self)
     self.battler = BattleManager:GetInstance():GetBattle():FindBattlerByID(self.battlerId)
+    --todo 暂时不做幻影技能
+    --todo 获取技能配置
+    --local skill = getInstance(SkillDB).getSkillCfgById(this.skillId)
+    --self.isLoop = skill.isLoopAs
+
 end
 
 local function __init(self, battlerId, aimId, skillId, execute, unitResult, endCallback)
     self.battlerId = battlerId
+    self.battler = nil
     self.aimId = aimId
     self.skillId = skillId
     --是否是循环技能
@@ -27,5 +33,38 @@ local function __init(self, battlerId, aimId, skillId, execute, unitResult, endC
     InitBasicCfg(self)
 end
 
+local function ShowBattleSkill(self)
+    self:RefreshSkillAttr()
+    self:ShowSkillBanner()
+    self:ShowSkill()
+end
+
+local function RefreshSkillAttr(self)
+    self.battler:UpdateHp(self.execute.hpConsume)
+end
+
+--表现技能banner 暂时不做 没钱
+local function ShowSkillBanner(self)
+
+end
+
+local function ShowSkill(self)
+    if self.showSkillType == SkillShowType.Normal then
+        --正常技能
+        local skillNormal = require "Battle.Skill.BattleSkill_Normal".New(self.battlerId, self.aimId, self.skillId, self.isLoop, self.unitResult, self.endCallback)
+        skillNormal:Show()
+    elseif self.showSkillType == SkillShowType.Illusion then
+        --幻影技能
+        --local skillIllusion = require("Battle.Skill.BattleSkill_Illusion").New(self.battlerId, self.skillId, self.illusionSkillId, self.isLoop, self.unitResult, self.endCallback)
+        --skillIllusion:Show()
+    else
+        Logger.Log("BattleSkill ShowSkill Type Error")
+    end
+end
+
 BattleSkill.__init = __init
+BattleSkill.ShowBattleSkill = ShowBattleSkill
+BattleSkill.RefreshSkillAttr = RefreshSkillAttr
+BattleSkill.ShowSkillBanner = ShowSkillBanner
+BattleSkill.ShowSkill = ShowSkill
 return BattleSkill

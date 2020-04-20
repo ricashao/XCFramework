@@ -90,8 +90,8 @@ end
 --飘血的逻辑
 local function ChangeHp(self, character, hpValue, popupType)
     if hpValue ~= nil or popupType == CHARACTER_POPUP_TYPE.DODGE then
-        local skillAttr = UISkillAttr.New(character, UILayersA.GuiCamera_1_2.NAME)
-        skillAttr:SetUISkillAttr(hpValue, popupType);
+        local skillAttr = require "Logic.Character.UISkillAttr".New(character, UILayers.GuiCamera_1_2.NAME)
+        skillAttr:SetUISkillAttr(hpValue, popupType)
     end
 end
 

@@ -20,6 +20,9 @@ local function __init(self, character)
     self.uiName = nil
     self.uiChat = nil
 
+    self.battleHps = {};
+
+
 end
 
 -- 设置名字
@@ -81,6 +84,13 @@ local function SetVisible(self, visible)
     if self.uiChat then
         self.uiChat:SetVisible(visible)
     end
+
+    for _, uihp in pairs(self.battleHps) do
+        if uihp then
+            uihp:SetVisible(visible)
+        end
+    end
+
 end
 
 local function LateTick(self, delta)
@@ -90,6 +100,27 @@ local function LateTick(self, delta)
 
     if self.uiChat and (self.uiChat:IsVisible()) then
         self.uiChat:LateTick(delta)
+    end
+
+    for _, uihp in pairs(self.battleHps) do
+        if uihp then
+            uihp:LateTick(delta)
+        end
+    end
+end
+
+function M:AddSkillAttrInBattle(hpUi)
+    local hpKey = tostring(hpUi)
+    if self.battleHps[hpKey] == nil then
+        self.battleHps[hpKey] = hpUi
+    end
+end
+
+function M:RemoveSkillAttrInBattle(hpUi)
+    local hpKey = tostring(hpUi)
+    if self.battleHps[hpKey] ~= nil then
+        self.battleHps[hpKey]:Delete()
+        self.battleHps[hpKey] = nil
     end
 end
 
@@ -101,6 +132,14 @@ local function __delete(self)
     if self.uiChat then
         self.uiChat:Delete()
     end
+
+    for _, uihp in pairs(self.battleHps) do
+        if uihp then
+            uihp:Destroy()
+            uihp = nil
+        end
+    end
+    self.battleHps = {}
 end
 
 HudAgent.__init = __init
