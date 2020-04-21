@@ -1,0 +1,15 @@
+info face="Arial" size=32 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1 outline=0
+common lineHeight=32 base=26 scaleW=128 scaleH=128 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="Font_Num_03.png"
+chars count=10
+char id=48   x=33    y=67    width=30    height=31    xoffset=0     yoffset=0     xadvance=30    page=0  chnl=15
+char id=49   x=89    y=33    width=21    height=32    xoffset=0     yoffset=0     xadvance=21    page=0  chnl=15
+char id=50   x=32    y=0     width=31    height=32    xoffset=0     yoffset=0     xadvance=31    page=0  chnl=15
+char id=51   x=64    y=0     width=29    height=32    xoffset=0     yoffset=0     xadvance=29    page=0  chnl=15
+char id=52   x=0     y=0     width=31    height=33    xoffset=0     yoffset=0     xadvance=31    page=0  chnl=15
+char id=53   x=94    y=0     width=29    height=32    xoffset=0     yoffset=0     xadvance=29    page=0  chnl=15
+char id=54   x=0     y=34    width=29    height=32    xoffset=0     yoffset=0     xadvance=29    page=0  chnl=15
+char id=55   x=60    y=33    width=28    height=32    xoffset=0     yoffset=0     xadvance=28    page=0  chnl=15
+char id=56   x=0     y=67    width=32    height=31    xoffset=0     yoffset=0     xadvance=32    page=0  chnl=15
+char id=57   x=30    y=34    width=29    height=32    xoffset=0     yoffset=0     xadvance=29    page=0  chnl=15
+kernings count=0

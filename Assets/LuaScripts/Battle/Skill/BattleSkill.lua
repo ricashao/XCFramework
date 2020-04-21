@@ -43,9 +43,10 @@ local function RefreshSkillAttr(self)
     self.battler:UpdateHp(self.execute.hpConsume)
 end
 
---表现技能banner 暂时不做 没钱
+--表现技能banner
 local function ShowSkillBanner(self)
-
+    local skillAttr = require "Logic.Character.UISkillAttr".New(self.battler:GetCharacter(), UILayers.GuiCamera_1_2.Name)
+    skillAttr:SetUISkillAttr(self.skillName, CHARACTER_POPUP_TYPE.SKILL_NAME)
 end
 
 local function ShowSkill(self)
