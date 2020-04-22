@@ -65,11 +65,14 @@ public class GameLaunch : MonoBehaviour
 
     IEnumerator InitAppVersion()
     {
+        //获取streamingassets下的app_version.bytes
         var appVersionRequest = AssetBundleManager.Instance.RequestAssetFileAsync(BuildUtils.AppVersionFileName);
         yield return appVersionRequest;
         var streamingAppVersion = appVersionRequest.text;
+        //非ab资源主动回收
         appVersionRequest.Dispose();
 
+        //获取persistentpath下的app_version.bytes
         var appVersionPath = AssetBundleUtility.GetPersistentDataPath(BuildUtils.AppVersionFileName);
         var persistentAppVersion = GameUtility.SafeReadAllText(appVersionPath);
         Logger.Log(string.Format("streamingAppVersion = {0}, persistentAppVersion = {1}", streamingAppVersion, persistentAppVersion));
@@ -97,6 +100,7 @@ public class GameLaunch : MonoBehaviour
         yield return channelNameRequest;
         var channelName = channelNameRequest.text;
         channelNameRequest.Dispose();
+        //创建渠道
         ChannelManager.instance.Init(channelName);
         Logger.Log(string.Format("channelName = {0}", channelName));
         yield break;

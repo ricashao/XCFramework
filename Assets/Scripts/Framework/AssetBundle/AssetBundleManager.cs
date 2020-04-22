@@ -93,8 +93,8 @@ namespace AssetBundles
             manifest = new Manifest();
             assetsPathMapping = new AssetsPathMapping();
             // 说明：同时请求资源可以提高加载速度
-            var manifestRequest = RequestAssetBundleAsync(manifest.AssetbundleName);
-            var pathMapRequest = RequestAssetBundleAsync(assetsPathMapping.AssetbundleName);
+            var manifestRequest = RequestAssetBundleAsync(manifest.AssetbundleName);//AssetBundles
+            var pathMapRequest = RequestAssetBundleAsync(assetsPathMapping.AssetbundleName);//assetsmap_bytes
 
             yield return manifestRequest;
             var assetbundle = manifestRequest.assetbundle;
