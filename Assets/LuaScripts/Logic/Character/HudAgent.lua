@@ -109,14 +109,14 @@ local function LateTick(self, delta)
     end
 end
 
-function M:AddSkillAttrInBattle(hpUi)
+function AddSkillAttrInBattle(self,hpUi)
     local hpKey = tostring(hpUi)
     if self.battleHps[hpKey] == nil then
         self.battleHps[hpKey] = hpUi
     end
 end
 
-function M:RemoveSkillAttrInBattle(hpUi)
+function RemoveSkillAttrInBattle(self,hpUi)
     local hpKey = tostring(hpUi)
     if self.battleHps[hpKey] ~= nil then
         self.battleHps[hpKey]:Delete()
@@ -147,5 +147,7 @@ HudAgent.SetName = SetName
 HudAgent.SetChat = SetChat
 HudAgent.SetVisible = SetVisible
 HudAgent.LateTick = LateTick
+HudAgent.AddSkillAttrInBattle = AddSkillAttrInBattle
+HudAgent.RemoveSkillAttrInBattle = RemoveSkillAttrInBattle
 HudAgent.__delete = __delete
 return HudAgent;
