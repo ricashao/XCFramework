@@ -6,7 +6,7 @@
 local BattleSkill_Normal = BaseClass("BattleSkill_Normal")
 
 --@params unitResult: RoundResultUnit[]
-function __init(battlerId, aimId, skillId, isLoop, unitResult, callBack)
+function __init(self, battlerId, aimId, skillId, isLoop, unitResult, callBack)
     self.battlerId = battlerId or 0
     self.skillId = skillId or 0
     self.isLoop = isLoop or false

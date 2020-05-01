@@ -12,7 +12,7 @@ local CRIT_IMG = {
     SPELL = 1;
 }
 
-local fullpath = "UI/Prefabs/Model/Win_SomethFly_Text"
+local fullpath = "UI/Prefabs/Model/Win_SomethFly_Text.prefab"
 local hp_text_path = "et_text"
 local green_hp_text_path = "et_text_green"
 local skillname_text_path = "et_skillName"

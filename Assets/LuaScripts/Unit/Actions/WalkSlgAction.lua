@@ -41,7 +41,8 @@ local function RealTween(self, unit)
     local node = self._movePath[step]
     local pos = BattleManager:GetInstance():GetBattle():GetMapInfo():GetBattlePosBySlot(node.x, node.y)
     local unitpos = unit:GetRealPos()
-    if unitpos.x == node.x and unitpos.y == node.y then
+    local battlepos = unit:GetBattlePos()
+    if battlepos.x == node.x and battlepos.y == node.y then
         self:RealTween(unit, cb)
     else
         local faceto = FaceToUtils.GetFaceTo4(unitpos.x, unitpos.y, pos.x, pos.y, unit:FaceTo())

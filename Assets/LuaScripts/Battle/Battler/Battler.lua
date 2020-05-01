@@ -122,7 +122,7 @@ end
 
 local function UpdateHp(self, changeHp)
     local attrValues = {}
-    attrValues[ATTR_TYPE.HP] = changeHp
+    attrValues[AttrType.HP] = changeHp
     self.attrAgent:UpdateAttrs(attrValues)
     --todo 更新血量
 end

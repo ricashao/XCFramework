@@ -113,7 +113,8 @@ local function BuildBattleShowUnit(self)
             self.curExecute.operatorId = BattleCommon.DefaultSkill
         end
 
-        self.curBattleSkill = require("Battle.Skill.BattleSkill").New(self.curExecute.operatorId, self.curExecute, self.curUnitResult, BindCallback(self, self.CurrentSkillEnd))
+        self.curBattleSkill = require("Battle.Skill.BattleSkill").New(self.curExecute.attackerId, self.curExecute.aimId,
+                self.curExecute.operatorId, self.curExecute, self.curUnitResult, BindCallback(self, self.CurrentSkillEnd))
         self.curBattleSkill:ShowBattleSkill()
         --self.curBattleHit = require("Battle.Hit.BattleHit").New(self.CurrentActionUnitHitFinish, self)
 

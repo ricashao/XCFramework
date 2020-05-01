@@ -32,6 +32,14 @@ local function SetFighterId(self, fighterId)
     self.fighterId = fighterId;
 end
 
+local function GetBattlePos(self)
+    return self.pos
+end
+
+local function SetBattlePos(self, pos)
+    self.pos = pos
+end
+
 ------------- get set end --------------
 
 local function GetOffsetByPointType(self, pointType)
@@ -73,5 +81,7 @@ Warrior.Initialize = Initialize
 Warrior.GetType = GetType
 Warrior.SetFighterId = SetFighterId
 Warrior.Parse = Parse
+Warrior.GetBattlePos = GetBattlePos
+Warrior.SetBattlePos = SetBattlePos
 Warrior.GetPosByIdAndArrivePointType = GetPosByIdAndArrivePointType
 return Warrior
