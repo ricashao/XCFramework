@@ -71,7 +71,7 @@ local function EffectLoadedEnd(self, pfb)
 end
 
 local function StartUnitAction(self)
-    self._uRender.animation:Play("idle")
+    self._uRender.animation:Play("a0")
 end
 
 local function __delete(self)

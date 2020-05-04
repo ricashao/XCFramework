@@ -43,13 +43,13 @@ end
 ------------- get set end --------------
 
 local function GetOffsetByPointType(self, pointType)
-    pointType = (pointType + self.d) % 4 + 1
+    pointType = (pointType + self.d + 1) % 4
     if (pointType == BattleArrivePointType.Front) then
-        return { x = 0.25, y = 0.12 }
+        return { x = -0.25, y = -0.12 }
     elseif (pointType == BattleArrivePointType.Behind) then
         return { x = 0.25, y = -0.12 }
     elseif (pointType == BattleArrivePointType.Left) then
-        return { x = -0.25, y = -0.12 }
+        return { x = 0.25, y = 0.12 }
     else
         return { x = -0.25, y = 0.12 }
     end

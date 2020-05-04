@@ -10,8 +10,6 @@ local function __init(self, movePath)
     self._action = UnitActionManager:GetInstance():GetAction(ActionType.move)
 end
 
-local step = 0
-
 local function MoveEnd(self)
     self._isEnd = true
 end
@@ -19,14 +17,14 @@ end
 --播放动作
 local function Start(self, unit, has, cb)
     self._isEnd = false
-    step = 0
+    self.step = 0
     self.moveCallback = cb
     self:RealTween(unit)
 end
 
 local function RealTween(self, unit)
-    step = step + 1
-    if step > table.length(self._movePath) then
+    self.step = self.step + 1
+    if self.step > table.length(self._movePath) then
         MoveEnd(self)
         unit:StartUnitAction()
         if (self.moveCallback) then
@@ -38,13 +36,15 @@ local function RealTween(self, unit)
         TweenNano.Remove(self.tween)
     end
 
-    local node = self._movePath[step]
+    local node = self._movePath[self.step]
     local pos = BattleManager:GetInstance():GetBattle():GetMapInfo():GetBattlePosBySlot(node.x, node.y)
     local unitpos = unit:GetRealPos()
     local battlepos = unit:GetBattlePos()
+    --print(string.format("(%s,%s)->(%s,%s)", battlepos.x, battlepos.y, node.x, node.y))
     if battlepos.x == node.x and battlepos.y == node.y then
         self:RealTween(unit, cb)
     else
+        unit:SetBattlePos(node)
         local faceto = FaceToUtils.GetFaceTo4(unitpos.x, unitpos.y, pos.x, pos.y, unit:FaceTo())
         unit:ChangeFace(faceto)
         self.tween = TweenNano.Create(0.6, unit, { x = pos.x, y = pos.y }, "linear", nil, Bind(self, self.RealTween), unit)
