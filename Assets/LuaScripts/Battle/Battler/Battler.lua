@@ -20,7 +20,7 @@ local function InitCharacter(self)
     --self:CreateChracterData()
     self.character:Initialize(self.fighterInfo, { x = self.fighterInfo.posx, y = self.fighterInfo.posy }, bornDir, Bind(self, self.InitBuffs))
     self.character:SetFighterId(self.battlerId)
-    self.character:SetName(tostring(self.strName), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME)
+    self.character:SetName(tostring(self.battlerId), UILayers.BattlerNameCamera_1.Name, HUD_TYPE.TOP_NAME)
 end
 --- private end ---
 
@@ -92,31 +92,33 @@ local function DealAttrWithBattleResult(self, resultUnit)
         local result = CS.BitOperator.lMove(1, BattleResult.eBattleResultMax - i)
         if CS.BitOperator.And(result, resultUnit.eTargetResult) == result then
             if result == BattleResult.eBattleResultHPChange then
-                self:UpdateHP(resultUnit.hpChange)
+                self:UpdateHp(resultUnit.hpChange)
             end
         end
     end
 end
 
---受击动作后 后续动作 比如死亡 眩晕等
+--受击动作后 后续动作 比如死亡 眩晕等 只会放一种吧？？
 local function DealActionWithBattleResult(self, resultUnit, cb)
     for i = 1, BattleResult.eBattleResultMax do
         local result = CS.BitOperator.lMove(1, BattleResult.eBattleResultMax - i);
         if CS.BitOperator.And(result, resultUnit.eTargetResult) == result then
             if result == BattleResult.eBattleResultDeath then
                 self.isDeath = true
-                self.character:UpdateDeath(cb)
+                self.isFlyOut = true
+                self:FlyOut(cb)
+                return
             elseif result == BattleResult.eBattleResultFlyOut then
                 --TODO 先在击飞里添加倒地死亡的动作，今后改成击飞
                 self.isDeath = true
                 self.isFlyOut = true
-                self:FlyOut();
-            else
-                if (cb) then
-                    cb()
-                end
+                self:FlyOut(cb)
+                return
             end
         end
+    end
+    if (cb) then
+        cb()
     end
 end
 
@@ -127,8 +129,12 @@ local function UpdateHp(self, changeHp)
     --todo 更新血量
 end
 
-local function FlyOut(self)
-
+local function FlyOut(self, cb)
+    -- 临时隐藏下
+    self.character:SetVisible(false)
+    if (cb) then
+        cb()
+    end
 end
 
 --- get set start ---
@@ -163,7 +169,6 @@ local function __delete(self)
     self.buffAgent = nil
     self.attrAgent = nil
 end
-
 
 Battler.__init = __init
 Battler.CreateBattler = CreateBattler

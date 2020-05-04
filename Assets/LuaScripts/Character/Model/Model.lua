@@ -48,7 +48,7 @@ end
 
 local function AddChild(self, name, child)
     if self.allHandPointTransform[name] ~= nil then
-        child:SetParent(self.allHandPointTransform[name], false)
+        child:SetParent(self.allHandPointTransform[name])
     end
 end
 

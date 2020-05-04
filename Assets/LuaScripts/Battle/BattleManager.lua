@@ -120,8 +120,8 @@ local function PlayNextRound(self)
     end
     curRound = rounds[playIndex]
     --facade.executeMediator(ModuleId.Battle, false, "setBattleRound", true, this.playIndex)
-    InitRoundScript(round.roundScript)
-    InitRoundStart(round.roundStart)
+    InitRoundScript(curRound.roundScript)
+    InitRoundStart(curRound.roundStart)
 end
 
 BattleManager.InitData = InitData

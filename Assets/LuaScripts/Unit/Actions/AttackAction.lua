@@ -7,9 +7,12 @@ local AttackAction = BaseClass("AttackAction", GUnitAction)
 AttackAction._creators = nil
 
 function AttackAction.GetCreator(id)
-    if (AttackAction._creators) then
+    if (AttackAction._creators == nil) then
+        AttackAction._creators = {}
         AttackAction._creators["1"] = require "Skills.Operator.Op1"
     end
+
+    return AttackAction._creators[id]
 end
 
 local function Create(self, context)
@@ -39,19 +42,21 @@ end
 
 --播放动作
 local function Start(self, unit, has, callback)
-    local cunit = context.caster
+    local cunit = self.context.caster
     if (not cunit) then
         return
     end
     self.finalCallBack = callback
-    local tunit = context.mainTarget
+    local tunit = self.context.mainTarget
     if (tunit) then
         if (cunit ~= tunit) then
-            cunit:ChangeFace(FaceToUtils.GetFaceTo4(cunit.x, cunit.y, tunit.x, tunit.y, unit:FaceTo()))
+            local cpos = cunit:GetRealPos()
+            local tpos = tunit:GetRealPos()
+            cunit:ChangeFace(FaceToUtils.GetFaceTo4(cpos.x, cpos.y, tpos.x, tpos.y, unit:FaceTo()))
         end
     end
 
-    local cfg = context.skillConfig
+    local cfg = self.context.skillConfig
     if (cfg and cfg.casterEf ~= "") then
         --起手施法动画    
     end

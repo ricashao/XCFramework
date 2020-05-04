@@ -64,7 +64,7 @@ end
 
 --- 被动移动时使用
 local function MoveByTime(self, destpos, time, cb)
-    TweenNano.Create(time, unit, { x = destpos.x, y = destpos.y }, "linear", nil, cb)
+    TweenNano.Create(time, self, { x = destpos.x, y = destpos.y }, "linear", nil, cb)
 end
 
 local function GetPosByIdAndArrivePointType(self, pointType, xishu)

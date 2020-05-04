@@ -8,6 +8,7 @@ local base = AttackAction
 
 local function OnFire(self, context)
     base.OnFire(self, context)
+    local cfg = context.skillConfig
     BattleHit:GetInstance():ResponseHitByEvent(context.fighterId, context.skillConfig, context.unitResult, Bind(self, self.OnHitEnd))
     if CS.BitOperator.And(BattleResult.eBattleResultDodge, context.unitResult[1].eTargetResult) ~= BattleResult.eBattleResultDodge and cfg.hitEf ~= "" then
         local decode = EfDecode.Decode(context.skillConfig.hitEf)
@@ -24,7 +25,7 @@ local function HandlerAniEvent(self, event, ani, ...)
 end
 
 local function OnHitEnd(self)
-    self.finalCallback()
+    self.finalCallBack()
 end
 
 Op1.HandlerAniEvent = HandlerAniEvent

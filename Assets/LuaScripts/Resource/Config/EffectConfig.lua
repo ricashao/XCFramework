@@ -21,6 +21,30 @@ local EffectConfig = {
 		IsLoop = true,
 		LiveTime = 0,
 	},
+	
+	
+	
+	------战斗特效-------
+	heal_1 ={
+		Name = "heal_1",
+		EffectPath = "Effect/Prefab/Battle/heal_1.prefab",
+		IsUIEffect = false,
+		IsLoop = false,
+	},
+
+	normal_hit1 ={
+		Name = "normal_hit1",
+		EffectPath = "Effect/Prefab/Battle/normal_hit1.prefab",
+		IsUIEffect = false,
+		IsLoop = false,
+	},
+	--
+	--heal_1 ={
+	--	Name = "heal_1",
+	--	EffectPath = "Effect/Prefab/Battle/heal_1.prefab",
+	--	IsUIEffect = false,
+	--	IsLoop = false,
+	--}
 }
 
 return ConstClass("EffectConfig", EffectConfig)

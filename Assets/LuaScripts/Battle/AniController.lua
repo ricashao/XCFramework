@@ -24,7 +24,9 @@ local AniController = BaseClass("AniController", Singleton)
 local BattleEffect = require "Battle.Effect.BattleEffect"
 --获取战斗龙骨特效动画
 local function GetAniRender(uri, aniOption)
-    return BattleEffect.New(uri, aniOption)
+    local battleeffect = BattleEffect.New()
+    battleeffect:Init(uri, aniOption)
+    return battleeffect
 end
 
 local function PlayAniByType(self, posType, uri, target, aniOption)
@@ -38,7 +40,7 @@ local function PlayAniByType(self, posType, uri, target, aniOption)
 end
 
 local function PlayAniOnTargetHalo(self, uri, unit, aniOption)
-    if (not IsNull(unit)) then
+    if (IsNull(unit)) then
         return
     end
     local ani = self:GetAniRender(uri, aniOption)
@@ -47,11 +49,11 @@ local function PlayAniOnTargetHalo(self, uri, unit, aniOption)
 end
 
 local function PlayAniOnTargetHurtPoint(self, uri, unit, aniOption)
-    if (not IsNull(unit)) then
+    if (IsNull(unit)) then
         return
     end
     local ani = GetAniRender(uri, aniOption)
-    unit:AddToBodyBuff(ani.gameObject)
+    unit:AddToBodyBuff(ani)
     return ani
 end
 

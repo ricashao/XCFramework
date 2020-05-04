@@ -73,12 +73,13 @@ local function BattleShowUnitMove(self)
 end
 
 local function MoveEnd(self)
-    local timer = TimerManager:GetInstance():GetTimer(15, self.BuildBattleShowUnit, self, true, true)
+    local timer = TimerManager:GetInstance():GetTimer(0.2, self.BuildBattleShowUnit, self, true, false)
     timer:Start()
 end
 
 --创建回合表现数据
 local function BuildBattleShowUnit(self)
+    --print(string.format("%s 开始行动",self.curExecute.attackerId ))
     if self.curExecute.eBattleOperate == BattleOperate.eOperateFailure then
         --操作失败
         self.showType = BattleShowRound.NoSkill
@@ -127,11 +128,13 @@ local function BuildBattleShowUnit(self)
 end
 
 local function CurrentSkillEnd(self)
+    --print(string.format("%s 结束行动",self.curExecute.attackerId ))
     self.skillActionEnd = true
     self.finishCallBack()
 end
 
 local function CurrentNoSkillEnd(self)
+    --print(string.format("%s 结束行动",self.curExecute.attackerId ))
     self.finishCallBack()
 end
 

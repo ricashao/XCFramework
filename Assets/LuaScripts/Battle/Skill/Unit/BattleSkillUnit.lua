@@ -28,7 +28,7 @@ end
 
 --开始技能演示
 local function Show(self)
-    local cfg = getInstance(SkillDB).getSkillCfgById(this.skillId)
+    local cfg = SkillDB.GetSkillCfgById(self.skillId)
     local ctx = require "Skills.SkillContext".New()
     --设置结果集
     ctx.unitResult = self:GetActionUnitResults()

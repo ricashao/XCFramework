@@ -26,17 +26,17 @@ local function SetUIHp(self)
         return
     end
 
-    local hp = tonumber(self.currentValue)
+    local hp = math.floor(tonumber(self.currentValue))
     if not hp then
         return
     end
 
     if hp < 0 then
         self.changeHpTransform.gameObject:SetActive(true)
-        self.changeHpText.text = tostring(self.currentValue)
+        self.changeHpText.text = tostring(hp)
     else
         self.greenHpTransform.gameObject:SetActive(true)
-        self.greenHpText.text = tostring(self.currentValue)
+        self.greenHpText.text = tostring(hp)
     end
 end
 
@@ -60,7 +60,7 @@ local function InitCritComponent(self)
     end
 
     if not self.resultImageList then
-        self.resultImageList = self.resultImgTransform:GetComponent(typeof(UISpriteSwap)).Spritelist
+        self.resultImageList = self.resultImgTransform:GetComponent(typeof(CS.UISpriteSwap)).Spritelist
     end
 
     if (not self.resultImage) or (not self.resultImageList) then
@@ -162,20 +162,25 @@ end
 
 local function OnPrefabLoad(self, pfb)
     self.root = pfb
+    local trans = self.root.transform
+    if not IsNull(trans) then
+        -- 初始化
+        trans.localScale = Vector3.one
+        trans.localPosition = Vector3.zero
+    end
+    self.rectTransform = UIUtil.FindComponent(self.root.transform, typeof(CS.UnityEngine.RectTransform))
+    self.changeHpTransform = UIUtil.FindTrans(self.root.transform, hp_text_path)
+    self.changeHpText = UIUtil.FindText(self.root.transform, hp_text_path)
 
-    self.rectTransform = UIUtil.FindComponent(self.root.tranform, typeof(CS.UnityEngine.RectTransform))
-    self.changeHpTransform = UIUtil.FindTrans(self.root.tranform, hp_text_path)
-    self.changeHpText = UIUtil.FindText(self.root.tranform, hp_text_path)
+    self.greenHpTransform = UIUtil.FindTrans(self.root.transform, green_hp_text_path)
+    self.greenHpText = UIUtil.FindText(self.root.transform, green_hp_text_path)
 
-    self.greenHpTransform = UIUtil.FindTrans(self.root.tranform, green_hp_text_path)
-    self.greenHpText = UIUtil.FindText(self.root.tranform, green_hp_text_path)
+    self.skillNameTransform = UIUtil.FindTrans(self.root.transform, skillname_text_path)
+    self.skillNameText = UIUtil.FindText(self.root.transform, skillname_text_path)
 
-    self.skillNameTransform = UIUtil.FindTrans(self.root.tranform, skillname_text_path)
-    self.skillNameText = UIUtil.FindText(self.root.tranform, skillname_text_path)
-
-    self.resultTransform = UIUtil.FindTrans(self.root.tranform, result_path)
-    self.resultText = UIUtil.FindText(self.root.tranform, result_text_path)
-    self.resultImgTransform = UIUtil.FindImage(self.root.tranform, result_img_path)
+    self.resultTransform = UIUtil.FindTrans(self.root.transform, result_path)
+    self.resultText = UIUtil.FindText(self.root.transform, result_text_path)
+    self.resultImgTransform = UIUtil.FindImage(self.root.transform, result_img_path)
 
     table.insert(self.transformDict, self.changeHpTransform);
     table.insert(self.transformDict, self.greenHpTransform);
@@ -289,7 +294,7 @@ local function __delete(self)
         self.normalGetEffect = nil
     end
     if self.root ~= nil then
-        GameObjectPool:GetInstance().RecycleGameObject(fullpath, self.root)
+        GameObjectPool:GetInstance():RecycleGameObject(fullpath, self.root)
         self.root = nil
     end
     self.character = nil

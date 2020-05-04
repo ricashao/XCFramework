@@ -9,8 +9,8 @@ local function InitDefaultAction(self)
     self.aStandBy = require("Unit.UnitAction").New()
 end
 
-local currentAction = nil
-local nextAction = nil
+--local currentAction = nil
+--local nextAction = nil
 
 --绑定监听
 local function StartRender(self)
@@ -50,6 +50,9 @@ local function __init(self)
     --模型动作
     self.a = nil
 
+    self.currentAction = nil
+    self.nextAction = nil
+
 
 
     -- 角色资源加载回调
@@ -86,7 +89,7 @@ local function CharacterLoadedEnd(self, pfb)
     end
     self.pfb = pfb
     pfb.transform.position = Vector3.zero
-    pfb.transform:SetParent(self.transform, false);
+    pfb.transform:SetParent(self.transform, false)
     self.model = require "Character.Model.Model".New(self)
     self.initResourceOK = true
 
@@ -104,16 +107,17 @@ local function CharacterLoadedEnd(self, pfb)
 end
 
 local function DispatchEvent(self, type, eventObject)
-    if (currentAction) then
-        currentAction:DispatchEvent(self, eventObject.name)
+    if (self.currentAction) then
+        self.currentAction:DispatchEvent(self, eventObject.name)
     end
 end
 
 local function PlayComplete(self, type, eventObject)
     local flag = false
-    if (currentAction) then
-        currentAction:PlayComplete(self)
-        if (currentAction:IsEnd()) then
+    if (self.currentAction) then
+        --print(string.format("%s 当前动作完成 %s", self.fighterId, self.currentAction._class_type.__cname))
+        self.currentAction:PlayComplete(self)
+        if (self.currentAction:IsEnd()) then
             flag = true
         end
     else
@@ -121,8 +125,8 @@ local function PlayComplete(self, type, eventObject)
     end
 
     if flag then
-        local next = nextAction
-        nextAction = nil
+        local next = self.nextAction
+        self.nextAction = nil
         self:StartUnitAction(next)
     end
 end
@@ -134,29 +138,30 @@ end
 local function StartUnitAction(self, action, stop, callback)
     action = action or self.aStandBy
     stop = stop or false
-    if currentAction then
-        if currentAction ~= action then
-            if (currentAction:IsEnd()) then
-                currentAction = action
-                currentAction:Start(self, true, callback)
-            elseif stop or currentAction:CanStop() then
-                currentAction:Terminate(self)
-                currentAction = nil
-                currentAction = action
-                currentAction:Start(self, true, callback)
+    if self.currentAction then
+        --print(string.format("%s 当前动作%s 切换%s", self.fighterId, self.currentAction._class_type.__cname, action._class_type.__cname))
+        if self.currentAction ~= action then
+            if (self.currentAction:IsEnd()) then
+                self.currentAction = action
+                self.currentAction:Start(self, true, callback)
+            elseif stop or self.currentAction:CanStop() then
+                self.currentAction:Terminate(self)
+                self.currentAction = nil
+                self.currentAction = action
+                self.currentAction:Start(self, true, callback)
             else
                 --不可结束，覆盖下一个动作
-                if (nextAction) then
-                    nextAction = nil
+                if (self.nextAction) then
+                    self.nextAction = nil
                 end
-                nextAction = action
+                self.nextAction = action
             end
         end
     else
-        currentAction = action
-        currentAction:Start(self, true, callback)
+        self.currentAction = action
+        self.currentAction:Start(self, true, callback)
     end
-    currentAction:PlayAction(self, 0, now);
+    self.currentAction:PlayAction(self, 0, now);
 end
 
 -- 刷新所外形相关数据
@@ -256,7 +261,7 @@ local function SetVisible(self, visible)
     end
 
     self.visible = visible
-    --self.gameObject:SetActive(visible)
+    self.gameObject:SetActive(visible)
 
 
     if self.hudAgent then
@@ -324,6 +329,15 @@ local function RemoveSkillAttrInBattle(self, skillAttr)
     end
 end
 
+local function UpdateDeath(self)
+    if not self.hudAgent then
+        return
+    end
+
+    self.hudAgent:SetVisible(false)
+    self:PlayCommonAction(CommonActionUnit.GetConditionName(CommonActionUnit.Death)); --, ActionUnitType.Death
+end
+
 Character.__init = __init
 Character.Initialize = Initialize
 Character.CharacterLoadedEnd = CharacterLoadedEnd
@@ -337,6 +351,7 @@ Character.ChangeFace = ChangeFace
 Character.UpdateLayer = UpdateLayer
 Character.LateTick = LateTick
 Character.Speak = Speak
+Character.UpdateDeath = UpdateDeath
 --测试方便使用
 Character.Update = Update
 Character.SetName = SetName

@@ -15,17 +15,17 @@ local function __init(self, opId, skillCfg, result, callback)
     local battle = BattleManager:GetInstance():GetBattle()
     self.opId = opId
     self.aimId = result.targetId
-    self.opBattler = battle:FindBattleById(self.opId)
-    self.aimBattler = battle:FindBattleById(self.aimId)
-    self.opCharacter = opBattler:GetCharacter()
-    self.aimCharacter = aimBattler:GetCharacter()
+    self.opBattler = battle:FindBattlerByID(self.opId)
+    self.aimBattler = battle:FindBattlerByID(self.aimId)
+    self.opCharacter = self.opBattler:GetCharacter()
+    self.aimCharacter = self.aimBattler:GetCharacter()
     self.isMoveEnd = false;
     self.isStiffEnd = false
 end
 
 local function ShowHitUnit(self)
     --属性更新
-    aimBattler:DealAttrWithBattleResult(self.resultUnit)
+    self.aimBattler:DealAttrWithBattleResult(self.resultUnit)
     local battle = BattleManager:GetInstance():GetBattle()
     --buff
     if (self.resultUnit.buffs) then
@@ -42,7 +42,7 @@ local function ShowHitUnit(self)
     local isDodge = false;
     local isDefence = false;
 
-    local resultUnit = resultUnit
+    local resultUnit = self.resultUnit
     for i = 1, BattleResult.eBattleResultMax do
         local result = CS.BitOperator.lMove(1, BattleResult.eBattleResultMax - i);
         if CS.BitOperator.And(result, resultUnit.eTargetResult) == result then
@@ -90,7 +90,7 @@ end
 --飘血的逻辑
 local function ChangeHp(self, character, hpValue, popupType)
     if hpValue ~= nil or popupType == CHARACTER_POPUP_TYPE.DODGE then
-        local skillAttr = require "Logic.Character.UISkillAttr".New(character, UILayers.GuiCamera_1_2.NAME)
+        local skillAttr = require "Logic.Character.UISkillAttr".New(character, UILayers.GuiCamera_1_2.Name)
         skillAttr:SetUISkillAttr(hpValue, popupType)
     end
 end
@@ -105,9 +105,9 @@ local function PlayNormal(self)
     if (self.resultUnit.hpChange and self.resultUnit.hpChange < 0) then
         local aimPos = self.aimCharacter:GetRealPos()
         local opPos = self.opCharacter:GetRealPos()
-        self.aimCharacter:ChangeFace(FaceToUtils.GetFaceTo4(aimPos.x, aimPos.y, opPos.x, opPos.y, aimCharacter:FaceTo()))
+        self.aimCharacter:ChangeFace(FaceToUtils.GetFaceTo4(aimPos.x, aimPos.y, opPos.x, opPos.y, self.aimCharacter:FaceTo()))
         local action = require "Unit.Actions.StiffAction".New()
-        self.aimBattler:PlayAction(action, false, BindCallback(self, self.TriggerActionUnitEnd))
+        self.aimCharacter:StartUnitAction(action, false, BindCallback(self, self.TriggerActionUnitEnd))
         --移动
         self.defaultPos = aimPos
         local destpos = self.aimCharacter:GetPosByIdAndArrivePointType(BattleArrivePointType.Behind, DefaultDistance)
@@ -119,12 +119,12 @@ local function PlayNormal(self)
 end
 
 local function PlayDodge(self)
-    this.triggerActionUnitEnd();--没有动作播放
+    self:TriggerActionUnitEnd();--没有动作播放
     --移动 todo 没有判断增益 临时就判断伤血才会有闪避表现
-    if (this.resultUnit.hpChange == nil or this.resultUnit.hpChange == 0) then
+    if (self.resultUnit.hpChange == nil or self.resultUnit.hpChange == 0) then
         local aimPos = self.aimCharacter:GetRealPos()
         local opPos = self.opCharacter:GetRealPos()
-        self.aimCharacter:ChangeFace(FaceToUtils.GetFaceTo4(aimPos.x, aimPos.y, opPos.x, opPos.y, aimCharacter:FaceTo()))
+        self.aimCharacter:ChangeFace(FaceToUtils.GetFaceTo4(aimPos.x, aimPos.y, opPos.x, opPos.y, self.aimCharacter:FaceTo()))
         self.defaultPos = aimPos
         local pointType = math.random(2, 5)
         local destpos = self.aimCharacter:GetPosByIdAndArrivePointType(pointType, DefaultDistance)
@@ -132,7 +132,14 @@ local function PlayDodge(self)
     else
         self:TriggerMoveEnd()
     end
+end
 
+local function MoveBehindPositionEnd(self)
+    TimerManager:GetInstance():GetTimer(0.3, self.NextFrame, self, true, false):Start()
+end
+
+local function NextFrame(self)
+    self.aimCharacter:MoveByTime(self.defaultPos, DefaultTime, BindCallback(self, self.TriggerMoveEnd))
 end
 
 local function TriggerMoveEnd(self)
@@ -151,6 +158,10 @@ local function TryTriggerEnd(self)
     end
 end
 
+local function CheckHitUnitEnd(self)
+    return self.isStiffEnd and self.isMoveEnd
+end
+
 BattleHitUnit.__init = __init
 BattleHitUnit.ShowHitUnit = ShowHitUnit
 BattleHitUnit.ChangeHp = ChangeHp
@@ -159,5 +170,8 @@ BattleHitUnit.PlayDodge = PlayDodge
 BattleHitUnit.PlayNormal = PlayNormal
 BattleHitUnit.TriggerMoveEnd = TriggerMoveEnd
 BattleHitUnit.TriggerActionUnitEnd = TriggerActionUnitEnd
+BattleHitUnit.CheckHitUnitEnd = CheckHitUnitEnd
 BattleHitUnit.TryTriggerEnd = TryTriggerEnd
+BattleHitUnit.MoveBehindPositionEnd = MoveBehindPositionEnd
+BattleHitUnit.NextFrame = NextFrame
 return BattleHitUnit

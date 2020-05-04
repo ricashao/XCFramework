@@ -26,28 +26,28 @@ local function __init(self)
 end
 
 local function Parse(self, data)
-    self.targetId = data.targetId
+    self.targetId = data.targetid
     self.buffs = data.demobuffs
-    if (self.buffs) then
-        for _, v in ipairs(self.buffs) do
+    if (data.datas) then
+        for _, v in ipairs(data.datas) do
             if v.key == NewDemoResult.HP_CHANGE then
-                self.hpChange = v
+                self.hpChange = v.value
             elseif v.key == NewDemoResult.TARGET_RESULT then
-                self.eTargetResult = v
+                self.eTargetResult = v.value
             elseif v.key == NewDemoResult.RETURN_HURT then
-                self.returnHurt = v
+                self.returnHurt = v.value
             elseif v.key == NewDemoResult.ATTACK_BACK then
-                self.attackBack = v
+                self.attackBack = v.value
             elseif v.key == NewDemoResult.ATTACKER_RESULT then
-                self.eAttackerResult = v
+                self.eAttackerResult = v.value
             elseif v.key == NewDemoResult.PROTECTER_ID then
-                self.protecterId = v
+                self.protecterId = v.value
             elseif v.key == NewDemoResult.PROTECTER_HP_CHANGE then
-                self.protectHpChange = v
+                self.protectHpChange = v.value
             elseif v.key == NewDemoResult.PROTECTER_RESULT then
-                self.eProtecterResult = v
+                self.eProtecterResult = v.value
             elseif v.key == NewDemoResult.ASSISTER_ID then
-                self.assisterId = v
+                self.assisterId = v.value
             end
         end
     end

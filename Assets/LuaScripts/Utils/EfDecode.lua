@@ -9,7 +9,7 @@ function EfDecode.Decode(url)
     local arr = string.split(url, ":", 1, true)
     return {
         ef = arr[1],
-        efType = arr[2],
+        efType = tonumber(arr[2]),
         layer = arr[3],
         driction = arr[4],
     }

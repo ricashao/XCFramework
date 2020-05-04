@@ -30,7 +30,9 @@ local function RemoveBuff(self)
     if effectId then
         self.battler:RemoveEffectById(effectId)
     end
-    self.buffs[buffId] = nil
+    if (self.buffs[buffId]) then
+        self.buffs[buffId] = nil
+    end
 end
 
 local function UpdateBuff(self, buff)

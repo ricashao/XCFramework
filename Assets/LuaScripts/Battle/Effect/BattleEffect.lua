@@ -3,12 +3,15 @@
 --- Created by ricashao.
 --- DateTime: 2020/4/18 2:15
 ---
-local BattleEffect = BaseClass("BattleEffect")
+local BattleEffect = BaseClass("BattleEffect", TransformObject)
 
 --绑定监听
 local function StartRender(self)
-    self._uRender:AddDBEventListener(CS.DragonBones.EventObject.COMPLETE, Bind(self, self.PlayComplete))
-    self._uRender:AddDBEventListener(CS.DragonBones.EventObject.FRAME_EVENT, Bind(self, self.DispatchEvent))
+    self.__playcomplete = BindCallback(self, self.PlayComplete)
+    self.__dispatchevent = BindCallback(self, self.DispatchEvent)
+
+    self._uRender:AddDBEventListener(CS.DragonBones.EventObject.COMPLETE, self.__playcomplete)
+    self._uRender:AddDBEventListener(CS.DragonBones.EventObject.FRAME_EVENT, self.__dispatchevent)
     self:StartUnitAction()
 end
 
@@ -17,6 +20,9 @@ local function PlayComplete(self)
     if (self.loop == 0) then
         self:StartUnitAction()
     elseif (self.loop == self.curLoop) then
+        if (self.eventHandler) then
+            self.eventHandler()
+        end
         self:Delete()
     else
         self:StartUnitAction()
@@ -29,7 +35,8 @@ local function DispatchEvent(self, type, eventObject)
     end
 end
 
-local function __init(self, uri, aniOption, create_callback, relative_order)
+local function Init(self, uri, aniOption, create_callback, relative_order)
+    self.create_callback = create_callback
     self.relative_order = relative_order or 0
     local effect_config = EffectConfig[uri]
     self.loop = aniOption.loop or 1--循环次数
@@ -39,46 +46,51 @@ local function __init(self, uri, aniOption, create_callback, relative_order)
     if (effect_config == nil) then
         Logger.LogError("特效配置不存在 path：" .. uri)
     end
+    self.effectPath = effect_config.EffectPath
+    GameObjectPool:GetInstance():GetGameObjectAsync(self.effectPath, BindCallback(self, self.EffectLoadedEnd))
+end
 
-    self.effect = BaseEffect.New(self.transform, effect_config, function(pfb)
-        if not IsNull(self.effect.gameObject) then
-            local trans = self.effect.transform
-            local rectTransform = UIUtil.FindComponent(trans, typeof(CS.UnityEngine.RectTransform))
-            if not IsNull(rectTransform) then
-                -- 初始化RectTransform
-                rectTransform.offsetMax = Vector2.zero
-                rectTransform.offsetMin = Vector2.zero
-                rectTransform.localScale = Vector3.one
-                rectTransform.localPosition = Vector3.zero
-            end
+local function EffectLoadedEnd(self, pfb)
+    self.pfb = pfb
+    pfb.transform:SetParent(self.transform, false)
+    local trans = self.pfb.transform
+    if not IsNull(trans) then
+        -- 初始化
+        trans.localScale = Vector3.one
+        trans.localPosition = Vector3.zero
+    end
 
-            -- 获取龙骨
-            self._uRender = pfb:GetComponent(typeof(CS.DragonBones.UnityArmatureComponent))
-            StartRender(self)
+    -- 获取龙骨
+    self._uRender = pfb:GetComponent(typeof(CS.DragonBones.UnityArmatureComponent))
+    StartRender(self)
 
-            self:SetOrder(self.relative_order)
-            if create_callback ~= nil then
-                create_callback()
-            end
-        end
-    end)
+    --self._uRender:SetOrder(self.relative_order)
+    if self.create_callback ~= nil then
+        self.create_callback()
+    end
 end
 
 local function StartUnitAction(self)
-    self._uRender:Play("idle")
+    self._uRender.animation:Play("idle")
 end
 
 local function __delete(self)
-    self.effect:Delete()
-    self.effect = nil
+    GameObjectPool:GetInstance():RecycleGameObject(self.effectPath, self.pfb)
+    self._uRender:RemoveDBEventListener(CS.DragonBones.EventObject.COMPLETE, self.__playcomplete)
+    self._uRender:RemoveDBEventListener(CS.DragonBones.EventObject.FRAME_EVENT, self.__dispatchevent)
+    self.__playcomplete = nil
+    self.__dispatchevent = nil
+    self.pfb = nil
+    self.effectPath = nil
     self._uRender = nil
     self.eventHandler = nil
-    self:Destroy()
+    self.create_callback = nil
 end
 
-BattleEffect.__init = __init
+BattleEffect.Init = Init
 BattleEffect.StartUnitAction = StartUnitAction
 BattleEffect.PlayComplete = PlayComplete
 BattleEffect.DispatchEvent = DispatchEvent
+BattleEffect.EffectLoadedEnd = EffectLoadedEnd
 BattleEffect.__delete = __delete
 return BattleEffect

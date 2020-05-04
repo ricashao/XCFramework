@@ -46,7 +46,7 @@ end
 
 -- 一个表现单元结束
 local function BattleShowUnitEnd(self)
-    local callTime = TimerManager:GetInstance():GetTimer(1, self.DealWithBattleRound, self, true, true)
+    local callTime = TimerManager:GetInstance():GetTimer(0.2, self.DealWithBattleRound, self, true, false)
     callTime:Start()
 end
 
