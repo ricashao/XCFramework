@@ -91,7 +91,8 @@ local function BuildBattleShowUnit(self)
         for _, result in pairs(self.curUnitResult) do
             result:DealResult()
         end
-        self:CurrentNoSkillEnd()
+        local timer = TimerManager:GetInstance():GetTimer(0.5, self.CurrentNoSkillEnd, self, true, false)
+        timer:Start()
         return
     elseif self.curExecute.eBattleOperate == BattleOperate.eSummonOperate then
         --召唤

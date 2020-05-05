@@ -67,8 +67,9 @@ local function DealResult(self)
     if battler then
         --TODO 临时处理，将来修改成调用hit的接口
         if self.hpChange ~= nil then
-            --local skillAttr = UISkillAttr.New(battler:GetCharacter(), CameraLayer.GuiCamera_1_2)
-            --skillAttr:SetUISkillAttr(self.hpChange, CHARACTER_POPUP_TYPE.HP)
+
+            local skillAttr = require "Logic.Character.UISkillAttr".New(battler:GetCharacter(), UILayers.GuiCamera_1_2.Name)
+            skillAttr:SetUISkillAttr(self.hpChange, CHARACTER_POPUP_TYPE.HP)
         end
         battler:DealAttrWithBattleResult(self)
         battler:DealActionWithBattleResult(self)
