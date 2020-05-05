@@ -22,10 +22,13 @@ local function Parse(self, data)
     self.eBattleOperate = data.operationtype
     if (data.demobuffs) then
         for _, buff in pairs(data.demobuffs) do
-            local battler = BattleManager:GetInstance():GetBattle():FindBattlerByID(battlerId)
-            if battler then
-                battler:GetBuffAgent():UpdateBuff(buff)
-                --facade.executeMediator(ModuleId.Battle, false, "refreshBattlerBuff", true, battler.getBattlerId())
+            local battle = BattleManager:GetInstance():GetBattle()
+            if (battle) then
+                local battler = battle:FindBattlerByID(battlerId)
+                if battler then
+                    battler:GetBuffAgent():UpdateBuff(buff)
+                    --facade.executeMediator(ModuleId.Battle, false, "refreshBattlerBuff", true, battler.getBattlerId())
+                end
             end
         end
     end

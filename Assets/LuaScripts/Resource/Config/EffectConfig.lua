@@ -38,13 +38,13 @@ local EffectConfig = {
 		IsUIEffect = false,
 		IsLoop = false,
 	},
-	--
-	--heal_1 ={
-	--	Name = "heal_1",
-	--	EffectPath = "Effect/Prefab/Battle/heal_1.prefab",
-	--	IsUIEffect = false,
-	--	IsLoop = false,
-	--}
+
+	cheal_1 ={
+		Name = "cheal_1",
+		EffectPath = "Effect/Prefab/Battle/cheal_1.prefab",
+		IsUIEffect = false,
+		IsLoop = true,
+	}
 }
 
 return ConstClass("EffectConfig", EffectConfig)

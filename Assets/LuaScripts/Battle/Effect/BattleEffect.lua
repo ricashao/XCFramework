@@ -39,9 +39,13 @@ local function Init(self, uri, aniOption, create_callback, relative_order)
     self.create_callback = create_callback
     self.relative_order = relative_order or 0
     local effect_config = EffectConfig[uri]
-    self.loop = aniOption.loop or 1--循环次数
+    if (aniOption) then
+        self.loop = aniOption.loop or 1--循环次数
+        self.eventHandler = aniOption.handler
+    else
+        self.loop = 0--循环次数
+    end
     self.curLoop = 0 -- 当前循环次数
-    self.eventHandler = aniOption.handler
 
     if (effect_config == nil) then
         Logger.LogError("特效配置不存在 path：" .. uri)

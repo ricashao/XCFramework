@@ -37,6 +37,7 @@ UserData = require "DataCenter.UserData.UserData"
 -- game config
 LangUtil = require "Config.LangUtil"
 SkillDB = require "Config.SkillDB"
+BuffDB = require "Config.BuffDB"
 
 -- ui base
 UIUtil = require "Framework.UI.Util.UIUtil"

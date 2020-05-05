@@ -75,6 +75,13 @@ local function AddEffectById(self, id)
     end
     if self.character:IsVisible() then
         --加载特效
+        local cfg = BuffDB.GetCBuffConfigById(id)
+        if(cfg.effect) then
+            local decode = EfDecode.Decode(cfg.effect)
+            local ac = AniController:GetInstance()
+            local battleEffect = ac:PlayAniOnTargetBody(decode.ef,self:GetCharacter())
+            self.effects[id] = battleEffect
+        end
     end
 end
 

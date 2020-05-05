@@ -5,6 +5,15 @@
 ---
 local Warrior = BaseClass("Warrior", Character)
 
+--- private start ---
+local function SetOrder(self, pos)
+    if (self._sortGroup == nil) then
+        self._sortGroup = self.gameObject:AddComponent(typeof(CS.UnityEngine.Rendering.SortingGroup))
+    end
+    self._sortGroup.sortingOrder = 10 * pos.x - 10 * pos.y + 100
+end
+
+--- private end ---
 local function Parse(self, fightInfo, pos, dir)
     self.maxhp = fightInfo.maxhp
     self.hp = fightInfo.hp
@@ -12,6 +21,8 @@ local function Parse(self, fightInfo, pos, dir)
 end
 
 local function SetBornPos(self)
+    -- 设置 sorting group
+    SetOrder(self, self.pos)
     local battleScene = BattleManager:GetInstance():GetBattle():GetMapInfo()
     local screenPt = battleScene:GetBattlePosBySlot(self.pos.x, self.pos.y)
     self:SetLocalPosition(Vector3.New(screenPt.x, screenPt.y, 0))
@@ -38,6 +49,8 @@ end
 
 local function SetBattlePos(self, pos)
     self.pos = pos
+    -- 设置 sorting group
+    SetOrder(self, self.pos)
 end
 
 ------------- get set end --------------

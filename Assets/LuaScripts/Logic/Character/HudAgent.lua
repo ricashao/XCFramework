@@ -135,7 +135,7 @@ local function __delete(self)
 
     for _, uihp in pairs(self.battleHps) do
         if uihp then
-            uihp:Destroy()
+            uihp:Delete()
             uihp = nil
         end
     end
